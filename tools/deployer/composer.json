@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "deployer/deployer": "^6.8"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    }
+}
