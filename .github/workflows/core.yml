@@ -29,4 +29,4 @@ jobs:
         bin/phpunit install
 
     - name: Run unit test suite
-      run: bin/phpunit --configuration core/ingesting/tests/Unit/phpunit.xml
+      run: bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml

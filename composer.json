@@ -21,6 +21,9 @@
         "bamarni/composer-bin-plugin": "^1.4"
     },
     "config": {
+        "platform": {
+            "php": "7.4"
+        },
         "preferred-install": {
             "*": "dist"
         },
