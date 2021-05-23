@@ -49,7 +49,7 @@ core-architecture-check:  ## Check Core code architecture roules with deptrac
 	vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
 
 .PHONY: pre-commit
-pre-commit:  ## Check Core code architecture roules with deptrac
+pre-commit:  ## Check Core code architecture rules with deptrac
 #	vendor/bin/deptrac analyse core/depfile-core.yaml --report-uncovered
 	make coding-standards
 	make static-code-analysis
