@@ -34,16 +34,24 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 .PHONY: core-tests
 core-tests: ## Runs unit tests For Core code with phpunit/phpunit
 	mkdir -p .build/phpunit/core
-	bin/phpunit --configuration core/ingesting/tests/Unit/phpunit.xml --coverage-text
+	bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-text
 
 
 .PHONY: core-coverage
 core-coverage: ## Collects Core code coverage from running unit tests with phpunit/phpunit
 	mkdir -p .build/phpunit/core
-	bin/phpunit --configuration core/ingesting/tests/Unit/phpunit.xml --coverage-html var/coverage/core
+	bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-html var/coverage/core
 
 .PHONY: core-architecture-check
 core-architecture-check:  ## Check Core code architecture roules with deptrac
 #	vendor/bin/deptrac analyse core/depfile-core.yaml --report-uncovered
 	vendor/bin/deptrac analyse core/depfile-booking.yaml
 	vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
+
+.PHONY: pre-commit
+pre-commit:  ## Check Core code architecture roules with deptrac
+#	vendor/bin/deptrac analyse core/depfile-core.yaml --report-uncovered
+	make coding-standards
+	make static-code-analysis
+	make core-architecture-check
+	make core-tests
