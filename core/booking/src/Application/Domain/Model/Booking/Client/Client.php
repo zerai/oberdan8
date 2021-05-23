@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Booking\Application\Domain\Model\Booking\Client;
 
-/**
- *
- * codeCoverageIgnore
- */
 final class Client
 {
     private ClientId $id;
