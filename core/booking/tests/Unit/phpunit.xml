@@ -5,6 +5,7 @@
          xsi:noNamespaceSchemaLocation="../../../../bin/.phpunit/phpunit.xsd"
          beStrictAboutChangesToGlobalState="true"
          beStrictAboutCoversAnnotation="true"
+         forceCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutResourceUsageDuringSmallTests="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
