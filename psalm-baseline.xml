@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5"/>
+<files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
+  <file src="core/booking/src/Application/Domain/Model/Booking/RegularReservation.php">
+    <MixedArgument occurrences="1">
+      <code>$e</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="3">
+      <code>$this-&gt;books</code>
+      <code>$this-&gt;books</code>
+      <code>array_map(fn ($e) =&gt; Book::fromArray($e), $data['books'])</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="1">
+      <code>$v</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>equals</code>
+    </MixedMethodCall>
+    <MixedReturnTypeCoercion occurrences="2">
+      <code>$this-&gt;books</code>
+      <code>list&lt;Book&gt;</code>
+    </MixedReturnTypeCoercion>
+  </file>
+</files>

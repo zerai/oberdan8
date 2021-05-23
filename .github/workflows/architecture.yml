@@ -28,5 +28,8 @@ jobs:
         composer install --prefer-dist --no-progress
         composer bin deptrac install
 
-    - name: Run core code analysis
+    - name: Run architecture check (Bounded Context)
+      run: vendor/bin/deptrac analyse core/depfile-booking.yaml
+
+    - name: Run architecture check (Booking domain isolation)
       run: vendor/bin/deptrac analyse core/depfile-booking.yaml
