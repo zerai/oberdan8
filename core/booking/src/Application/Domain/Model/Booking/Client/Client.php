@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Booking\Application\Domain\Model\Booking\Client;
 
 /**
- * null
- * @codeCoverageIgnore
+ *
+ * codeCoverageIgnore
  */
 final class Client
 {
@@ -31,7 +31,7 @@ final class Client
         Email $email,
         Phone $phone,
         ?Classe $classe,
-        string $city
+        string $city = ''
     ) {
         $this->id = $id;
         $this->firstName = $firstName;

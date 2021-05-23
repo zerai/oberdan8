@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Booking\Application\Domain\Model\Booking\Book;
 
-/**
- * null
- * @codeCoverageIgnore
- */
 final class Book
 {
     private Isbn $isbn;
