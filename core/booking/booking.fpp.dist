@@ -1,0 +1,43 @@
+namespace Booking\Application\Domain\Model\Booking {
+    use DateTimeImmutable;
+    use Booking\Application\Domain\Model\Booking\Client\Client as Client;
+    use Booking\Application\Domain\Model\Booking\Book\Book as Book;
+
+    marker ReservationInterface;
+
+    marker RegularReservationInterface : ReservationInterface;
+
+    marker FileReservationInterface : ReservationInterface;
+
+    uuid ReservationId;
+
+    data RegularReservation = {
+        ReservationId $id,
+        Client $client,
+        Book[] $books
+    };
+}
+
+
+namespace Booking\Application\Domain\Model\Booking\Book {
+
+    string Isbn;
+    string Author;
+    string Title;
+    string Volume;
+
+    data Book = { Isbn $isbn, Title $title, Author $author, Volume $volume };
+}
+
+
+namespace Booking\Application\Domain\Model\Booking\Client {
+
+    uuid ClientId;
+    string FirstName;
+    string LastName;
+    string Email;
+    string Phone;
+    enum Classe = Varia | Prima | Seconda | Terza | Quarta | Quinta;
+
+    data Client = { ClientId $id, FirstName $firstName, LastName $lastName, Email $email, Phone $phone, ?Classe $classe, string $city };
+}
