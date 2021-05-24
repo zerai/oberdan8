@@ -30,3 +30,8 @@ parameters:
 			count: 1
 			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
 
+		-
+			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
+			count: 2
+			path: tests/WalkingSkeletonTest.php
+

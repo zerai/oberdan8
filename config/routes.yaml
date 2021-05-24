@@ -5,3 +5,7 @@
 home_oberdan:
   path: /
   controller: Booking\Adapter\HttpDriver\HomeController
+
+reservation_oberdan:
+  path: /reservation
+  controller: Booking\Adapter\HttpDriver\ReservationController
