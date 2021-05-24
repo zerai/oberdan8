@@ -1,10 +1,12 @@
 <?php
 namespace Deployer;
 
-require 'recipe/symfony.php';
+require 'recipe/symfony4.php';
+
+set('default_stage', 'test');
 
 // Project name
-set('application', 'my_project');
+set('application', 'stage.oberdan8.it');
 
 // Project repository
 set('repository', 'https://github.com/zerai/oberdan8.git');
@@ -22,9 +24,21 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('project.com')
-    ->set('deploy_path', '~/{{application}}');    
-    
+//host('project.com')
+//    ->set('deploy_path', '~/{{application}}');
+
+host('test')
+    ->hostname('oberdan8.it')
+    ->user('oberdani')
+    ->port(22)
+    ->stage('test')
+    ->set('branch', 'main')
+    ->set('deploy_path', '~/{{application}}')
+    ->set('identityFile', 'var/Oberdan/id_rsa_zerai_dev_machine')
+    ;
+
+
+
 // Tasks
 
 task('build', function () {
