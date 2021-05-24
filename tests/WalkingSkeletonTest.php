@@ -13,6 +13,7 @@ class WalkingSkeletonTest extends WebTestCase
         $crawler = $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
+        self::assertPageTitleSame('Oberdan - banco 8 - prenotazioni', $message = 'Unexpected title in homepage');
     }
 
     /** @test */
@@ -22,5 +23,6 @@ class WalkingSkeletonTest extends WebTestCase
         $crawler = $client->request('GET', '/reservation');
 
         $this->assertResponseIsSuccessful();
+        self::assertPageTitleSame('Oberdan - banco 8 - prenotazioni', $message = 'Unexpected title in homepage');
     }
 }
