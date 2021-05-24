@@ -5,6 +5,13 @@ exclude_files:
   - '#.*test.*#'
 
 layers:
+  - name: Infrastructure
+    collectors:
+      - type: bool
+        must:
+          - type: directory
+            regex: Infrastructure/.*
+
   - name: Adapter
     collectors:
       - type: bool
@@ -19,7 +26,7 @@ layers:
       - type: bool
         must:
           - type: implements
-            implements: 'Ingesting\PublicJob\Application\ApplicationPort'
+            implements: 'Booking\Application\ApplicationPort'
           - type: directory
             regex: Application/.*
 
@@ -33,7 +40,7 @@ layers:
           - type: className
             regex: .*ApplicationPort.*
           - type: implements
-            implements: 'Ingesting\PublicJob\Application\ApplicationPort'
+            implements: 'Booking\Application\ApplicationPort'
           - type: directory
             regex: Application/Domain/.*
 
@@ -52,6 +59,8 @@ layers:
 #            implements: 'Ingesting\PublicJob\Application\ApplicationPort'
 
 ruleset:
+  Infrastructure:
+    - ApplicationPort
   Adapter:
     - ApplicationPort
   Application:
