@@ -1,3 +1,32 @@
 parameters:
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\BookType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/BookType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\BookType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/BookType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ClientType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ClientType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ClientType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ClientType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
 
