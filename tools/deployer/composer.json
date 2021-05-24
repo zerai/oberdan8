@@ -1,6 +1,7 @@
 {
     "require-dev": {
-        "deployer/deployer": "^6.8"
+        "deployer/deployer": "^6.8",
+        "deployer/recipes": "^6.2"
     },
     "config": {
         "preferred-install": {
