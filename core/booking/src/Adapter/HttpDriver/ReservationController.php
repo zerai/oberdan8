@@ -3,7 +3,6 @@
 namespace Booking\Adapter\HttpDriver;
 
 use Booking\Infrastructure\Framework\Form\ReservationType;
-use LeanpubBookClub\Application\UpdateSession;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
