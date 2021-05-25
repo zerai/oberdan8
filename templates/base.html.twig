@@ -13,12 +13,28 @@
         {% endblock %}
 
         {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             {{ encore_entry_script_tags('app') }}
+            <script type="text/javascript">
+
+                $(document).ready(function(){
+                    console.log('ok');
+                })
+            </script>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
 
-        {% block javascripts_bottom %}{% endblock %}
+
+
+    {% block body %}{% endblock %}
+    {% block javascripts_bottom %}
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                console.log(' bottom ok');
+            })
+        </script>
+    {% endblock %}
     </body>
 </html>

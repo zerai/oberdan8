@@ -2,17 +2,17 @@
 
 namespace Booking\Adapter\HttpDriver;
 
-use Booking\Infrastructure\Framework\Form\ReservationType;
+use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
 use LeanpubBookClub\Application\UpdateSession;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ReservationController extends AbstractController
+class AdozioniController extends AbstractController
 {
     public function __invoke(Request $request): Response
     {
-        $form = $this->createForm(ReservationType::class);
+        $form = $this->createForm(AdozioniReservationType::class);
 
         $form->handleRequest($request);
 
@@ -26,7 +26,7 @@ class ReservationController extends AbstractController
             return $this->redirectToRoute('home_oberdan');
         }
 
-        return $this->render('@booking/Static/reservation.html.twig', [
+        return $this->render('@booking/Static/reservation-adozioni.html.twig', [
             'form' => $form->createView(),
         ]);
     }
