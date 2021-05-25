@@ -25,4 +25,14 @@ class WalkingSkeletonTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         self::assertPageTitleSame('Oberdan - banco 8 - prenotazioni', $message = 'Unexpected title in homepage');
     }
+
+    /** @test */
+    public function adozioniReservationPageShouldBeAccessibile(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/reservation/adozioni');
+
+        $this->assertResponseIsSuccessful();
+        self::assertPageTitleSame('Oberdan - banco 8 - prenotazioni', $message = 'Unexpected title in homepage');
+    }
 }

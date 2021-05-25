@@ -1,0 +1,95 @@
+{% extends "@booking/reservation-layout.html.twig" %}
+
+{#{% block metadata %}#}
+{#    <meta name="robots" content="noindex, nofollow">#}
+{#{% endblock %}#}
+
+{#{% block main %}#}
+{#{% endblock %}#}
+
+{% block content_body %}
+ <div class="container">
+  <div class="row align-items-center">
+    <div class="col-sm">
+     {{ form_start(form) }}
+
+     {{ form_row(form.person) }}
+
+
+     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>
+
+     <button type="button" class="add_item_link" data-collection-holder-class="books">Aggiungi libro</button>
+     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>
+
+     {{ form_row(form.notes) }}
+
+    </div>
+
+
+
+{#     <button type="button" class="add_item_link" data-collection-holder-class="books">Aggiungi libro</button>#}
+     {#   {{ form_end (form) }}#}
+
+  </div>
+ </div>
+
+{% endblock %}
+
+
+{#{% block javascripts %}#}
+{#    {{ parent() }}#}
+{#    <script type="text/javascript" src="{{ asset('build/js/recaptcha.js') }}"></script>#}
+{#{% endblock %}#}
+
+{% block javascripts_bottom %}
+ {{ parent() }}
+
+ <script type="text/javascript">
+  jQuery(document).ready(function() {
+   // Get the ul that holds the collection of tags
+   var $booksCollectionHolder = $('ul.books');
+   // count the current form inputs we have (e.g. 2), use that as the new
+   // index when inserting a new item (e.g. 2)
+   $booksCollectionHolder.data('index', $booksCollectionHolder.find('input').length);
+
+   $('body').on('click', '.add_item_link', function(e) {
+    var $collectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
+    // add a new tag form (see next code block)
+    addFormToCollection($collectionHolderClass);
+   })
+  });
+
+  function addFormToCollection($collectionHolderClass) {
+   // Get the ul that holds the collection of tags
+   var $collectionHolder = $('.' + $collectionHolderClass);
+
+   // Get the data-prototype explained earlier
+   var prototype = $collectionHolder.data('prototype');
+
+   // get the new index
+   var index = $collectionHolder.data('index');
+
+   var newForm = prototype;
+   // You need this only if you didn't set 'label' => false in your tags field in TaskType
+   // Replace '__name__label__' in the prototype's HTML to
+   // instead be a number based on how many items we have
+   // newForm = newForm.replace(/__name__label__/g, index);
+
+   // Replace '__name__' in the prototype's HTML to
+   // instead be a number based on how many items we have
+   newForm = newForm.replace(/__name__/g, index);
+
+   // increase the index with one for the next item
+   $collectionHolder.data('index', index + 1);
+
+   // Display the form in the page in an li, before the "Add a tag" link li
+   var $newFormLi = $('<li></li>').append(newForm);
+   // Add the new form at the end of the list
+   $collectionHolder.append($newFormLi)
+  }
+
+
+
+ </script>
+
+{% endblock %}

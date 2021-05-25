@@ -9,6 +9,13 @@
 
 {% block body %}
     <div class="container">
+
+        <h1>modulo esteso di prenotazione </h1>
+        <p>
+            Compila il form ricordandoti di inserire l'ISBN*, Autore, Titolo e Volume. Entro poche ore un nostro addetto ti ricontatterà per confermare la disponibilità dei testi richiesti e concordare modalità e data di ritiro.
+        </p>
+
+
         {% block content_body %}
             <!-- Content here -->
         {% endblock %}
@@ -20,4 +27,8 @@
 {% block javascripts %}
     {{ parent() }}
     {#    <script type="text/javascript" src="{{ asset('build/js/recaptcha.js') }}"></script>#}
+{% endblock %}
+
+{% block javascripts_bottom %}
+    {{ parent() }}
 {% endblock %}

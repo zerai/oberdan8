@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block metadata %}
+    parent()
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>prenotazione con file allegato</h1>
+        <p>
+            Compila i campi, allega il file della tua lista e premi invia. Entro poche ore un nostro addetto ti ricontatterà per confermare la disponibilità dei testi richiesti. Successivamente all’acquisto, ci occuperemo noi di contattare il corriere che recapiterà i testi direttamente a casa tua.
+        </p>
+
+        {% block content_body %}
+            <!-- Content here -->
+        {% endblock %}
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {#    <script type="text/javascript" src="{{ asset('build/js/recaptcha.js') }}"></script>#}
+{% endblock %}
+
+{% block javascripts_bottom %}
+    {{ parent() }}
+{% endblock %}
