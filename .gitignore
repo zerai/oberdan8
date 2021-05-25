@@ -3,6 +3,7 @@
 /.build/
 /tools/*/vendor/
 /.deptrac.cache
+/auth.json
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

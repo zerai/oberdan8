@@ -11,15 +11,15 @@ RUN apt-get update --fix-missing \
     pdo pdo_mysql
 
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php composer-setup.php
-RUN php -r "unlink('composer-setup.php');"
-RUN mv composer.phar /usr/local/bin/composer
-RUN chmod +x /usr/local/bin/composer
+#RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+#RUN php composer-setup.php
+#RUN php -r "unlink('composer-setup.php');"
+#RUN mv composer.phar /usr/local/bin/composer
+#RUN chmod +x /usr/local/bin/composer
 
-RUN curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer
-RUN chmod a+x php-cs-fixer
-RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
+#RUN curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer
+#RUN chmod a+x php-cs-fixer
+#RUN mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
 RUN ln -snf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
