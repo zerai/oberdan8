@@ -1,6 +1,16 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
+
+		-
 			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\BookType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Infrastructure/Framework/Form/BookType.php
