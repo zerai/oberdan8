@@ -22,7 +22,7 @@ class ClientType extends AbstractType
                 'label' => 'Email',
             ])
             ->add('phone', TextType::class, [
-                'label' => 'Telfono',
+                'label' => 'Telefono',
             ])
             ->add('city', TextType::class, [
                 'label' => 'Città',
