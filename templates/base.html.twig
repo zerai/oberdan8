@@ -24,18 +24,20 @@
         {% endblock %}
     </head>
     <body>
+        {% include 'Static/header-navbar.html.twig' %}
 
-    {% include 'Static/header-navbar.html.twig' %}
 
+        {% block body %}{% endblock %}
 
-    {% block body %}{% endblock %}
-    {% block javascripts_bottom %}
-        <script type="text/javascript">
+        {% include 'Static/footer.html.twig' %}
 
-            $(document).ready(function(){
-                console.log(' bottom ok');
-            })
-        </script>
-    {% endblock %}
+        {% block javascripts_bottom %}
+            <script type="text/javascript">
+
+                $(document).ready(function(){
+                    console.log(' bottom ok');
+                })
+            </script>
+        {% endblock %}
     </body>
 </html>
