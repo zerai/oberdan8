@@ -1,6 +1,21 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+
+		-
+			message: "#^Variable \\$userModel in PHPDoc tag @var does not match assigned variable \\$adozioniReservationFormModel\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+
+		-
 			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
