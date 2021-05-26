@@ -2,6 +2,7 @@
 
 namespace Booking\Infrastructure\Framework\Form;
 
+use Booking\Infrastructure\Framework\Form\Dto\ClientDto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -34,6 +35,7 @@ class ClientType extends AbstractType
     {
         $resolver->setDefaults([
             // Configure your form options here
+            'data_class' => ClientDto::class,
         ]);
     }
 }

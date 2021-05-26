@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    adozioni_directory: '%kernel.project_dir%/public/adozioni'
+    booking.adozioni_directory: '%kernel.project_dir%/public/adozioni'
 
 services:
     # default configuration for services in *this* file
@@ -28,9 +28,25 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+
+    #
+    #   BOOKING BOUNDED CONTEXT
+    #
+
     Booking\Adapter\HttpDriver\:
         resource: '../core/booking/src/Adapter/HttpDriver/'
         tags: [ 'controller.service_arguments' ]
+
+    Booking\Infrastructure\Framework\:
+        resource: '../core/booking/src/Infrastructure/Framework/'
+        exclude:
+            - '../core/booking/src/Infrastructure/Framework/templates'
+            - '../core/booking/src/Infrastructure/Framework/Form/Dto'
+
+    Booking\Infrastructure\Framework\Form\Service\AdozioniUploader:
+        arguments:
+            - '%booking.adozioni_directory%'
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -2,6 +2,7 @@
 
 namespace Booking\Infrastructure\Framework\Form;
 
+use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -68,6 +69,7 @@ class AdozioniReservationType extends AbstractType
     {
         $resolver->setDefaults([
             // Configure your form options here
+            'data_class' => AdozioniReservationFormModel::class,
         ]);
     }
 }
