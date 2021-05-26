@@ -1,20 +1,23 @@
 {% extends "@booking/reservation-adozioni-layout.html.twig" %}
 
 {% block content_body %}
- <div class="container">
-  <div class="row align-items-center">
-    <div class="col-sm">
-     {{ form_start(form) }}
+     <div class="container">
+         <div class="row align-items-center">
+            <div class="col-sm">
+                {{ form_start(form) }}
 
-     {{ form_row(form.person) }}
+                {{ form_row(form.person) }}
 
+                {{ form_row(form.notes) }}
 
+                {{ form_row(form.adozioni) }}
 
-     {{ form_row(form.notes) }}
+                {{ form_row(form.privacyConfirmed) }}
 
-    </div>
-  </div>
- </div>
+                {{ form_row(form.submit) }}
+            </div>
+         </div>
+     </div>
 {% endblock %}
 
 

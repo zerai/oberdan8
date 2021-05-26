@@ -3,6 +3,9 @@
 /.build/
 /tools/*/vendor/
 /.deptrac.cache
+
+/public/adozioni/
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
