@@ -11,17 +11,22 @@
  <div class="container">
   <div class="row align-items-center">
     <div class="col-sm">
-     {{ form_start(form) }}
+{#     {{ form_start(form) }}#}
 
-     {{ form_row(form.person) }}
+{#     {{ form_row(form.person) }}#}
 
 
-     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>
+{#     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>#}
 
-     <button type="button" class="add_item_link" data-collection-holder-class="books">Aggiungi libro</button>
-     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>
+{#     <button type="button" class="add_item_link" data-collection-holder-class="books">Aggiungi libro</button>#}
+{#     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>#}
 
-     {{ form_row(form.notes) }}
+{#     {{ form_row(form.notes) }}#}
+
+
+     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+     {{ form_widget(form) }}
+     {{ form_end(form) }}
 
     </div>
 
