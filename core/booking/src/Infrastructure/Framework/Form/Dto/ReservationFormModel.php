@@ -18,6 +18,7 @@ class ReservationFormModel
     public string $classe;
 
     /**
+     * @Assert\NotNull(message="Seleziona un' opzione.")
      * @Assert\Valid
      */
     public $books;

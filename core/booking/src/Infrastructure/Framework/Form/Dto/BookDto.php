@@ -16,12 +16,12 @@ class BookDto
     public string $isbn;
 
     /**
-     * @Assert\NotBlank(message="Inserisci il codice ISBN")
+     * @Assert\NotBlank(message="Inserisci il titolo")
      */
     public string $title;
 
     /**
-     * @Assert\NotBlank(message="Inserisci il codice ISBN")
+     * @Assert\NotBlank(message="Inserisci l'autore")
      */
     public string $author;
 
