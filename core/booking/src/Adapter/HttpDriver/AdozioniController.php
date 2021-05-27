@@ -44,6 +44,9 @@ class AdozioniController extends AbstractController
             /** @var AdozioniReservationFormModel $userModel */
             $adozioniReservationFormModel = $form->getData();
 
+            //var_dump($adozioniReservationFormModel);
+            //exit;
+
             ############################ Execute Application/domain logic here
             #
             #   get file data ($newFilename)

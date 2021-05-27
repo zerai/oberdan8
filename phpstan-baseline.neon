@@ -56,6 +56,11 @@ parameters:
 			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
 
 		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Infrastructure/Form/AdozioniReservationFormTest.php
+
+		-
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
 			count: 3
 			path: tests/WalkingSkeletonTest.php

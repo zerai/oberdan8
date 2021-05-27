@@ -15,18 +15,23 @@ class ClientType extends AbstractType
         $builder
             ->add('last_name', TextType::class, [
                 'label' => 'Cognome',
+                'required' => true,
             ])
             ->add('first_name', TextType::class, [
                 'label' => 'Nome',
+                'required' => true,
             ])
             ->add('email', TextType::class, [
                 'label' => 'Email',
+                'required' => true,
             ])
             ->add('phone', TextType::class, [
                 'label' => 'Telefono',
+                'required' => true,
             ])
             ->add('city', TextType::class, [
                 'label' => 'Città',
+                'required' => true,
             ])
         ;
     }

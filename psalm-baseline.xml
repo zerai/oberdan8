@@ -59,7 +59,8 @@
     </MissingReturnType>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/AdozioniReservationFormModel.php">
-    <MissingConstructor occurrences="3">
+    <MissingConstructor occurrences="4">
+      <code>$classe</code>
       <code>$notes</code>
       <code>$person</code>
       <code>$privacyConfirmed</code>
@@ -97,6 +98,11 @@
     </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Domain/Client/ClientTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="tests/Functional/AdozioniReservationTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>

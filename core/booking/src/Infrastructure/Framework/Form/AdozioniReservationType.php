@@ -24,8 +24,20 @@ class AdozioniReservationType extends AbstractType
                 //                    'label' => false,
                 //                ],
             ])
+            ->add('classe', ClasseField::class, [
+                'choices' => [
+                    'Prima' => 'prima',
+                    'Seconda' => 'seconda',
+                    'Terza' => 'terza',
+                    'Quarta' => 'Quarta',
+                    'Quinta' => 'Quinta',
+                    'Varia' => 'varia',
+                ],
+                'required' => true,
+                'placeholder' => 'seleziona',
+            ])
             ->add('adozioni', FileType::class, [
-                'label' => 'File delle adozioni (formato ?)',
+                'label' => 'File delle adozioni (formato PDF)',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
