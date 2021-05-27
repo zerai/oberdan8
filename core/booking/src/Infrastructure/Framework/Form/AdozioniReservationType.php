@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\File;
 
 class AdozioniReservationType extends AbstractType
 {
@@ -38,28 +37,7 @@ class AdozioniReservationType extends AbstractType
             ])
             ->add('adozioni', FileType::class, [
                 'label' => 'File delle adozioni (formato PDF)',
-
-                // unmapped means that this field is not associated to any entity property
-                'mapped' => false,
-
-                'multiple' => false,
-
-                // make it optional so you don't have to re-upload the PDF file
-                // every time you edit the Product details
-                'required' => false,
-
-                // unmapped fields can't define their validation using annotations
-                // in the associated entity, so you can use the PHP constraint classes
-                'constraints' => [
-                    new File([
-                        'maxSize' => '5120k',
-                        'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
-                        ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
-                    ]),
-                ],
+                'required' => true,
             ])
             ->add('notes', TextareaType::class, [
                 'label' => 'Altre informazioni',

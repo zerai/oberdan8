@@ -17,6 +17,17 @@ class AdozioniReservationFormModel
      */
     public string $classe;
 
+    /**
+     * @Assert\NotBlank (message="Seleziona null un file da caricare.")
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     mimeTypes = {"application/pdf", "application/x-pdf"},
+     *     mimeTypesMessage = "Il file selezionato non è un in formato PDF."
+     * )
+     *
+     */
+    public string $adozioni;
+
     public string $notes;
 
     /**
