@@ -17,6 +17,9 @@ class ReservationFormModel
      */
     public string $classe;
 
+    /**
+     * @Assert\Valid
+     */
     public $books;
 
     public string $notes;

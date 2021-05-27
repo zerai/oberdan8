@@ -11,22 +11,34 @@
  <div class="container">
   <div class="row align-items-center">
     <div class="col-sm">
-{#     {{ form_start(form) }}#}
-
-{#     {{ form_row(form.person) }}#}
-
-
-{#     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>#}
-
-{#     <button type="button" class="add_item_link" data-collection-holder-class="books">Aggiungi libro</button>#}
-{#     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}"></ul>#}
-
-{#     {{ form_row(form.notes) }}#}
-
-
      {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-     {{ form_widget(form) }}
-     {{ form_end(form) }}
+
+     {{ form_row(form.person.last_name) }}
+     {{ form_row(form.person.first_name) }}
+     {{ form_row(form.person.email) }}
+     {{ form_row(form.person.phone) }}
+     {{ form_row(form.person.city) }}
+
+     {{ form_row(form.classe) }}
+
+
+     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}">
+
+      {% for book in form.books %}
+       <li>{{ form_row(book) }}</li>
+      {% endfor %}
+     </ul>
+
+     <button type="button" class="btn btn-sm btn-success add_item_link" data-collection-holder-class="books">Aggiungi libro</button>
+
+     {{ form_row(form.notes) }}
+
+     {{ form_rest(form) }}
+
+
+{#     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
+{#     {{ form_widget(form) }}#}
+{#     {{ form_end(form) }}#}
 
     </div>
 
@@ -53,6 +65,13 @@
   jQuery(document).ready(function() {
    // Get the ul that holds the collection of tags
    var $booksCollectionHolder = $('ul.books');
+
+   // add a delete link to all of the existing tag form li elements
+   $booksCollectionHolder.find('li').each(function() {
+    addBookFormDeleteLink($(this));
+   });
+
+
    // count the current form inputs we have (e.g. 2), use that as the new
    // index when inserting a new item (e.g. 2)
    $booksCollectionHolder.data('index', $booksCollectionHolder.find('input').length);
@@ -91,10 +110,21 @@
    var $newFormLi = $('<li></li>').append(newForm);
    // Add the new form at the end of the list
    $collectionHolder.append($newFormLi)
+
+
+   addBookFormDeleteLink($newFormLi);
   }
 
 
+  function addBookFormDeleteLink($tagFormLi) {
+   var $removeFormButton = $('<button type="button" class="btn btn-sm btn-danger">Rimuovi libro</button>');
+   $tagFormLi.append($removeFormButton);
 
+   $removeFormButton.on('click', function(e) {
+    // remove the li for the book form
+    $tagFormLi.remove();
+   });
+  }
  </script>
 
 {% endblock %}

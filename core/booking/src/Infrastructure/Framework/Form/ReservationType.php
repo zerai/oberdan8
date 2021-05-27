@@ -35,6 +35,7 @@ class ReservationType extends AbstractType
             ])
 
             ->add('books', CollectionType::class, [
+                'label' => false,
                 'entry_type' => BookType::class,
                 'entry_options' => [
                     'label' => false,
