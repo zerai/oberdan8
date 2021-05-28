@@ -64,7 +64,7 @@ class AdozioniController extends AbstractController
             return $this->redirectToRoute('home_oberdan');
         }
 
-        return $this->render('@booking/Static/reservation-adozioni.html.twig', [
+        return $this->render('@booking/reservation-adozioni-page.html.twig', [
             'form' => $form->createView(),
         ]);
     }

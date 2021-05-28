@@ -59,11 +59,20 @@
     </MissingReturnType>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/AdozioniReservationFormModel.php">
-    <MissingConstructor occurrences="4">
+    <MissingConstructor occurrences="5">
+      <code>$adozioni</code>
       <code>$classe</code>
       <code>$notes</code>
       <code>$person</code>
       <code>$privacyConfirmed</code>
+    </MissingConstructor>
+  </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/BookDto.php">
+    <MissingConstructor occurrences="4">
+      <code>$author</code>
+      <code>$isbn</code>
+      <code>$title</code>
+      <code>$volume</code>
     </MissingConstructor>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ClientDto.php">
@@ -80,6 +89,17 @@
     <MissingConstructor occurrences="1">
       <code>$notes</code>
     </MissingConstructor>
+  </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ReservationFormModel.php">
+    <MissingConstructor occurrences="4">
+      <code>$classe</code>
+      <code>$notes</code>
+      <code>$person</code>
+      <code>$privacyConfirmed</code>
+    </MissingConstructor>
+    <MissingPropertyType occurrences="1">
+      <code>$books</code>
+    </MissingPropertyType>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/ReservationType.php">
     <MissingReturnType occurrences="2">
