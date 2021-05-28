@@ -25,7 +25,7 @@ class ReservationController extends AbstractController
             return $this->redirectToRoute('home_oberdan');
         }
 
-        return $this->render('@booking/Static/reservation.html.twig', [
+        return $this->render('@booking/reservation-page.html.twig', [
             'form' => $form->createView(),
         ]);
     }

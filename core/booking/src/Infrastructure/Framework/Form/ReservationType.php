@@ -44,6 +44,7 @@ class ReservationType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
+                'block_name' => 'book_lists',
             ])
 
             ->add('notes', TextareaType::class, [

@@ -1,56 +1,20 @@
-{% extends "@booking/reservation-layout.html.twig" %}
-
-{#{% block metadata %}#}
-{#    <meta name="robots" content="noindex, nofollow">#}
-{#{% endblock %}#}
-
-{#{% block main %}#}
-{#{% endblock %}#}
-
-{% block content_body %}
- <div class="container">
-  <div class="row align-items-center">
-    <div class="col-sm">
-     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-
-     {{ form_row(form.person.last_name) }}
-     {{ form_row(form.person.first_name) }}
-     {{ form_row(form.person.email) }}
-     {{ form_row(form.person.phone) }}
-     {{ form_row(form.person.city) }}
-
-     {{ form_row(form.classe) }}
+{% extends "@booking/booking-layout.html.twig" %}
 
 
-     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}">
+    {% block content_body %}
+        <div class="container">
 
-      {% for book in form.books %}
-       <li>{{ form_row(book) }}</li>
-      {% endfor %}
-     </ul>
+        <h1>modulo esteso di prenotazione </h1>
+        <p>
+            Compila il form ricordandoti di inserire l'ISBN*, Autore, Titolo e Volume. Entro poche ore un nostro addetto ti ricontatterà per confermare la disponibilità dei testi richiesti e concordare modalità e data di ritiro.
+        </p>
 
-     <button type="button" class="btn btn-sm btn-success add_item_link" data-collection-holder-class="books">Aggiungi libro</button>
+        <!-- Content here -->
+            {% include '@booking/form/reservation.html.twig' %}
+        </div>
 
-     {{ form_row(form.notes) }}
+    {% endblock %}
 
-     {{ form_rest(form) }}
-
-
-{#     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
-{#     {{ form_widget(form) }}#}
-{#     {{ form_end(form) }}#}
-
-    </div>
-
-
-
-{#     <button type="button" class="add_item_link" data-collection-holder-class="books">Aggiungi libro</button>#}
-     {#   {{ form_end (form) }}#}
-
-  </div>
- </div>
-
-{% endblock %}
 
 
 {#{% block javascripts %}#}
