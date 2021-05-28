@@ -22,7 +22,9 @@ class ReservationController extends AbstractController
 //                new UpdateSession($sessionId, $formData['description'], $formData['urlForCall'])
 //            );
 
-            return $this->redirectToRoute('home_oberdan');
+            $this->addFlash('success', 'Prenotazine avvenuta con successo.');
+
+            return $this->redirectToRoute('reservation_result');
         }
 
         return $this->render('@booking/reservation-page.html.twig', [
