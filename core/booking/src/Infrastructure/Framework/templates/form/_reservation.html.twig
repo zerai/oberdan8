@@ -1,4 +1,35 @@
-{#{% extends "@booking/booking-layout.html.twig" %}#}
+{% import _self as formMacros_book_row %}
+
+{% macro printNewBookRow(form) %}
+    <div class="col-xs-4 js-genus-scientist-item">
+        <a href="#" class="js-remove-scientist pull-right">
+            <span class="fa fa-close"></span>
+        </a>
+        {{ form_errors(form) }}
+        {% if form.user is defined %}
+            {{ form_row(form.user) }}
+        {% else %}
+            <strong>{{ form.vars.data.user.email }}</strong>
+        {% endif %}
+        {{ form_row(form.yearsStudied) }}
+    </div>
+
+
+{####### originale ########}
+
+{#    <div class="col-xs-4 js-genus-scientist-item">#}
+{#        <a href="#" class="js-remove-scientist pull-right">#}
+{#            <span class="fa fa-close"></span>#}
+{#        </a>#}
+{#        {{ form_errors(form) }}#}
+{#        {% if form.user is defined %}#}
+{#            {{ form_row(form.user) }}#}
+{#        {% else %}#}
+{#            <strong>{{ form.vars.data.user.email }}</strong>#}
+{#        {% endif %}#}
+{#        {{ form_row(form.yearsStudied) }}#}
+{#    </div>#}
+{% endmacro %}
 
 
 
@@ -6,17 +37,34 @@
 
 
      {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-{#     <legend>Dati Personali</legend>#}
-     {{ form_row(form.person.last_name) }}
-     {{ form_row(form.person.first_name) }}
-     {{ form_row(form.person.city) }}
-     {{ form_row(form.classe) }}
+        <div class="form-row">
+            <div class="col-sm-12 col-md-6">
+                {{ form_row(form.person.last_name) }}
+            </div>
+            <div class="col-sm-12 col-md-6">
+                {{ form_row(form.person.first_name) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12 col-md-6">
+                {{ form_row(form.person.email) }}
+            </div>
+            <div class="col-sm-12 col-md-6">
+                {{ form_row(form.person.phone) }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-sm-12 col-md-6">
+                {{ form_row(form.person.city) }}
+            </div>
+            <div class="col-sm-12 col-md-6">
+                {{ form_row(form.classe) }}
+            </div>
+        </div>
+
      <hr>
 
-{#     <legent>Contatti </legent>#}
-     {{ form_row(form.person.email) }}
-     {{ form_row(form.person.phone) }}
-
+    <h5>Testi richiesti:</h5>
 
 
 

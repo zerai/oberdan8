@@ -1,9 +1,5 @@
 {% extends "@booking/booking-layout.html.twig" %}
 
-{% block metadata %}
-    parent()
-{% endblock %}
-
 {% block content_body %}
     <div class="container">
 
@@ -16,14 +12,4 @@
 
     </div>
 
-{% endblock %}
-
-
-{% block javascripts %}
-    {{ parent() }}
-    {#    <script type="text/javascript" src="{{ asset('build/js/recaptcha.js') }}"></script>#}
-{% endblock %}
-
-{% block javascripts_bottom %}
-    {{ parent() }}
 {% endblock %}
