@@ -1,0 +1,84 @@
+{#{% extends "@booking/booking-layout.html.twig" %}#}
+
+
+
+
+
+
+     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{#     <legend>Dati Personali</legend>#}
+     {{ form_row(form.person.last_name) }}
+     {{ form_row(form.person.first_name) }}
+     {{ form_row(form.person.city) }}
+     {{ form_row(form.classe) }}
+     <hr>
+
+{#     <legent>Contatti </legent>#}
+     {{ form_row(form.person.email) }}
+     {{ form_row(form.person.phone) }}
+
+
+
+
+
+     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}">
+
+      {% for book in form.books %}
+       <li>
+        <div class="row">
+         <div class="col">
+          <div class="form-group  {% if form_errors(book.isbn) %}error{% endif %}">
+           {{ form_label(book.isbn) }}
+           {{ form_widget(book.isbn, { 'attr': { 'class': 'form-control'}}) }}
+          </div>
+         </div>
+         <div class="col">
+          <div class="form-group  {% if form_errors(book.title) %}error{% endif %}">
+           {{ form_label(book.title) }}
+           {{ form_widget(book.title, { 'attr': { 'class': 'form-control'}}) }}
+          </div>
+         </div>
+        </div>
+        <div class="row">
+         <div class="col">
+          <div class="form-group  {% if form_errors(book.author) %}error{% endif %}">
+           {{ form_label(book.author) }}
+           {{ form_widget(book.author, { 'attr': { 'class': 'form-control'}}) }}
+          </div>
+         </div>
+         <div class="col">
+          <div class="form-group  {% if form_errors(book.volume) %}error{% endif %}">
+           {{ form_label(book.volume) }}
+           {{ form_widget(book.volume, { 'attr': { 'class': 'form-control'}}) }}
+          </div>
+         </div>
+        </div>
+
+{#        Book {{ book.vars.data['id'] }}#}
+{#        <div class="form-group row align-items-center">#}
+
+{#         {{ form_widget(book) }}#}
+{#        </div>#}
+       </li>
+      {% endfor %}
+     </ul>
+
+     <button type="button" class="btn btn-sm btn-success add_item_link" data-collection-holder-class="books">Aggiungi libro</button>
+
+     {{ form_row(form.notes) }}
+
+     {{ form_rest(form) }}
+
+     {{ form_end(form) }}
+
+
+
+
+
+
+
+
+{# ###################### all form ###################### #}
+{#     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
+{#     {{ form_widget(form) }}#}
+{#     {{ form_end(form) }}#}

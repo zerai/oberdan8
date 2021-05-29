@@ -4,13 +4,14 @@
     {% block content_body %}
         <div class="container">
 
-        <h1>modulo esteso di prenotazione </h1>
-        <p>
-            Compila il form ricordandoti di inserire l'ISBN*, Autore, Titolo e Volume. Entro poche ore un nostro addetto ti ricontatterà per confermare la disponibilità dei testi richiesti e concordare modalità e data di ritiro.
-        </p>
+            <h1>modulo esteso di prenotazione </h1>
+            <p>
+                Compila il form ricordandoti di inserire l'ISBN*, Autore, Titolo e Volume. Entro poche ore un nostro addetto ti ricontatterà per confermare la disponibilità dei testi richiesti e concordare modalità e data di ritiro.
+            </p>
 
-        <!-- Content here -->
-            {% include '@booking/form/reservation.html.twig' %}
+            <div class="reservation-form">
+                {% include '@booking/form/_reservation.html.twig' %}
+            </div>
         </div>
 
     {% endblock %}
