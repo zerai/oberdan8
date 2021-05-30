@@ -19,7 +19,7 @@ layers:
       - type: bool
         must:
           - type: implements
-            implements: 'Ingesting\PublicJob\Application\ApplicationPort'
+            implements: 'Booking\Application\ApplicationPort'
           - type: directory
             regex: Application/.*
 
@@ -33,7 +33,7 @@ layers:
           - type: className
             regex: .*ApplicationPort.*
           - type: implements
-            implements: 'Ingesting\PublicJob\Application\ApplicationPort'
+            implements: 'Booking\Application\ApplicationPort'
 
 ruleset:
   Adapter:

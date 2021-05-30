@@ -1,0 +1,18 @@
+{% extends "default-layout.html.twig" %}
+
+{% block content_body %}
+<section class="jumbotron text-center">
+  <div class="container">
+   <h1>Prenota ora!</h1>
+   <p class="lead text-muted">
+     Scegli il tuo metodo di prenotazione, complia il modulo segnalandoci i testi di tuo interesse,<br>
+     oppure carica il file delle adozioni del tuo istituto scolastico. (<a href="https://consultazione.adozioniaie.it/" target="_blank" >il mio file</a>)<br>
+     Sarai ricontattato entro poche ore.
+   </p>
+   <p>
+    <a href="{{ path('reservation') }}" class="btn btn-primary my-2">Compila il modulo</a>
+    <a href="{{ path('reservation_adozioni') }}" class="btn btn-secondary my-2">Carica il file delle adozioni</a>
+   </p>
+  </div>
+</section>
+{% endblock %}

@@ -1,3 +1,77 @@
 parameters:
-	ignoreErrors: []
+	ignoreErrors:
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+
+		-
+			message: "#^Variable \\$userModel in PHPDoc tag @var does not match assigned variable \\$adozioniReservationFormModel\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\BookType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/BookType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\BookType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/BookType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ClientType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ClientType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ClientType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ClientType.php
+
+		-
+			message: "#^Property Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Dto\\\\ReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/Dto/ReservationFormModel.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Infrastructure/Form/AdozioniReservationFormTest.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Infrastructure/Form/ReservationFormTest.php
+
+		-
+			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
+			count: 3
+			path: tests/WalkingSkeletonTest.php
 

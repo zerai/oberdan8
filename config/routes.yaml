@@ -2,6 +2,18 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-hello_oberdan:
+home_oberdan:
   path: /
-  controller: Booking\Adapter\HttpDriver\HelloController
+  controller: Booking\Adapter\HttpDriver\HomeController
+
+reservation:
+  path: /reservation
+  controller: Booking\Adapter\HttpDriver\ReservationController
+
+reservation_adozioni:
+  path: /reservation/adozioni
+  controller: Booking\Adapter\HttpDriver\AdozioniController
+
+reservation_result:
+  path: /esito
+  controller: Booking\Adapter\HttpDriver\ReservationResultsController
