@@ -2,13 +2,13 @@
 
 {% macro printBookRow(book) %}
     <div class="form-row js-book-item">
-        <div class="col-sm-12 col-md-3">
+        <div class="col-auto">
             <div class="form-group  {% if form_errors(book.isbn) %}error{% endif %}">
                 {{ form_label(book.isbn) }}
                 {{ form_widget(book.isbn, { 'attr': { 'class': 'form-control'}}) }}
             </div>
         </div>
-        <div class="col-sm-12 col-md-3">
+        <div class="col-auto">
             <div class="form-group  {% if form_errors(book.title) %}error{% endif %}">
                 {{ form_label(book.title) }}
                 {{ form_widget(book.title, { 'attr': { 'class': 'form-control'}}) }}
@@ -16,13 +16,13 @@
         </div>
 
 
-        <div class="col-sm-12 col-md-3">
+        <div class="col-auto">
             <div class="form-group  {% if form_errors(book.author) %}error{% endif %}">
                 {{ form_label(book.author) }}
                 {{ form_widget(book.author, { 'attr': { 'class': 'form-control'}}) }}
             </div>
         </div>
-        <div class="col-sm-11 col-md-2">
+        <div class="col-auto">
             <div class="form-group  {% if form_errors(book.volume) %}error{% endif %}">
                 {{ form_label(book.volume) }}
                 {{ form_widget(book.volume, { 'attr': { 'class': 'form-control'}}) }}
@@ -83,42 +83,6 @@
         {% for book in form.books %}
             {{ formMacros.printBookRow(book) }}
 
-{#                <div class="form-row js-book-item">#}
-{#                    <div class="col-sm-12 col-md-3">#}
-{#                        <div class="form-group  {% if form_errors(book.isbn) %}error{% endif %}">#}
-{#                            {{ form_label(book.isbn) }}#}
-{#                            {{ form_widget(book.isbn, { 'attr': { 'class': 'form-control'}}) }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-sm-12 col-md-3">#}
-{#                        <div class="form-group  {% if form_errors(book.title) %}error{% endif %}">#}
-{#                            {{ form_label(book.title) }}#}
-{#                            {{ form_widget(book.title, { 'attr': { 'class': 'form-control'}}) }}#}
-{#                        </div>#}
-{#                    </div>#}
-
-
-{#                    <div class="col-sm-12 col-md-3">#}
-{#                        <div class="form-group  {% if form_errors(book.author) %}error{% endif %}">#}
-{#                            {{ form_label(book.author) }}#}
-{#                            {{ form_widget(book.author, { 'attr': { 'class': 'form-control'}}) }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-sm-11 col-md-2">#}
-{#                        <div class="form-group  {% if form_errors(book.volume) %}error{% endif %}">#}
-{#                            {{ form_label(book.volume) }}#}
-{#                            {{ form_widget(book.volume, { 'attr': { 'class': 'form-control'}}) }}#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-auto">#}
-{#                        <div class="form-group">#}
-
-{#                            <button type="button" class="btn btn-danger btn-sm  js-remove-book-item">Rimuovi </button>#}
-{#                        </div>#}
-
-{#                    </div>#}
-{#                </div>#}
-
         {% endfor %}
     </div>
 
@@ -148,7 +112,7 @@
 
 
 
-{#     <ul class="books" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}">#}
+{#     <ul class="bks" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}">#}
 
 {#      {% for book in form.books %}#}
 {#       <li>#}
