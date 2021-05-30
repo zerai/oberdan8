@@ -1,41 +1,38 @@
 {% import _self as formMacros %}
 
 {% macro printBookRow(book) %}
-    <div class="form-row js-book-item">
-        <div class="col-auto">
-            <div class="form-group  {% if form_errors(book.isbn) %}error{% endif %}">
-                {{ form_label(book.isbn) }}
-                {{ form_widget(book.isbn, { 'attr': { 'class': 'form-control'}}) }}
+    <div class="form-row js-book-item border-bottom mt-md-3">
+        <div class="form-row align-items-center">
+            <div class="col-sm-12 col-md-auto">
+                <div class="form-group  {% if form_errors(book.isbn) %}error{% endif %}">
+                    {{ form_label(book.isbn) }}
+                    {{ form_widget(book.isbn, { 'attr': { 'class': 'form-control'}}) }}
+                </div>
             </div>
-        </div>
-        <div class="col-auto">
-            <div class="form-group  {% if form_errors(book.title) %}error{% endif %}">
-                {{ form_label(book.title) }}
-                {{ form_widget(book.title, { 'attr': { 'class': 'form-control'}}) }}
+            <div class="col-sm-12 col-md-auto">
+                <div class="form-group  {% if form_errors(book.title) %}error{% endif %}">
+                    {{ form_label(book.title) }}
+                    {{ form_widget(book.title, { 'attr': { 'class': 'form-control'}}) }}
+                </div>
             </div>
-        </div>
-
-
-        <div class="col-auto">
-            <div class="form-group  {% if form_errors(book.author) %}error{% endif %}">
-                {{ form_label(book.author) }}
-                {{ form_widget(book.author, { 'attr': { 'class': 'form-control'}}) }}
+            <div class="col-sm-12 col-md-auto ">
+                <div class="form-group  {% if form_errors(book.author) %}error{% endif %}">
+                    {{ form_label(book.author) }}
+                    {{ form_widget(book.author, { 'attr': { 'class': 'form-control'}}) }}
+                </div>
             </div>
-        </div>
-        <div class="col-auto">
-            <div class="form-group  {% if form_errors(book.volume) %}error{% endif %}">
-                {{ form_label(book.volume) }}
-                {{ form_widget(book.volume, { 'attr': { 'class': 'form-control'}}) }}
+            <div class="col-sm-12 col-md-auto ">
+                <div class="form-group  {% if form_errors(book.volume) %}error{% endif %}">
+                    {{ form_label(book.volume) }}
+                    {{ form_widget(book.volume, { 'attr': { 'class': 'form-control'}}) }}
+                </div>
             </div>
-        </div>
-        <div class="col-auto">
-            <div class="form-group">
-
-                <button type="button" class="btn btn-danger btn-sm  js-remove-book-item">Rimuovi </button>
+            <div class="col-sm-12 col-md-auto mt-2">
+                <button type="button" class="btn btn-danger js-remove-book-item">Rimuovi </button>
             </div>
-
         </div>
     </div>
+
 {% endmacro %}
 
 
@@ -43,162 +40,72 @@
 
 
 
-     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-        {{ form_errors(form) }}
-        <div class="form-row">
-            <div class="col-sm-12 col-md-6">
-                {{ form_row(form.person.last_name) }}
-            </div>
-            <div class="col-sm-12 col-md-6">
-                {{ form_row(form.person.first_name) }}
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-sm-12 col-md-6">
-                {{ form_row(form.person.email) }}
-            </div>
-            <div class="col-sm-12 col-md-6">
-                {{ form_row(form.person.phone) }}
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="col-sm-12 col-md-6">
-                {{ form_row(form.person.city) }}
-            </div>
-            <div class="col-sm-12 col-md-6">
-                {{ form_row(form.classe) }}
-            </div>
-        </div>
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{{ form_errors(form) }}
+<div class="form-row">
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.person.last_name) }}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.person.first_name) }}
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.person.email) }}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.person.phone) }}
+    </div>
+</div>
+<div class="form-row">
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.person.city) }}
+    </div>
+    <div class="col-sm-12 col-md-6">
+        {{ form_row(form.classe, { 'attr': {'class': 'custom-select'} }) }}
+    </div>
+</div>
 
-     <hr>
+<hr>
 
 
 <h3>Testi richiesti:</h3>
 
 
-    <div class="row js-booklist-wrapper"
-         data-prototype="{{ formMacros.printBookRow(form.books.vars.prototype)|e('html_attr') }}"
-         data-index="{{ form.books|length }}"
-    >
-        {% for book in form.books %}
-            {{ formMacros.printBookRow(book) }}
+<div class="row js-booklist-wrapper"
+ data-prototype="{{ formMacros.printBookRow(form.books.vars.prototype)|e('html_attr') }}"
+ data-index="{{ form.books|length }}"
+>
+{% for book in form.books %}
+    {{ formMacros.printBookRow(book) }}
+{% endfor %}
+</div>
 
-        {% endfor %}
+<div class="row">
+    <div class="col-12 d-flex justify-content-center m-5">
+        <button type="button" class="btn btn-success js-add-book-item" data-collection-holder-class="js-booklist-wrapper">Aggiungi libro</button>
     </div>
-
-    <button type="button" class="btn btn-sm btn-success js-add-book-item" data-collection-holder-class="js-booklist-wrapper">Aggiungi libro</button>
-
-
-
-{#<ul class="bookskkk" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}">#}
-
-
-{#</ul>#}
-
-<button type="button" class="btn btn-sm btn-warning add_item_link" data-collection-holder-class="js-booklist-wrapper">Aggiungi libro</button>
-
-<hr>
-
-
-
-
-
-
-{#############################################################################################}
-{#############################################################################################}
-{#############################################################################################}
-{#    <h5>Testi richiesti:</h5>#}
-
-
-
-
-{#     <ul class="bks" data-prototype="{{ form_widget(form.books.vars.prototype)|e('html_attr') }}">#}
-
-{#      {% for book in form.books %}#}
-{#       <li>#}
-{#        <div class="row">#}
-{#         <div class="col">#}
-{#          <div class="form-group  {% if form_errors(book.isbn) %}error{% endif %}">#}
-{#           {{ form_label(book.isbn) }}#}
-{#           {{ form_widget(book.isbn, { 'attr': { 'class': 'form-control'}}) }}#}
-{#          </div>#}
-{#         </div>#}
-{#         <div class="col">#}
-{#          <div class="form-group  {% if form_errors(book.title) %}error{% endif %}">#}
-{#           {{ form_label(book.title) }}#}
-{#           {{ form_widget(book.title, { 'attr': { 'class': 'form-control'}}) }}#}
-{#          </div>#}
-{#         </div>#}
-{#        </div>#}
-{#        <div class="row">#}
-{#         <div class="col">#}
-{#          <div class="form-group  {% if form_errors(book.author) %}error{% endif %}">#}
-{#           {{ form_label(book.author) }}#}
-{#           {{ form_widget(book.author, { 'attr': { 'class': 'form-control'}}) }}#}
-{#          </div>#}
-{#         </div>#}
-{#         <div class="col">#}
-{#          <div class="form-group  {% if form_errors(book.volume) %}error{% endif %}">#}
-{#           {{ form_label(book.volume) }}#}
-{#           {{ form_widget(book.volume, { 'attr': { 'class': 'form-control'}}) }}#}
-{#          </div>#}
-{#         </div>#}
-{#        </div>#}
-{#       </li>#}
-{#      {% endfor %}#}
-{#     </ul>#}
-
-{#     <button type="button" class="btn btn-sm btn-success add_item_link" data-collection-holder-class="books">Aggiungi libro</button>#}
-
-{#    <hr>#}
-
-
-{#############################################################################################}
-{#############################################################################################}
-{#############################################################################################}
-
-<div class="form-row">
-    <div class="col-sm-12 col-md-12">
-        {{ form_row(form.notes) }}
-    </div>
-
 </div>
 
 
-{#<hr><hr><hr><hr>#}
-{#<h2>Book list</h2>#}
-{#<div class="row">#}
-{#    {% for bookItem in form.booklist %}#}
-{#        <div class="col">#}
-{#            {{ form_row(bookItem) }}#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#</div>#}
-{#<hr><hr><hr><hr>#}
-
 <div class="form-row">
-    <div class="col-sm-12 col-md-6">
-        {{ form_row(form.privacyConfirmed) }}
-    </div>
-    <div class="col-sm-12 col-md-6 d-flex justify-content-center">
-        {{ form_row(form.submit, {
-            attr: {class: 'btn btn-primary btn-lg'}
-        }) }}
-    </div>
+<div class="col-sm-12 col-md-12">
+    {{ form_row(form.notes) }}
+</div>
+
+</div>
+<div class="form-row">
+<div class="col-sm-12 col-md-6">
+    {{ form_row(form.privacyConfirmed) }}
+</div>
+<div class="col-sm-12 col-md-6 d-flex justify-content-center">
+    {{ form_row(form.submit, {
+        attr: {class: 'btn btn-primary btn-lg'}
+    }) }}
+</div>
 </div>
 
 {{ form_rest(form) }}
 
 {{ form_end(form) }}
-
-
-
-
-
-
-
-
-{# ###################### all form ###################### #}
-{#     {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
-{#     {{ form_widget(form) }}#}
-{#     {{ form_end(form) }}#}
