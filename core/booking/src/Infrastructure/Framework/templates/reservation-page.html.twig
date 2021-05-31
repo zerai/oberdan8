@@ -1,94 +1,84 @@
 {% extends "@booking/booking-layout.html.twig" %}
 
 
-    {% block content_body %}
-        <div class="container">
+{% block content_body %}
+    <div class="container">
 
         <h1>modulo esteso di prenotazione </h1>
         <p>
             Compila il form ricordandoti di inserire l'ISBN*, Autore, Titolo e Volume. Entro poche ore un nostro addetto ti ricontatterà per confermare la disponibilità dei testi richiesti e concordare modalità e data di ritiro.
         </p>
 
-        <!-- Content here -->
-            {% include '@booking/form/reservation.html.twig' %}
+        <div class="reservation-form">
+            {% include '@booking/form/_reservation.html.twig' %}
         </div>
+    </div>
 
-    {% endblock %}
+{% endblock %}
 
 
 
-{#{% block javascripts %}#}
-{#    {{ parent() }}#}
-{#    <script type="text/javascript" src="{{ asset('build/js/recaptcha.js') }}"></script>#}
-{#{% endblock %}#}
 
 {% block javascripts_bottom %}
  {{ parent() }}
 
- <script type="text/javascript">
-  jQuery(document).ready(function() {
-   // Get the ul that holds the collection of tags
-   var $booksCollectionHolder = $('ul.books');
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+    // Get the ul that holds the collection of tags
+    //var $booksCollectionHolder = $('ul.books');
+    var $booksCollectionHolder = $('div.js-booklist-wrapper');
 
-   // add a delete link to all of the existing tag form li elements
-   $booksCollectionHolder.find('li').each(function() {
-    addBookFormDeleteLink($(this));
-   });
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    $booksCollectionHolder.data('index', $booksCollectionHolder.find('input').length);
 
+    $('body').on('click', '.js-add-book-item', function(e) {
+        var $collectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
+        // add a new book form (see next code block)
+        addFormToCollection($collectionHolderClass);
+        })
+    });
 
-   // count the current form inputs we have (e.g. 2), use that as the new
-   // index when inserting a new item (e.g. 2)
-   $booksCollectionHolder.data('index', $booksCollectionHolder.find('input').length);
+    function addFormToCollection($collectionHolderClass) {
+        // Get the div that holds the collection of tags
+        var $collectionHolder = $('.' + $collectionHolderClass);
 
-   $('body').on('click', '.add_item_link', function(e) {
-    var $collectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
-    // add a new tag form (see next code block)
-    addFormToCollection($collectionHolderClass);
-   })
-  });
+        // Get the data-prototype explained earlier
+        var prototype = $collectionHolder.data('prototype');
 
-  function addFormToCollection($collectionHolderClass) {
-   // Get the ul that holds the collection of tags
-   var $collectionHolder = $('.' + $collectionHolderClass);
+        // get the new index
+        var index = $collectionHolder.data('index');
 
-   // Get the data-prototype explained earlier
-   var prototype = $collectionHolder.data('prototype');
+        var newForm = prototype;
+        // You need this only if you didn't set 'label' => false in your books field in TaskType
+        // Replace '__name__label__' in the prototype's HTML to
+        // instead be a number based on how many items we have
+        // newForm = newForm.replace(/__name__label__/g, index);
 
-   // get the new index
-   var index = $collectionHolder.data('index');
+        // Replace '__name__' in the prototype's HTML to
+        // instead be a number based on how many items we have
+        newForm = newForm.replace(/__name__/g, index);
 
-   var newForm = prototype;
-   // You need this only if you didn't set 'label' => false in your tags field in TaskType
-   // Replace '__name__label__' in the prototype's HTML to
-   // instead be a number based on how many items we have
-   // newForm = newForm.replace(/__name__label__/g, index);
+        // increase the index with one for the next item
+        $collectionHolder.data('index', index + 1);
 
-   // Replace '__name__' in the prototype's HTML to
-   // instead be a number based on how many items we have
-   newForm = newForm.replace(/__name__/g, index);
+        // Display the form in the page in an li, before the "Add a tag" link li
+        var $newFormDiv = $('<div></div>').append(newForm);
+        // Add the new form at the end of the list
+        $collectionHolder.append($newFormDiv)
+    }
+</script>
 
-   // increase the index with one for the next item
-   $collectionHolder.data('index', index + 1);
+<script>
+    jQuery(document).ready(function () {
+        var $wrapper = $('.js-booklist-wrapper');
 
-   // Display the form in the page in an li, before the "Add a tag" link li
-   var $newFormLi = $('<li></li>').append(newForm);
-   // Add the new form at the end of the list
-   $collectionHolder.append($newFormLi)
+        $wrapper.on('click', '.js-remove-book-item', function (e) {
+           e.preventDefault();
 
-
-   addBookFormDeleteLink($newFormLi);
-  }
-
-
-  function addBookFormDeleteLink($tagFormLi) {
-   var $removeFormButton = $('<button type="button" class="btn btn-sm btn-danger">Rimuovi libro</button>');
-   $tagFormLi.append($removeFormButton);
-
-   $removeFormButton.on('click', function(e) {
-    // remove the li for the book form
-    $tagFormLi.remove();
-   });
-  }
- </script>
+           $(this).closest('.js-book-item').remove();
+        });
+    });
+</script>
 
 {% endblock %}

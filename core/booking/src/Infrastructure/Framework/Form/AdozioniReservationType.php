@@ -18,11 +18,10 @@ class AdozioniReservationType extends AbstractType
     {
         $builder
             ->add('person', ClientType::class, [
-                //                'entry_type' => ClientType::class,
-                //                'entry_options' => [
-                //                    'label' => false,
-                //                ],
+                'label' => false,
+                'required' => true,
             ])
+
             ->add('classe', ClasseField::class, [
                 'choices' => [
                     'Prima' => 'prima',
@@ -35,17 +34,21 @@ class AdozioniReservationType extends AbstractType
                 'required' => true,
                 'placeholder' => 'seleziona',
             ])
+
             ->add('adozioni', FileType::class, [
                 'label' => 'File delle adozioni (formato PDF)',
                 'required' => true,
             ])
+
             ->add('notes', TextareaType::class, [
                 'label' => 'Altre informazioni',
             ])
+
             ->add('privacyConfirmed', CheckboxType::class, [
                 'label' => 'Acconsento al trattamento dei dati secondo la normativa sulla privacy',
                 'required' => true,
             ])
+
             ->add(
                 'submit',
                 SubmitType::class,
