@@ -2,16 +2,17 @@
 
 namespace Booking\Infrastructure\Framework\Form;
 
-use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
+use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
+
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReservationType extends AbstractType
+class AdozioniReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -34,17 +35,9 @@ class ReservationType extends AbstractType
                 'placeholder' => 'seleziona',
             ])
 
-            ->add('books', CollectionType::class, [
-                'label' => false,
+            ->add('adozioni', FileType::class, [
+                'label' => 'File delle adozioni (formato PDF)',
                 'required' => true,
-                'entry_type' => BookType::class,
-                'entry_options' => [
-                    'label' => false,
-                ],
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-                'block_name' => 'book_lists',
             ])
 
             ->add('notes', TextareaType::class, [
@@ -62,15 +55,14 @@ class ReservationType extends AbstractType
                 [
                     'label' => 'Invia',
                 ]
-            )
-        ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             // Configure your form options here
-            'data_class' => ReservationFormModel::class,
+            'data_class' => AdozioniReservationFormModel::class,
         ]);
     }
 }

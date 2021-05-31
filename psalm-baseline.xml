@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
+  <file src="core/booking/src/Adapter/HttpDriver/AdozioniController.php">
+    <MixedAssignment occurrences="1">
+      <code>$adozioniReservationFormModel</code>
+    </MixedAssignment>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>$adozioniFile</code>
+    </RedundantConditionGivenDocblockType>
+    <UnusedVariable occurrences="2">
+      <code>$adozioniReservationFormModel</code>
+      <code>$newFilename</code>
+    </UnusedVariable>
+  </file>
+  <file src="core/booking/src/Adapter/HttpDriver/ReservationController.php">
+    <MixedAssignment occurrences="1">
+      <code>$formData</code>
+    </MixedAssignment>
+    <UnusedVariable occurrences="1">
+      <code>$formData</code>
+    </UnusedVariable>
+  </file>
   <file src="core/booking/src/Application/Domain/Model/Booking/RegularReservation.php">
     <MixedArgument occurrences="1">
       <code>$e</code>
@@ -20,6 +40,12 @@
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
   </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php">
+    <MissingReturnType occurrences="2">
+      <code>buildForm</code>
+      <code>configureOptions</code>
+    </MissingReturnType>
+  </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/BookType.php">
     <MissingReturnType occurrences="2">
       <code>buildForm</code>
@@ -32,11 +58,59 @@
       <code>configureOptions</code>
     </MissingReturnType>
   </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/AdozioniReservationFormModel.php">
+    <MissingConstructor occurrences="5">
+      <code>$adozioni</code>
+      <code>$classe</code>
+      <code>$notes</code>
+      <code>$person</code>
+      <code>$privacyConfirmed</code>
+    </MissingConstructor>
+  </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/BookDto.php">
+    <MissingConstructor occurrences="4">
+      <code>$author</code>
+      <code>$isbn</code>
+      <code>$title</code>
+      <code>$volume</code>
+    </MissingConstructor>
+  </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ClientDto.php">
+    <MissingConstructor occurrences="6">
+      <code>$city</code>
+      <code>$classe</code>
+      <code>$email</code>
+      <code>$firstName</code>
+      <code>$lastName</code>
+      <code>$phone</code>
+    </MissingConstructor>
+  </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/NotesDto.php">
+    <MissingConstructor occurrences="1">
+      <code>$notes</code>
+    </MissingConstructor>
+  </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ReservationFormModel.php">
+    <MissingConstructor occurrences="4">
+      <code>$classe</code>
+      <code>$notes</code>
+      <code>$person</code>
+      <code>$privacyConfirmed</code>
+    </MissingConstructor>
+    <MissingPropertyType occurrences="1">
+      <code>$books</code>
+    </MissingPropertyType>
+  </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/ReservationType.php">
     <MissingReturnType occurrences="2">
       <code>buildForm</code>
       <code>configureOptions</code>
     </MissingReturnType>
+  </file>
+  <file src="core/booking/src/Infrastructure/Framework/Form/Service/AdozioniUploader.php">
+    <PossiblyNullOperand occurrences="1">
+      <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
+    </PossiblyNullOperand>
   </file>
   <file src="core/booking/tests/Unit/Domain/Book/BookTest.php">
     <MissingDependency occurrences="1">
@@ -44,6 +118,11 @@
     </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Domain/Client/ClientTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="tests/Functional/AdozioniReservationTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
