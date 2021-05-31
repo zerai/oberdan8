@@ -51,7 +51,7 @@ host('stage')
     ->set('git_tty', false)
     ->set('ssh_multiplexing', false)
     ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader')
-    //->set('keep_releases', 10)
+    ->set('keep_releases', 5)
     ;
 
 
