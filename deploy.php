@@ -7,7 +7,7 @@ use Deployer\Task\Context;
 require 'recipe/common.php';
 require 'recipe/symfony4.php';
 
-set('default_stage', 'stage');
+set('default_stage', 'stage-oberdan');
 
 // Project name
 set('application', 'stage.oberdan8.it');
@@ -32,34 +32,58 @@ set('application_path_stage', 'stage.oberdan8.it');
 set('application_path_prod', 'prenota.oberdan8.it');
 
 
+set('application_path_stage_librai', 'stage.8viadeilibrai.it');
+
 
 
 
 // Hosts
 
-//host('project.com')
-//    ->set('deploy_path', '~/{{application}}');
-
-host('stage')
-    ->hostname('oberdan8.it')
-    ->user('oberdani')
-    ->port(3508)
-    ->stage('test')
-    ->set('branch', 'main')
-    ->set('deploy_path', '~/{{application_path_stage}}')
-    //->set('identityFile', 'var/Oberdan/id_rsa_zerai_dev_machine')
-    ->set('identityFile', '~/.ssh/id_rsa_zerai_dev_machine')
-    ->set('forwardAgent', true)
-
-    //->addSshOption('UserKnownHostsFile', '/dev/null')
-    //->addSshOption('StrictHostKeyChecking', 'no')
-
+host('stage-librai')
+    // host settings
+    ->hostname('8viadeilibrai.it')
+    ->stage('stage-librai')
+    ->set('deploy_path','~/{{application_path_stage_librai}}')
     ->set('http_user', 'oberdani')
     ->set('writable_use_sudo', false)
     ->set('writable_mode', 'chmod')
 
+    // ssh settings
+    ->user('iglkzrno')
+    ->port(3508)
+    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai')
+    ->set('forwardAgent', true)
     ->set('git_tty', false)
     ->set('ssh_multiplexing', false)
+
+    // git & composer settings
+    ->set('branch', 'main')
+    ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader')
+
+;
+
+
+host('stage-oberdan')
+    // host settings
+    ->hostname('oberdan8.it')
+    ->stage('test')
+    ->set('deploy_path', '~/{{application_path_stage}}')
+    ->set('http_user', 'oberdani')
+    ->set('writable_use_sudo', false)
+    ->set('writable_mode', 'chmod')
+
+    // ssh settings
+    ->user('oberdani')
+    ->port(3508)
+    ->set('identityFile', '~/.ssh/id_rsa_zerai_dev_machine')
+    ->set('forwardAgent', true)
+    ->set('git_tty', false)
+    ->set('ssh_multiplexing', false)
+    //->addSshOption('UserKnownHostsFile', '/dev/null')
+    //->addSshOption('StrictHostKeyChecking', 'no')
+
+    // git & composer settings
+    ->set('branch', 'main')
     ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader')
     ->set('keep_releases', 5)
     ;
