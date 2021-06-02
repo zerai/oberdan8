@@ -122,6 +122,28 @@
       <code>TestCase</code>
     </MissingDependency>
   </file>
+  <file src="src/Entity/MailOut.php">
+    <MissingPropertyType occurrences="3">
+      <code>$content</code>
+      <code>$id</code>
+      <code>$recipient</code>
+    </MissingPropertyType>
+    <MixedInferredReturnType occurrences="3">
+      <code>?int</code>
+      <code>?string</code>
+      <code>?string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="3">
+      <code>$this-&gt;content</code>
+      <code>$this-&gt;id</code>
+      <code>$this-&gt;recipient</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Repository/MailOutRepository.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>MailOut[]</code>
+    </LessSpecificImplementedReturnType>
+  </file>
   <file src="tests/Functional/AdozioniReservationTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
