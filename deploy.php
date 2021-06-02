@@ -114,7 +114,7 @@ task('deploy:build:assets', function (): void {
     //run('yarn encore production');
     run('docker-compose -f docker-compose.linux.yml run encore yarn install');
     run('docker-compose -f docker-compose.linux.yml run encore yarn encore production');
-    run('sudo chown -R zero:zero  public/build/');
+    //run('sudo chown -R zero:zero  public/build/');
 })->local();
 
 before('deploy:symlink', 'deploy:build:assets');
