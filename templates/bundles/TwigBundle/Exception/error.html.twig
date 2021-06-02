@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Oberdan - banco 8 | Oops! An error occurred: {{ exception.statusCode }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>.head {min-height: 100vh;}</style>
+{% endblock %}
+
+{% block body %}
+
+    <section class="container-fluid d-flex align-items-center mt-5 mb-5 ">
+        <div class="container">
+            <h1>Oberdan - banco 8</h1>
+
+            <p class="text-danger">
+                Oops! Errore sul server: {{ exception.message }}
+            </p>
+
+            <a href="{{ path('home_oberdan') }}" class="btn btn-info btn-lg">torna alla homepage</a>
+        </div>
+    </section>
+
+{% endblock %}
