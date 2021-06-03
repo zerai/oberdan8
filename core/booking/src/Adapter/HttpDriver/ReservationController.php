@@ -4,6 +4,7 @@ namespace Booking\Adapter\HttpDriver;
 
 use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
 use Booking\Infrastructure\Framework\Form\ReservationType;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,15 +29,23 @@ class ReservationController extends AbstractController
 
 
             //dd($formData);
-            $email = (new Email())
-                ->from('memu.system@medicalmundi.com')
+            $email = (new TemplatedEmail())
+                ->from('prenotazioni@8viadeilibrai.it')
                 ->to($formData->person->email)
                 ->subject('Nuova Prenotazione')
-                ->text('
-                Dati prenotazione \n
-                \n
-                Cognome: ' . $formData->person->lastName . '
-                ');
+//                ->text('
+//                Dati prenotazione \n
+//                \n
+//                Cognome: ' . $formData->person->lastName . '
+//                ')
+                ->htmlTemplate('@booking/email/welcome.html.twig')
+                ->context([
+                    'firstName' => $formData->person->getFirstName(),
+                    'lastName' => $formData->person->getLastName(),
+                    'contact_email' => $formData->person->getEmail(),
+                    'phone' => $formData->person->getPhone(),
+                ])
+            ;
 
             $mailer->send($email);
 
