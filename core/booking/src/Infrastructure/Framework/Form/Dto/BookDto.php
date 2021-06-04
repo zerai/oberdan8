@@ -16,6 +16,7 @@ class BookDto
     public string $isbn;
 
     /**
+     * @Assert\NotNull(message="Inserisci il titolo")
      * @Assert\NotBlank(message="Inserisci il titolo")
      */
     public string $title;
