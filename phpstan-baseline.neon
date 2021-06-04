@@ -71,6 +71,26 @@ parameters:
 			path: core/booking/tests/Unit/Infrastructure/Form/ReservationFormTest.php
 
 		-
+			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$content has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/MailOut.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$id has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/MailOut.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$recipient has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/MailOut.php
+
+		-
+			message: "#^Class App\\\\Repository\\\\MailOutRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: src/Repository/MailOutRepository.php
+
+		-
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
 			count: 3
 			path: tests/WalkingSkeletonTest.php

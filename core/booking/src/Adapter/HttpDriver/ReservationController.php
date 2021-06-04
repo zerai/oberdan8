@@ -24,6 +24,8 @@ class ReservationController extends AbstractController
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');
 
+            //dd($formData);
+
             return $this->redirectToRoute('reservation_result');
         }
 
