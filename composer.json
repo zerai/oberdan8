@@ -34,6 +34,7 @@
     },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.4",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "symfony/maker-bundle": "^1.31",
         "symfony/phpunit-bridge": "^5.2",
         "symfony/stopwatch": "^4.4",
