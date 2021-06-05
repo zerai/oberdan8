@@ -7,6 +7,10 @@ doctrine:
         #server_version: '13'
         server_version: 'mariadb-10.3.29'
         driver: 'pdo_mysql'
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
 
     orm:
         auto_generate_proxy_classes: true
