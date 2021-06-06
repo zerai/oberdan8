@@ -9,12 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 
 class ReservationController extends AbstractController
 {
     public function __invoke(Request $request, MailerInterface $mailer): Response
     {
+        // original call
         $form = $this->createForm(ReservationType::class);
 
         $form->handleRequest($request);
@@ -29,29 +29,18 @@ class ReservationController extends AbstractController
 
 
             //dd($formData);
-            $email = (new TemplatedEmail())
-                ->from('prenotazioni@8viadeilibrai.it')
-                ->to($formData->person->email)
-                ->subject('Nuova Prenotazione')
-//                ->text('
-//                Dati prenotazione \n
-//                \n
-//                Cognome: ' . $formData->person->lastName . '
-//                ')
-                ->htmlTemplate('@booking/email/welcome.html.twig')
-                ->context([
-                    'firstName' => $formData->person->getFirstName(),
-                    'lastName' => $formData->person->getLastName(),
-                    'contact_email' => $formData->person->getEmail(),
-                    'phone' => $formData->person->getPhone(),
-                ])
-            ;
 
-            $mailer->send($email);
+            // email per il cliente
+            $emailForClient = $this->createReservationConfirmationEmail($formData);
+
+            $mailer->send($emailForClient);
+
+            // email per backoffice
+            $emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
+
+            $mailer->send($emailForBackoffice);
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');
-
-            //dd($formData);
 
             return $this->redirectToRoute('reservation_result');
         }
@@ -59,5 +48,49 @@ class ReservationController extends AbstractController
         return $this->render('@booking/reservation-page.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    private function createReservationConfirmationEmail(ReservationFormModel $formData): TemplatedEmail
+    {
+        $email = (new TemplatedEmail())
+            ->from('prenotazioni@8viadeilibrai.it')
+            ->to($formData->person->email)
+            ->subject('Oberdan-8 Prenotazione ricevuta!')
+            ->htmlTemplate('@booking/email/for-clients/reservation-confirmation.html.twig')
+            ->context([
+                'firstName' => $formData->person->getFirstName(),
+                'lastName' => $formData->person->getLastName(),
+                'contact_email' => $formData->person->getEmail(),
+                'phone' => $formData->person->getPhone(),
+                'city' => $formData->person->getCity(),
+                'classe' => $formData->classe,
+                'bookList' => $formData->books,
+            ])
+        ;
+
+        return $email;
+    }
+
+    private function createRiepilogoEmailForBackoffice(ReservationFormModel $formData): TemplatedEmail
+    {
+        $email = (new TemplatedEmail())
+            ->from('prenotazioni@8viadeilibrai.it')
+            // TODO USARE MAIL DEL BACKOFFICE
+            ->to($formData->person->email)
+            // TODO AGGIUNGERE RIF.ID
+            ->subject('Nuova Prenotazione')
+            ->textTemplate('@booking/email/for-backoffice/new-reservation/new-reservation.txt.twig')
+            ->context([
+                'firstName' => $formData->person->getFirstName(),
+                'lastName' => $formData->person->getLastName(),
+                'contact_email' => $formData->person->getEmail(),
+                'phone' => $formData->person->getPhone(),
+                'city' => $formData->person->getCity(),
+                'classe' => $formData->classe,
+                'bookList' => $formData->books,
+            ])
+        ;
+
+        return $email;
     }
 }

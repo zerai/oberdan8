@@ -66,17 +66,24 @@
             <h1 class="text-center">Riepilogo Prenotazione</h1>
             <p class="block">
                 <strong>Dati Personali</strong>
-
-                Cognome: {{ lastName }} <br>
-                Nome: {{ firstName }} <br>
-                Email: {{ contact_email }} <br>
+                <p>
+                    Cognome: {{ lastName }} <br>
+                    Nome: {{ firstName }} <br>
+                    Email: {{ contact_email }} <br>
+                    Telefono: {{ phone }} <br>
+                </p>
 
             </p>
 {#            <p class="block text-center">#}
 {#                <a href="{{ url('home_oberdan') }}" class="btn">effettua una prenotazione</a>#}
 {#            </p>#}
             <p class="block">
-                Check out our existing articles and share your thoughts in the comments!
+                <strong>Testi richiesti</strong>
+
+                {% for book in bookList %}
+                    <p class="block">{{ book.getIsbn }} | {{ book.title }} | {{ book.author }} | {{ book.volume }}</p>
+                {% endfor %}
+
             </p>
             <p class="block text-center">
                 <a href="https://www.oberdan8.it" class="btn">visita il sito</a>
