@@ -71,6 +71,50 @@ parameters:
 			path: core/booking/tests/Unit/Infrastructure/Form/ReservationFormTest.php
 
 		-
+			message: "#^Method App\\\\Controller\\\\BackofficeSecurityController\\:\\:logout\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but return statement is missing\\.$#"
+			count: 1
+			path: src/Controller/BackofficeSecurityController.php
+
+		-
+			message: "#^Method App\\\\DataFixtures\\\\AppFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/DataFixtures/AppFixtures.php
+
+		-
+			message: "#^Method App\\\\DataFixtures\\\\BackofficeFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/DataFixtures/BackofficeFixtures.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\BackofficeUser\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$email has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$id has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$roles has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message:
+				"""
+					#^Return type of method App\\\\Entity\\\\BackofficeUser\\:\\:getRoles\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\:
+					since Symfony 4\\.3, to be removed in 5\\.0\\. Use strings as roles instead\\.$#
+				"""
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
 			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$content has no typehint specified\\.$#"
 			count: 1
 			path: src/Entity/MailOut.php
@@ -86,9 +130,19 @@ parameters:
 			path: src/Entity/MailOut.php
 
 		-
+			message: "#^Class App\\\\Repository\\\\BackofficeUserRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: src/Repository/BackofficeUserRepository.php
+
+		-
 			message: "#^Class App\\\\Repository\\\\MailOutRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: src/Repository/MailOutRepository.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
 
 		-
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"

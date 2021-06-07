@@ -13,12 +13,10 @@
     </UnusedVariable>
   </file>
   <file src="core/booking/src/Adapter/HttpDriver/ReservationController.php">
-    <MixedAssignment occurrences="1">
-      <code>$formData</code>
-    </MixedAssignment>
-    <UnusedVariable occurrences="1">
-      <code>$formData</code>
-    </UnusedVariable>
+    <MissingPropertyType occurrences="2">
+      <code>$formData-&gt;books</code>
+      <code>$formData-&gt;books</code>
+    </MissingPropertyType>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Booking/RegularReservation.php">
     <MixedArgument occurrences="1">
@@ -76,9 +74,8 @@
     </MissingConstructor>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ClientDto.php">
-    <MissingConstructor occurrences="6">
+    <MissingConstructor occurrences="5">
       <code>$city</code>
-      <code>$classe</code>
       <code>$email</code>
       <code>$firstName</code>
       <code>$lastName</code>
@@ -122,6 +119,54 @@
       <code>TestCase</code>
     </MissingDependency>
   </file>
+  <file src="src/Controller/BackofficeSecurityController.php">
+    <InvalidReturnType occurrences="1">
+      <code>Response</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/DataFixtures/AppFixtures.php">
+    <MissingReturnType occurrences="1">
+      <code>load</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/DataFixtures/BackofficeFixtures.php">
+    <MissingReturnType occurrences="1">
+      <code>load</code>
+    </MissingReturnType>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>BackofficeFixtures</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Entity/BackofficeUser.php">
+    <MissingConstructor occurrences="1">
+      <code>$password</code>
+    </MissingConstructor>
+    <MissingPropertyType occurrences="3">
+      <code>$email</code>
+      <code>$id</code>
+      <code>$roles</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="1">
+      <code>eraseCredentials</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>$roles</code>
+    </MixedArgument>
+    <MixedArrayAssignment occurrences="1">
+      <code>$roles[]</code>
+    </MixedArrayAssignment>
+    <MixedAssignment occurrences="1">
+      <code>$roles</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>?int</code>
+      <code>?string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="2">
+      <code>$this-&gt;email</code>
+      <code>$this-&gt;id</code>
+    </MixedReturnStatement>
+  </file>
   <file src="src/Entity/MailOut.php">
     <MissingPropertyType occurrences="3">
       <code>$content</code>
@@ -139,10 +184,26 @@
       <code>$this-&gt;recipient</code>
     </MixedReturnStatement>
   </file>
+  <file src="src/Repository/BackofficeUserRepository.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>BackofficeUser[]</code>
+    </LessSpecificImplementedReturnType>
+  </file>
   <file src="src/Repository/MailOutRepository.php">
     <LessSpecificImplementedReturnType occurrences="1">
       <code>MailOut[]</code>
     </LessSpecificImplementedReturnType>
+  </file>
+  <file src="src/Security/LoginFormBackofficeAuthenticator.php">
+    <MixedArgument occurrences="2">
+      <code>$credentials['csrf_token']</code>
+      <code>$credentials['password']</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="3">
+      <code>$credentials['csrf_token']</code>
+      <code>$credentials['email']</code>
+      <code>$credentials['password']</code>
+    </MixedArrayAccess>
   </file>
   <file src="tests/Functional/AdozioniReservationTest.php">
     <MissingDependency occurrences="1">
