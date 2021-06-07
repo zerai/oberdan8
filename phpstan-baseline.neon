@@ -71,6 +71,21 @@ parameters:
 			path: core/booking/tests/Unit/Infrastructure/Form/ReservationFormTest.php
 
 		-
+			message: "#^Only booleans are allowed in an if condition, array\\<string\\>\\|bool\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Command/DefaultAdminCreateCommand.php
+
+		-
+			message: "#^Only booleans are allowed in an if condition, array\\<string\\>\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Command/DefaultAdminCreateCommand.php
+
+		-
+			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string given\\.$#"
+			count: 1
+			path: src/Command/DefaultAdminCreateCommand.php
+
+		-
 			message: "#^Method App\\\\Controller\\\\BackofficeSecurityController\\:\\:logout\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but return statement is missing\\.$#"
 			count: 1
 			path: src/Controller/BackofficeSecurityController.php

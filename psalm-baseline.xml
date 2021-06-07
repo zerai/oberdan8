@@ -119,6 +119,11 @@
       <code>TestCase</code>
     </MissingDependency>
   </file>
+  <file src="src/Command/DefaultAdminCreateCommand.php">
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$passwordArg</code>
+    </PossiblyInvalidArgument>
+  </file>
   <file src="src/Controller/BackofficeSecurityController.php">
     <InvalidReturnType occurrences="1">
       <code>Response</code>
