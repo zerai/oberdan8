@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  phpmac:
+    platform: linux/x86_64
+    image: webdevops/php-dev:7.4
+
+    working_dir: /app
+    container_name: phpmac
+
+    volumes:
+      -   ./:/app

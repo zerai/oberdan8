@@ -3,7 +3,7 @@
 /.build/
 /tools/*/vendor/
 /.deptrac.cache
-
+/auth.json
 /public/adozioni/
 
 ###> symfony/framework-bundle ###
