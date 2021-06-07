@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc787bb60aa59212e9ff33945ffb3cbd",
+    "content-hash": "44f35fba2c40b2abdb0fa650a717a063",
     "packages": [
         {
             "name": "brick/math",
@@ -4322,6 +4322,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "use `EnglishInflector` from the String component instead",
             "time": "2021-05-10T14:36:02+00:00"
         },
         {
