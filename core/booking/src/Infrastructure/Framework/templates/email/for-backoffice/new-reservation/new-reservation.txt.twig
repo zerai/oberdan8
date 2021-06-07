@@ -1,0 +1,15 @@
+Rif.ID: 256398 - Data:
+
+Dati del richiedente
+
+Cognome: {{ lastName }} | Nome: {{ firstName }} | Email: {{ contact_email }} | Telefono: {{ phone }} | Città: {{ city }} | classe: {{ classe }}
+
+
+Testi richiesti:
+------------------------------------------------------------------------------------------------------------------------
+{% for book in bookList %}
+
+    {{ book.getIsbn }} | {{ book.title }} | {{ book.author }} | {{ book.volume }}
+
+------------------------------------------------------------------------------------------------------------------------
+{% endfor %}

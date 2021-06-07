@@ -49,6 +49,7 @@ class ReservationType extends AbstractType
 
             ->add('notes', TextareaType::class, [
                 'label' => 'Altre informazioni',
+                'required' => false,
             ])
 
             ->add('privacyConfirmed', CheckboxType::class, [

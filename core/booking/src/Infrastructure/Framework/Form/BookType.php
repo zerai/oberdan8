@@ -15,7 +15,7 @@ class BookType extends AbstractType
         $builder
             ->add('isbn', TextType::class, [
                 'label' => 'Isbn',
-                'required' => true,
+                'required' => false,
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titolo',
@@ -23,7 +23,7 @@ class BookType extends AbstractType
             ])
             ->add('author', TextType::class, [
                 'label' => 'Autore',
-                'required' => true,
+                'required' => false,
             ])
             ->add('volume', TextType::class, [
                 'label' => 'Volume',

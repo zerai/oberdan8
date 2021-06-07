@@ -3,3 +3,8 @@
 //}
 
 @import '~bootstrap/scss/bootstrap';
+
+
+label.required:after {
+  content: " *";
+}
