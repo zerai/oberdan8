@@ -18,8 +18,11 @@ class ReservationFormModel
     public string $classe;
 
     /**
-     * @Assert\NotNull(message="Seleziona un' opzione.")
      * @Assert\Valid
+     * @Assert\Count(
+     *      min = 1,
+     *      minMessage = "Devi inserire almeno un libro.",
+     * )
      */
     public $books;
 
