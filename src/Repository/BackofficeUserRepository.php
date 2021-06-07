@@ -64,4 +64,13 @@ class BackofficeUserRepository extends ServiceEntityRepository implements Passwo
         ;
     }
     */
+    public function save(BackofficeUser $user): void
+    {
+        if (! $user instanceof BackofficeUser) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+        }
+
+        $this->_em->persist($user);
+        $this->_em->flush();
+    }
 }
