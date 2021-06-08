@@ -101,7 +101,7 @@ jobs:
       #      run: symfony server:start --port=8080 --dir=public --daemon --no-tls
 
       - name: Run coding standard
-        run: ./vendor/bin ecs check
+        run: ./vendor/bin/ecs check
 
       - name: Run phpstan
         run: ./vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
