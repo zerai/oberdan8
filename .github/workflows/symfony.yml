@@ -95,6 +95,9 @@ jobs:
         bin/console assets:install public -vvv
         yarn build
 
+    - name: Fix .htaccess
+      run: mv public/.htaccess public/.htaccess.dist
+
     - name: Run webserver
       run: symfony server:start --port=8080 --dir=public --daemon --no-tls
 
