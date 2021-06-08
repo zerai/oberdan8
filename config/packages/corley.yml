@@ -1,4 +1,4 @@
 corley_maintenance:
-  page: %kernel.project_dir%/templates/maintenance.dist.html
+  page: '%kernel.project_dir%/templates/maintenance.dist.html'
   hard_lock: lock.html
   symlink: false
