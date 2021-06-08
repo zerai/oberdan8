@@ -101,16 +101,16 @@ jobs:
       #      run: symfony server:start --port=8080 --dir=public --daemon --no-tls
 
       - name: Run coding standard
-        run: vendor/bin ecs check
+        run: ./vendor/bin ecs check
 
       - name: Run phpstan
-        run: vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
+        run: ./vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
 
       - name: Run psalm
-        run: vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
+        run: ./vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
 
       - name: Run architecture check (Bounded Context)
-        run: vendor/bin/deptrac analyse core/depfile-booking.yaml
+        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
 
       - name: Run architecture check (Booking domain isolation)
-        run: vendor/bin/deptrac analyse core/depfile-booking.yaml
+        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
