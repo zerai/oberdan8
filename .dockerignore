@@ -22,11 +22,13 @@
 bin/*
 !bin/console
 docker/db/data/
-helm/
 public/bundles/
 var/
 vendor/
 
-buildDocker
+.build
+.github
 .notes
+buildDocker
+node_modules
 tools/
