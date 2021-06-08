@@ -17,6 +17,32 @@ DirectoryIndex index.php
     Options -MultiViews
 </IfModule>
 
+
+#######################################
+#   START MAINTENANCE REWRITE RULE
+#######################################
+
+<IfModule mod_rewrite.c>
+      RewriteEngine on
+      RewriteCond %{DOCUMENT_ROOT}/lock.html -f
+      RewriteCond %{SCRIPT_FILENAME} !lock.html
+      RewriteRule ^.*$ /lock.html [R=503,L]
+
+      RewriteCond %{DOCUMENT_ROOT}/lock.html -f
+      RewriteRule ^(.*)$ - [env=MAINTENANCE:1]
+
+      <IfModule mod_headers.c>
+        Header set cache-control "max-age=0,must-revalidate,post-check=0,pre-check=0" env=MAINTENANCE
+        Header set Expires -1 env=MAINTENANCE
+      </IfModule>
+</IfModule>
+
+ErrorDocument 503 /lock.html
+
+#######################################
+#   END MAINTENANCE REWRITE RULE
+#######################################
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
