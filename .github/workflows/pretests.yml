@@ -13,7 +13,7 @@ env:
   PHP_EXTENSIONS_CACHE_KEY: cache-php-extensions-v1
 
 jobs:
-  test:
+  pre-checks:
 
     runs-on: ubuntu-latest
     timeout-minutes: 15
