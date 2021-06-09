@@ -161,6 +161,6 @@ parameters:
 
 		-
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
-			count: 3
+			count: 2
 			path: tests/WalkingSkeletonTest.php
 
