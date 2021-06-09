@@ -160,7 +160,12 @@ parameters:
 			path: src/Security/LoginFormBackofficeAuthenticator.php
 
 		-
+			message: "#^Cannot call method setValue\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
+			count: 4
+			path: tests/Functional/ReservationControllerTest.php
+
+		-
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
-			count: 3
+			count: 2
 			path: tests/WalkingSkeletonTest.php
 
