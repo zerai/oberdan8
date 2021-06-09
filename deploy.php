@@ -112,8 +112,13 @@ before('deploy:symlink', 'database:migrate');
 task('deploy:build:assets', function (): void {
     //run('yarn install');
     //run('yarn encore production');
-    run('docker-compose -f docker-compose.linux.yml run encore yarn install');
-    run('docker-compose -f docker-compose.linux.yml run encore yarn encore production');
+    if (PHP_OS === 'Linux'){
+        run('docker-compose -f docker-compose.linux.yml run encore yarn install');
+        run('docker-compose -f docker-compose.linux.yml run encore yarn encore production');
+    }else{
+        run('docker-compose -f docker-compose.mac.yml run encore yarn install');
+        run('docker-compose -f docker-compose.mac.yml run encore yarn encore production');
+    }
     //run('sudo chown -R zero:zero  public/build/');
 })->local();
 
@@ -131,16 +136,17 @@ task('upload:assets', function (): void {
 
 after('deploy:build:assets', 'upload:assets');
 
-//// Visualizza il comando per manual upload (prima del fix di rsync da parte del provider)
-task('deploy:showreleasepath', function (): void {
-    writeln("Current release path --->>>>> '{{release_path}}'");
 
-    writeln("Eseguire comando manuale per gli assets frontend");
 
-    writeln("scp -P 3508 -r -C -i var/Oberdan/id_rsa_zerai_dev_machine public/build/ oberdani@oberdan8.it:{{release_path}}/public/build");
+desc('Maintenance on');
+task('maintenance:on', function () {
+    run('{{bin/php}} {{bin/console}} corley:maintenance:soft on');
 });
-//after('deploy:build:assets', 'deploy:showreleasepath');
 
+desc('Maintenance off');
+task('maintenance:off', function () {
+    run('{{bin/php}} {{bin/console}} corley:maintenance:soft off');
+});
 
 
 
