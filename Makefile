@@ -1,6 +1,7 @@
 .PHONY: dependency-install
 dependency-install:  ## Install all dependency with composer
 	composer install
+	./bin/phpunit install
 	composer bin all install
 
 
