@@ -5,7 +5,6 @@ namespace Booking\Adapter\HttpDriver;
 use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
 use Booking\Infrastructure\Framework\Form\ReservationType;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +25,8 @@ class ReservationController extends AbstractController
 
             // TODO APPLICATION lOGIC
             // 1 PERSIST RESERVATION
-            // 1SEND EMAILS
+            // 2 SEND EMAILS TO CLIENT
+            // 3 SEND EMAILS TO BACKOFFICE
 
             // send email to client
             $bookingMailer->sendReservationConfirmationEmailToClient(
@@ -37,8 +37,10 @@ class ReservationController extends AbstractController
 
             // send email to backoffice
             //$emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
-
-            //$mailer->send($emailForBackoffice);
+            $bookingMailer->notifyNewReservationToBackoffice(
+                $this->mapPersonDataToReservationConfirmationEmail($formData),
+                $this->mapBookDataToReservationConfirmationEmail($formData)
+            );
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');
 
@@ -59,36 +61,11 @@ class ReservationController extends AbstractController
             'phone' => $formData->person->getPhone(),
             'city' => $formData->person->getCity(),
             'classe' => $formData->classe,
-            //'bookList' => $formData->books,
         ];
     }
 
     private function mapBookDataToReservationConfirmationEmail(ReservationFormModel $formData): array
     {
         return $formData->books;
-    }
-
-    private function createRiepilogoEmailForBackoffice(ReservationFormModel $formData): TemplatedEmail
-    {
-        $email = (new TemplatedEmail())
-            //->from('prenotazioni@8viadeilibrai.it')
-            ->from('memu.system@medicalmundi.com')
-            // TODO USARE MAIL DEL BACKOFFICE
-            ->to($formData->person->email)
-            // TODO AGGIUNGERE RIF.ID
-            ->subject('Nuova Prenotazione')
-            ->textTemplate('@booking/email/for-backoffice/new-reservation/new-reservation.txt.twig')
-            ->context([
-                'firstName' => $formData->person->getFirstName(),
-                'lastName' => $formData->person->getLastName(),
-                'contact_email' => $formData->person->getEmail(),
-                'phone' => $formData->person->getPhone(),
-                'city' => $formData->person->getCity(),
-                'classe' => $formData->classe,
-                'bookList' => $formData->books,
-            ])
-        ;
-
-        return $email;
     }
 }
