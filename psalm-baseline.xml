@@ -13,10 +13,21 @@
     </UnusedVariable>
   </file>
   <file src="core/booking/src/Adapter/HttpDriver/ReservationController.php">
-    <MissingPropertyType occurrences="2">
-      <code>$formData-&gt;books</code>
+    <MissingPropertyType occurrences="1">
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$formData-&gt;books</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="core/booking/src/Adapter/MailDriven/BookingMailer.php">
+    <MixedArgument occurrences="2">
+      <code>$personData['firstName']</code>
+      <code>$personData['lastName']</code>
+    </MixedArgument>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Booking/RegularReservation.php">
     <MixedArgument occurrences="1">
@@ -37,6 +48,16 @@
       <code>$this-&gt;books</code>
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
+  </file>
+  <file src="core/booking/src/Application/Mailer/ReservationConfirmationToClient.php">
+    <MissingReturnType occurrences="1">
+      <code>sendReservationConfirmationEmailToClient</code>
+    </MissingReturnType>
+  </file>
+  <file src="core/booking/src/Application/NotifyNewReservationToBackoffice.php">
+    <MissingReturnType occurrences="1">
+      <code>notifyNewReservationToBackoffice</code>
+    </MissingReturnType>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php">
     <MissingReturnType occurrences="2">
@@ -66,11 +87,9 @@
     </MissingConstructor>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/BookDto.php">
-    <MissingConstructor occurrences="4">
-      <code>$author</code>
+    <MissingConstructor occurrences="2">
       <code>$isbn</code>
       <code>$title</code>
-      <code>$volume</code>
     </MissingConstructor>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ClientDto.php">
@@ -109,12 +128,22 @@
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
     </PossiblyNullOperand>
   </file>
+  <file src="core/booking/tests/Unit/Adapter/BookingMailerTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
   <file src="core/booking/tests/Unit/Domain/Book/BookTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Domain/Client/ClientTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Infrastructure/BookingConfigurationTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
@@ -128,19 +157,6 @@
     <InvalidReturnType occurrences="1">
       <code>Response</code>
     </InvalidReturnType>
-  </file>
-  <file src="src/DataFixtures/AppFixtures.php">
-    <MissingReturnType occurrences="1">
-      <code>load</code>
-    </MissingReturnType>
-  </file>
-  <file src="src/DataFixtures/BackofficeFixtures.php">
-    <MissingReturnType occurrences="1">
-      <code>load</code>
-    </MissingReturnType>
-    <PropertyNotSetInConstructor occurrences="1">
-      <code>BackofficeFixtures</code>
-    </PropertyNotSetInConstructor>
   </file>
   <file src="src/Entity/BackofficeUser.php">
     <MissingConstructor occurrences="1">
@@ -209,10 +225,5 @@
       <code>$credentials['email']</code>
       <code>$credentials['password']</code>
     </MixedArrayAccess>
-  </file>
-  <file src="tests/Functional/AdozioniReservationTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
   </file>
 </files>
