@@ -2,6 +2,7 @@
 
 namespace Booking\Adapter\HttpDriver;
 
+use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
 use Booking\Infrastructure\Framework\Form\ReservationType;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -12,7 +13,7 @@ use Symfony\Component\Mailer\MailerInterface;
 
 class ReservationController extends AbstractController
 {
-    public function __invoke(Request $request, MailerInterface $mailer): Response
+    public function __invoke(Request $request, MailerInterface $mailer, BookingMailer $bookingMailer): Response
     {
         // original call
         $form = $this->createForm(ReservationType::class);
@@ -23,22 +24,21 @@ class ReservationController extends AbstractController
             /** @var ReservationFormModel $formData */
             $formData = $form->getData();
 
-//            $this->application->updateSession(
-//                new UpdateSession($sessionId, $formData['description'], $formData['urlForCall'])
-//            );
+            // TODO APPLICATION lOGIC
+            // 1 PERSIST RESERVATION
+            // 1SEND EMAILS
 
+            // send email to client
+            $bookingMailer->sendReservationConfirmationEmailToClient(
+                $formData->person->getEmail(),
+                $this->mapPersonDataToReservationConfirmationEmail($formData),
+                $this->mapBookDataToReservationConfirmationEmail($formData)
+            );
 
-            //dd($formData);
+            // send email to backoffice
+            //$emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
 
-            // email per il cliente
-            $emailForClient = $this->createReservationConfirmationEmail($formData);
-
-            $mailer->send($emailForClient);
-
-            // email per backoffice
-            $emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
-
-            $mailer->send($emailForBackoffice);
+            //$mailer->send($emailForBackoffice);
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');
 
@@ -50,31 +50,29 @@ class ReservationController extends AbstractController
         ]);
     }
 
-    private function createReservationConfirmationEmail(ReservationFormModel $formData): TemplatedEmail
+    private function mapPersonDataToReservationConfirmationEmail(ReservationFormModel $formData): array
     {
-        $email = (new TemplatedEmail())
-            ->from('prenotazioni@8viadeilibrai.it')
-            ->to($formData->person->email)
-            ->subject('Oberdan-8 Prenotazione ricevuta!')
-            ->htmlTemplate('@booking/email/for-clients/reservation-confirmation.html.twig')
-            ->context([
-                'firstName' => $formData->person->getFirstName(),
-                'lastName' => $formData->person->getLastName(),
-                'contact_email' => $formData->person->getEmail(),
-                'phone' => $formData->person->getPhone(),
-                'city' => $formData->person->getCity(),
-                'classe' => $formData->classe,
-                'bookList' => $formData->books,
-            ])
-        ;
+        return [
+            'firstName' => $formData->person->getFirstName(),
+            'lastName' => $formData->person->getLastName(),
+            'contact_email' => $formData->person->getEmail(),
+            'phone' => $formData->person->getPhone(),
+            'city' => $formData->person->getCity(),
+            'classe' => $formData->classe,
+            //'bookList' => $formData->books,
+        ];
+    }
 
-        return $email;
+    private function mapBookDataToReservationConfirmationEmail(ReservationFormModel $formData): array
+    {
+        return $formData->books;
     }
 
     private function createRiepilogoEmailForBackoffice(ReservationFormModel $formData): TemplatedEmail
     {
         $email = (new TemplatedEmail())
-            ->from('prenotazioni@8viadeilibrai.it')
+            //->from('prenotazioni@8viadeilibrai.it')
+            ->from('memu.system@medicalmundi.com')
             // TODO USARE MAIL DEL BACKOFFICE
             ->to($formData->person->email)
             // TODO AGGIUNGERE RIF.ID

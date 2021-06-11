@@ -23,9 +23,9 @@ class BookDto
     /**
      * Assert\NotBlank(message="Inserisci l'autore")
      */
-    public string $author;
+    public string $author = '';
 
-    public string $volume;
+    public string $volume = '';
 
     /**
      * @return string
