@@ -21,7 +21,7 @@ class ReservationFormModel
      * @Assert\Valid
      * @Assert\Count(
      *      min = 1,
-     *      minMessage = "Devi inserire almeno un libro.",
+     *      minMessage = "Inserire almeno un libro.",
      * )
      */
     public $books;

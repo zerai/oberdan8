@@ -20,9 +20,6 @@ class BookDto
      */
     public string $title;
 
-    /**
-     * Assert\NotBlank(message="Inserisci l'autore")
-     */
     public string $author = '';
 
     public string $volume = '';
@@ -30,7 +27,7 @@ class BookDto
     /**
      * @return string
      */
-    public function getIsbn(): string
+    public function getIsbn(): ?string
     {
         return $this->isbn;
     }
@@ -62,7 +59,7 @@ class BookDto
     /**
      * @return string
      */
-    public function getAuthor(): string
+    public function getAuthor(): ?string
     {
         return $this->author;
     }
@@ -78,7 +75,7 @@ class BookDto
     /**
      * @return string
      */
-    public function getVolume(): string
+    public function getVolume(): ?string
     {
         return $this->volume;
     }

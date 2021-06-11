@@ -16,6 +16,7 @@ class BookType extends AbstractType
             ->add('isbn', TextType::class, [
                 'label' => 'Isbn',
                 'required' => false,
+                'empty_data' => '',
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titolo',
@@ -24,10 +25,12 @@ class BookType extends AbstractType
             ->add('author', TextType::class, [
                 'label' => 'Autore',
                 'required' => false,
+                'empty_data' => '',
             ])
             ->add('volume', TextType::class, [
                 'label' => 'Volume',
                 'required' => false,
+                'empty_data' => '',
             ])
         ;
     }
