@@ -22,7 +22,7 @@ class BookingMailerTest extends TestCase
 
     private const BACKOFFICE_RETRIEVER_AS = 'Gestione prenotazioni';
 
-    private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan-8 Prenotazione ricevuta!';
+    private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan 8: Prenotazione ricevuta';
 
     private const FIRST_NAME = 'irrelevant';
 
@@ -77,6 +77,30 @@ class BookingMailerTest extends TestCase
         self::assertInstanceOf(Address::class, $senderAddress[0]);
         self::assertSame(self::MAIL_FROM, $senderAddress[0]->getAddress());
         self::assertSame(self::MAIL_FROM_SHOW_AS, $senderAddress[0]->getName());
+    }
+
+    /** @test */
+    public function shouldSendNewReservationEmailToBackoffice(): void
+    {
+        $sender = new BookingEmailSender(self::MAIL_FROM, self::MAIL_FROM_SHOW_AS);
+        $backofficeRetriever = new BackofficeEmailRetriever(self::BACKOFFICE_RETRIEVER_MAIL, self::BACKOFFICE_RETRIEVER_AS);
+        $symfonyMailer = $this->createMock(MailerInterface::class);
+        $symfonyMailer->expects(self::once())
+            ->method('send');
+        $bookingMailer = new BookingMailer(
+            $symfonyMailer,
+            $sender,
+            $backofficeRetriever
+        );
+
+        $sendedEmail = $bookingMailer->notifyNewReservationToBackoffice($this->getPersonData(), []);
+
+        $expectedSubject = sprintf('Nuova Prenotazione da %s %s', $this->getPersonData()['lastName'], $this->getPersonData()['firstName']);
+        self::assertEquals($expectedSubject, $sendedEmail->getSubject());
+
+        $recipientAddress = $sendedEmail->getTo();
+        self::assertInstanceOf(Address::class, $recipientAddress[0]);
+        self::assertSame(self::BACKOFFICE_RETRIEVER_MAIL, $recipientAddress[0]->getAddress());
     }
 
     private function getPersonData(): array

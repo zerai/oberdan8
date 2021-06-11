@@ -4,14 +4,17 @@
 namespace Booking\Adapter\MailDriven;
 
 use Booking\Application\Mailer\ReservationConfirmationToClient;
+use Booking\Application\NotifyNewReservationToBackoffice;
 use Booking\Infrastructure\BackofficeEmailRetriever;
 use Booking\Infrastructure\BookingEmailSender;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
-class BookingMailer implements ReservationConfirmationToClient
+class BookingMailer implements ReservationConfirmationToClient, NotifyNewReservationToBackoffice
 {
+    private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan 8: Prenotazione ricevuta';
+
     private MailerInterface $mailer;
 
     private BookingEmailSender $sender;
@@ -36,8 +39,35 @@ class BookingMailer implements ReservationConfirmationToClient
         $email = (new TemplatedEmail())
             ->from(new Address($this->sender->address(), $this->sender->name()))
             ->to(new Address($recipient))
-            ->subject('Oberdan-8 Prenotazione ricevuta!')
+            ->subject(self::RESERVATION_CONFIRMATION_EMAIL_SUBJECT)
             ->htmlTemplate('@booking/email/for-clients/reservation-confirmation.html.twig')
+            ->context([
+                'firstName' => $personData['firstName'],
+                'lastName' => $personData['lastName'],
+                'contact_email' => $personData['contact_email'],
+                'phone' => $personData['phone'],
+                'city' => $personData['city'],
+                'classe' => $personData['classe'],
+                'bookList' => $bookData,
+            ])
+        ;
+
+        $this->mailer->send($email);
+
+        return $email;
+    }
+
+    public function notifyNewReservationToBackoffice(array $personData, array $bookData, array $systemData = []): TemplatedEmail
+    {
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->sender->address(), $this->sender->name()))
+            ->to(new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name()))
+            // TODO AGGIUNGERE RIF.ID
+            // TODO AGGIUNGER DATA DELLA PRENOTAZIONE
+            ->subject(
+                sprintf('Nuova Prenotazione da %s %s', $personData['lastName'], $personData['firstName'])
+            )
+            ->textTemplate('@booking/email/for-backoffice/new-reservation/new-reservation.txt.twig')
             ->context([
                 'firstName' => $personData['firstName'],
                 'lastName' => $personData['lastName'],
