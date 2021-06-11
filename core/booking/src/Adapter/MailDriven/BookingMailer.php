@@ -3,15 +3,15 @@
 
 namespace Booking\Adapter\MailDriven;
 
-use Booking\Application\Mailer\ReservationConfirmationToClient;
 use Booking\Application\NotifyNewReservationToBackoffice;
+use Booking\Application\NotifyReservationConfirmationToClient;
 use Booking\Infrastructure\BackofficeEmailRetriever;
 use Booking\Infrastructure\BookingEmailSender;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
-class BookingMailer implements ReservationConfirmationToClient, NotifyNewReservationToBackoffice
+class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewReservationToBackoffice
 {
     private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan 8: Prenotazione ricevuta';
 

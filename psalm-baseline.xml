@@ -49,14 +49,14 @@
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
   </file>
-  <file src="core/booking/src/Application/Mailer/ReservationConfirmationToClient.php">
-    <MissingReturnType occurrences="1">
-      <code>sendReservationConfirmationEmailToClient</code>
-    </MissingReturnType>
-  </file>
   <file src="core/booking/src/Application/NotifyNewReservationToBackoffice.php">
     <MissingReturnType occurrences="1">
       <code>notifyNewReservationToBackoffice</code>
+    </MissingReturnType>
+  </file>
+  <file src="core/booking/src/Application/NotifyReservationConfirmationToClient.php">
+    <MissingReturnType occurrences="1">
+      <code>sendReservationConfirmationEmailToClient</code>
     </MissingReturnType>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php">

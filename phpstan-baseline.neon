@@ -16,14 +16,14 @@ parameters:
 			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
 
 		-
-			message: "#^Method Booking\\\\Application\\\\Mailer\\\\ReservationConfirmationToClient\\:\\:sendReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Mailer/ReservationConfirmationToClient.php
-
-		-
 			message: "#^Method Booking\\\\Application\\\\NotifyNewReservationToBackoffice\\:\\:notifyNewReservationToBackoffice\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/NotifyNewReservationToBackoffice.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyReservationConfirmationToClient\\:\\:sendReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyReservationConfirmationToClient.php
 
 		-
 			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
