@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-
 namespace Booking\Tests\Unit\Infrastructure\Form;
 
 use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
@@ -31,7 +30,7 @@ class ReservationFormTest extends TypeTestCase
             ],
             'classe' => 'prima',
 
-            'notes' => 'irrelevant notes',
+            'otherInfo' => 'irrelevant notes',
             'privacyConfirmed' => true,
         ];
 
@@ -50,7 +49,7 @@ class ReservationFormTest extends TypeTestCase
         $expected->classe = 'prima';
         $expected->books = [];
 
-        $expected->notes = 'irrelevant notes';
+        $expected->otherInfo = 'irrelevant notes';
         $expected->privacyConfirmed = true;
 
         // ...populate $object properties with the data stored in $formData
@@ -86,7 +85,7 @@ class ReservationFormTest extends TypeTestCase
                 ],
             ],
 
-            'notes' => 'irrelevant notes',
+            'otherInfo' => 'irrelevant notes',
             'privacyConfirmed' => true,
         ];
 
@@ -113,7 +112,7 @@ class ReservationFormTest extends TypeTestCase
             $bookDto,
         ];
 
-        $expected->notes = 'irrelevant notes';
+        $expected->otherInfo = 'irrelevant notes';
         $expected->privacyConfirmed = true;
 
         // ...populate $object properties with the data stored in $formData
@@ -141,7 +140,7 @@ class ReservationFormTest extends TypeTestCase
         $client->setCity('firenze');
         $formData->person = $client;
 
-        $formData->notes = 'irrelevant notes';
+        $formData->otherInfo = 'irrelevant notes';
         $formData->privacyConfirmed = true;        // ... prepare the data as you need
 
         // The initial data may be used to compute custom view variables

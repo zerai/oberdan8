@@ -5,6 +5,9 @@ namespace Booking\Infrastructure\Framework\Form\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @codeCoverageIgnore
+ */
 class BookDto
 {
     /**

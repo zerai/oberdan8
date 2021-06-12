@@ -5,6 +5,9 @@ namespace Booking\Infrastructure\Framework\Form\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @psalm-suppress MissingConstructor
+ */
 class AdozioniReservationFormModel
 {
     /**
@@ -28,7 +31,7 @@ class AdozioniReservationFormModel
      */
     public string $adozioni;
 
-    public string $notes;
+    public string $otherInfo;
 
     /**
      * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")

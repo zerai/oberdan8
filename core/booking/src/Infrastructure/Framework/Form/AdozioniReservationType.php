@@ -40,7 +40,7 @@ class AdozioniReservationType extends AbstractType
                 'required' => true,
             ])
 
-            ->add('notes', TextareaType::class, [
+            ->add('otherInfo', TextareaType::class, [
                 'label' => 'Altre informazioni',
             ])
 
