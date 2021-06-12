@@ -4,5 +4,5 @@ namespace Booking\Application;
 
 interface NotifyReservationConfirmationToClient extends ApplicationPort
 {
-    public function sendReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData);
+    public function notifyReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData, string $otherInfo = '');
 }

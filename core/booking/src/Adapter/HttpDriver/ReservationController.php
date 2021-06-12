@@ -29,17 +29,20 @@ class ReservationController extends AbstractController
             // 3 SEND EMAILS TO BACKOFFICE
 
             // send email to client
-            $bookingMailer->sendReservationConfirmationEmailToClient(
+            $bookingMailer->notifyReservationConfirmationEmailToClient(
                 $formData->person->getEmail(),
                 $this->mapPersonDataToReservationConfirmationEmail($formData),
-                $this->mapBookDataToReservationConfirmationEmail($formData)
+                $this->mapBookDataToReservationConfirmationEmail($formData),
+                $formData->otherInfo
             );
 
             // send email to backoffice
             //$emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
             $bookingMailer->notifyNewReservationToBackoffice(
                 $this->mapPersonDataToReservationConfirmationEmail($formData),
-                $this->mapBookDataToReservationConfirmationEmail($formData)
+                $this->mapBookDataToReservationConfirmationEmail($formData),
+                [],
+                $formData->otherInfo
             );
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');

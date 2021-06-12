@@ -36,6 +36,8 @@ class BookingMailerTest extends TestCase
 
     private const CLASSE = 'irrelevant';
 
+    private const OTHER_INFO = 'irrelevant';
+
     /** @test */
     public function shouldSendReservationConfirmationEmail(): void
     {
@@ -50,7 +52,7 @@ class BookingMailerTest extends TestCase
             $backofficeRetriever
         );
 
-        $sendedEmail = $bookingMailer->sendReservationConfirmationEmailToClient('example@example.com', $this->getPersonData(), []);
+        $sendedEmail = $bookingMailer->notifyReservationConfirmationEmailToClient('example@example.com', $this->getPersonData(), [], self::OTHER_INFO);
 
         self::assertSame(self::RESERVATION_CONFIRMATION_EMAIL_SUBJECT, $sendedEmail->getSubject());
 
@@ -71,7 +73,7 @@ class BookingMailerTest extends TestCase
             $backofficeRetriever
         );
 
-        $sendedEmail = $bookingMailer->sendReservationConfirmationEmailToClient('example@example.com', $this->getPersonData(), []);
+        $sendedEmail = $bookingMailer->notifyReservationConfirmationEmailToClient('example@example.com', $this->getPersonData(), [], self::OTHER_INFO);
 
         $senderAddress = $sendedEmail->getFrom();
         self::assertInstanceOf(Address::class, $senderAddress[0]);
@@ -93,7 +95,7 @@ class BookingMailerTest extends TestCase
             $backofficeRetriever
         );
 
-        $sendedEmail = $bookingMailer->notifyNewReservationToBackoffice($this->getPersonData(), []);
+        $sendedEmail = $bookingMailer->notifyNewReservationToBackoffice($this->getPersonData(), [], [], self::OTHER_INFO);
 
         $expectedSubject = sprintf('Nuova Prenotazione da %s %s', $this->getPersonData()['lastName'], $this->getPersonData()['firstName']);
         self::assertEquals($expectedSubject, $sendedEmail->getSubject());

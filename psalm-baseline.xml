@@ -56,7 +56,7 @@
   </file>
   <file src="core/booking/src/Application/NotifyReservationConfirmationToClient.php">
     <MissingReturnType occurrences="1">
-      <code>sendReservationConfirmationEmailToClient</code>
+      <code>notifyReservationConfirmationEmailToClient</code>
     </MissingReturnType>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php">
@@ -77,15 +77,6 @@
       <code>configureOptions</code>
     </MissingReturnType>
   </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/AdozioniReservationFormModel.php">
-    <MissingConstructor occurrences="5">
-      <code>$adozioni</code>
-      <code>$classe</code>
-      <code>$notes</code>
-      <code>$person</code>
-      <code>$privacyConfirmed</code>
-    </MissingConstructor>
-  </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/BookDto.php">
     <MissingConstructor occurrences="2">
       <code>$isbn</code>
@@ -101,18 +92,7 @@
       <code>$phone</code>
     </MissingConstructor>
   </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/NotesDto.php">
-    <MissingConstructor occurrences="1">
-      <code>$notes</code>
-    </MissingConstructor>
-  </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ReservationFormModel.php">
-    <MissingConstructor occurrences="4">
-      <code>$classe</code>
-      <code>$notes</code>
-      <code>$person</code>
-      <code>$privacyConfirmed</code>
-    </MissingConstructor>
     <MissingPropertyType occurrences="1">
       <code>$books</code>
     </MissingPropertyType>

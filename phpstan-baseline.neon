@@ -21,7 +21,7 @@ parameters:
 			path: core/booking/src/Application/NotifyNewReservationToBackoffice.php
 
 		-
-			message: "#^Method Booking\\\\Application\\\\NotifyReservationConfirmationToClient\\:\\:sendReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Booking\\\\Application\\\\NotifyReservationConfirmationToClient\\:\\:notifyReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/NotifyReservationConfirmationToClient.php
 
