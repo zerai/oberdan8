@@ -2,9 +2,9 @@
 
 namespace Booking\Adapter\HttpDriver;
 
+use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
 use Booking\Infrastructure\Framework\Form\ReservationType;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ use Symfony\Component\Mailer\MailerInterface;
 
 class ReservationController extends AbstractController
 {
-    public function __invoke(Request $request, MailerInterface $mailer): Response
+    public function __invoke(Request $request, MailerInterface $mailer, BookingMailer $bookingMailer): Response
     {
         // original call
         $form = $this->createForm(ReservationType::class);
@@ -23,22 +23,27 @@ class ReservationController extends AbstractController
             /** @var ReservationFormModel $formData */
             $formData = $form->getData();
 
-//            $this->application->updateSession(
-//                new UpdateSession($sessionId, $formData['description'], $formData['urlForCall'])
-//            );
+            // TODO APPLICATION lOGIC
+            // 1 PERSIST RESERVATION
+            // 2 SEND EMAILS TO CLIENT
+            // 3 SEND EMAILS TO BACKOFFICE
 
+            // send email to client
+            $bookingMailer->notifyReservationConfirmationEmailToClient(
+                $formData->person->getEmail(),
+                $this->mapPersonDataToReservationConfirmationEmail($formData),
+                $this->mapBookDataToReservationConfirmationEmail($formData),
+                $formData->otherInfo
+            );
 
-            //dd($formData);
-
-            // email per il cliente
-            $emailForClient = $this->createReservationConfirmationEmail($formData);
-
-            $mailer->send($emailForClient);
-
-            // email per backoffice
-            $emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
-
-            $mailer->send($emailForBackoffice);
+            // send email to backoffice
+            //$emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
+            $bookingMailer->notifyNewReservationToBackoffice(
+                $this->mapPersonDataToReservationConfirmationEmail($formData),
+                $this->mapBookDataToReservationConfirmationEmail($formData),
+                [],
+                $formData->otherInfo
+            );
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');
 
@@ -50,47 +55,20 @@ class ReservationController extends AbstractController
         ]);
     }
 
-    private function createReservationConfirmationEmail(ReservationFormModel $formData): TemplatedEmail
+    private function mapPersonDataToReservationConfirmationEmail(ReservationFormModel $formData): array
     {
-        $email = (new TemplatedEmail())
-            ->from('prenotazioni@8viadeilibrai.it')
-            ->to($formData->person->email)
-            ->subject('Oberdan-8 Prenotazione ricevuta!')
-            ->htmlTemplate('@booking/email/for-clients/reservation-confirmation.html.twig')
-            ->context([
-                'firstName' => $formData->person->getFirstName(),
-                'lastName' => $formData->person->getLastName(),
-                'contact_email' => $formData->person->getEmail(),
-                'phone' => $formData->person->getPhone(),
-                'city' => $formData->person->getCity(),
-                'classe' => $formData->classe,
-                'bookList' => $formData->books,
-            ])
-        ;
-
-        return $email;
+        return [
+            'firstName' => $formData->person->getFirstName(),
+            'lastName' => $formData->person->getLastName(),
+            'contact_email' => $formData->person->getEmail(),
+            'phone' => $formData->person->getPhone(),
+            'city' => $formData->person->getCity(),
+            'classe' => $formData->classe,
+        ];
     }
 
-    private function createRiepilogoEmailForBackoffice(ReservationFormModel $formData): TemplatedEmail
+    private function mapBookDataToReservationConfirmationEmail(ReservationFormModel $formData): array
     {
-        $email = (new TemplatedEmail())
-            ->from('prenotazioni@8viadeilibrai.it')
-            // TODO USARE MAIL DEL BACKOFFICE
-            ->to($formData->person->email)
-            // TODO AGGIUNGERE RIF.ID
-            ->subject('Nuova Prenotazione')
-            ->textTemplate('@booking/email/for-backoffice/new-reservation/new-reservation.txt.twig')
-            ->context([
-                'firstName' => $formData->person->getFirstName(),
-                'lastName' => $formData->person->getLastName(),
-                'contact_email' => $formData->person->getEmail(),
-                'phone' => $formData->person->getPhone(),
-                'city' => $formData->person->getCity(),
-                'classe' => $formData->classe,
-                'bookList' => $formData->books,
-            ])
-        ;
-
-        return $email;
+        return $formData->books;
     }
 }

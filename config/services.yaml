@@ -4,6 +4,12 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    mailer.global.sender: 'prenotazioni@8viadeilibrai.it'
+    mailer.global.sender.as: 'Oberdan 8'
+
+    booking.mailer.backoffice.retriever.address: 'info@oberdan8.it'
+    booking.mailer.backoffice.retriever.name: 'Gestione prenotazioni'
+
     booking.adozioni_directory: '%kernel.project_dir%/public/adozioni'
 
 services:
@@ -37,6 +43,11 @@ services:
         resource: '../core/booking/src/Adapter/HttpDriver/'
         tags: [ 'controller.service_arguments' ]
 
+    Booking\Adapter\:
+        resource: '../core/booking/src/Adapter/'
+        exclude:
+            - '../core/booking/src/Adapter/HttpDriver'
+
     Booking\Infrastructure\Framework\:
         resource: '../core/booking/src/Infrastructure/Framework/'
         exclude:
@@ -47,6 +58,19 @@ services:
         arguments:
             - '%booking.adozioni_directory%'
 
+
+    Booking\Infrastructure\BookingConfiguration:
+        arguments:
+            - '%mailer.global.sender%'
+            - '%mailer.global.sender.as%'
+            - '%booking.mailer.backoffice.retriever.address%'
+            - '%booking.mailer.backoffice.retriever.name%'
+
+    Booking\Infrastructure\BookingEmailSender:
+        factory: [ '@Booking\Infrastructure\BookingConfiguration', 'emailSender' ]
+
+    Booking\Infrastructure\BackofficeEmailRetriever:
+        factory: [ '@Booking\Infrastructure\BookingConfiguration', 'backofficeEmailRetriever' ]
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

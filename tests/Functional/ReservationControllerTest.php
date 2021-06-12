@@ -82,7 +82,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[books][0][author]'] = self::BOOK_ONE_AUTHOR;
         $form['reservation[books][0][volume]'] = self::BOOK_ONE_VOLUME;
 
-        $form['reservation[notes]'] = self::NOTES;
+        $form['reservation[otherInfo]'] = self::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
         $client->submit($form);
@@ -128,7 +128,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[books][1][author]'] = self::BOOK_TWO_AUTHOR;
         $form['reservation[books][1][volume]'] = self::BOOK_TWO_VOLUME;
 
-        $form['reservation[notes]'] = self::NOTES;
+        $form['reservation[otherInfo]'] = self::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
         $client->submit($form);

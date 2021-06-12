@@ -47,7 +47,7 @@ class ReservationType extends AbstractType
                 'block_name' => 'book_lists',
             ])
 
-            ->add('notes', TextareaType::class, [
+            ->add('otherInfo', TextareaType::class, [
                 'label' => 'Altre informazioni',
                 'required' => false,
             ])

@@ -1,6 +1,7 @@
 .PHONY: dependency-install
 dependency-install:  ## Install all dependency with composer
 	composer install
+	./bin/phpunit install
 	composer bin all install
 
 
@@ -21,7 +22,7 @@ static-code-analysis: ## Runs a static code analysis with phpstan/phpstan and vi
 	mkdir -p .build/phpstan
 	vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
 	mkdir -p .build/psalm
-	vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
+	vendor/bin/psalm --config=psalm.xml --diff --show-info=false --stats --threads=4
 
 
 .PHONY: static-code-analysis-baseline

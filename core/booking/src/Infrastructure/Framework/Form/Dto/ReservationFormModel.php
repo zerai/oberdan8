@@ -1,10 +1,12 @@
 <?php declare(strict_types=1);
 
-
 namespace Booking\Infrastructure\Framework\Form\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @psalm-suppress MissingConstructor
+ */
 class ReservationFormModel
 {
     /**
@@ -21,12 +23,12 @@ class ReservationFormModel
      * @Assert\Valid
      * @Assert\Count(
      *      min = 1,
-     *      minMessage = "Devi inserire almeno un libro.",
+     *      minMessage = "Inserire almeno un libro.",
      * )
      */
     public $books;
 
-    public string $notes;
+    public string $otherInfo;
 
     /**
      * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")

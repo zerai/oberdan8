@@ -21,7 +21,7 @@ class AdozioniReservationFormTest extends TypeTestCase
                 'city' => 'firenze',
             ],
 
-            'notes' => 'irrelevant notes',
+            'otherInfo' => 'irrelevant notes',
             'privacyConfirmed' => true,
         ];
 
@@ -38,7 +38,7 @@ class AdozioniReservationFormTest extends TypeTestCase
         $client->setCity('firenze');
         $expected->person = $client;
 
-        $expected->notes = 'irrelevant notes';
+        $expected->otherInfo = 'irrelevant notes';
         $expected->privacyConfirmed = true;
 
         // ...populate $object properties with the data stored in $formData
@@ -66,7 +66,7 @@ class AdozioniReservationFormTest extends TypeTestCase
         $client->setCity('firenze');
         $formData->person = $client;
 
-        $formData->notes = 'irrelevant notes';
+        $formData->otherInfo = 'irrelevant notes';
         $formData->privacyConfirmed = true;        // ... prepare the data as you need
 
         // The initial data may be used to compute custom view variables
