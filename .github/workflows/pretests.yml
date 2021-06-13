@@ -72,33 +72,6 @@ jobs:
 
       - name: Install dev tools
         run: composer bin all install
-      #    - name: Setup Node
-      #      uses: actions/setup-node@v1
-      #      with:
-      #        node-version: "${{ matrix.node }}"
-      #
-      #    - name: Get Yarn cache directory
-      #      id: yarn-cache
-      #      run: echo "::set-output name=dir::$(yarn cache dir)"
-      #
-      #    - name: Cache Yarn
-      #      uses: actions/cache@v2
-      #      with:
-      #        path: ${{ steps.yarn-cache.outputs.dir }}
-      #        key: ${{ runner.os }}-node-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json **/yarn.lock') }}
-      #        restore-keys: |
-      #          ${{ runner.os }}-node-${{ matrix.node }}-yarn-
-      #
-      #    - name: Install JS dependencies
-      #      run: yarn install
-      #
-      #    - name: Build assets
-      #      run: |
-      #        bin/console assets:install public -vvv
-      #        yarn build
-      #
-      #    - name: Run webserver
-      #      run: symfony server:start --port=8080 --dir=public --daemon --no-tls
 
       - name: Run coding standard
         run: ./vendor/bin/ecs check
@@ -114,3 +87,9 @@ jobs:
 
       - name: Run architecture check (Booking domain isolation)
         run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
+
+      - name: Run yaml linter
+        run: |
+          ./bin/console lint:yaml config/
+          ./bin/console lint:yaml src/
+          ./bin/console lint:yaml core/booking/src/
