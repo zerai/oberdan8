@@ -49,9 +49,18 @@ core-architecture-check:  ## Check Core code architecture roules with deptrac
 	vendor/bin/deptrac analyse core/depfile-booking.yaml
 	vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
 
+.PHONY: lint-yaml
+lint-yaml: ## Run symfony linter for yaml files.
+#	mkdir -p .build/phpunit/core
+	bin/console lint:yaml config/
+	bin/console lint:yaml src/
+	bin/console lint:yaml core/booking/src/
+
+
 .PHONY: pre-commit
 pre-commit:  ## Check Core code architecture rules with deptrac
 #	vendor/bin/deptrac analyse core/depfile-core.yaml --report-uncovered
+	make lint-yaml
 	make coding-standards
 	make static-code-analysis
 	make core-architecture-check
