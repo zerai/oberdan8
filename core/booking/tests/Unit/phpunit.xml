@@ -4,7 +4,7 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="../../../../bin/.phpunit/phpunit.xsd"
          beStrictAboutChangesToGlobalState="true"
-         beStrictAboutCoversAnnotation="true"
+
          forceCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutResourceUsageDuringSmallTests="true"
@@ -43,11 +43,5 @@
         <include>
             <directory suffix=".php">../../src</directory>
         </include>
-<!--        <exclude>-->
-<!--            <directory>some_directory</directory>-->
-<!--        </exclude>-->
-<!--        <report>-->
-<!--            <text outputFile="php://stdout" showOnlySummary="true" />-->
-<!--        </report>-->
     </coverage>
 </phpunit>
