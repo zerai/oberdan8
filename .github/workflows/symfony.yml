@@ -101,6 +101,9 @@ jobs:
     - name: Run webserver
       run: symfony server:start --port=8080 --dir=public --daemon --no-tls
 
+    - name: Run application container lint
+      run: ./bin/console lint:container
+
     - name: Run twig template lint
       run: ./bin/console lint:twig templates --env=prod
 
