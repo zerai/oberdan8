@@ -58,7 +58,7 @@ host('stage-librai')
 
     // git & composer settings
     ->set('branch', 'main')
-    ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader')
+    ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --optimize-autoloader')
 
 ;
 
@@ -148,5 +148,11 @@ task('maintenance:off', function () {
     run('{{bin/php}} {{bin/console}} corley:maintenance:soft off');
 });
 
+
+desc('Load stage fixtures');
+task('stage:fixtures:load', function () {
+    run('{{bin/php}} {{bin/console}} doctrine:fixtures:load --group=stage --no-interaction');
+})->onStage('stage-librai');
+after('deploy', 'stage:fixtures:load');
 
 
