@@ -1,74 +1,22 @@
-{% apply inline_css(source('@mailer-css/email.css')) %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Welcome </title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f3f3f3;
-            font-family: Helvetica, Arial, sans-serif;
-        }
-        h1 {
-            background-color: #264459;
-            color: #ffffff;
-            padding: 30px 0 50px 0;
-            font-weight: normal;
-        }
-        hr {
-            border: none;
-            border-top: 3px solid #264459;
-            margin: 20px;
-        }
-        .container {
-            background-color: #fefefe;
-            width: 580px;
-            margin: 0 auto;
-        }
-        .bottom {
-            background-color: #efefee;
-        }
-        .block {
-            margin: 0;
-            padding: 10px 20px 20px 20px;
-        }
-        .logo {
-            width: 100%;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #264459;
-            color: #fefefe;
-            border: 1px solid #fff;
-            border-radius: 3px;
-            font-size: 20px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-<div class="body">
+{#{% apply inky_to_html|inline_css(source('@mailer-style/foundation-emails.css'),source('@mailer-style/email.scss') ) %}#}
+{% apply inky_to_html|inline_css(source('@mailer-style/email.scss') ) %}
     <div class="container">
-        <div class="header text-center">
-            <a href="{{ url('home_oberdan') }}">
+        <row class="header">
+            <columns>
+                <a href="{{ url('home_oberdan') }}">
 
-{#                todo url in logo  image#}
+                    {#                todo url in logo  image#}
 
-                <img src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan 8 logo">
-            </a>
-        </div>
-        <div class="content">
-            <h1 class="text-center">Riepilogo Prenotazione</h1>
-            <p class="block">
-                <strong>Dati Personali</strong>
+                    <img src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan 8 logo">
+                </a>
+            </columns>
+
+        </row>
+        <row class="content">
+            <columns>
+                <h1 class="text-center">Riepilogo Prenotazione</h1>
+                <p class="block">
+                    <strong>Dati Personali</strong>
                 <p>
                     Cognome: {{ lastName }} <br>
                     Nome: {{ firstName }} <br>
@@ -81,38 +29,41 @@
                 <p>
                     {{ otherInfo }} <br>
                 </p>
-            </p>
-{#            <p class="block text-center">#}
-{#                <a href="{{ url('home_oberdan') }}" class="btn">effettua una prenotazione</a>#}
-{#            </p>#}
-            <p class="block">
-                <strong>Testi richiesti</strong>
+                </p>
+                {#            <p class="block text-center">#}
+                {#                <a href="{{ url('home_oberdan') }}" class="btn">effettua una prenotazione</a>#}
+                {#            </p>#}
+                <p class="block">
+                    <strong>Testi richiesti</strong>
 
-                {% for book in bookList %}
-                    <p class="block">{{ book.getIsbn }} | {{ book.title }} | {{ book.author }} | {{ book.volume }}</p>
+                    {% for book in bookList %}
+                <p class="block">{{ book.getIsbn }} | {{ book.title }} | {{ book.author }} | {{ book.volume }}</p>
                 {% endfor %}
 
-            </p>
-            <p class="block text-center">
-                <a href="https://www.oberdan8.it" class="btn">visita il sito</a>
-            </p>
-            <p class="block">
-                We're so excited that you've decided to join us in our corner of the universe,
-                it's a friendly one with other creative and insightful writers just like you!
-                Need help from a friend? We're always just a message away.
-            </p>
-        </div>
-        <div class="footer">
-            <p class="block">
-                Cheers,<br><br>
-                Your friendly <em>Space Bar Team</em>
-            </p>
-            <p class="block bottom text-center">
-                Sent with ❤️ from ....
-            </p>
-        </div>
+                </p>
+                <p class="block text-center">
+                    <a href="https://www.oberdan8.it" class="btn">visita il sito</a>
+                </p>
+                <p class="block">
+                    We're so excited that you've decided to join us in our corner of the universe,
+                    it's a friendly one with other creative and insightful writers just like you!
+                    Need help from a friend? We're always just a message away.
+                </p>
+            </columns>
+        </row>
+
+        <row class="footer">
+            <columns>
+                <center>
+                    <p class="block">
+                        Cheers,<br><br>
+                        Your friendly <em>Space Bar Team</em>
+                    </p>
+                    <p class="block bottom text-center">
+                        Sent with ❤️ from ....
+                    </p>
+                </center>
+            </columns>
+        </row>
     </div>
-</div>
-</body>
-</html>
 {% endapply %}
