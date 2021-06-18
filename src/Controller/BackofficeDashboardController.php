@@ -13,8 +13,6 @@ class BackofficeDashboardController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('backoffice_dashboard/index.html.twig', [
-            'controller_name' => 'BackofficeDashboardController',
-        ]);
+        return $this->render('backoffice/dashboard/index.html.twig', []);
     }
 }
