@@ -8,6 +8,7 @@ twig:
         'core/booking/src/Infrastructure/Framework/templates': 'booking'
         '%kernel.project_dir%/assets/images': images
         '%kernel.project_dir%/assets/images/mailer': mailer-images
+        '%kernel.project_dir%/assets/styles/mailer': mailer-css
 
 
     form_themes: ['bootstrap_4_layout.html.twig']
