@@ -6,6 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noindex, nofollow">
         <link rel="shortcut icon" href="images/favicon.jpg" />
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+        </style>
+
+
         <title>{% block title %}Administration - Oberdan 8 {% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -22,12 +41,18 @@
         {% block header %}
             {% include 'backoffice/static/_header-navbar.html.twig' %}
         {% endblock %}
-
-
-        {% block body %}{% endblock %}
-
+        <div class="container-fluid">
+            <div class="row">
+                {% block sidebar %}
+                    {% include 'backoffice/static/_sidebar.html.twig' %}
+                {% endblock %}
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                    {% block body %}{% endblock %}
+                </main>
+            </div>
+        </div>
         {% block footer %}
-            {% include 'backoffice/static/_footer.html.twig' %}
+{#            {% include 'backoffice/static/_footer.html.twig' %}#}
         {% endblock %}
 
 
