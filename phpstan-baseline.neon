@@ -16,6 +16,16 @@ parameters:
 			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
 
 		-
+			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyNewAdozioniReservationToBackoffice\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyNewAdozioniReservationToBackoffice.php
+
+		-
 			message: "#^Method Booking\\\\Application\\\\NotifyNewReservationToBackoffice\\:\\:notifyNewReservationToBackoffice\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/NotifyNewReservationToBackoffice.php
@@ -69,11 +79,6 @@ parameters:
 			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
-
-		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Symfony\\\\\\\\Component\\\\\\\\Mime\\\\\\\\Address' and Symfony\\\\Component\\\\Mime\\\\Address will always evaluate to true\\.$#"
-			count: 3
-			path: core/booking/tests/Unit/Adapter/BookingMailerTest.php
 
 		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
