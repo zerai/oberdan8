@@ -3,6 +3,7 @@
 
 namespace Booking\Adapter\MailDriven;
 
+use Booking\Application\NotifyAdozioniReservationConfirmationToClient;
 use Booking\Application\NotifyNewReservationToBackoffice;
 use Booking\Application\NotifyReservationConfirmationToClient;
 use Booking\Infrastructure\BackofficeEmailRetriever;
@@ -11,7 +12,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
-class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewReservationToBackoffice
+class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewReservationToBackoffice, NotifyAdozioniReservationConfirmationToClient
 {
     private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan 8: Prenotazione ricevuta';
 
@@ -78,6 +79,31 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'classe' => $personData['classe'],
                 'otherInfo' => $otherInfo,
                 'bookList' => $bookData,
+            ])
+        ;
+
+        $this->mailer->send($email);
+
+        return $email;
+    }
+
+    public function notifyAdozioniReservationConfirmationEmailToClient(string $recipient, array $personData, array $filesData = [], string $otherInfo = '')
+    {
+        // TODO: Implement notifyAdozioniReservationConfirmationEmailToClient() method.
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->sender->address(), $this->sender->name()))
+            ->to(new Address($recipient))
+            ->subject(self::RESERVATION_CONFIRMATION_EMAIL_SUBJECT)
+            ->htmlTemplate('@booking/email/for-clients/adozioni-reservation-confirmation.html.twig')
+            ->context([
+                'firstName' => $personData['firstName'],
+                'lastName' => $personData['lastName'],
+                'contact_email' => $personData['contact_email'],
+                'phone' => $personData['phone'],
+                'city' => $personData['city'],
+                'classe' => $personData['classe'],
+                'otherInfo' => $otherInfo,
+                'fileList' => $filesData,
             ])
         ;
 
