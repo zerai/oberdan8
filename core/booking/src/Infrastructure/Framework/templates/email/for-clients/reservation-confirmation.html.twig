@@ -1,5 +1,6 @@
 {#{% apply inky_to_html|inline_css(source('@mailer-style/foundation-emails.css'),source('@mailer-style/email.scss') ) %}#}
 {% apply inky_to_html|inline_css(source('@mailer-style/email.scss') ) %}
+{#{% apply inky_to_html|inline_css(encore_entry_css_source('email')) %}#}
     <div class="container">
         <row class="header">
             <columns>
