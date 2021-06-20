@@ -7,36 +7,6 @@ use Symfony\Component\Panther\PantherTestCase;
 
 class ReservationControllerTest extends PantherTestCase
 {
-    private const FIRST_NAME = 'Carlo';
-
-    private const LAST_NAME = 'Rossi';
-
-    private const EMAIL = 'carlorossi@example.it';
-
-    private const PHONE = '+39 392 111111';
-
-    private const CITY = 'Roma';
-
-    private const CLASSE = 'prima';
-
-    private const NOTES = 'Avrei una certa urgenza di ricevere una vostra risposta';
-
-    private const BOOK_ONE_ISBN = '1-56619-909-3';
-
-    private const BOOK_ONE_TITLE = 'Matematica.blu';
-
-    private const BOOK_ONE_AUTHOR = 'Massimo Bergamini Graziella Barozzi Anna Trifone';
-
-    private const BOOK_ONE_VOLUME = '2';
-
-    private const BOOK_TWO_ISBN = '1-56619-909-3';
-
-    private const BOOK_TWO_TITLE = 'Storia facile per le scuole superiori. Unità didattiche semplificate. Dalla preistoria al XIV secolo';
-
-    private const BOOK_TWO_AUTHOR = 'Ferruccio Bianchi, Patrizia Farello, Carlo Scataglini';
-
-    private const BOOK_TWO_VOLUME = 'vol.1';
-
     /** @test */
     public function reservationPageShouldBeAccessibile(): void
     {
@@ -65,24 +35,24 @@ class ReservationControllerTest extends PantherTestCase
 
         $form = $buttonCrawlerNode->form();
 
-        $form['reservation[person][last_name]'] = self::LAST_NAME;
-        $form['reservation[person][first_name]'] = self::FIRST_NAME;
-        $form['reservation[person][email]'] = self::EMAIL;
-        $form['reservation[person][phone]'] = self::PHONE;
-        $form['reservation[person][city]'] = self::CITY;
-        $form['reservation[classe]']->setValue(self::CLASSE);
+        $form['reservation[person][last_name]'] = ReservationStaticFixture::LAST_NAME;
+        $form['reservation[person][first_name]'] = ReservationStaticFixture::FIRST_NAME;
+        $form['reservation[person][email]'] = ReservationStaticFixture::EMAIL;
+        $form['reservation[person][phone]'] = ReservationStaticFixture::PHONE;
+        $form['reservation[person][city]'] = ReservationStaticFixture::CITY;
+        $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
         $client->executeScript("document.querySelector('.js-add-book-item').click()");
         $client->takeScreenshot('var/screen.png');
 
         // Add books data
-        $form['reservation[books][0][isbn]'] = self::BOOK_ONE_ISBN;
-        $form['reservation[books][0][title]'] = self::BOOK_ONE_TITLE;
-        $form['reservation[books][0][author]'] = self::BOOK_ONE_AUTHOR;
-        $form['reservation[books][0][volume]'] = self::BOOK_ONE_VOLUME;
+        $form['reservation[books][0][isbn]'] = ReservationStaticFixture::BOOK_ONE_ISBN;
+        $form['reservation[books][0][title]'] = ReservationStaticFixture::BOOK_ONE_TITLE;
+        $form['reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
+        $form['reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
-        $form['reservation[otherInfo]'] = self::NOTES;
+        $form['reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
         $client->submit($form);
@@ -103,36 +73,36 @@ class ReservationControllerTest extends PantherTestCase
 
         $form = $buttonCrawlerNode->form();
 
-        $form['reservation[person][last_name]'] = self::LAST_NAME;
-        $form['reservation[person][first_name]'] = self::FIRST_NAME;
-        $form['reservation[person][email]'] = self::EMAIL;
-        $form['reservation[person][phone]'] = self::PHONE;
-        $form['reservation[person][city]'] = self::CITY;
-        $form['reservation[classe]']->setValue(self::CLASSE);
+        $form['reservation[person][last_name]'] = ReservationStaticFixture::LAST_NAME;
+        $form['reservation[person][first_name]'] = ReservationStaticFixture::FIRST_NAME;
+        $form['reservation[person][email]'] = ReservationStaticFixture::EMAIL;
+        $form['reservation[person][phone]'] = ReservationStaticFixture::PHONE;
+        $form['reservation[person][city]'] = ReservationStaticFixture::CITY;
+        $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
         $client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add first book data
-        $form['reservation[books][0][isbn]'] = self::BOOK_ONE_ISBN;
-        $form['reservation[books][0][title]'] = self::BOOK_ONE_TITLE;
-        $form['reservation[books][0][author]'] = self::BOOK_ONE_AUTHOR;
-        $form['reservation[books][0][volume]'] = self::BOOK_ONE_VOLUME;
+        $form['reservation[books][0][isbn]'] = ReservationStaticFixture::BOOK_ONE_ISBN;
+        $form['reservation[books][0][title]'] = ReservationStaticFixture::BOOK_ONE_TITLE;
+        $form['reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
+        $form['reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
         // click add button
         $client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add second book data
-        $form['reservation[books][1][isbn]'] = self::BOOK_TWO_ISBN;
-        $form['reservation[books][1][title]'] = self::BOOK_TWO_TITLE;
-        $form['reservation[books][1][author]'] = self::BOOK_TWO_AUTHOR;
-        $form['reservation[books][1][volume]'] = self::BOOK_TWO_VOLUME;
+        $form['reservation[books][1][isbn]'] = ReservationStaticFixture::BOOK_TWO_ISBN;
+        $form['reservation[books][1][title]'] = ReservationStaticFixture::BOOK_TWO_TITLE;
+        $form['reservation[books][1][author]'] = ReservationStaticFixture::BOOK_TWO_AUTHOR;
+        $form['reservation[books][1][volume]'] = ReservationStaticFixture::BOOK_TWO_VOLUME;
 
-        $form['reservation[otherInfo]'] = self::NOTES;
+        $form['reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
         $client->submit($form);
 
-        self::assertSame(self::$baseUri . '/esito', $client->getCurrentURL()); // Assert we're still on the same page
+        self::assertSame(self::$baseUri . '/esito', $client->getCurrentURL());
     }
 }
