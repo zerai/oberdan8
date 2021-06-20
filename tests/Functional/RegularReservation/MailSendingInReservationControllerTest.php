@@ -162,13 +162,13 @@ class MailSendingInReservationControllerTest extends WebTestCase
         self::assertEmailCount(2);
 
         $email = self::getMailerMessage(0);
-        $this->assertEmailHeaderSame($email, 'To', self::EMAIL);
-        $this->assertEmailTextBodyContains($email, self::LAST_NAME);
-        $this->assertEmailTextBodyContains($email, self::FIRST_NAME);
-        $this->assertEmailTextBodyContains($email, self::EMAIL);
-        $this->assertEmailTextBodyContains($email, self::PHONE);
+        self::assertEmailHeaderSame($email, 'To', self::EMAIL);
+        self::assertEmailTextBodyContains($email, self::LAST_NAME);
+        self::assertEmailTextBodyContains($email, self::FIRST_NAME);
+        self::assertEmailTextBodyContains($email, self::EMAIL);
+        self::assertEmailTextBodyContains($email, self::PHONE);
         // TODO image attach
-        //$this->assertEmailAttachmentCount($email, 0);
+        //self::assertEmailAttachmentCount($email, 0);
     }
 
     /** @test */

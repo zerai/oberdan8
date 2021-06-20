@@ -3,17 +3,12 @@ parameters:
 		-
 			message: "#^If condition is always true\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
 
 		-
 			message: "#^Only booleans are allowed in an if condition, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile given\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
-
-		-
-			message: "#^Variable \\$userModel in PHPDoc tag @var does not match assigned variable \\$formData\\.$#"
-			count: 1
-			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
+			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
 
 		-
 			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
@@ -182,52 +177,32 @@ parameters:
 		-
 			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
 			count: 3
-			path: tests/Functional/MailSendingInReservationControllerTest.php
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
 			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
 			count: 3
-			path: tests/Functional/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\)\\.$#"
-			count: 1
-			path: tests/Functional/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\)\\.$#"
-			count: 4
-			path: tests/Functional/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 1
-			path: tests/Functional/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 4
-			path: tests/Functional/MailSendingInReservationControllerTest.php
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 1
-			path: tests/Functional/MailSendingInReservationControllerTest.php
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 1
-			path: tests/Functional/MailSendingInReservationControllerTest.php
+			count: 2
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 4
-			path: tests/Functional/MailSendingInReservationControllerTest.php
+			count: 8
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
 			message: "#^Cannot call method setValue\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
 			count: 4
-			path: tests/Functional/ReservationControllerTest.php
+			path: tests/Functional/RegularReservation/ReservationControllerTest.php
 
 		-
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdozioniController extends AbstractController
+class AdozioniReservationController extends AbstractController
 {
     public function __invoke(Request $request, AdozioniUploaderInterface $uploader, BookingMailer $bookingMailer): Response
     {
@@ -37,7 +37,7 @@ class AdozioniController extends AbstractController
             }
             ############################ fine single file upload
 
-            /** @var AdozioniReservationFormModel $userModel */
+            /** @var AdozioniReservationFormModel $formData */
             $formData = $form->getData();
 
             // TODO APPLICATION lOGIC

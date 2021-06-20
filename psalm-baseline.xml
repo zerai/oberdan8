@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
-  <file src="core/booking/src/Adapter/HttpDriver/AdozioniController.php">
-    <MixedArgument occurrences="2">
-      <code>$formData</code>
-      <code>$formData-&gt;person-&gt;getEmail()</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$formData</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="1">
-      <code>getEmail</code>
-    </MixedMethodCall>
-    <MixedPropertyFetch occurrences="1">
-      <code>$formData-&gt;person</code>
-    </MixedPropertyFetch>
+  <file src="core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php">
     <RedundantConditionGivenDocblockType occurrences="1">
       <code>$adozioniFile</code>
     </RedundantConditionGivenDocblockType>
