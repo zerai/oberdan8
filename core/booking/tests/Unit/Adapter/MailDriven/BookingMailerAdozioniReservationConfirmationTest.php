@@ -37,10 +37,17 @@ class BookingMailerAdozioniReservationConfirmationTest extends TestCase
 
     private const OTHER_INFO = 'irrelevant';
 
+    private const PDF_FILE_NAME_1 = 'pdf-filename-1.pdf';
+
+    private const PDF_FILE_NAME_2 = 'pdf-filename-2.pdf';
+
+    private const IMAGE_FILE_NAME_1 = 'image-filename-1.pdf';
+
+    private const IMAGE_FILE_NAME_2 = 'image-filename-2.pdf';
+
     /** @test */
     public function shouldSendAdozioniReservationConfirmationEmail(): void
     {
-        self::markTestIncomplete();
         $sender = new BookingEmailSender(self::MAIL_FROM, self::MAIL_FROM_SHOW_AS);
         $backofficeRetriever = new BackofficeEmailRetriever(self::BACKOFFICE_RETRIEVER_MAIL, self::BACKOFFICE_RETRIEVER_AS);
         $symfonyMailer = $this->createMock(MailerInterface::class);
@@ -52,8 +59,16 @@ class BookingMailerAdozioniReservationConfirmationTest extends TestCase
             $backofficeRetriever
         );
 
-        //TODO add a fileList to mail
-        $sendedEmail = $bookingMailer->notifyAdozioniReservationConfirmationEmailToClient('example@example.com', $this->getPersonData(), [], self::OTHER_INFO);
+        $fileList = [
+            self::PDF_FILE_NAME_1,
+            self::PDF_FILE_NAME_2,
+        ];
+        $sendedEmail = $bookingMailer->notifyAdozioniReservationConfirmationEmailToClient(
+            'example@example.com',
+            $this->getPersonData(),
+            $fileList,
+            self::OTHER_INFO
+        );
 
         self::assertSame(self::RESERVATION_CONFIRMATION_EMAIL_SUBJECT, $sendedEmail->getSubject());
 
@@ -64,7 +79,6 @@ class BookingMailerAdozioniReservationConfirmationTest extends TestCase
     /** @test */
     public function reservationAdozioniConfirmationEmailShouldHaveOberdanDataAsSender(): void
     {
-        self::markTestIncomplete();
         $sender = new BookingEmailSender(self::MAIL_FROM, self::MAIL_FROM_SHOW_AS);
         $backofficeRetriever = new BackofficeEmailRetriever(self::BACKOFFICE_RETRIEVER_MAIL, self::BACKOFFICE_RETRIEVER_AS);
         $symfonyMailer = $this->createMock(MailerInterface::class);
@@ -74,8 +88,16 @@ class BookingMailerAdozioniReservationConfirmationTest extends TestCase
             $backofficeRetriever
         );
 
-        //TODO add a fileList to mail
-        $sendedEmail = $bookingMailer->notifyAdozioniReservationConfirmationEmailToClient('example@example.com', $this->getPersonData(), [], self::OTHER_INFO);
+        $fileList = [
+            self::PDF_FILE_NAME_1,
+            self::PDF_FILE_NAME_2,
+        ];
+        $sendedEmail = $bookingMailer->notifyAdozioniReservationConfirmationEmailToClient(
+            'example@example.com',
+            $this->getPersonData(),
+            $fileList,
+            self::OTHER_INFO
+        );
 
         $senderAddress = $sendedEmail->getFrom();
         self::assertSame(self::MAIL_FROM, $senderAddress[0]->getAddress());
@@ -85,7 +107,6 @@ class BookingMailerAdozioniReservationConfirmationTest extends TestCase
     /** @test */
     public function shouldSendNewAdozioniReservationEmailToBackoffice(): void
     {
-        self::markTestIncomplete();
         $sender = new BookingEmailSender(self::MAIL_FROM, self::MAIL_FROM_SHOW_AS);
         $backofficeRetriever = new BackofficeEmailRetriever(self::BACKOFFICE_RETRIEVER_MAIL, self::BACKOFFICE_RETRIEVER_AS);
         $symfonyMailer = $this->createMock(MailerInterface::class);
@@ -97,8 +118,16 @@ class BookingMailerAdozioniReservationConfirmationTest extends TestCase
             $backofficeRetriever
         );
 
-        //TODO add a fileList to mail
-        $sendedEmail = $bookingMailer->notifyNewAdozioniReservationToBackoffice($this->getPersonData(), [], [], self::OTHER_INFO);
+        $fileList = [
+            self::PDF_FILE_NAME_1,
+            self::PDF_FILE_NAME_2,
+        ];
+        $sendedEmail = $bookingMailer->notifyNewAdozioniReservationToBackoffice(
+            $this->getPersonData(),
+            $fileList,
+            [],
+            self::OTHER_INFO
+        );
 
         $expectedSubject = sprintf('Nuova Prenotazione da %s %s', $this->getPersonData()['lastName'], $this->getPersonData()['firstName']);
         self::assertEquals($expectedSubject, $sendedEmail->getSubject());

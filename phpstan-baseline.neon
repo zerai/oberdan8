@@ -11,7 +11,7 @@ parameters:
 			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
 
 		-
-			message: "#^Variable \\$userModel in PHPDoc tag @var does not match assigned variable \\$adozioniReservationFormModel\\.$#"
+			message: "#^Variable \\$userModel in PHPDoc tag @var does not match assigned variable \\$formData\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/HttpDriver/AdozioniController.php
 

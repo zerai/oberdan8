@@ -2,10 +2,10 @@
 
 namespace Booking\Adapter\HttpDriver;
 
+use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
 use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
 use Booking\Infrastructure\Framework\Form\Service\AdozioniUploaderInterface;
-use LeanpubBookClub\Application\UpdateSession;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdozioniController extends AbstractController
 {
-    public function __invoke(Request $request, AdozioniUploaderInterface $uploader): Response
+    public function __invoke(Request $request, AdozioniUploaderInterface $uploader, BookingMailer $bookingMailer): Response
     {
         $form = $this->createForm(AdozioniReservationType::class);
 
@@ -37,35 +37,49 @@ class AdozioniController extends AbstractController
             }
             ############################ fine single file upload
 
-            ############################ elaborazione form
-            #
-            #
-            #
             /** @var AdozioniReservationFormModel $userModel */
-            $adozioniReservationFormModel = $form->getData();
+            $formData = $form->getData();
 
-            //var_dump($adozioniReservationFormModel);
-            //exit;
+            // TODO APPLICATION lOGIC
+            // 1 PERSIST RESERVATION
+            // 2 SEND EMAILS TO CLIENT
+            // 3 SEND EMAILS TO BACKOFFICE
 
-            ############################ Execute Application/domain logic here
-            #
-            #   get file data ($newFilename)
-            #   get form data
-            #   log in file
-            #   send mail to backoffice
-            #
-//            $this->application->updateSession(
-//                new UpdateSession($sessionId, $formData['description'], $formData['urlForCall'])
-//            );
-            ############################ Fine Execute Application/domain logic here
+            // send email to client
+            $bookingMailer->notifyAdozioniReservationConfirmationEmailToClient(
+                $formData->person->getEmail(),
+                $this->mapPersonDataToReservationConfirmationEmail($formData),
+                [$adozioniFile->getClientOriginalName()],
+                $formData->otherInfo
+            );
 
-            ## Send flash message "La tua prenotazione è stata ricevuta."
+            // send email to backoffice
+            $bookingMailer->notifyNewAdozioniReservationToBackoffice(
+                $this->mapPersonDataToReservationConfirmationEmail($formData),
+                [$adozioniFile->getClientOriginalName()],
+                [],
+                $formData->otherInfo
+            );
 
-            return $this->redirectToRoute('home_oberdan');
+            $this->addFlash('success', 'Prenotazine avvenuta con successo.');
+
+            return $this->redirectToRoute('reservation_result');
         }
 
         return $this->render('@booking/reservation-adozioni-page.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    private function mapPersonDataToReservationConfirmationEmail(AdozioniReservationFormModel $formData): array
+    {
+        return [
+            'firstName' => $formData->person->getFirstName(),
+            'lastName' => $formData->person->getLastName(),
+            'contact_email' => $formData->person->getEmail(),
+            'phone' => $formData->person->getPhone(),
+            'city' => $formData->person->getCity(),
+            'classe' => $formData->classe,
+        ];
     }
 }
