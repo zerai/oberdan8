@@ -3,6 +3,8 @@
 
 namespace Booking\Adapter\MailDriven;
 
+use Booking\Application\NotifyAdozioniReservationConfirmationToClient;
+use Booking\Application\NotifyNewAdozioniReservationToBackoffice;
 use Booking\Application\NotifyNewReservationToBackoffice;
 use Booking\Application\NotifyReservationConfirmationToClient;
 use Booking\Infrastructure\BackofficeEmailRetriever;
@@ -11,7 +13,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
-class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewReservationToBackoffice
+class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewReservationToBackoffice, NotifyAdozioniReservationConfirmationToClient, NotifyNewAdozioniReservationToBackoffice
 {
     private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan 8: Prenotazione ricevuta';
 
@@ -78,6 +80,60 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'classe' => $personData['classe'],
                 'otherInfo' => $otherInfo,
                 'bookList' => $bookData,
+            ])
+        ;
+
+        $this->mailer->send($email);
+
+        return $email;
+    }
+
+    public function notifyAdozioniReservationConfirmationEmailToClient(string $recipient, array $personData, array $filesData = [], string $otherInfo = ''): TemplatedEmail
+    {
+        // TODO: Implement notifyAdozioniReservationConfirmationEmailToClient() method.
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->sender->address(), $this->sender->name()))
+            ->to(new Address($recipient))
+            ->subject(self::RESERVATION_CONFIRMATION_EMAIL_SUBJECT)
+            ->htmlTemplate('@booking/email/for-clients/adozioni-reservation-confirmation.html.twig')
+            ->context([
+                'firstName' => $personData['firstName'],
+                'lastName' => $personData['lastName'],
+                'contact_email' => $personData['contact_email'],
+                'phone' => $personData['phone'],
+                'city' => $personData['city'],
+                'classe' => $personData['classe'],
+                'otherInfo' => $otherInfo,
+                'fileList' => $filesData,
+            ])
+        ;
+
+        $this->mailer->send($email);
+
+        return $email;
+    }
+
+    public function notifyNewAdozioniReservationToBackoffice(array $personData, array $filesData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
+    {
+        // TODO: Implement notifyNewAdozioniReservationToBackoffice() method.
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->sender->address(), $this->sender->name()))
+            ->to(new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name()))
+            // TODO AGGIUNGERE RIF.ID
+            // TODO AGGIUNGER DATA DELLA PRENOTAZIONE
+            ->subject(
+                sprintf('Nuova Prenotazione da %s %s', $personData['lastName'], $personData['firstName'])
+            )
+            ->textTemplate('@booking/email/for-backoffice/new-reservation/new-adozioni-reservation.txt.twig')
+            ->context([
+                'firstName' => $personData['firstName'],
+                'lastName' => $personData['lastName'],
+                'contact_email' => $personData['contact_email'],
+                'phone' => $personData['phone'],
+                'city' => $personData['city'],
+                'classe' => $personData['classe'],
+                'otherInfo' => $otherInfo,
+                'fileList' => $filesData,
             ])
         ;
 

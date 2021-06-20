@@ -1,6 +1,5 @@
 {#{% apply inky_to_html|inline_css(source('@mailer-style/foundation-emails.css'),source('@mailer-style/email.scss') ) %}#}
 {% apply inky_to_html|inline_css(source('@mailer-style/email.scss') ) %}
-{#{% apply inky_to_html|inline_css(encore_entry_css_source('email')) %}#}
     <div class="container">
         <row class="header">
             <columns>
@@ -35,10 +34,11 @@
                 {#                <a href="{{ url('home_oberdan') }}" class="btn">effettua una prenotazione</a>#}
                 {#            </p>#}
                 <p class="block">
-                    <strong>Testi richiesti</strong>
+                    <strong>File inviati</strong>
 
-                    {% for book in bookList %}
-                <p class="block">{{ book.getIsbn }} | {{ book.title }} | {{ book.author }} | {{ book.volume }}</p>
+                    {% for file in fileList %}
+{#                <p class="block">{{ book.getIsbn }} | {{ book.title }} | {{ book.author }} | {{ book.volume }}</p>#}
+                <p class="block">{{ file }} </p>
                 {% endfor %}
 
                 </p>
