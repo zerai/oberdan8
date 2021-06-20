@@ -42,6 +42,8 @@ class AdozioniReservationType extends AbstractType
 
             ->add('otherInfo', TextareaType::class, [
                 'label' => 'Altre informazioni',
+                'required' => false,
+                'empty_data' => '',
             ])
 
             ->add('privacyConfirmed', CheckboxType::class, [
