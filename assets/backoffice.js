@@ -6,7 +6,7 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
+//import './styles/app.scss';
 
 import './styles/backoffice.scss';
 
@@ -15,8 +15,10 @@ import './styles/backoffice.scss';
 // create global $ and jQuery variables
 //global.$ = global.jQuery = $;
 
-import $ from 'jquery';
 
+
+
+import $ from 'jquery';
 import 'bootstrap';
 import 'popper.js';
 
@@ -31,3 +33,6 @@ import './bootstrap';
 
 bsCustomFileInput.init();
 
+// $(document).ready(function(){
+//     console.log(' bottom backoffice in backoffice.js ok');
+// })
