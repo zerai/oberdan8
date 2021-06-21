@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
-  <file src="core/booking/src/Adapter/HttpDriver/AdozioniController.php">
-    <MixedAssignment occurrences="1">
-      <code>$adozioniReservationFormModel</code>
-    </MixedAssignment>
+  <file src="core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php">
     <RedundantConditionGivenDocblockType occurrences="1">
       <code>$adozioniFile</code>
     </RedundantConditionGivenDocblockType>
-    <UnusedVariable occurrences="2">
-      <code>$adozioniReservationFormModel</code>
+    <UnusedVariable occurrences="1">
       <code>$newFilename</code>
     </UnusedVariable>
   </file>
@@ -24,8 +20,10 @@
     </MixedReturnStatement>
   </file>
   <file src="core/booking/src/Adapter/MailDriven/BookingMailer.php">
-    <MixedArgument occurrences="2">
+    <MixedArgument occurrences="4">
       <code>$personData['firstName']</code>
+      <code>$personData['firstName']</code>
+      <code>$personData['lastName']</code>
       <code>$personData['lastName']</code>
     </MixedArgument>
   </file>
@@ -48,6 +46,16 @@
       <code>$this-&gt;books</code>
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
+  </file>
+  <file src="core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php">
+    <MissingReturnType occurrences="1">
+      <code>notifyAdozioniReservationConfirmationEmailToClient</code>
+    </MissingReturnType>
+  </file>
+  <file src="core/booking/src/Application/NotifyNewAdozioniReservationToBackoffice.php">
+    <MissingReturnType occurrences="1">
+      <code>notifyNewAdozioniReservationToBackoffice</code>
+    </MissingReturnType>
   </file>
   <file src="core/booking/src/Application/NotifyNewReservationToBackoffice.php">
     <MissingReturnType occurrences="1">
@@ -109,6 +117,11 @@
     </PossiblyNullOperand>
   </file>
   <file src="core/booking/tests/Unit/Adapter/BookingMailerTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/BookingMailerAdozioniReservationConfirmationTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
