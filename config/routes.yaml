@@ -17,3 +17,13 @@ reservation_adozioni:
 reservation_result:
   path: /esito
   controller: Booking\Adapter\HttpDriver\ReservationResultsController
+
+#
+# Backoffice routes
+#
+admin_home:
+  path: /admin
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+  defaults:
+    route: 'backoffice_dashboard'
+    permanent: true
