@@ -24,8 +24,8 @@ class AdozioniReservationFormModel
      * @Assert\NotBlank (message="Seleziona un file da caricare.")
      * @Assert\File(
      *     maxSize = "5M",
-     *     mimeTypes = {"application/pdf", "application/x-pdf"},
-     *     mimeTypesMessage = "Il file selezionato non è un in formato PDF."
+     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg"},
+     *     mimeTypesMessage = "Il file selezionato non è un PDF o un JPEG."
      * )
      *
      */
