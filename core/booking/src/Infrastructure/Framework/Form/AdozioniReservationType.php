@@ -36,7 +36,7 @@ class AdozioniReservationType extends AbstractType
             ])
 
             ->add('adozioni', FileType::class, [
-                'label' => 'File delle adozioni (formato PDF)',
+                'label' => 'File delle adozioni (formato PDF o immagine JPEG)',
                 'required' => true,
             ])
 
