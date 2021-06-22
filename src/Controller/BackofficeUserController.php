@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/backoffice/user")
+ * @Route("/admin/user")
  */
 class BackofficeUserController extends AbstractController
 {
@@ -20,7 +20,7 @@ class BackofficeUserController extends AbstractController
      */
     public function index(BackofficeUserRepository $backofficeUserRepository): Response
     {
-        return $this->render('backoffice_user/index.html.twig', [
+        return $this->render('backoffice/user/index.html.twig', [
             'backoffice_users' => $backofficeUserRepository->findAll(),
         ]);
     }
@@ -83,7 +83,7 @@ class BackofficeUserController extends AbstractController
      */
     public function delete(Request $request, BackofficeUser $backofficeUser): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$backofficeUser->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $backofficeUser->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($backofficeUser);
             $entityManager->flush();
