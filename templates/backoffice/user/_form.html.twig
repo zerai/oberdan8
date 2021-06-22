@@ -1,4 +1,17 @@
+{% for flashError in app.flashes('verify_email_error') %}
+    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
+
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_row(form.email) }}
+
+    {{ form_row(form.plainPassword, {
+        label: 'Password'
+    }) }}
+
+    {{ form_row(form.active) }}
+
+    <button type="submit" class="btn">{{ button_label|default('Salva') }}</button>
 {{ form_end(form) }}
+

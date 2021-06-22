@@ -1,7 +1,7 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
 {% block title %}
-    User index
+    User
     {{ parent() }}
 {% endblock %}
 
@@ -12,7 +12,7 @@
 
 
 {% block content_toolbar %}
-    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}">Create new</a>
+    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}">Crea utente</a>
 {% endblock %}
 
 {% block content_body %}
@@ -22,9 +22,9 @@
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Roles</th>
-                <th>Active</th>
-                <th>actions</th>
+                <th>Ruoli</th>
+                <th>Attivo</th>
+                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
@@ -35,8 +35,8 @@
                 <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
                 <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('backoffice_user_show', {'id': backoffice_user.id}) }}">show</a>
-                    <a href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}">edit</a>
+                    <a href="{{ path('backoffice_user_show', {'id': backoffice_user.id}) }}">visualizza</a>
+                    <a href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}">modifica</a>
                 </td>
             </tr>
         {% else %}
