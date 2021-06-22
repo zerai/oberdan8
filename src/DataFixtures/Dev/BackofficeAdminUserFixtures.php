@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\DataFixtures;
+namespace App\DataFixtures\Dev;
 
 use App\Entity\BackofficeUser;
 use Doctrine\Bundle\FixturesBundle\Fixture;

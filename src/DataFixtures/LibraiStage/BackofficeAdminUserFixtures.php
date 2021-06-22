@@ -20,6 +20,7 @@ class BackofficeAdminUserFixtures extends Fixture implements FixtureGroupInterfa
     public function load(ObjectManager $manager): void
     {
         $admin = new BackofficeUser();
+        $admin->setActive(true);
         $admin->setEmail('admin@example.com');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword(

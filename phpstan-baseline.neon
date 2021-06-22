@@ -106,16 +106,6 @@ parameters:
 			path: src/Controller/BackofficeSecurityController.php
 
 		-
-			message: "#^Method App\\\\DataFixtures\\\\AppFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/DataFixtures/AppFixtures.php
-
-		-
-			message: "#^Method App\\\\DataFixtures\\\\BackofficeFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/DataFixtures/BackofficeFixtures.php
-
-		-
 			message: "#^Method App\\\\Entity\\\\BackofficeUser\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Entity/BackofficeUser.php

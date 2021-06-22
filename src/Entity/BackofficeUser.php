@@ -34,6 +34,12 @@ class BackofficeUser implements UserInterface
      */
     private $password;
 
+    /**
+     * @var bool The account status
+     * @ORM\Column(type="boolean")
+     */
+    private bool $active = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -113,5 +119,21 @@ class BackofficeUser implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
     }
 }
