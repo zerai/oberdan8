@@ -20,6 +20,7 @@ class BackofficeRegularUserFixtures extends Fixture implements FixtureGroupInter
     public function load(ObjectManager $manager): void
     {
         $user = new BackofficeUser();
+        $user->setActive(true);
         $user->setEmail('demo@example.com');
         $user->setPassword(
             $this->passwordEncoder->encodePassword($user, 'demo')
@@ -28,6 +29,7 @@ class BackofficeRegularUserFixtures extends Fixture implements FixtureGroupInter
         $manager->persist($user);
 
         $user = new BackofficeUser();
+        $user->setActive(true);
         $user->setEmail('demo2@example.com');
         $user->setPassword(
             $this->passwordEncoder->encodePassword($user, 'demo')

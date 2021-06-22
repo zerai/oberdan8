@@ -151,6 +151,35 @@
       <code>Response</code>
     </InvalidReturnType>
   </file>
+  <file src="src/Controller/BackofficeUserController.php">
+    <InvalidOperand occurrences="1">
+      <code>$backofficeUser-&gt;getId()</code>
+    </InvalidOperand>
+    <MixedArgument occurrences="3">
+      <code>$form-&gt;get('plainPassword')-&gt;getData()</code>
+      <code>$form-&gt;get('plainPassword')-&gt;getData()</code>
+      <code>$request-&gt;request-&gt;get('_token')</code>
+    </MixedArgument>
+    <PossiblyNullOperand occurrences="1">
+      <code>$backofficeUser-&gt;getId()</code>
+    </PossiblyNullOperand>
+  </file>
+  <file src="src/Controller/RegistrationController.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;getUser()</code>
+    </ArgumentTypeCoercion>
+    <InvalidNullableReturnType occurrences="1">
+      <code>Response</code>
+    </InvalidNullableReturnType>
+    <MixedArgument occurrences="1">
+      <code>$form-&gt;get('plainPassword')-&gt;getData()</code>
+    </MixedArgument>
+    <NullableReturnStatement occurrences="1"/>
+    <PossiblyNullArgument occurrences="2">
+      <code>$this-&gt;getUser()</code>
+      <code>$user-&gt;getEmail()</code>
+    </PossiblyNullArgument>
+  </file>
   <file src="src/Entity/BackofficeUser.php">
     <MissingConstructor occurrences="1">
       <code>$password</code>
@@ -198,6 +227,18 @@
       <code>$this-&gt;recipient</code>
     </MixedReturnStatement>
   </file>
+  <file src="src/Form/BackofficeUserType.php">
+    <MissingReturnType occurrences="2">
+      <code>buildForm</code>
+      <code>configureOptions</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Form/RegistrationFormType.php">
+    <MissingReturnType occurrences="2">
+      <code>buildForm</code>
+      <code>configureOptions</code>
+    </MissingReturnType>
+  </file>
   <file src="src/Repository/BackofficeUserRepository.php">
     <LessSpecificImplementedReturnType occurrences="1">
       <code>BackofficeUser[]</code>
@@ -207,6 +248,21 @@
     <LessSpecificImplementedReturnType occurrences="1">
       <code>MailOut[]</code>
     </LessSpecificImplementedReturnType>
+  </file>
+  <file src="src/Security/EmailVerifier.php">
+    <MixedArgument occurrences="4">
+      <code>$user-&gt;getEmail()</code>
+      <code>$user-&gt;getEmail()</code>
+      <code>$user-&gt;getId()</code>
+      <code>$user-&gt;getId()</code>
+    </MixedArgument>
+    <UndefinedInterfaceMethod occurrences="5">
+      <code>getEmail</code>
+      <code>getEmail</code>
+      <code>getId</code>
+      <code>getId</code>
+      <code>setIsVerified</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Security/LoginFormBackofficeAuthenticator.php">
     <MixedArgument occurrences="2">

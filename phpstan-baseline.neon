@@ -106,14 +106,19 @@ parameters:
 			path: src/Controller/BackofficeSecurityController.php
 
 		-
-			message: "#^Method App\\\\DataFixtures\\\\AppFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Controller\\\\RegistrationController\\:\\:register\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but returns Symfony\\\\Component\\\\HttpFoundation\\\\Response\\|null\\.$#"
 			count: 1
-			path: src/DataFixtures/AppFixtures.php
+			path: src/Controller/RegistrationController.php
 
 		-
-			message: "#^Method App\\\\DataFixtures\\\\BackofficeFixtures\\:\\:load\\(\\) has no return typehint specified\\.$#"
+			message: "#^Parameter \\#1 \\.\\.\\.\\$addresses of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:to\\(\\) expects string\\|Symfony\\\\Component\\\\Mime\\\\Address, string\\|null given\\.$#"
 			count: 1
-			path: src/DataFixtures/BackofficeFixtures.php
+			path: src/Controller/RegistrationController.php
+
+		-
+			message: "#^Parameter \\#2 \\$user of method App\\\\Security\\\\EmailVerifier\\:\\:handleEmailConfirmation\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, object\\|null given\\.$#"
+			count: 1
+			path: src/Controller/RegistrationController.php
 
 		-
 			message: "#^Method App\\\\Entity\\\\BackofficeUser\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
@@ -160,6 +165,26 @@ parameters:
 			path: src/Entity/MailOut.php
 
 		-
+			message: "#^Method App\\\\Form\\\\BackofficeUserType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeUserType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\BackofficeUserType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeUserType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\RegistrationFormType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/RegistrationFormType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\RegistrationFormType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/RegistrationFormType.php
+
+		-
 			message: "#^Class App\\\\Repository\\\\BackofficeUserRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: src/Repository/BackofficeUserRepository.php
@@ -168,6 +193,21 @@ parameters:
 			message: "#^Class App\\\\Repository\\\\MailOutRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: src/Repository/MailOutRepository.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getEmail\\(\\)\\.$#"
+			count: 2
+			path: src/Security/EmailVerifier.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getId\\(\\)\\.$#"
+			count: 2
+			path: src/Security/EmailVerifier.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:setIsVerified\\(\\)\\.$#"
+			count: 1
+			path: src/Security/EmailVerifier.php
 
 		-
 			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"

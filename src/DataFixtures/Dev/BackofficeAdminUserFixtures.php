@@ -1,45 +1,39 @@
 <?php declare(strict_types=1);
 
-namespace App\DataFixtures;
+namespace App\DataFixtures\Dev;
 
 use App\Entity\BackofficeUser;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class BackofficeFixtures extends Fixture
+class BackofficeAdminUserFixtures extends Fixture implements FixtureGroupInterface
 {
-    /** @var UserPasswordEncoderInterface */
-    private $passwordEncoder;
+    private UserPasswordEncoderInterface $passwordEncoder;
 
-    /**
-     * BackofficeFixtures constructor.
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     */
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
-        $user = new BackofficeUser();
-        $user->setEmail('demo@example.com');
-        $user->setPassword(
-            $this->passwordEncoder->encodePassword($user, 'demo')
-        );
-
-        $manager->persist($user);
-
         $admin = new BackofficeUser();
+        $admin->setActive(true);
         $admin->setEmail('admin@example.com');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword(
-            $this->passwordEncoder->encodePassword($user, 'demo')
+            $this->passwordEncoder->encodePassword($admin, 'demo')
         );
 
         $manager->persist($admin);
 
         $manager->flush();
+    }
+
+    public static function getGroups(): array
+    {
+        return ['dev', 'devSecurity'];
     }
 }

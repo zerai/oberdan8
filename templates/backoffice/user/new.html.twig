@@ -1,0 +1,19 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    User
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_toolbar %}
+    <a class="btn btn-info" href="{{ path('backoffice_user_index') }}">Lista</a>
+{% endblock %}
+
+{% block content_title %}
+    Crea utente
+{% endblock %}
+
+{% block content_body %}
+    {{ include('backoffice/user/_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,7 @@
+<form method="post"
+      action="{{ path('backoffice_user_delete', {'id': backoffice_user.id}) }}"
+      onsubmit="return confirm('Sicuro?? Vuoi eliminare questo account?');"
+>
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ backoffice_user.id) }}">
+    <button class="btn btn-info">Elimina</button>
+</form>
