@@ -45,7 +45,7 @@ class BackofficeUser implements UserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isVerified = false;
+    private bool $isVerified = false;
 
     public function getId(): ?int
     {
