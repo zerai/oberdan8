@@ -60,6 +60,11 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader()
+    .copyFiles([
+        { from: './assets/images/app', to: 'images/app/[path][name].[hash:8].[ext]'  },
+        { from: './assets/images/backoffice', to: 'images/backoffice/[path][name].[hash:8].[ext]' },
+        { from: './assets/images/mailer', to: 'images/mailer/[path][name].[ext]' },
+    ])
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
