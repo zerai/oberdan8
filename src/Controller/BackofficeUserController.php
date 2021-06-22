@@ -43,6 +43,7 @@ class BackofficeUserController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $backofficeUser->setIsVerified(true);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($backofficeUser);
             $entityManager->flush();
