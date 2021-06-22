@@ -12,7 +12,7 @@
 
 
 {% block content_toolbar %}
-    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}">Crea utente</a>
+    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}"><i class="fa fa-plus"></i> Crea utente</a>
 {% endblock %}
 
 {% block content_body %}
@@ -35,8 +35,8 @@
                 <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
                 <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('backoffice_user_show', {'id': backoffice_user.id}) }}">visualizza</a>
-                    <a href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}">modifica</a>
+                    <a href="{{ path('backoffice_user_show', {'id': backoffice_user.id}) }}"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>
                 </td>
             </tr>
         {% else %}
