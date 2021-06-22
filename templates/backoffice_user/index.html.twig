@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BackofficeUser index{% endblock %}
+
+{% block body %}
+    <h1>BackofficeUser index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for backoffice_user in backoffice_users %}
+            <tr>
+                <td>{{ backoffice_user.id }}</td>
+                <td>{{ backoffice_user.email }}</td>
+                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
+                <td>{{ backoffice_user.password }}</td>
+                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('backoffice_user_show', {'id': backoffice_user.id}) }}">show</a>
+                    <a href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('backoffice_user_new') }}">Create new</a>
+{% endblock %}
