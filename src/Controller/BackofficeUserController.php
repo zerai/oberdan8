@@ -53,7 +53,7 @@ class BackofficeUserController extends AbstractController
      */
     public function show(BackofficeUser $backofficeUser): Response
     {
-        return $this->render('backoffice_user/show.html.twig', [
+        return $this->render('backoffice/user/show.html.twig', [
             'backoffice_user' => $backofficeUser,
         ]);
     }

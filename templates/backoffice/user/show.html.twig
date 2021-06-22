@@ -1,9 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice/default-layout.html.twig' %}
 
-{% block title %}BackofficeUser{% endblock %}
+{% block title %}
+    User
+    {{ parent() }}
+{% endblock %}
 
-{% block body %}
-    <h1>BackofficeUser</h1>
+
+{% block content_toolbar %}
+    <a class="btn btn-info" href="{{ path('backoffice_user_index') }}">Lista</a>
+
+    <a class="btn btn-info" href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}">Modifica</a>
+
+    {{ include('backoffice/user/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block content_title %}
+    User
+{% endblock %}
+
+
+
+{% block content_body %}
+
 
     <table class="table">
         <tbody>
@@ -20,19 +38,9 @@
                 <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ backoffice_user.password }}</td>
-            </tr>
-            <tr>
                 <th>Active</th>
                 <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('backoffice_user_index') }}">back to list</a>
-
-    <a href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}">edit</a>
-
-    {{ include('backoffice_user/_delete_form.html.twig') }}
 {% endblock %}
