@@ -9,7 +9,7 @@
 {% block content_toolbar %}
     <a class="btn btn-info" href="{{ path('backoffice_user_index') }}">Lista</a>
 
-    <a class="btn btn-info" href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}">Modifica</a>
+    <a class="btn btn-info" href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pen"></i> Modifica</a>
 
     {{ include('backoffice/user/_delete_form.html.twig') }}
 {% endblock %}
