@@ -3,12 +3,13 @@ FROM php:7.4-fpm
 RUN apt-get update --fix-missing \
     && apt-get install -y git curl \
     && apt-get install -y libpng-dev \
-    && apt-get install -y zlib1g-dev  libzip-dev libicu-dev g++ \
+    && apt-get install -y zlib1g-dev  libzip-dev libicu-dev g++ libxslt-dev libgcrypt-dev\
     && docker-php-ext-install \
     zip \
     intl \
     mysqli \
-    pdo pdo_mysql
+    pdo pdo_mysql \
+    xsl
 
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
