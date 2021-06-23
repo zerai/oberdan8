@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
+
 
 /**
  * @ORM\Entity(repositoryClass=BookRepository::class)
@@ -11,9 +14,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Book
 {
     /**
+     * @var UuidInterface
+     *
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="uuid", unique=true)
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class=UuidGenerator::class)
      */
     private $id;
 
@@ -43,7 +49,7 @@ class Book
      */
     private $reservation;
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
