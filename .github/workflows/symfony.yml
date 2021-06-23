@@ -28,8 +28,7 @@ jobs:
           MYSQL_DATABASE: symfony_test
         ports:
           - 3306/tcp
-          #- 3306/3306
-        #options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     strategy:
       matrix:
@@ -135,7 +134,7 @@ jobs:
 
     - name: Run Migration
       run: |
-        php bin/console doctrine:schema:update --force -e test || echo "No migrations found or schema update failed"
+        #php bin/console doctrine:schema:update --force -e test || echo "No migrations found or schema update failed"
         php bin/console doctrine:migrations:migrate -e test --no-interaction|| echo "No migrations found or migration failed"
       env:
         DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
