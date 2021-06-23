@@ -22,7 +22,7 @@ jobs:
         image: mariadb:10.3.29
         env:
 #          MYSQL_ALLOW_EMPTY_PASSWORD: false
-          #MYSQL_ROOT_PASSWORD: symfony
+          MYSQL_ROOT_PASSWORD: test
           MYSQL_USER: test
           MYSQL_PASSWORD: test
           MYSQL_DATABASE: symfony_test
@@ -138,7 +138,7 @@ jobs:
         php bin/console doctrine:schema:update --force -e test || echo "No migrations found or schema update failed"
         php bin/console doctrine:migrations:migrate -e test --no-interaction|| echo "No migrations found or migration failed"
       env:
-        DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+        DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
 
     - name: Run test suite
