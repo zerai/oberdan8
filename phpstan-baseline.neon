@@ -26,12 +26,12 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Book.php
 
 		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$author has no typehint specified\\.$#"
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$author \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Book.php
 
 		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$isbn has no typehint specified\\.$#"
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$isbn \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Book.php
 
@@ -41,12 +41,7 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Book.php
 
 		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$title has no typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Book.php
-
-		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$volume has no typehint specified\\.$#"
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$volume \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Book.php
 
@@ -57,36 +52,6 @@ parameters:
 
 		-
 			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:getId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Reservation.php
-
-		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$LastName has no typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Reservation.php
-
-		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$city has no typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Reservation.php
-
-		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$classe has no typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Reservation.php
-
-		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$email has no typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Reservation.php
-
-		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$firstName has no typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Reservation.php
-
-		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$phone has no typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Reservation.php
 
@@ -161,17 +126,7 @@ parameters:
 			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\>\\:\\:save\\(\\)\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryTest.php
-
-		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryTest.php
-
-		-
-			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\)\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
@@ -181,8 +136,13 @@ parameters:
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
 		-
+			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryTest\\:\\:\\$repository has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryTest.php
+
+		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 4
+			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
 		-

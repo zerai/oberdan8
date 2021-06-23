@@ -3,7 +3,9 @@
 
 namespace Booking\Tests\Integration;
 
+use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /** @covers \Booking\Adapter\Persistance\ReservationRepository */
@@ -14,6 +16,10 @@ class ReservationRepositoryTest extends KernelTestCase
      */
     private $entityManager;
 
+    private string $repositoryClass = Reservation::class;
+
+    private $repository;
+
     protected function setUp(): void
     {
         $kernel = self::bootKernel();
@@ -21,9 +27,81 @@ class ReservationRepositoryTest extends KernelTestCase
         $this->entityManager = $kernel->getContainer()
             ->get('doctrine')
             ->getManager();
+
+        $this->repository = $this->entityManager
+            ->getRepository($this->repositoryClass);
     }
 
-    public function testCanSave(): void
+    /** @test */
+    public function it_can_save_and_retrieve_an_entity(): void
+    {
+        $originalEntity = $this->createEntity();
+        $this->repository->save($originalEntity);
+
+        $entityFromDatabase = $this->repository->withId($originalEntity->getId());
+
+        self::assertEquals($originalEntity, $entityFromDatabase);
+    }
+
+    /** @test */
+    public function it_can_save_child_entities(): void
+    {
+        $originalEntity = $this->createEntityWithChild();
+        $this->repository->save($originalEntity);
+
+        // Now load it from the database
+        $entityFromDatabase = $this->repository->find($originalEntity->getId());
+
+        // Compare it to the entity as we've set it up for this test
+        self::assertEquals($originalEntity, $entityFromDatabase);
+    }
+
+    /** @test */
+    public function it_can_save_child_entities_updates(): void
+    {
+        // Create a basic version of the entity and store it
+        $originalEntity = $this->createEntityWithChild();
+        $this->repository->save($originalEntity);
+
+        // Load and save again, now with an added child entity
+        $originalEntity = $this->repository->find($originalEntity->getId());
+        $firstChild = new Book();
+        $firstChild->setTitle('foo title');
+        $originalEntity->addBook($firstChild);
+        $this->repository->save($originalEntity);
+
+        // Now load it from the database
+        $entityFromDatabase = $this->repository->find($originalEntity->getId());
+
+        // Compare it to the entity as we've set it up for this test
+        self::assertEquals($originalEntity, $entityFromDatabase);
+    }
+
+    /** @test */
+    public function it_can_delete_an_entity(): void
+    {
+        self::markTestIncomplete();
+        // Create the entity
+        $originalEntity = $this->createEntityWithChild();
+        $this->repository->save($originalEntity);
+
+        // Create another entity
+        $anotherEntity = $this->createEntityWithChild();
+        $this->repository->save($anotherEntity);
+
+        // Now delete that other entity
+        $this->repository->delete($anotherEntity);
+
+        // Verify that the first entity still exists
+        $entityFromDatabase = $this->repository->find($originalEntity->getId());
+        self::assertEquals($originalEntity, $entityFromDatabase);
+
+        // Verify that the second entity we just removed, can't be found
+        $this->expectException(EntityNotFoundException::class);
+        $this->repository->find($anotherEntity->getId());
+    }
+
+    private function createEntity(): Reservation
     {
         $item = new Reservation();
         $item->setFirstName('foo')
@@ -37,103 +115,25 @@ class ReservationRepositoryTest extends KernelTestCase
             )
         ;
 
-        $this->entityManager
-            ->getRepository(Reservation::class)
-            ->save($item)
-            //->findOneBy(['name' => 'Priceless widget'])
-        ;
-
-        $itemFromDb = $this->entityManager
-            ->getRepository(Reservation::class)
-
-            ->findOneBy([
-                'email' => 'foo@example.com',
-            ])
-        ;
-
-        //$this->assertSame(14.50, $product->getPrice());
-        //dd($itemFromDb);
-        $this->assertNotNull($itemFromDb); //Equals($item, $itemFromDb);
+        return $item;
     }
 
-    public function it_can_save_and_retrieve_an_entity(): void
+    private function createEntityWithChild(): Reservation
     {
-        self::markTestIncomplete();
-        // Create a basic version of the entity and store it
-        //$originalEntity = ...;
-        $this->repository->save($originalEntity);
+        $reservation = $this->createEntity();
 
-        // Now load it from the database
-        $entityFromDatabase = $this->repository->getById($originalEntity->entityId());
+        $firstChild = new Book();
+        $firstChild->setTitle('foo title');
 
-        // Compare it to the entity you created for this test
-        self::assertEquals($originalEntity, $entityFromDatabase);
-    }
+        $reservation->addBook($firstChild);
 
-    public function it_can_save_child_entities(): void
-    {
-        self::markTestIncomplete();
-        // Create a basic version of the entity and store it
-        //    $originalEntity = ...;
-        // Add some child entity
-        //$originalEntity->addChildEntity(...);
-        $this->repository->save($originalEntity);
-
-        // Now load it from the database
-        $entityFromDatabase = $this->repository->getById($originalEntity->entityId());
-
-        // Compare it to the entity as we've set it up for this test
-        self::assertEquals($originalEntity, $entityFromDatabase);
-    }
-
-    public function it_can_save_child_entities2(): void
-    {
-        self::markTestIncomplete();
-        // Create a basic version of the entity and store it
-        //$originalEntity = ...;
-        $this->repository->save($originalEntity);
-        // Load and save again, now with an added child entity
-        $originalEntity = $this->repository->getById($originalEntity->entityId());
-        //$originalEntity->addChildEntity(...);
-        $this->repository->save($originalEntity);
-
-        // Now load it from the database
-        $entityFromDatabase = $this->repository->getById($originalEntity->entityId());
-
-        // Compare it to the entity as we've set it up for this test
-        self::assertEquals($originalEntity, $entityFromDatabase);
-    }
-
-    public function it_can_delete_an_entity(): void
-    {
-        self::markTestIncomplete();
-        // Create the entity
-        //$originalEntity = ...;
-        //$originalEntity->addChildEntity(...);
-        $this->repository->save($originalEntity);
-
-        // Create another entity
-        //$anotherEntity = ...;
-        //$anotherEntity->addChildEntity(...);
-        $this->repository->save($anotherEntity);
-
-        // Now delete that other entity
-        $this->repository->delete($anotherEntity);
-
-        // Verify that the first entity still exists
-        $entityFromDatabase = $this->repository->getById($originalEntity->entityId());
-        self::assertEquals($originalEntity, $entityFromDatabase);
-
-        // Verify that the second entity we just removed, can't be found
-        //$this->expectException(EntityNotFound::class);
-        $this->repository->getById($anotherEntity->entityId());
+        return $reservation;
     }
 
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        // doing this is recommended to avoid memory leaks
         $this->entityManager->close();
         $this->entityManager = null;
     }

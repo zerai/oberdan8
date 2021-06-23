@@ -38,4 +38,7 @@ layers:
 ruleset:
   Adapter:
     - ApplicationPort
+  ApplicationPort:
+    - Application
   Application:
+
