@@ -27,8 +27,9 @@ jobs:
           MYSQL_PASSWORD: test
           MYSQL_DATABASE: symfony_test
         ports:
-          - 3306/tcp
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          #- 3306/tcp
+          - 3306/3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
 
     strategy:
       matrix:
