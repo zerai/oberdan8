@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../../../../bin/.phpunit/phpunit.xsd"
+         beStrictAboutChangesToGlobalState="true"
+
+         forceCoversAnnotation="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutResourceUsageDuringSmallTests="true"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         bootstrap="../../../../vendor/autoload.php"
+         cacheResult="true"
+         cacheResultFile="../../../../.build/phpunit/core/booking-integration-test.cache"
+         colors="true"
+         columns="max"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         executionOrder="random"
+         stopOnError="false"
+         stopOnFailure="false"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         verbose="true"
+         backupGlobals="false">
+  <coverage cacheDirectory="../../../../.build/phpunit/core/booking-integration-test.cache"
+            processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">../../src</directory>
+    </include>
+  </coverage>
+
+  <php>
+    <ini name="error_reporting" value="-1"/>
+    <server name="APP_ENV" value="test" force="true"/>
+    <server name="SHELL_VERBOSITY" value="-1"/>
+    <server name="SYMFONY_PHPUNIT_REMOVE" value=""/>
+    <server name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
+
+    <server name="KERNEL_CLASS" value="\App\Kernel" />
+    <server name="DATABASE_URL" value="mysql://root:docker@mysql-test:3306/symfony?serverVersion=mariadb-10.3.29" />
+  </php>
+
+  <testsuites>
+    <testsuite name="Booking Integration Test Suite">
+      <directory>.</directory>
+    </testsuite>
+  </testsuites>
+
+  <listeners>
+    <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+  </listeners>
+</phpunit>
