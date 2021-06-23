@@ -6,6 +6,7 @@ use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @method Reservation|null find($id, $lockMode = null, $lockVersion = null)
@@ -58,5 +59,16 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
     {
         $this->_em->remove($reservation);
         $this->_em->flush();
+    }
+
+    public function withId(UuidInterface $reservationId): Reservation
+    {
+        if (null === $reservation = $this->findOneBy([
+            'id' => $reservationId,
+        ])) {
+            throw new \RuntimeException();
+        }
+
+        return $reservation;
     }
 }

@@ -38,7 +38,7 @@ class ReservationRepositoryTest extends KernelTestCase
         $originalEntity = $this->createEntity();
         $this->repository->save($originalEntity);
 
-        $entityFromDatabase = $this->repository->find($originalEntity->getId());
+        $entityFromDatabase = $this->repository->withId($originalEntity->getId());
 
         self::assertEquals($originalEntity, $entityFromDatabase);
     }
