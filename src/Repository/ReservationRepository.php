@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -17,6 +17,12 @@ class ReservationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Reservation::class);
+    }
+
+    public function save(Reservation $reservation): void
+    {
+        $this->_em->persist($reservation);
+        $this->_em->flush();
     }
 
     // /**
