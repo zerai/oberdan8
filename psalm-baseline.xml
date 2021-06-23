@@ -27,6 +27,45 @@
       <code>$personData['lastName']</code>
     </MixedArgument>
   </file>
+  <file src="core/booking/src/Adapter/Persistance/BookRepository.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>Book[]</code>
+    </LessSpecificImplementedReturnType>
+  </file>
+  <file src="core/booking/src/Adapter/Persistance/ReservationRepository.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>Reservation[]</code>
+    </LessSpecificImplementedReturnType>
+  </file>
+  <file src="core/booking/src/Application/Domain/Model/Book.php">
+    <MissingConstructor occurrences="1">
+      <code>$id</code>
+    </MissingConstructor>
+    <MissingPropertyType occurrences="5">
+      <code>$author</code>
+      <code>$isbn</code>
+      <code>$reservation</code>
+      <code>$title</code>
+      <code>$volume</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="1">
+      <code>getId</code>
+    </MissingReturnType>
+    <MixedInferredReturnType occurrences="5">
+      <code>?Reservation</code>
+      <code>?string</code>
+      <code>?string</code>
+      <code>?string</code>
+      <code>?string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="5">
+      <code>$this-&gt;author</code>
+      <code>$this-&gt;isbn</code>
+      <code>$this-&gt;reservation</code>
+      <code>$this-&gt;title</code>
+      <code>$this-&gt;volume</code>
+    </MixedReturnStatement>
+  </file>
   <file src="core/booking/src/Application/Domain/Model/Booking/RegularReservation.php">
     <MixedArgument occurrences="1">
       <code>$e</code>
@@ -46,6 +85,53 @@
       <code>$this-&gt;books</code>
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
+  </file>
+  <file src="core/booking/src/Application/Domain/Model/Reservation.php">
+    <MismatchingDocblockReturnType occurrences="1">
+      <code>Collection|Book[]</code>
+    </MismatchingDocblockReturnType>
+    <MissingPropertyType occurrences="8">
+      <code>$LastName</code>
+      <code>$books</code>
+      <code>$city</code>
+      <code>$classe</code>
+      <code>$email</code>
+      <code>$firstName</code>
+      <code>$phone</code>
+      <code>$registrationDate</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="1">
+      <code>getId</code>
+    </MissingReturnType>
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;books[]</code>
+    </MixedArrayAssignment>
+    <MixedInferredReturnType occurrences="8">
+      <code>?\DateTimeImmutable</code>
+      <code>?string</code>
+      <code>?string</code>
+      <code>?string</code>
+      <code>?string</code>
+      <code>?string</code>
+      <code>?string</code>
+      <code>Collection|Book[]</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="2">
+      <code>contains</code>
+      <code>removeElement</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="7">
+      <code>$this-&gt;LastName</code>
+      <code>$this-&gt;city</code>
+      <code>$this-&gt;classe</code>
+      <code>$this-&gt;email</code>
+      <code>$this-&gt;firstName</code>
+      <code>$this-&gt;phone</code>
+      <code>$this-&gt;registrationDate</code>
+    </MixedReturnStatement>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$id</code>
+    </PropertyNotSetInConstructor>
   </file>
   <file src="core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php">
     <MissingReturnType occurrences="1">

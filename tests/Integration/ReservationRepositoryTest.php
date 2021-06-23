@@ -3,7 +3,7 @@
 
 namespace App\Tests\Integration;
 
-use App\Entity\Reservation;
+use Booking\Application\Domain\Model\Reservation;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class ReservationRepositoryTest extends KernelTestCase

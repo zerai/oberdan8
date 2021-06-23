@@ -11,6 +11,91 @@ parameters:
 			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
 
 		-
+			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\BookRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/BookRepository.php
+
+		-
+			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:getId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Book.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$author has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Book.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$isbn has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Book.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$reservation has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Book.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$title has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Book.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$volume has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Book.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:getBooks\\(\\) return type with generic interface Doctrine\\\\Common\\\\Collections\\\\Collection does not specify its types\\: TKey, T$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:getId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$LastName has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$city has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$classe has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$email has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$firstName has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$phone has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$registrationDate has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
 			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php
@@ -365,7 +450,7 @@ parameters:
 			path: tests/Functional/RegularReservation/ReservationControllerTest.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Reservation\\>\\:\\:save\\(\\)\\.$#"
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\>\\:\\:save\\(\\)\\.$#"
 			count: 1
 			path: tests/Integration/ReservationRepositoryTest.php
 
