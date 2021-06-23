@@ -36,6 +36,7 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 core-tests: ## Runs unit tests For Core code with phpunit/phpunit
 	mkdir -p .build/phpunit/core
 	bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-text
+	bin/phpunit --configuration core/booking/tests/Integration/phpunit.xml
 
 
 .PHONY: core-coverage
