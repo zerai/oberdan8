@@ -150,6 +150,36 @@ parameters:
 			path: src/Entity/BackofficeUser.php
 
 		-
+			message: "#^Method App\\\\Entity\\\\Book\\:\\:getId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Book.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Book\\:\\:\\$author has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Book.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Book\\:\\:\\$isbn has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Book.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Book\\:\\:\\$reservation has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Book.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Book\\:\\:\\$title has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Book.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Book\\:\\:\\$volume has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Book.php
+
+		-
 			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$content has no typehint specified\\.$#"
 			count: 1
 			path: src/Entity/MailOut.php
@@ -163,6 +193,51 @@ parameters:
 			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$recipient has no typehint specified\\.$#"
 			count: 1
 			path: src/Entity/MailOut.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Reservation\\:\\:getBooks\\(\\) return type with generic interface Doctrine\\\\Common\\\\Collections\\\\Collection does not specify its types\\: TKey, T$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\Reservation\\:\\:getId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$LastName has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$city has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$classe has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$email has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$firstName has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$phone has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$registrationDate has no typehint specified\\.$#"
+			count: 1
+			path: src/Entity/Reservation.php
 
 		-
 			message: "#^Method App\\\\Form\\\\BackofficeUserType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
@@ -190,9 +265,19 @@ parameters:
 			path: src/Repository/BackofficeUserRepository.php
 
 		-
+			message: "#^Class App\\\\Repository\\\\BookRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: src/Repository/BookRepository.php
+
+		-
 			message: "#^Class App\\\\Repository\\\\MailOutRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: src/Repository/MailOutRepository.php
+
+		-
+			message: "#^Class App\\\\Repository\\\\ReservationRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: src/Repository/ReservationRepository.php
 
 		-
 			message: "#^Call to an undefined method Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getEmail\\(\\)\\.$#"
@@ -278,6 +363,31 @@ parameters:
 			message: "#^Cannot call method setValue\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
 			count: 12
 			path: tests/Functional/RegularReservation/ReservationControllerTest.php
+
+		-
+			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<App\\\\Entity\\\\Reservation\\>\\:\\:save\\(\\)\\.$#"
+			count: 1
+			path: tests/Integration/ReservationRepositoryTest.php
+
+		-
+			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: tests/Integration/ReservationRepositoryTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\)\\.$#"
+			count: 1
+			path: tests/Integration/ReservationRepositoryTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Integration\\\\ReservationRepositoryTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
+			count: 1
+			path: tests/Integration/ReservationRepositoryTest.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 4
+			path: tests/Integration/ReservationRepositoryTest.php
 
 		-
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
