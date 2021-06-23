@@ -26,22 +26,22 @@ class Book
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $isbn;
+    private string $isbn;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private string $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $author;
+    private string $author;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $volume;
+    private string $volume;
 
     /**
      * @ORM\ManyToOne(targetEntity=Reservation::class, inversedBy="books")

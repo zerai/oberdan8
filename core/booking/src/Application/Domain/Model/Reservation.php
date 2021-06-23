@@ -28,35 +28,40 @@ class Reservation
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $firstName;
+    private string $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $LastName;
+    private string $LastName;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $phone;
+    private string $phone;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $city;
+    private string $city;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $classe;
+    private string $classe;
 
     /**
-     * @ORM\OneToMany(targetEntity=Book::class, mappedBy="reservation", orphanRemoval=true)
+     * @ORM\OneToMany(
+     *     targetEntity=Book::class,
+     *     mappedBy="reservation",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     * )
      */
     private $books;
 

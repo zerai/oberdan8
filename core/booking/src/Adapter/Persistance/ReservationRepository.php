@@ -3,6 +3,7 @@
 namespace Booking\Adapter\Persistance;
 
 use Booking\Application\Domain\Model\Reservation;
+use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -12,7 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Reservation[]    findAll()
  * @method Reservation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ReservationRepository extends ServiceEntityRepository
+class ReservationRepository extends ServiceEntityRepository implements ReservationRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -53,4 +54,9 @@ class ReservationRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function delete(Reservation $reservation): void
+    {
+        $this->_em->remove($reservation);
+        $this->_em->flush();
+    }
 }
