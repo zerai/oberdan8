@@ -6,6 +6,13 @@ body {
   background-color: #f3f3f3;
   font-family: Helvetica, Arial, sans-serif;
 }
+header {
+  background-color: #264459;
+  //color: #264459;
+  //color: #ffffff;
+  /*padding: 30px 0 50px 0;*/
+  //font-weight: normal;
+}
 h1 {
   background-color: #264459;
   color: #ffffff;
@@ -25,6 +32,10 @@ hr {
 }
 .logo {
   width: 100%;
+}
+.logo-footer {
+  width: 80%;
+  background-color: #264459;
 }
 .text-center {
   text-align: center;
