@@ -30,13 +30,11 @@
 
         <row class="content">
             <columns>
-{#                <h1 class="text-center">Riepilogo Prenotazione</h1>#}
 
                 <spacer size="16"></spacer>
+
                 <h4>I tuoi dati</h4>
-{#                <p class="block">#}
-{#                    <strong>Dati Personali</strong>#}
-{#                </p>#}
+
                 <p>Cognome: {{ lastName }}</p>
 
                 <p>Nome: {{ firstName }}</p>
@@ -57,15 +55,6 @@
 
                 <p>{{ otherInfo }}</p>
 
-
-
-                {#            <p class="block text-center">#}
-                {#                <a href="{{ url('home_oberdan') }}" class="btn">effettua una prenotazione</a>#}
-                {#            </p>#}
-
-{#                <p class="block">#}
-{#                    <strong>Dettaglio testi richiesti</strong>#}
-{#                </p>#}
                 <h4>Dettaglio testi richiesti</h4>
 
                 <table>
@@ -78,15 +67,6 @@
                             <td>{{ book.title }}</td><td>{{ book.getIsbn }}</td><td>{{ book.author }}</td><td>{{ book.volume }}</td>
                         </tr>
                     {% endfor %}
-
-
-                    {#                    <tr><td>Ship's Cannon</td><td>2</td><td>$100</td></tr>#}
-{#                    <tr><td>Ship's Cannon</td><td>2</td><td>$100</td></tr>#}
-
-                    {#                    <tr>#}
-{#                        <td colspan="2"><b>Subtotal:</b></td>#}
-{#                        <td>$600</td>#}
-{#                    </tr>#}
                 </table>
 
                 <spacer size="16"></spacer>
@@ -102,14 +82,13 @@
 
         <row class="footer">
             <columns large="3">
-{#                <img src="http://placehold.it/170x30" alt="">#}
                 <img class="thumbnail logo-footer" src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan 8 logo">
             </columns>
             <columns large="3">
                 <p><strong> I nostri contatti </strong></p>
                 <p>
                     Email: info@oberdan8.it <br>
-                    Cell.:  349 35 50 279 (info - mercato lungotever)<br/>
+                    Cell.:  349 35 50 279 (info - mercato lungotevere)<br/>
                     Cell: 324 62 99 631 (info - prenotazioni on-line)
                 </p>
             </columns>
