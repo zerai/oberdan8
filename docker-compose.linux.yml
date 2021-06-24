@@ -20,7 +20,6 @@ services:
       - mysql
 
   mysql:
-    #image: mysql:5.7
     image: mariadb:10.3.29
     #command: --default-authentication-plugin=mysql_native_password
     environment:
@@ -30,7 +29,16 @@ services:
       MYSQL_PASSWORD: 'oberdan'
     #volumes:
       #- ./build/mysql:/var/lib/mysql
-#
+
+  mysql-test:
+    image: mariadb:10.3.29
+    #command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 'docker'
+      MYSQL_DATABASE: 'symfony_test'
+      MYSQL_USER: 'symfony'
+      MYSQL_PASSWORD: 'docker'
+
 #  phpmyadmin:
 #    image: 'phpmyadmin/phpmyadmin'
 #    ports:
