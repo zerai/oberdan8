@@ -63,9 +63,11 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
 
     public function notifyNewReservationToBackoffice(array $personData, array $bookData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
     {
+        $replyTo = new Address($personData['contact_email'], sprintf('%s %s', $personData['lastName'], $personData['firstName']));
         $email = (new TemplatedEmail())
             ->from(new Address($this->sender->address(), $this->sender->name()))
             ->to(new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name()))
+            ->replyTo($replyTo)
             // TODO AGGIUNGERE RIF.ID
             // TODO AGGIUNGER DATA DELLA PRENOTAZIONE
             ->subject(
@@ -116,10 +118,11 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
 
     public function notifyNewAdozioniReservationToBackoffice(array $personData, array $filesData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
     {
-        // TODO: Implement notifyNewAdozioniReservationToBackoffice() method.
+        $replyTo = new Address($personData['contact_email'], sprintf('%s %s', $personData['lastName'], $personData['firstName']));
         $email = (new TemplatedEmail())
             ->from(new Address($this->sender->address(), $this->sender->name()))
             ->to(new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name()))
+            ->replyTo($replyTo)
             // TODO AGGIUNGERE RIF.ID
             // TODO AGGIUNGER DATA DELLA PRENOTAZIONE
             ->subject(

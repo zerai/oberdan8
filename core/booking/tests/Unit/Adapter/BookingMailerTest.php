@@ -99,6 +99,7 @@ class BookingMailerTest extends TestCase
 
         $recipientAddress = $sendedEmail->getTo();
         self::assertSame(self::BACKOFFICE_RETRIEVER_MAIL, $recipientAddress[0]->getAddress());
+        self::assertSame(self::CONTACT_EMAIL, $sendedEmail->getReplyTo()[0]->getAddress());
     }
 
     private function getPersonData(): array
