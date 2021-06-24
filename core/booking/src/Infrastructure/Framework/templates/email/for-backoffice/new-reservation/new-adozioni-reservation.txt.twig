@@ -1,18 +1,23 @@
-Rif.ID: 256398 - Data:
+Oberdan 8 -
 
 Dati del richiedente
 
-Cognome: {{ lastName }} | Nome: {{ firstName }} | Email: {{ contact_email }} | Telefono: {{ phone }} | Città: {{ city }} | classe: {{ classe }}
+Nominativo: {{ lastName }} {{ firstName }}
+
+Contatti:  email: {{ contact_email }} - Tel: {{ phone }}
+
+Città: {{ city }}
+
+Classe: {{ classe }}
 
 Altre informazioni:
 
 {{ otherInfo }}
 
-Lista file:
+Dettaglio file allegati:
 ------------------------------------------------------------------------------------------------------------------------
 {% for file in fileList %}
 
-{#    {{ book.getIsbn }} | {{ book.title }} | {{ book.author }} | {{ book.volume }}#}
     {{ file }}
 
 ------------------------------------------------------------------------------------------------------------------------
