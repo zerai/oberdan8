@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Service\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
+
+		-
 			message: "#^If condition is always true\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
@@ -9,6 +14,11 @@ parameters:
 			message: "#^Only booleans are allowed in an if condition, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$path of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:attachFromPath\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
 
 		-
 			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\BookRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
@@ -144,6 +154,11 @@ parameters:
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/BookingMailerAdozioniReservationConfirmationTest.php
 
 		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
