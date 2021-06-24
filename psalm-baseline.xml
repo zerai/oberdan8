@@ -437,4 +437,16 @@
       <code>$credentials['password']</code>
     </MixedArrayAccess>
   </file>
+  <file src="src/Twig/AppExtension.php">
+    <MixedAssignment occurrences="2">
+      <code>$file</code>
+      <code>$files</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getCssFiles</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>$file</code>
+    </MixedOperand>
+  </file>
 </files>
