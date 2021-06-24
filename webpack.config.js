@@ -22,7 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('backoffice', './assets/backoffice.js')
-    //.addStyleEntry('email', './assets/styles/mailer/email.scss')
+    .addStyleEntry('email', './assets/styles/mailer/email.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

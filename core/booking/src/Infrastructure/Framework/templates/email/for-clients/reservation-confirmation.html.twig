@@ -1,7 +1,11 @@
 {#{% apply inky_to_html|inline_css(source('@mailer-style/foundation-emails.css'),source('@mailer-style/email.scss') ) %}#}
-{% apply inky_to_html|inline_css(source('@mailer-style/email.scss') ) %}
-{#{% apply inky_to_html|inline_css(encore_entry_css_source('email')) %}#}
+{#{% apply inky_to_html|inline_css(source('@mailer-style/email.scss') ) %}#}
+{% apply inky_to_html|inline_css(encore_entry_css_source('email')) %}
+{#{% apply inky_to_html|inline_css(encore_entry_css_files('email')) %}#}
     <div class="container">
+
+        <!-- mail header -->
+
         <row class="header">
             <columns>
                 <a href="{{ url('home_oberdan') }}">
@@ -13,6 +17,10 @@
             </columns>
 
         </row>
+
+
+        <!-- mail content body -->
+
         <row class="content">
             <columns>
                 <h1 class="text-center">Riepilogo Prenotazione</h1>
@@ -52,6 +60,9 @@
                 </p>
             </columns>
         </row>
+
+
+        <!-- mail footer -->
 
         <row class="footer">
             <columns>
