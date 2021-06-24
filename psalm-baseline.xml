@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
   <file src="core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php">
+    <MixedAssignment occurrences="1">
+      <code>$newFilename</code>
+    </MixedAssignment>
+    <PossiblyUndefinedVariable occurrences="1">
+      <code>$newFilename</code>
+    </PossiblyUndefinedVariable>
     <RedundantConditionGivenDocblockType occurrences="1">
       <code>$adozioniFile</code>
     </RedundantConditionGivenDocblockType>
-    <UnusedVariable occurrences="1">
-      <code>$newFilename</code>
-    </UnusedVariable>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>uploadAdozioniFileAndReturnFile</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Adapter/HttpDriver/ReservationController.php">
     <MissingPropertyType occurrences="1">
@@ -183,7 +189,8 @@
     </MissingReturnType>
   </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Service/AdozioniUploader.php">
-    <PossiblyNullOperand occurrences="1">
+    <PossiblyNullOperand occurrences="2">
+      <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
     </PossiblyNullOperand>
   </file>

@@ -168,7 +168,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
         self::assertEmailTextBodyContains($email, self::FIRST_NAME);
         self::assertEmailTextBodyContains($email, self::EMAIL);
         self::assertEmailTextBodyContains($email, self::PHONE);
-        self::assertEmailAttachmentCount($email, 0);
+        self::assertEmailAttachmentCount($email, 1);
     }
 
     private function prepareFileFixture(string $fileName): void

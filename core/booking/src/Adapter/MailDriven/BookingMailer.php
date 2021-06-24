@@ -10,6 +10,7 @@ use Booking\Application\NotifyReservationConfirmationToClient;
 use Booking\Infrastructure\BackofficeEmailRetriever;
 use Booking\Infrastructure\BookingEmailSender;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
@@ -136,6 +137,13 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'fileList' => $filesData,
             ])
         ;
+
+        //file stuff
+        /** @var File $file */
+        foreach ($filesData as $file) {
+            //dd($file);
+            $email->attachFromPath($file->getRealPath());
+        }
 
         $this->mailer->send($email);
 

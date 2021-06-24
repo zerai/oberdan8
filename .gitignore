@@ -5,6 +5,7 @@
 /.deptrac.cache
 /auth.json
 /public/adozioni/
+/public/uploads
 
 ###> symfony/framework-bundle ###
 /.env.local

@@ -29,7 +29,10 @@ class AdozioniReservationController extends AbstractController
             // and is not empty
             if ($adozioniFile) {
                 try {
-                    $newFilename = $uploader->uploadAdozioniFile($adozioniFile);
+                    // original call
+                    //$newFilename = $uploader->uploadAdozioniFile($adozioniFile);
+
+                    $newFilename = $uploader->uploadAdozioniFileAndReturnFile($adozioniFile);
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                     throw $e;
@@ -56,7 +59,8 @@ class AdozioniReservationController extends AbstractController
             // send email to backoffice
             $bookingMailer->notifyNewAdozioniReservationToBackoffice(
                 $this->mapPersonDataToReservationConfirmationEmail($formData),
-                [$adozioniFile->getClientOriginalName()],
+                //[$adozioniFile->getClientOriginalName()],
+                [$newFilename],
                 [],
                 $formData->otherInfo
             );

@@ -10,7 +10,7 @@ parameters:
     booking.mailer.backoffice.retriever.address: 'info@oberdan8.it'
     booking.mailer.backoffice.retriever.name: 'Gestione prenotazioni'
 
-    booking.adozioni_directory: '%kernel.project_dir%/public/adozioni'
+    booking.adozioni_directory: '%kernel.project_dir%/public/uploads/reservation'
 
 services:
     # default configuration for services in *this* file
