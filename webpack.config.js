@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('backoffice', './assets/backoffice.js')
+    .addEntry('reservation_page', './assets/js/app/reservation_page.js')
     .addStyleEntry('email', './assets/styles/mailer/email.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
