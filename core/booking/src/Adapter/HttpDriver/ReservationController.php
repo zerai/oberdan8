@@ -57,7 +57,8 @@ class ReservationController extends AbstractController
             try {
                 $repository->save($reservation);
             } catch (\Throwable $exception) {
-                throw new \RuntimeException('Errore nel salvataggio dei dati');
+                throw $exception;
+                //throw new \RuntimeException('Errore nel salvataggio dei dati');
             }
 
             // send email to client

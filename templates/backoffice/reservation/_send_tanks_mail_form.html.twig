@@ -1,0 +1,7 @@
+<form method="post"
+      action="{{ path('backoffice_reservation_send_tanks_mail', {'id': reservation.id}) }}"
+      onsubmit="return confirm('Vuoi inviare una mail di ringraziamento al cliente?');"
+>
+    <input type="hidden" name="_token" value="{{ csrf_token('send_tanks_mail' ~ reservation.id.toString) }}">
+    <button class="btn btn-info">Invia mail di ringraziamento</button>
+</form>

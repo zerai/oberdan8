@@ -1,0 +1,54 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Prenotazioni
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Prenotazioni
+{% endblock %}
+
+
+{% block content_toolbar %}
+{#    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}"><i class="fa fa-plus"></i> Crea utente</a>#}
+{% endblock %}
+
+{% block content_body %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Data</th>
+                <th>Stato</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in backoffice_reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.lastName }}</td>
+                <td>{{ reservation.firstName }}</td>
+                <td>{{ reservation.registrationDate|date("m/d/Y") }}</td>
+{#                <td>{{ reservation.email }}</td>#}
+{#                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>#}
+{#                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>#}
+                <td>N.D</td>
+                <td>
+                    <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
+{#                    <a href="{{ path('backoffice_reservation_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>#}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Nessun risultato trovato.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
