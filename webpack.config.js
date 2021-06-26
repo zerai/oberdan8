@@ -9,10 +9,21 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
+
     // public path used by the web server to access the output path
     .setPublicPath('/build')
+
+
+    // this is your *true* public path
+    //
+    //  DEPLOY SU OBERDAN (PRODUCTION) - decommentare le 2 istruzioni seguenti
+    //
+    // only for production assets
+     //.setPublicPath('/current/public/build')
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
+
+
 
     /*
      * ENTRY CONFIG
