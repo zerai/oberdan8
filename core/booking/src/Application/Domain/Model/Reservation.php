@@ -73,7 +73,7 @@ class Reservation
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $otherInformation;
+    private string $otherInformation = '';
 
     public function __construct()
     {
@@ -204,7 +204,7 @@ class Reservation
         return $this->otherInformation;
     }
 
-    public function setOtherInformation(?string $otherInformation): self
+    public function setOtherInformation(string $otherInformation): self
     {
         $this->otherInformation = $otherInformation;
 
