@@ -15,7 +15,8 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Adapter/HttpDriver/ReservationController.php">
-    <MissingPropertyType occurrences="1">
+    <MissingPropertyType occurrences="2">
+      <code>$formData-&gt;books</code>
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
     <MixedInferredReturnType occurrences="1">

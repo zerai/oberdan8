@@ -70,6 +70,11 @@ class Reservation
      */
     private $registrationDate;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private string $otherInformation = '';
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -190,6 +195,18 @@ class Reservation
     public function setRegistrationDate(\DateTimeImmutable $registrationDate): self
     {
         $this->registrationDate = $registrationDate;
+
+        return $this;
+    }
+
+    public function getOtherInformation(): ?string
+    {
+        return $this->otherInformation;
+    }
+
+    public function setOtherInformation(string $otherInformation): self
+    {
+        $this->otherInformation = $otherInformation;
 
         return $this;
     }

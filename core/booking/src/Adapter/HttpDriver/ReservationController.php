@@ -3,16 +3,19 @@
 namespace Booking\Adapter\HttpDriver;
 
 use Booking\Adapter\MailDriven\BookingMailer;
+use Booking\Application\Domain\Model\Book;
+use Booking\Application\Domain\Model\Reservation;
+use Booking\Application\Domain\Model\ReservationRepositoryInterface;
+use Booking\Infrastructure\Framework\Form\Dto\BookDto;
 use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
 use Booking\Infrastructure\Framework\Form\ReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 
 class ReservationController extends AbstractController
 {
-    public function __invoke(Request $request, MailerInterface $mailer, BookingMailer $bookingMailer): Response
+    public function __invoke(Request $request, BookingMailer $bookingMailer, ReservationRepositoryInterface $repository): Response
     {
         // original call
         $form = $this->createForm(ReservationType::class);
@@ -27,6 +30,35 @@ class ReservationController extends AbstractController
             // 1 PERSIST RESERVATION
             // 2 SEND EMAILS TO CLIENT
             // 3 SEND EMAILS TO BACKOFFICE
+
+            $reservation = new Reservation();
+            $reservation->setFirstName($formData->person->getFirstName())
+                ->setLastName($formData->person->getLastName())
+                ->setEmail($formData->person->getEmail())
+                ->setPhone($formData->person->getPhone())
+                ->setCity($formData->person->getCity())
+                ->setClasse($formData->classe)
+                ->setOtherInformation($formData->otherInfo)
+                ->setRegistrationDate(
+                    new \DateTimeImmutable("now")
+                );
+            // add book to reservation
+            /** @var BookDto $formBook */
+            foreach ($formData->books as $formBook) {
+                $book = new Book();
+                $book->setIsbn($formBook->getIsbn());
+                $book->setTitle($formBook->getTitle());
+                $book->setAuthor($formBook->getAuthor());
+                $book->setVolume($formBook->getVolume());
+
+                $reservation->addBook($book);
+            }
+
+            try {
+                $repository->save($reservation);
+            } catch (\Throwable $exception) {
+                throw new \RuntimeException('Errore nel salvataggio dei dati');
+            }
 
             // send email to client
             $bookingMailer->notifyReservationConfirmationEmailToClient(
