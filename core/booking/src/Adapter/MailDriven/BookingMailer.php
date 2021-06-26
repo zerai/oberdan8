@@ -63,7 +63,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
 
     public function notifyNewReservationToBackoffice(array $personData, array $bookData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
     {
-        $replyTo = new Address($personData['contact_email'], sprintf('%s %s', $personData['lastName'], $personData['firstName']));
+        $replyTo = new Address((string) $personData['contact_email'], sprintf('%s %s', $personData['lastName'], $personData['firstName']));
         $email = (new TemplatedEmail())
             ->from(new Address($this->sender->address(), $this->sender->name()))
             ->to(new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name()))
@@ -118,7 +118,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
 
     public function notifyNewAdozioniReservationToBackoffice(array $personData, array $filesData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
     {
-        $replyTo = new Address($personData['contact_email'], sprintf('%s %s', $personData['lastName'], $personData['firstName']));
+        $replyTo = new Address((string) $personData['contact_email'], sprintf('%s %s', (string) $personData['lastName'], (string) $personData['firstName']));
         $email = (new TemplatedEmail())
             ->from(new Address($this->sender->address(), $this->sender->name()))
             ->to(new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name()))
@@ -126,7 +126,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
             // TODO AGGIUNGERE RIF.ID
             // TODO AGGIUNGER DATA DELLA PRENOTAZIONE
             ->subject(
-                sprintf('Nuova Prenotazione da %s %s', $personData['lastName'], $personData['firstName'])
+                sprintf('Nuova Prenotazione da %s %s', (string) $personData['lastName'], (string) $personData['firstName'])
             )
             ->textTemplate('@booking/email/for-backoffice/new-reservation/new-adozioni-reservation.txt.twig')
             ->context([
