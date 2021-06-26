@@ -8,11 +8,10 @@ use Booking\Infrastructure\Framework\Form\ReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 
 class ReservationController extends AbstractController
 {
-    public function __invoke(Request $request, MailerInterface $mailer, BookingMailer $bookingMailer): Response
+    public function __invoke(Request $request, BookingMailer $bookingMailer): Response
     {
         // original call
         $form = $this->createForm(ReservationType::class);
