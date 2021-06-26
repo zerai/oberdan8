@@ -103,7 +103,7 @@ jobs:
 
     - name: Build assets
       run: |
-        bin/console assets:install public -vvv
+        bin/console assets:install public -vvv -e test
         yarn build
 
     - name: Fix .htaccess
