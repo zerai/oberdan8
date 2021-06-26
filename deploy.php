@@ -13,7 +13,6 @@ set('default_stage', 'stage-oberdan');
 set('application', 'stage.oberdan8.it');
 
 // Project repository
-//set('repository', 'https://github.com/zerai/oberdan8.git');
 set('repository', 'git@github.com:zerai/oberdan8.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
@@ -21,10 +20,17 @@ set('git_tty', true);
 
 // Shared files/dirs between deploys 
 add('shared_files', []);
-add('shared_dirs', []);
+add('shared_dirs', [
+    'var/log',
+    'var/sessions',
+    'public/uploads'
+]);
 
 // Writable dirs by web server 
-add('writable_dirs', []);
+add('writable_dirs', [
+    'var',
+    'public/uploads'
+]);
 
 // Application path
 set('application_path_stage', 'stage.oberdan8.it');
@@ -33,6 +39,8 @@ set('application_path_prod', 'prenota.oberdan8.it');
 
 
 set('application_path_stage_librai', 'stage.8viadeilibrai.it');
+
+set('application_path_prod_librai', 'public_html');
 
 
 
@@ -62,31 +70,54 @@ host('stage-librai')
 
 ;
 
-
-host('stage-oberdan')
+host('production')
     // host settings
-    ->hostname('oberdan8.it')
-    ->stage('test')
-    ->set('deploy_path', '~/{{application_path_stage}}')
-    ->set('http_user', 'oberdani')
+    ->hostname('8viadeilibrai.it')
+    ->stage('production')
+    ->set('deploy_path','~/{{application_path_prod_librai}}')
+    ->set('http_user', 'iglkzrno')
     ->set('writable_use_sudo', false)
     ->set('writable_mode', 'chmod')
 
     // ssh settings
-    ->user('oberdani')
+    ->user('iglkzrno')
     ->port(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_zerai_dev_machine')
+    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai')
     ->set('forwardAgent', true)
     ->set('git_tty', false)
     ->set('ssh_multiplexing', false)
-    //->addSshOption('UserKnownHostsFile', '/dev/null')
-    //->addSshOption('StrictHostKeyChecking', 'no')
 
     // git & composer settings
     ->set('branch', 'main')
-    ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader')
-    ->set('keep_releases', 5)
-    ;
+    ->set('composer_options', '{{composer_action}} --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
+
+;
+
+
+//host('stage-oberdan')
+//    // host settings
+//    ->hostname('oberdan8.it')
+//    ->stage('test')
+//    ->set('deploy_path', '~/{{application_path_stage}}')
+//    ->set('http_user', 'oberdani')
+//    ->set('writable_use_sudo', false)
+//    ->set('writable_mode', 'chmod')
+//
+//    // ssh settings
+//    ->user('oberdani')
+//    ->port(3508)
+//    ->set('identityFile', '~/.ssh/id_rsa_zerai_dev_machine')
+//    ->set('forwardAgent', true)
+//    ->set('git_tty', false)
+//    ->set('ssh_multiplexing', false)
+//    //->addSshOption('UserKnownHostsFile', '/dev/null')
+//    //->addSshOption('StrictHostKeyChecking', 'no')
+//
+//    // git & composer settings
+//    ->set('branch', 'main')
+//    ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader')
+//    ->set('keep_releases', 5)
+//    ;
 
 
 
