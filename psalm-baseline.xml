@@ -230,6 +230,23 @@
       <code>$passwordArg</code>
     </PossiblyInvalidArgument>
   </file>
+  <file src="src/Controller/BackofficeReservationController.php">
+    <MixedArgument occurrences="1">
+      <code>$request-&gt;request-&gt;get('_token')</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="1">
+      <code>toString</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>$reservation-&gt;getId()-&gt;toString()</code>
+    </MixedOperand>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>findAll</code>
+    </UndefinedInterfaceMethod>
+    <UnusedVariable occurrences="1">
+      <code>$entityManager</code>
+    </UnusedVariable>
+  </file>
   <file src="src/Controller/BackofficeSecurityController.php">
     <InvalidReturnType occurrences="1">
       <code>Response</code>

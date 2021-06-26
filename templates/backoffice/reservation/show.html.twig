@@ -1,0 +1,101 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Prenotazioni
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_toolbar %}
+    <a class="btn btn-info" href="{{ path('backoffice_reservation_index') }}">Lista</a>
+
+{#    <a class="btn btn-info" href="{{ path('backoffice_user_edit', {'id': reservation.id}) }}"><i class="fa fa-pen"></i> Modifica</a>#}
+
+    {{ include('backoffice/reservation/_send_tanks_mail_form.html.twig') }}
+{#    {{ include('backoffice/user/_delete_form.html.twig') }}#}
+{% endblock %}
+
+{% block content_title %}
+    Prenotazione:  Id #{{ reservation.id }}
+{% endblock %}
+
+
+
+{% block content_body %}
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th>Cognome</th>
+                <td>{{ reservation.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ reservation.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ reservation.email }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ reservation.phone }}</td>
+            </tr>
+            <tr>
+                <th>Città</th>
+                <td>{{ reservation.city }}</td>
+            </tr>
+            <tr>
+                <th>Classe</th>
+                <td>{{ reservation.classe }}</td>
+            </tr>
+
+            <tr>
+{#                <th>Roles</th>#}
+{#                <td>{{ reservation.roles ? reservation.roles|json_encode : '' }}</td>#}
+            </tr>
+            <tr>
+{#                <th>Active</th>#}
+{#                <td>{{ reservation.active ? 'Yes' : 'No' }}</td>#}
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h4>Testi richiesti:</h4>
+
+    {% if reservation.books|length > 0  %}
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Titolo</th>
+                <th>Isbn</th>
+                <th>Autore</th>
+                <th>Volume</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in reservation.books  %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.volume }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    {% else %}
+        <p class="text-danger">il Richiedente ha caricato un file, controllare nella mail.</p>
+    {% endif %}
+{% endblock %}
