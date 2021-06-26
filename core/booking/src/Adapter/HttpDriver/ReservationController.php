@@ -38,6 +38,7 @@ class ReservationController extends AbstractController
                 ->setPhone($formData->person->getPhone())
                 ->setCity($formData->person->getCity())
                 ->setClasse($formData->classe)
+                ->setOtherInformation($formData->otherInfo)
                 ->setRegistrationDate(
                     new \DateTimeImmutable("now")
                 );
