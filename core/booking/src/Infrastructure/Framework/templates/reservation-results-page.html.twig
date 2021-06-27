@@ -1,9 +1,30 @@
 {% extends "@booking/booking-layout.html.twig" %}
 
 {% block content_body %}
+
     <div class="container">
-        <p>
-            testo di cortesia.
-        </p>
+        <div class="row">
+            <div class="col">
+                <div class="card" >
+{#                    <img src="..." class="card-img-top" alt="...">#}
+                    <div class="card-body">
+{#                        <h5 class="card-title">Card title</h5>#}
+                        <p class="card-text">
+                            Entro poche ore sarete ricontattati per confermare la disponibilità dei testi, che saranno messi da parte, e concordare modalità e data di ritiro
+                        </p>
+
+                        <h5 class="card-title">Ricorda infine che il banco 8 garantisce tutti i suoi libri fino al 30 Ottobre. </h5>
+
+                        <p class="card-text">
+                            In caso di errore sulla lista o cambio scuola è possibile ottenere la sostituzione con il libro di testo corrispondente oppure il rimborso nel caso di mancata disponibilità del libro sostitutivo.
+                        </p>
+
+
+                        <a href="https://www.oberdan8.it" class="btn btn-primary">Torna al sito</a>                         <a href="{{ path('home_oberdan') }}" class="btn btn-primary">Invia un'altra prenotazione</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
