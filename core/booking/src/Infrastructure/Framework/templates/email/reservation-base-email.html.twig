@@ -1,0 +1,32 @@
+{% apply inky_to_html|inline_css(encore_entry_css_source('email-base')) %}
+
+
+    {% block email_header %}
+        {% include '@booking/email/_header-base-email.html.twig' %}
+    {% endblock %}
+
+    <spacer size="16"></spacer>
+
+    <container>
+
+        <spacer size="16"></spacer>
+
+        <!-- mail title (sub header) -->
+
+        <row>
+            <columns>
+                <h1 class="text-center">Riepilogo Prenotazione</h1>
+            </columns>
+
+        </row>
+
+    {% block email_content %}
+
+    {% endblock %}
+
+    {% block email_footer %}
+        {% include '@booking/email/_footer-base-email.html.twig' %}
+    {% endblock %}
+
+    </container>
+{% endapply %}

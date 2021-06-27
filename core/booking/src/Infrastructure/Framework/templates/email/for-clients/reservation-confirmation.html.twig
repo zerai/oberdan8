@@ -1,30 +1,27 @@
+{% extends '@booking/email/reservation-base-email.html.twig' %}
 {#{% apply inky_to_html|inline_css(source('@mailer-style/foundation-emails.css'),source('@mailer-style/email.scss') ) %}#}
 {#{% apply inky_to_html|inline_css(source('@mailer-style/email.scss') ) %}#}
-{% apply inky_to_html|inline_css(encore_entry_css_source('email')) %}
+
 {#{% apply inky_to_html|inline_css(encore_entry_css_files('email')) %}#}
-    <div class="container">
+
+
+{% block email_content %}
+{#    {% apply inky_to_html|inline_css(encore_entry_css_source('email-base')) %}#}
+
 
         <!-- mail header -->
 
-        <row class="header">
-            <columns>
-                <center>
+{#        <row class="header">#}
+{#            <columns>#}
+{#                <center>#}
 {#                <a href="{{ url('home_oberdan') }}">#}
-                    <img src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan 8 logo">
+{#                    <img src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan 8 logo">#}
 {#                </a>#}
-                </center>
-            </columns>
+{#                </center>#}
+{#            </columns>#}
 
-        </row>
+{#        </row>#}
 
-        <!-- mail title (sub header) -->
-
-        <row class="subject-title">
-            <columns>
-                <h1 class="text-center">Riepilogo Prenotazione</h1>
-            </columns>
-
-        </row>
 
         <!-- mail content body -->
 
@@ -78,27 +75,28 @@
         </row>
 
 
-        <!-- mail footer -->
+{#        <!-- mail footer -->#}
 
-        <row class="footer">
-            <columns large="3">
-                <img class="thumbnail logo-footer" src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan 8 logo">
-            </columns>
-            <columns large="3">
-                <p><strong> I nostri contatti </strong></p>
-                <p>
-                    Email: info@oberdan8.it <br>
-                    Cell.:  349 35 50 279 (info - mercato lungotevere)<br/>
-                    Cell: 324 62 99 631 (info - prenotazioni on-line)
-                </p>
-            </columns>
-            <columns large="3">
-                <p><strong> Seguici </strong></p>
-                <p>
-                    Website: <a href="https://www.oberdan8.it">www.oberdan8.it</a><br>
-                    Facebook: <a href="https://www.facebook.com/oberdanbanco8">Oberdan banco 8</a><br/>
-                </p>
-            </columns>
-        </row>
-    </div>
-{% endapply %}
+{#        <row class="footer">#}
+{#            <columns large="3">#}
+{#                <img class="thumbnail logo-footer" src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan 8 logo">#}
+{#            </columns>#}
+{#            <columns large="3">#}
+{#                <p><strong> I nostri contatti </strong></p>#}
+{#                <p>#}
+{#                    Email: info@oberdan8.it <br>#}
+{#                    Cell.:  349 35 50 279 (info - mercato lungotevere)<br/>#}
+{#                    Cell: 324 62 99 631 (info - prenotazioni on-line)#}
+{#                </p>#}
+{#            </columns>#}
+{#            <columns large="3">#}
+{#                <p><strong> Seguici </strong></p>#}
+{#                <p>#}
+{#                    Website: <a href="https://www.oberdan8.it">www.oberdan8.it</a><br>#}
+{#                    Facebook: <a href="https://www.facebook.com/oberdanbanco8">Oberdan banco 8</a><br/>#}
+{#                </p>#}
+{#            </columns>#}
+{#        </row>#}
+{#    </div>#}
+{#    {% endapply %}#}
+    {% endblock %}
