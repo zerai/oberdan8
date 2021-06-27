@@ -21,6 +21,7 @@
                     </ul>
                     <ul class="list-unstyled">
                         {% if app.user %}
+                            <li><div class="text-white"><a href="{{ path('backoffice_reservation_index') }}" class="text-white">Amministrazione</a></div></li>
                             <li><div class="text-white"><a href="{{ path('backoffice_logout') }}" class="text-white">Logout</a></div></li>
                         {% else %}
                             <li><div class="text-white"><a href="{{ path('backoffice_login') }}" class="text-white">Login</a></div></li>
