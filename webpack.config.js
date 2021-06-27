@@ -35,6 +35,7 @@ Encore
     .addEntry('backoffice', './assets/backoffice.js')
     .addEntry('reservation_page', './assets/js/app/reservation_page.js')
     .addStyleEntry('email', './assets/styles/mailer/email.scss')
+    .addStyleEntry('email-tanks', './assets/styles/mailer/email-tanks.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
