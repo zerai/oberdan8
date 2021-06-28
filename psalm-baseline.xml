@@ -404,6 +404,28 @@
       <code>$id</code>
     </PropertyNotSetInConstructor>
   </file>
+  <file src="src/Factory/BookFactory.php">
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>Book|Proxy</code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificReturnType occurrences="1">
+      <code>self</code>
+    </MoreSpecificReturnType>
+  </file>
+  <file src="src/Factory/ReservationFactory.php">
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>Reservation|Proxy</code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificReturnType occurrences="1">
+      <code>self</code>
+    </MoreSpecificReturnType>
+    <UndefinedMagicMethod occurrences="4">
+      <code>city</code>
+      <code>email</code>
+      <code>lastName</code>
+      <code>phoneNumber</code>
+    </UndefinedMagicMethod>
+  </file>
   <file src="src/Form/BackofficeUserType.php">
     <MissingReturnType occurrences="2">
       <code>buildForm</code>
