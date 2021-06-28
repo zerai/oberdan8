@@ -1,12 +1,75 @@
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+{#<nav class="navbar navbar-dark sticky-top bg-dark  p-0 shadow">#}
+{#    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="{{ path('admin_home') }}">Oberdan 8</a>#}
+{#    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">#}
+{#        <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{#    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">#}
+{#    <ul class="navbar-nav px-3">#}
+{#        <li class="nav-item text-nowrap">#}
+{#            <a class="nav-link" href="{{ path('backoffice_logout') }}">Logout</a>#}
+{#        </li>#}
+
+{#        <li class="nav-item dropdown">#}
+{#            <a class="nav-item nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>#}
+{#            <div class="dropdown-menu" aria-labelledby="dropdown01">#}
+{#                <a class="dropdown-item" href="#">Action</a>#}
+{#                <a class="dropdown-item" href="#">Another action</a>#}
+{#                <a class="dropdown-item" href="#">Something else here</a>#}
+{#            </div>#}
+{#        </li>#}
+{#    </ul>#}
+{#</nav>#}
+
+
+
+
+
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top bg-dark">
     <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="{{ path('admin_home') }}">Oberdan 8</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    {#<a class="navbar-brand" href="#">Expand at sm</a>#}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="{{ path('backoffice_logout') }}">Logout</a>
-        </li>
-    </ul>
+
+    <div class="collapse navbar-collapse" id="navbarsExample03">
+{#        <ul class="navbar-nav mr-auto">#}
+{#            <li class="nav-item active">#}
+{#                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" href="#">Link</a>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>#}
+{#            </li>#}
+{#            <li class="nav-item dropdown">#}
+{#                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                    <i class="fa fa-user-circle fa-3x"></i>Dropdown#}
+{#                </a>#}
+{#                <div class="dropdown-menu" aria-labelledby="dropdown03">#}
+{#                    <a class="dropdown-item" href="#">Action</a>#}
+{#                    <a class="dropdown-item" href="#">Another action</a>#}
+{#                    <a class="dropdown-item" href="#">Something else here</a>#}
+{#                </div>#}
+{#            </li>#}
+{#        </ul>#}
+
+        {#        <form class="form-inline my-2 my-md-0">#}
+{#            <input class="form-control" type="text" placeholder="Search">#}
+{#        </form>#}
+
+        <ul class="nav justify-content-center ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownUserMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle fa-3x"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownUserMenu">
+                    {#<a class="dropdown-item" href="#">Action</a>#}
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="{{ path('backoffice_logout') }}">Logout</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
 </nav>
