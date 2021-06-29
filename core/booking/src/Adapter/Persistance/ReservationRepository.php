@@ -71,4 +71,24 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
 
         return $reservation;
     }
+
+
+    #
+    #   READ SIDE
+    #
+
+    public function findAllForBackoffice()
+    {
+        return $this->createQueryBuilder('r')
+            //->andWhere('r.exampleField = :val')
+            //->setParameter('val', $value)
+            ->orderBy('r.registrationDate', 'DESC')
+            ->setMaxResults(100)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+
 }
