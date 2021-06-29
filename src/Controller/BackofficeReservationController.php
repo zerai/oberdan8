@@ -23,7 +23,8 @@ class BackofficeReservationController extends AbstractController
     public function index(ReservationRepositoryInterface $repository): Response
     {
         return $this->render('backoffice/reservation/index.html.twig', [
-            'backoffice_reservations' => $repository->findAll(),
+            //'backoffice_reservations' => $repository->findAll(),
+            'backoffice_reservations' => $repository->findAllForBackoffice(),
         ]);
     }
 
