@@ -230,29 +230,6 @@
       <code>$passwordArg</code>
     </PossiblyInvalidArgument>
   </file>
-  <file src="src/Controller/BackofficeMyAccountController.php">
-    <MixedArgument occurrences="1">
-      <code>$newPassword</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$newPassword</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="2">
-      <code>getEmail</code>
-      <code>getUsername</code>
-    </MixedMethodCall>
-    <MixedOperand occurrences="1">
-      <code>$this-&gt;getUser()-&gt;getEmail()</code>
-    </MixedOperand>
-    <PossiblyNullArgument occurrences="1">
-      <code>$backofficeUser</code>
-    </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="3">
-      <code>getEmail</code>
-      <code>getUsername</code>
-      <code>setPassword</code>
-    </PossiblyNullReference>
-  </file>
   <file src="src/Controller/BackofficeReservationController.php">
     <MixedArgument occurrences="1">
       <code>$request-&gt;request-&gt;get('_token')</code>
@@ -264,7 +241,7 @@
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
     <UndefinedInterfaceMethod occurrences="1">
-      <code>findAll</code>
+      <code>findAllForBackoffice</code>
     </UndefinedInterfaceMethod>
     <UnusedVariable occurrences="1">
       <code>$entityManager</code>
@@ -427,11 +404,27 @@
       <code>$id</code>
     </PropertyNotSetInConstructor>
   </file>
-  <file src="src/Form/BackofficeUserChangePasswordType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
+  <file src="src/Factory/BookFactory.php">
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>Book|Proxy</code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificReturnType occurrences="1">
+      <code>self</code>
+    </MoreSpecificReturnType>
+  </file>
+  <file src="src/Factory/ReservationFactory.php">
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>Reservation|Proxy</code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificReturnType occurrences="1">
+      <code>self</code>
+    </MoreSpecificReturnType>
+    <UndefinedMagicMethod occurrences="4">
+      <code>city</code>
+      <code>email</code>
+      <code>lastName</code>
+      <code>phoneNumber</code>
+    </UndefinedMagicMethod>
   </file>
   <file src="src/Form/BackofficeUserType.php">
     <MissingReturnType occurrences="2">

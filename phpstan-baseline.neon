@@ -186,32 +186,7 @@ parameters:
 			path: src/Command/DefaultAdminCreateCommand.php
 
 		-
-			message: "#^Cannot call method getEmail\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeMyAccountController.php
-
-		-
-			message: "#^Cannot call method getUsername\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeMyAccountController.php
-
-		-
-			message: "#^Cannot call method setPassword\\(\\) on App\\\\Entity\\\\BackofficeUser\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeMyAccountController.php
-
-		-
-			message: "#^Parameter \\#1 \\$user of method App\\\\Repository\\\\BackofficeUserRepository\\:\\:save\\(\\) expects App\\\\Entity\\\\BackofficeUser, App\\\\Entity\\\\BackofficeUser\\|null given\\.$#"
-			count: 1
-			path: src/Controller/BackofficeMyAccountController.php
-
-		-
-			message: "#^Parameter \\#1 \\$user of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, App\\\\Entity\\\\BackofficeUser\\|null given\\.$#"
-			count: 1
-			path: src/Controller/BackofficeMyAccountController.php
-
-		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findAll\\(\\)\\.$#"
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findAllForBackoffice\\(\\)\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
 
@@ -355,14 +330,34 @@ parameters:
 			path: src/Entity/Reservation.php
 
 		-
-			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			message: "#^Class App\\\\Factory\\\\BookFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
 			count: 1
-			path: src/Form/BackofficeUserChangePasswordType.php
+			path: src/Factory/BookFactory.php
 
 		-
-			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:city\\(\\)\\.$#"
 			count: 1
-			path: src/Form/BackofficeUserChangePasswordType.php
+			path: src/Factory/ReservationFactory.php
+
+		-
+			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:email\\(\\)\\.$#"
+			count: 1
+			path: src/Factory/ReservationFactory.php
+
+		-
+			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:lastName\\(\\)\\.$#"
+			count: 1
+			path: src/Factory/ReservationFactory.php
+
+		-
+			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:phoneNumber\\(\\)\\.$#"
+			count: 1
+			path: src/Factory/ReservationFactory.php
+
+		-
+			message: "#^Class App\\\\Factory\\\\ReservationFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
+			count: 1
+			path: src/Factory/ReservationFactory.php
 
 		-
 			message: "#^Method App\\\\Form\\\\BackofficeUserType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"

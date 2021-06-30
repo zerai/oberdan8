@@ -59,7 +59,7 @@ class AdozioniReservationController extends AbstractController
                 ->setClasse($formData->classe)
                 ->setOtherInformation($formData->otherInfo)
                 ->setRegistrationDate(
-                    new \DateTimeImmutable("now")
+                    new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
                 );
             // add files to reservation
 
