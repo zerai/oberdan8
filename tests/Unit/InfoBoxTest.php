@@ -10,6 +10,26 @@ class InfoBoxTest extends TestCase
 {
     /**
      * @test
+     */
+    public function shouldUseNoneTypeAsDefaultType(): void
+    {
+        $sut = new InfoBox();
+
+        self::assertSame('none', $sut->getBoxType());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldBeDeactivatedWhenCreated(): void
+    {
+        $sut = new InfoBox();
+
+        self::assertSame(false, $sut->getActive());
+    }
+
+    /**
+     * @test
      * @dataProvider validBoxTypeProvider
      */
     public function shouldAcceptValidBoxType(string $value): void

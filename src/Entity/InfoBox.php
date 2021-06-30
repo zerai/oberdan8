@@ -32,22 +32,27 @@ class InfoBox
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $title;
+    private string $title = '';
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private string $body;
+    private string $body = '';
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private bool $active;
+    private bool $active = false;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private string $boxType = 'none';
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $defaultBox = false;
 
     public function getId()
     {
@@ -109,5 +114,17 @@ class InfoBox
     public function isActive(): bool
     {
         return $this->active;
+    }
+
+    public function getDefaultBox(): bool
+    {
+        return $this->defaultBox;
+    }
+
+    public function setDefaultBox(bool $defaultBox): self
+    {
+        $this->defaultBox = $defaultBox;
+
+        return $this;
     }
 }

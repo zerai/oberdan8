@@ -19,6 +19,16 @@ class InfoBoxRepository extends ServiceEntityRepository
         parent::__construct($registry, InfoBox::class);
     }
 
+    public function findDefaultInfoBox($isDefaultBox = true): ?InfoBox
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.defaultBox = :value')
+            ->setParameter('value', $isDefaultBox)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     // /**
     //  * @return InfoBox[] Returns an array of InfoBox objects
     //  */
