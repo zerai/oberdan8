@@ -72,11 +72,14 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
         return $reservation;
     }
 
-
     #
     #   READ SIDE
     #
 
+
+    /**
+     * @return int|mixed|string
+     */
     public function findAllForBackoffice()
     {
         return $this->createQueryBuilder('r')
@@ -88,7 +91,4 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->getResult()
             ;
     }
-
-
-
 }

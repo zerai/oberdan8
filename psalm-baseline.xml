@@ -241,7 +241,7 @@
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
     <UndefinedInterfaceMethod occurrences="1">
-      <code>findAll</code>
+      <code>findAllForBackoffice</code>
     </UndefinedInterfaceMethod>
     <UnusedVariable occurrences="1">
       <code>$entityManager</code>
