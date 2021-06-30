@@ -186,6 +186,31 @@ parameters:
 			path: src/Command/DefaultAdminCreateCommand.php
 
 		-
+			message: "#^Cannot call method getEmail\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeMyAccountController.php
+
+		-
+			message: "#^Cannot call method getUsername\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeMyAccountController.php
+
+		-
+			message: "#^Cannot call method setPassword\\(\\) on App\\\\Entity\\\\BackofficeUser\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeMyAccountController.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method App\\\\Repository\\\\BackofficeUserRepository\\:\\:save\\(\\) expects App\\\\Entity\\\\BackofficeUser, App\\\\Entity\\\\BackofficeUser\\|null given\\.$#"
+			count: 1
+			path: src/Controller/BackofficeMyAccountController.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, App\\\\Entity\\\\BackofficeUser\\|null given\\.$#"
+			count: 1
+			path: src/Controller/BackofficeMyAccountController.php
+
+		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findAll\\(\\)\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
@@ -328,6 +353,16 @@ parameters:
 			message: "#^Property App\\\\Entity\\\\Reservation\\:\\:\\$registrationDate has no typehint specified\\.$#"
 			count: 1
 			path: src/Entity/Reservation.php
+
+		-
+			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeUserChangePasswordType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeUserChangePasswordType.php
 
 		-
 			message: "#^Method App\\\\Form\\\\BackofficeUserType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"

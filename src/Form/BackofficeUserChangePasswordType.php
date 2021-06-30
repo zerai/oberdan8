@@ -15,29 +15,28 @@ class BackofficeUserChangePasswordType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            //->add('email')
-            //->add('roles')
             //->add('password')
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'label' => 'Nuova password',
                 'mapped' => false,
                 'attr' => [
+                    'label' => 'Nuova password',
                     'autocomplete' => 'new-password',
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Inserisci una password',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'La password dovrebbe avere minimo {{ limit }} caratteri',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
             ])
-            //->add('active')
         ;
     }
 

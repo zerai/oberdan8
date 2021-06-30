@@ -12,7 +12,7 @@
 
 
 {% block content_toolbar %}
-{#    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}"><i class="fa fa-plus"></i> Crea utente</a>#}
+    <a class="btn btn-info" href="{{ path('backoffice_my_account_change_password') }}"> Cambia password</a>
 
 {#    <a class="btn btn-info" href="{{ path('backoffice_mailer_manager_example_send_tanks_mail') }}"><i class="fa fa-plus"></i> Inviami lettera di ringraziamento </a>#}
 {% endblock %}
@@ -30,8 +30,6 @@
                     {% else %}
                         <p class="card-text"><strong>Amministratore:</strong> No</p>
                     {% endif %}
-
-                    <a href="{{ path('backoffice_mailer_manager_example_send_tanks_mail') }}" class="btn btn-primary">Cambia password</a>
                 </div>
             </div>
 
