@@ -76,7 +76,6 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
     #   READ SIDE
     #
 
-
     /**
      * @return int|mixed|string
      */
