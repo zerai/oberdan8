@@ -1,0 +1,40 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Account
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Account
+{% endblock %}
+
+
+{% block content_toolbar %}
+{#    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}"><i class="fa fa-plus"></i> Crea utente</a>#}
+
+{#    <a class="btn btn-info" href="{{ path('backoffice_mailer_manager_example_send_tanks_mail') }}"><i class="fa fa-plus"></i> Inviami lettera di ringraziamento </a>#}
+{% endblock %}
+
+{% block content_body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card">
+{#                <img src="..." class="card-img-top" alt="...">#}
+                <div class="card-body">
+                    <h5 class="card-title">credenziali di accesso</h5>
+                    <p class="card-text"><strong>Email:</strong> {{ account.email }}</p>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <p class="card-text"><strong>Amministratore:</strong> Si</p>
+                    {% else %}
+                        <p class="card-text"><strong>Amministratore:</strong> No</p>
+                    {% endif %}
+
+                    <a href="{{ path('backoffice_mailer_manager_example_send_tanks_mail') }}" class="btn btn-primary">Cambia password</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
