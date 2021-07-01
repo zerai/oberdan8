@@ -25,7 +25,7 @@ class InfoBoxTest extends TestCase
     {
         $sut = new InfoBox();
 
-        self::assertSame(false, $sut->getActive());
+        self::assertFalse($sut->getActive());
     }
 
     /**
