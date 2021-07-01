@@ -1,0 +1,32 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Edit InfoBox{% endblock %}#}
+
+{#{% block body %}#}
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Info box
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Info box
+{% endblock %}
+
+
+{% block content_toolbar %}
+    <a class="btn btn-info" href="{{ path('backoffice_info_box_manager') }}"><i class="fa fa-arrow-left"></i> Visualizza</a>
+{% endblock %}
+
+{% block content_body %}
+{#    <h1>Edit InfoBox</h1>#}
+
+    {{ include('backoffice_info_box/_form.html.twig', {'button_label': 'Aggiorna'}) }}
+
+{#    <a href="{{ path('backoffice_info_box_index') }}">back to list</a>#}
+{#    <a href="{{ path('backoffice_info_box_manager') }}">back to list</a>#}
+
+{#    {{ include('backoffice_info_box/_delete_form.html.twig') }}#}
+{% endblock %}

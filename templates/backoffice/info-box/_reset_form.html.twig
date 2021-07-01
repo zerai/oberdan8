@@ -1,0 +1,6 @@
+
+
+<form method="post" action="{{ path('backoffice_info_box_delete', {'id': info_box.id}) }}" onsubmit="return confirm('Sei sicuro? Vuoi eliminare i dati dell\' Info box?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ info_box.id) }}">
+    <button class="btn">Reset</button>
+</form>

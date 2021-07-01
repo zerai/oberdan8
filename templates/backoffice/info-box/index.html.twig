@@ -1,0 +1,59 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}InfoBox index{% endblock %}#}
+
+{#{% block body %}#}
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Info box
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Info box
+{% endblock %}
+
+
+{% block content_toolbar %}
+    {#    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}"><i class="fa fa-plus"></i> Crea utente</a>#}
+{% endblock %}
+
+{% block content_body %}
+    <h1>InfoBox index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Body</th>
+                <th>Active</th>
+                <th>BoxType</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for info_box in info_boxes %}
+            <tr>
+                <td>{{ info_box.id }}</td>
+                <td>{{ info_box.title }}</td>
+                <td>{{ info_box.body }}</td>
+                <td>{{ info_box.active ? 'Yes' : 'No' }}</td>
+                <td>{{ info_box.boxType }}</td>
+                <td>
+                    <a href="{{ path('backoffice_info_box_show', {'id': info_box.id}) }}">show</a>
+                    <a href="{{ path('backoffice_info_box_edit', {'id': info_box.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('backoffice_info_box_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,115 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}InfoBox index{% endblock %}#}
+
+{#{% block body %}#}
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Info box
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Info box
+{% endblock %}
+
+
+{% block content_toolbar %}
+{#    <a href="{{ path('backoffice_info_box_new') }}">Crea</a>#}
+    {% if info_box is defined and info_box is not null  %}
+        {{ include('backoffice_info_box/_delete_form.html.twig') }}
+        <a href="{{ path('backoffice_info_box_edit', {id: info_box.id }) }}">Modifica</a>
+    {% else %}
+        <a href="{{ path('backoffice_info_box_new') }}">Crea</a>
+    {% endif %}
+{% endblock %}
+
+{% block content_body %}
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Form Card -->
+
+{#            <div class="col-sm-6">#}
+{#                <div class="card">#}
+{#                    <div class="card-body">#}
+
+{#                        {% if info_box is defined and info_box is not null %}#}
+{#                            <h5 class="card-title">Modifica Info box</h5>#}
+{#                             {{ dump(info_box) }}#}
+{#                            qui form edit#}
+{#                            {{ render(path('backoffice_info_box_edit_embedded', { id: info_box.id})) }}#}
+
+
+{#                            <hr>#}
+{#                            {{ include('backoffice/info-box/_reset_form.html.twig') }}#}
+
+{#                        {% else %}#}
+{#                            <h5 class="card-title">Crea Info box</h5>#}
+
+{#                            qui form new#}
+{#                            {{ render(path('backoffice_info_box_new_embedded')) }}#}
+{#                        {% endif %}#}
+
+
+
+{#                        <h5 class="card-title">Special title treatment</h5>#}
+{#                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>#}
+
+{#                        <a href="#" class="btn btn-primary">Go somewhere</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+
+            <!-- Preview Card-->
+
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Anteprima</h5>
+{#                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>#}
+
+
+{#                                                     {{ dump(info_box) }}#}
+                        {% if info_box is defined and info_box is not null %}
+
+{#                            <div class="card text-white bg-{{ info_box.boxType }} mb-3" style="max-width: 18rem;">#}
+{#                                <div class="card-header">{{ info_box.title }}</div>#}
+{#                                <div class="card-body">#}
+{#                                    <h5 class="card-title">{{ info_box.title }}</h5>#}
+{#                                    <p class="card-text">{{ info_box.body }}</p>#}
+{#                                </div>#}
+{#                            </div>#}
+
+                            <div class="container">
+                                <div class="row m-5 justify-content-center">
+                                    <div class="card border-{{ info_box.boxType }}" >
+                                        <div class="card-body text-{{ info_box.boxType }}">
+                                            {% if info_box.title is not empty %}
+                                                <h5 class="card-title">{{ info_box.title }}</h5>
+                                            {% endif %}
+                                            {% if info_box.body is not empty %}
+                                                <p class="card-text">
+                                                    {{ info_box.body }}
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        {% else %}
+                            <h5 class="card-title">Nessun Info box definito. creane uno.</h5>
+                            <a href="{{ path('backoffice_info_box_new') }}" class="btn btn-primary">Crea</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

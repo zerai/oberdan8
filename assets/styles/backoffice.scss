@@ -1,5 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome';
+
+label.required:after {
+    content: " *";
+}
+
+
 body {
     font-size: .875rem;
 }
