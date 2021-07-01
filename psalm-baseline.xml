@@ -230,6 +230,20 @@
       <code>$passwordArg</code>
     </PossiblyInvalidArgument>
   </file>
+  <file src="src/Controller/BackofficeInfoBoxController.php">
+    <MixedArgument occurrences="1">
+      <code>$request-&gt;request-&gt;get('_token')</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="1">
+      <code>execute</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>$infoBox-&gt;getId()</code>
+    </MixedOperand>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>createQuery</code>
+    </UndefinedInterfaceMethod>
+  </file>
   <file src="src/Controller/BackofficeMyAccountController.php">
     <MixedArgument occurrences="1">
       <code>$newPassword</code>
@@ -363,6 +377,14 @@
       <code>$this-&gt;volume</code>
     </MixedReturnStatement>
   </file>
+  <file src="src/Entity/InfoBox.php">
+    <MissingConstructor occurrences="1">
+      <code>$id</code>
+    </MissingConstructor>
+    <MissingReturnType occurrences="1">
+      <code>getId</code>
+    </MissingReturnType>
+  </file>
   <file src="src/Entity/MailOut.php">
     <MissingPropertyType occurrences="3">
       <code>$content</code>
@@ -461,6 +483,12 @@
       <code>configureOptions</code>
     </MissingReturnType>
   </file>
+  <file src="src/Form/InfoBoxType.php">
+    <MissingReturnType occurrences="2">
+      <code>buildForm</code>
+      <code>configureOptions</code>
+    </MissingReturnType>
+  </file>
   <file src="src/Form/RegistrationFormType.php">
     <MissingReturnType occurrences="2">
       <code>buildForm</code>
@@ -476,6 +504,18 @@
     <LessSpecificImplementedReturnType occurrences="1">
       <code>Book[]</code>
     </LessSpecificImplementedReturnType>
+  </file>
+  <file src="src/Repository/InfoBoxRepository.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>InfoBox[]</code>
+    </LessSpecificImplementedReturnType>
+    <MissingParamType occurrences="1">
+      <code>$isDefaultBox</code>
+    </MissingParamType>
+    <MixedInferredReturnType occurrences="1">
+      <code>?InfoBox</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1"/>
   </file>
   <file src="src/Repository/MailOutRepository.php">
     <LessSpecificImplementedReturnType occurrences="1">
