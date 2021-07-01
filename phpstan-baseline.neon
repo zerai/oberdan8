@@ -186,6 +186,11 @@ parameters:
 			path: src/Command/DefaultAdminCreateCommand.php
 
 		-
+			message: "#^Call to an undefined method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:createQuery\\(\\)\\.$#"
+			count: 1
+			path: src/Controller/BackofficeInfoBoxController.php
+
+		-
 			message: "#^Cannot call method getEmail\\(\\) on object\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeMyAccountController.php
@@ -293,6 +298,16 @@ parameters:
 			message: "#^Property App\\\\Entity\\\\Book\\:\\:\\$volume has no typehint specified\\.$#"
 			count: 1
 			path: src/Entity/Book.php
+
+		-
+			message: "#^Call to function in_array\\(\\) requires parameter \\#3 to be set\\.$#"
+			count: 1
+			path: src/Entity/InfoBox.php
+
+		-
+			message: "#^Method App\\\\Entity\\\\InfoBox\\:\\:getId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Entity/InfoBox.php
 
 		-
 			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$content has no typehint specified\\.$#"
@@ -405,6 +420,16 @@ parameters:
 			path: src/Form/BackofficeUserType.php
 
 		-
+			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/InfoBoxType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/InfoBoxType.php
+
+		-
 			message: "#^Method App\\\\Form\\\\RegistrationFormType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/RegistrationFormType.php
@@ -423,6 +448,16 @@ parameters:
 			message: "#^Class App\\\\Repository\\\\BookRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: src/Repository/BookRepository.php
+
+		-
+			message: "#^Class App\\\\Repository\\\\InfoBoxRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: src/Repository/InfoBoxRepository.php
+
+		-
+			message: "#^Method App\\\\Repository\\\\InfoBoxRepository\\:\\:findDefaultInfoBox\\(\\) has parameter \\$isDefaultBox with no typehint specified\\.$#"
+			count: 1
+			path: src/Repository/InfoBoxRepository.php
 
 		-
 			message: "#^Class App\\\\Repository\\\\MailOutRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"

@@ -1,0 +1,20 @@
+{% if info_box is defined and info_box is not null %}
+    {% if info_box.active %}
+        <div class="container">
+            <div class="row m-5 justify-content-center">
+                <div class="card border-{{ info_box.boxType }}" >
+                    <div class="card-body text-{{ info_box.boxType }}">
+                        {% if info_box.title is not empty %}
+                            <h5 class="card-title">{{ info_box.title }}</h5>
+                        {% endif %}
+                        {% if info_box.body is not empty %}
+                            <p class="card-text">
+                                {{ info_box.body }}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

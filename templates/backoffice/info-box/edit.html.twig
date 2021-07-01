@@ -1,0 +1,26 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Info box
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Info box
+{% endblock %}
+
+
+{% block content_toolbar %}
+    <a class="btn btn-info" href="{{ path('backoffice_info_box_manager') }}"><i class="fa fa-arrow-left"></i> Visualizza</a>
+{% endblock %}
+
+{% block content_body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{ include('backoffice/info-box/_form.html.twig', {'button_label': 'Aggiorna'}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

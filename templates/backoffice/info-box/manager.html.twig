@@ -1,0 +1,95 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Info box
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Info box
+{% endblock %}
+
+
+{% block content_toolbar %}
+    {% if info_box is defined and info_box is not null  %}
+        <a href="{{ path('backoffice_info_box_edit', {id: info_box.id }) }}" class="btn btn-primary">Modifica</a>
+        {{ include('backoffice/info-box/_delete_form.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block content_body %}
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Form Card -->
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+
+                        {% if info_box is defined and info_box is not null %}
+                            <h5 class="card-title">Dati Info box</h5>
+
+                            <p class="card-text">
+                                <strong>Stato :</strong> {{ info_box.active ? '<strong class="text-success">Attivo</strong>' : '<strong class="text-danger">Disattivo</strong>' }}
+                            </p>
+
+                            <p class="card-text">
+                                <strong>Tipo :</strong> {{ info_box.boxType }}
+                            </p>
+
+                            <p class="card-text">
+                                <strong>Titolo :</strong> {{ info_box.title }}
+                            </p>
+                            <p class="card-text">
+                                <strong>Testo del messaggio :</strong> <br>{{ info_box.body }}
+                            </p>
+
+
+                        {% else %}
+                            <h5 class="card-title">Dati Info box</h5>
+                            <p class="card-text">
+                                Nessun dato disponibile.
+                            </p>
+                            <a href="{{ path('backoffice_info_box_new') }}" class="btn btn-primary">Crea Nuovo Info box</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview/Anteprima Card-->
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Anteprima Info box</h5>
+                        {% if info_box is defined and info_box is not null %}
+                            <div class="container">
+                                <div class="row m-5 justify-content-center">
+                                    <div class="card border-{{ info_box.boxType }}" >
+                                        <div class="card-body text-{{ info_box.boxType }}">
+                                            {% if info_box.title is not empty %}
+                                                <h5 class="card-title">{{ info_box.title }}</h5>
+                                            {% endif %}
+                                            {% if info_box.body is not empty %}
+                                                <p class="card-text">
+                                                    {{ info_box.body }}
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <h5 class="card-title">Anteprima non disponibile</h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
