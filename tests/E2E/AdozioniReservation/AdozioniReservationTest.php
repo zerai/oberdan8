@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests\Functional\AdozioniReservation;
+namespace App\Tests\E2E\AdozioniReservation;
 
+use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Symfony\Component\Panther\PantherTestCase;
 
 class AdozioniReservationTest extends PantherTestCase

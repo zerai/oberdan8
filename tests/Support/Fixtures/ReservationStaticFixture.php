@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests\Functional\AdozioniReservation;
+namespace App\Tests\Support\Fixtures;
 
 class ReservationStaticFixture
 {

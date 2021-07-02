@@ -492,12 +492,12 @@ parameters:
 		-
 			message: "#^Cannot call method setValue\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
 			count: 10
-			path: tests/Functional/AdozioniReservation/AdozioniReservationTest.php
+			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
 			message: "#^Cannot call method upload\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
 			count: 4
-			path: tests/Functional/AdozioniReservation/AdozioniReservationTest.php
+			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
 			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
