@@ -49,6 +49,8 @@ class BackofficeInfoBoxController extends AbstractController
             $entityManager->persist($infoBox);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Nuovo Info box creato.');
+
             return $this->redirectToRoute('backoffice_info_box_manager');
         }
 
@@ -68,6 +70,8 @@ class BackofficeInfoBoxController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Info box modificato.');
 
             //return $this->redirectToRoute('backoffice_info_box_index');
             return $this->redirectToRoute('backoffice_info_box_manager');
@@ -89,6 +93,8 @@ class BackofficeInfoBoxController extends AbstractController
             $entityManager->remove($infoBox);
             $entityManager->flush();
         }
+
+        $this->addFlash('success', 'Info box eliminato.');
 
         //return $this->redirectToRoute('backoffice_info_box_index');
         return $this->redirectToRoute('backoffice_info_box_manager');
