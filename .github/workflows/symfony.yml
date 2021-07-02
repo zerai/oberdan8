@@ -118,10 +118,11 @@ jobs:
     - name: Run twig template lint
       run: ./bin/console lint:twig templates --env=prod
 
-    - name: Run Migration
+    - name: Run Migration & test fixtures
       run: |
         #php bin/console doctrine:schema:update --force -e test || echo "No migrations found or schema update failed"
         php bin/console doctrine:migrations:migrate -e test --no-interaction|| echo "No migrations found or migration failed"
+        php bin/console doctrine:fixtures:load --group=test -e test --no-interaction
       env:
         DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
