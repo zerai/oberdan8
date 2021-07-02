@@ -555,6 +555,11 @@ parameters:
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
+			message: "#^Property App\\\\Tests\\\\Functional\\\\SecurityWebtestCase\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/Functional/SecurityWebtestCase.php
+
+		-
 			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\>\\:\\:save\\(\\)\\.$#"
 			count: 1
 			path: tests/Integration/ReservationRepositoryTest.php

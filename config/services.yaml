@@ -85,3 +85,7 @@ services:
 
     Booking\Application\Domain\Model\ReservationRepositoryInterface:
         class: Booking\Adapter\Persistance\ReservationRepository
+
+
+    App\Repository\BackofficeUserRepository:
+        public: true
