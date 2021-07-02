@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests\Functional\RegularReservation;
+namespace App\Tests\E2E\RegularReservation;
 
+use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\PantherTestCase;
 

@@ -500,59 +500,59 @@ parameters:
 			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
-			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
-			count: 3
-			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
-
-		-
-			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
-			count: 3
-			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 1
-			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 2
-			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 8
-			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
-
-		-
-			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
-			count: 3
-			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
-			count: 3
-			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 1
-			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 2
-			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 8
-			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
-
-		-
 			message: "#^Cannot call method setValue\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
 			count: 12
-			path: tests/Functional/RegularReservation/ReservationControllerTest.php
+			path: tests/E2E/RegularReservation/ReservationControllerTest.php
+
+		-
+			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
+			count: 3
+			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
+			count: 3
+			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			count: 1
+			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			count: 2
+			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			count: 8
+			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
+			count: 3
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
+
+		-
+			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
+			count: 3
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			count: 1
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			count: 2
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			count: 8
+			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
 			message: "#^Call to an undefined method Doctrine\\\\ORM\\\\EntityRepository\\<Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\>\\:\\:save\\(\\)\\.$#"

@@ -2,6 +2,7 @@
 
 namespace App\Tests\Functional\RegularReservation;
 
+use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class MailSendingInReservationControllerTest extends WebTestCase
