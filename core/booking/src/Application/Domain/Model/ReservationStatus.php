@@ -2,12 +2,9 @@
 
 namespace Booking\Application\Domain\Model;
 
-/**
- * @codeCoverageIgnore
- */
 final class ReservationStatus
 {
-    public const NewArrived = 0;
+    public const NewArrival = 0;
 
     public const InProgress = 1;
 
@@ -21,15 +18,15 @@ final class ReservationStatus
 
     public const PickedUp = 6;
 
-    public const Options = ['NewArrived', 'InProgress', 'Pending', 'Rejected', 'Confirmed', 'Sale', 'PickedUp'];
+    public const Options = ['NewArrival', 'InProgress', 'Pending', 'Rejected', 'Confirmed', 'Sale', 'PickedUp'];
 
     private string $name;
 
     private int $value;
 
-    public static function NewArrived(): self
+    public static function NewArrival(): self
     {
-        return new self('NewArrived', 0);
+        return new self('NewArrival', 0);
     }
 
     public static function InProgress(): self

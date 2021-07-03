@@ -50,16 +50,32 @@ class ReservationStatusTypeTest extends TestCase
         self::assertEquals($reservationStatus, $this->type->convertToDatabaseValue($reservationStatus, $this->platform));
     }
 
-    /** @test */
-    public function itCanConvertFromDatabaseValueToAPhpValue(): void
+    /**
+     * @test
+     * @dataProvider  validValueForDbToPhpConversionProvider
+     */
+    public function itCanConvertFromDatabaseValueToAPhpValue(string $inputValue): void
     {
-        $value = 'Pending';
+        $value = $inputValue;
 
         $originalValue = ReservationStatus::fromName($value);
 
         $convertedPHPValue = $this->type->convertToPHPValue($value, $this->platform);
 
         self::assertTrue($originalValue->equals($convertedPHPValue));
+    }
+
+    public function validValueForDbToPhpConversionProvider(): \Generator
+    {
+        return [
+            yield 'new arrival' => ['NewArrival'],
+            yield 'in progress' => ['InProgress'],
+            yield 'pending' => ['Pending'],
+            yield 'rejected' => ['Rejected'],
+            yield 'confirmed' => ['Confirmed'],
+            yield 'sale' => ['Sale'],
+            yield 'picked up' => ['PickedUp'],
+        ];
     }
 
     /** @test */
