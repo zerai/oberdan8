@@ -39,6 +39,15 @@
       <code>Book[]</code>
     </LessSpecificImplementedReturnType>
   </file>
+  <file src="core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php">
+    <MixedArgument occurrences="5">
+      <code>$value</code>
+      <code>$value</code>
+      <code>$value</code>
+      <code>static::NAME</code>
+      <code>static::NAME</code>
+    </MixedArgument>
+  </file>
   <file src="core/booking/src/Adapter/Persistance/ReservationRepository.php">
     <LessSpecificImplementedReturnType occurrences="1">
       <code>Reservation[]</code>
@@ -201,6 +210,11 @@
     </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Adapter/BookingMailerTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
