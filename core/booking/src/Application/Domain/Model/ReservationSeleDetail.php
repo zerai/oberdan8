@@ -33,6 +33,11 @@ class ReservationSeleDetail
      */
     private string $GeneralNotes;
 
+    /**
+     * @ORM\Column(type="reservation_status")
+     */
+    private ReservationStatus $status;
+
     public function getId()
     {
         return $this->id;
@@ -58,6 +63,18 @@ class ReservationSeleDetail
     public function setGeneralNotes(string $GeneralNotes): self
     {
         $this->GeneralNotes = $GeneralNotes;
+
+        return $this;
+    }
+
+    public function getStatus(): ReservationStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(ReservationStatus $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
