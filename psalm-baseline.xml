@@ -141,9 +141,7 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="core/booking/src/Application/Domain/Model/ReservationSaleDetail.php">
-    <MissingConstructor occurrences="4">
-      <code>$GeneralNotes</code>
-      <code>$ReservationPackageId</code>
+    <MissingConstructor occurrences="2">
       <code>$id</code>
       <code>$status</code>
     </MissingConstructor>
@@ -220,11 +218,6 @@
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
     </PossiblyNullOperand>
-  </file>
-  <file src="core/booking/tests/Integration/ReservationRepositoryTest.php">
-    <MissingDependency occurrences="1">
-      <code>KernelTestCase</code>
-    </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Adapter/BookingMailerTest.php">
     <MissingDependency occurrences="1">
