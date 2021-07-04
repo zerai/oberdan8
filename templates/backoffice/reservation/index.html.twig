@@ -38,7 +38,7 @@
 {#                <td>{{ reservation.email }}</td>#}
 {#                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>#}
 {#                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>#}
-                <td>N.D</td>
+                <td>{{ reservation.saleDetail.status }}</td>
                 <td>
                     <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
 {#                    <a href="{{ path('backoffice_reservation_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>#}
