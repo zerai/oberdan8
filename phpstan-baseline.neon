@@ -36,6 +36,11 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
+			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationSaleDetailRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php
+
+		-
 			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:getId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Book.php
@@ -74,6 +79,11 @@ parameters:
 			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$registrationDate has no typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\:\\:getId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ReservationSaleDetail.php
 
 		-
 			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
