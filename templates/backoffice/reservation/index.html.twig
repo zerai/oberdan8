@@ -20,6 +20,22 @@
     <div class="row">
         <div class="col-md-12">
 
+            <form>
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="q"
+                           class="form-control"
+                           value="{{ app.request.query.get('q') }}"
+                           placeholder="Cerca..."
+                    >
+                    <div class="input-group-append">
+                        <button type="submit"
+                                class="btn btn-outline-secondary">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
 
 
             <table class="table table-bordered">
@@ -51,7 +67,9 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6">Nessun risultato trovato.</td>
+                        <td colspan="6" class="text-center">
+                            Nessun risultato trovato.
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

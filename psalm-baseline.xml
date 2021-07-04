@@ -300,14 +300,21 @@
     <MixedArgument occurrences="1">
       <code>$request-&gt;request-&gt;get('_token')</code>
     </MixedArgument>
-    <MixedMethodCall occurrences="1">
+    <MixedAssignment occurrences="3">
+      <code>$q</code>
+      <code>$queryBuilder</code>
+      <code>$searchedReservation</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="3">
+      <code>getQuery</code>
+      <code>getResult</code>
       <code>toString</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
     <UndefinedInterfaceMethod occurrences="1">
-      <code>findAllForBackoffice</code>
+      <code>getWithSearchQueryBuilder</code>
     </UndefinedInterfaceMethod>
     <UnusedVariable occurrences="1">
       <code>$entityManager</code>

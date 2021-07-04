@@ -36,6 +36,11 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
+			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
 			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationSaleDetailRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php
@@ -246,7 +251,7 @@ parameters:
 			path: src/Controller/BackofficeMyAccountController.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findAllForBackoffice\\(\\)\\.$#"
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:getWithSearchQueryBuilder\\(\\)\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
 
