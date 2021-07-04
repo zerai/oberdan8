@@ -219,6 +219,11 @@
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
     </PossiblyNullOperand>
   </file>
+  <file src="core/booking/tests/Integration/ReservationRepositoryTest.php">
+    <MissingDependency occurrences="1">
+      <code>KernelTestCase</code>
+    </MissingDependency>
+  </file>
   <file src="core/booking/tests/Unit/Adapter/BookingMailerTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
