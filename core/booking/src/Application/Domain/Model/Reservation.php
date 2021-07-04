@@ -75,6 +75,12 @@ class Reservation
      */
     private string $otherInformation = '';
 
+    /**
+     * @ORM\OneToOne(targetEntity=ReservationSaleDetail::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ReservationSaleDetail $saleDetail;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -207,6 +213,18 @@ class Reservation
     public function setOtherInformation(string $otherInformation): self
     {
         $this->otherInformation = $otherInformation;
+
+        return $this;
+    }
+
+    public function getSaleDetail(): ?ReservationSaleDetail
+    {
+        return $this->saleDetail;
+    }
+
+    public function setSaleDetail(ReservationSaleDetail $saleDetail): self
+    {
+        $this->saleDetail = $saleDetail;
 
         return $this;
     }

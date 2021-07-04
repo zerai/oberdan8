@@ -5,6 +5,8 @@ namespace Booking\Adapter\HttpDriver;
 use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
+use Booking\Application\Domain\Model\ReservationSaleDetail;
+use Booking\Application\Domain\Model\ReservationStatus;
 use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
 use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
 use Booking\Infrastructure\Framework\Form\Service\AdozioniUploaderInterface;
@@ -61,6 +63,12 @@ class AdozioniReservationController extends AbstractController
                 ->setRegistrationDate(
                     new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
                 );
+
+            // add saleDetail to reservation
+            $saleDetail = new ReservationSaleDetail();
+            $saleDetail->setStatus(ReservationStatus::NewArrival());
+            $reservation->setSaleDetail($saleDetail);
+
             // add files to reservation
 
             try {

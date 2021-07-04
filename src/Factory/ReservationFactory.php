@@ -3,6 +3,8 @@
 namespace App\Factory;
 
 use Booking\Application\Domain\Model\Reservation;
+use Booking\Application\Domain\Model\ReservationSaleDetail;
+use Booking\Application\Domain\Model\ReservationStatus;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 
@@ -32,6 +34,9 @@ final class ReservationFactory extends ModelFactory
 
     protected function getDefaults(): array
     {
+        $defaultSaleDetail = new ReservationSaleDetail();
+        $defaultSaleDetail->setStatus(ReservationStatus::NewArrival());
+
         return [
             // TODO add your default values here (https://github.com/zenstruck/foundry#model-factories)
             'firstName' => self::faker()->firstName(),
@@ -42,6 +47,7 @@ final class ReservationFactory extends ModelFactory
             'classe' => 'Prima',
             'registrationDate' => new \DateTimeImmutable('now'),
             //'registrationDate' => self::faker()->dateTime('now', 'UTC'),
+            'saleDetail' => $defaultSaleDetail,
         ];
     }
 

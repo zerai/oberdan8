@@ -5,6 +5,8 @@ namespace Booking\Tests\Integration;
 
 use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
+use Booking\Application\Domain\Model\ReservationSaleDetail;
+use Booking\Application\Domain\Model\ReservationStatus;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -103,6 +105,9 @@ class ReservationRepositoryTest extends KernelTestCase
 
     private function createEntity(): Reservation
     {
+        $itemDetail = new ReservationSaleDetail();
+        $itemDetail->setStatus(ReservationStatus::NewArrival());
+
         $item = new Reservation();
         $item->setFirstName('foo')
             ->setLastName('foo')
@@ -112,6 +117,9 @@ class ReservationRepositoryTest extends KernelTestCase
             ->setClasse('prima')
             ->setRegistrationDate(
                 new \DateTimeImmutable("now")
+            )
+            ->setSaleDetail(
+                $itemDetail
             )
         ;
 

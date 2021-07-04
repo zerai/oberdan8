@@ -6,6 +6,8 @@ use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
+use Booking\Application\Domain\Model\ReservationSaleDetail;
+use Booking\Application\Domain\Model\ReservationStatus;
 use Booking\Infrastructure\Framework\Form\Dto\BookDto;
 use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
 use Booking\Infrastructure\Framework\Form\ReservationType;
@@ -42,6 +44,12 @@ class ReservationController extends AbstractController
                 ->setRegistrationDate(
                     new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
                 );
+
+            // add saleDetail to reservation
+            $saleDetail = new ReservationSaleDetail();
+            $saleDetail->setStatus(ReservationStatus::NewArrival());
+            $reservation->setSaleDetail($saleDetail);
+
             // add book to reservation
             /** @var BookDto $formBook */
             foreach ($formData->books as $formBook) {

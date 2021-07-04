@@ -16,39 +16,51 @@
 {% endblock %}
 
 {% block content_body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Cognome</th>
-                <th>Nome</th>
-                <th>Data</th>
-                <th>Stato</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for reservation in backoffice_reservations %}
-            <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.lastName }}</td>
-                <td>{{ reservation.firstName }}</td>
-                <td>{{ reservation.registrationDate|date("m/d/Y") }}</td>
-{#                <td>{{ reservation.email }}</td>#}
-{#                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>#}
-{#                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>#}
-                <td>N.D</td>
-                <td>
-                    <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
-{#                    <a href="{{ path('backoffice_reservation_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>#}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Nessun risultato trovato.</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Cognome</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Stato</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for reservation in backoffice_reservations %}
+                    <tr>
+                        <td>{{ reservation.id }}</td>
+                        <td>{{ reservation.lastName }}</td>
+                        <td>{{ reservation.firstName }}</td>
+                        <td>{{ reservation.registrationDate|date("m/d/Y") }}</td>
+        {#                <td>{{ reservation.email }}</td>#}
+        {#                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>#}
+        {#                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>#}
+                        <td>{{ reservation.saleDetail.status }}</td>
+                        <td>
+                            <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
+        {#                    <a href="{{ path('backoffice_reservation_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>#}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">Nessun risultato trovato.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+
+
+        </div>
+    </div>
+</div>
 {% endblock %}

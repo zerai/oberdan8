@@ -39,9 +39,23 @@
       <code>Book[]</code>
     </LessSpecificImplementedReturnType>
   </file>
+  <file src="core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php">
+    <MixedArgument occurrences="5">
+      <code>$value</code>
+      <code>$value</code>
+      <code>$value</code>
+      <code>static::NAME</code>
+      <code>static::NAME</code>
+    </MixedArgument>
+  </file>
   <file src="core/booking/src/Adapter/Persistance/ReservationRepository.php">
     <LessSpecificImplementedReturnType occurrences="1">
       <code>Reservation[]</code>
+    </LessSpecificImplementedReturnType>
+  </file>
+  <file src="core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php">
+    <LessSpecificImplementedReturnType occurrences="1">
+      <code>ReservationSaleDetail[]</code>
     </LessSpecificImplementedReturnType>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Book.php">
@@ -115,7 +129,7 @@
     <MixedReturnStatement occurrences="1">
       <code>$this-&gt;registrationDate</code>
     </MixedReturnStatement>
-    <PropertyNotSetInConstructor occurrences="7">
+    <PropertyNotSetInConstructor occurrences="8">
       <code>$LastName</code>
       <code>$city</code>
       <code>$classe</code>
@@ -123,7 +137,17 @@
       <code>$firstName</code>
       <code>$id</code>
       <code>$phone</code>
+      <code>$saleDetail</code>
     </PropertyNotSetInConstructor>
+  </file>
+  <file src="core/booking/src/Application/Domain/Model/ReservationSaleDetail.php">
+    <MissingConstructor occurrences="2">
+      <code>$id</code>
+      <code>$status</code>
+    </MissingConstructor>
+    <MissingReturnType occurrences="1">
+      <code>getId</code>
+    </MissingReturnType>
   </file>
   <file src="core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php">
     <MissingReturnType occurrences="1">
@@ -201,6 +225,11 @@
     </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Adapter/BookingMailerTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>

@@ -22,49 +22,152 @@
 
 
 {% block content_body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+            <!-- card dati cliente -->
+
+            <div class="card" >
+                <div class="card-header">
+                    Dati del richiedente
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Cognome: {{ reservation.lastName }}
+                    </li>
+                    <li class="list-group-item">
+                        Nome: {{ reservation.firstName }}
+                    </li>
+                    <li class="list-group-item">
+                        Email: {{ reservation.email }}
+                    </li>
+                    <li class="list-group-item">
+                        Telefono: {{ reservation.phone }}
+                    </li>
+                    <li class="list-group-item">
+                        Città: {{ reservation.city }}
+                    </li>
+                    <li class="list-group-item">
+                        Classe: {{ reservation.classe }}
+                    </li>
+                </ul>
+            </div>
 
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ reservation.id }}</td>
-            </tr>
-            <tr>
-                <th>Cognome</th>
-                <td>{{ reservation.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Nome</th>
-                <td>{{ reservation.firstName }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ reservation.email }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ reservation.phone }}</td>
-            </tr>
-            <tr>
-                <th>Città</th>
-                <td>{{ reservation.city }}</td>
-            </tr>
-            <tr>
-                <th>Classe</th>
-                <td>{{ reservation.classe }}</td>
-            </tr>
 
-            <tr>
+
+        </div>
+        <div class="col-md-6">
+
+            <div class="row row-cols-1 row-cols-md-1">
+                <div class="col mb-4">
+                    <!-- card status -->
+
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            Stato prenotazione
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ reservation.saleDetail.status }}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col mb-4">
+                    <!-- card codice busta -->
+
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            Codice Busta
+                        </div>
+                        <div class="card-body">
+
+                            <p class="card-text">
+                                {{ reservation.saleDetail.reservationPackageId ?? 'Non assegnato'}}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col mb-4">
+                    <!-- card note  -->
+
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            Note
+                        </div>
+                        <div class="card-body">
+
+                            <p class="card-text">
+                                {{ reservation.saleDetail.generalNotes ?? 'Nessuna nota'}}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="row">
+
+
+
+        <div class="col-md-12">
+
+
+{#    <table class="table table-bordered">#}
+{#        <tbody>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <td>{{ reservation.id }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Cognome</th>#}
+{#                <td>{{ reservation.lastName }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Nome</th>#}
+{#                <td>{{ reservation.firstName }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Email</th>#}
+{#                <td>{{ reservation.email }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Tel</th>#}
+{#                <td>{{ reservation.phone }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Città</th>#}
+{#                <td>{{ reservation.city }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <th>Classe</th>#}
+{#                <td>{{ reservation.classe }}</td>#}
+{#            </tr>#}
+
+{#            <tr>#}
 {#                <th>Roles</th>#}
 {#                <td>{{ reservation.roles ? reservation.roles|json_encode : '' }}</td>#}
-            </tr>
-            <tr>
+{#            </tr>#}
+{#            <tr>#}
 {#                <th>Active</th>#}
 {#                <td>{{ reservation.active ? 'Yes' : 'No' }}</td>#}
-            </tr>
-        </tbody>
-    </table>
+{#            </tr>#}
+{#        </tbody>#}
+{#    </table>#}
 
     <hr>
 
@@ -72,30 +175,38 @@
 
     {% if reservation.books|length > 0  %}
 
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Titolo</th>
-                <th>Isbn</th>
-                <th>Autore</th>
-                <th>Volume</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for book in reservation.books  %}
-            <tr>
-                <td>{{ book.title }}</td>
-                <td>{{ book.isbn }}</td>
-                <td>{{ book.author }}</td>
-                <td>{{ book.volume }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Titolo</th>
+                    <th>Isbn</th>
+                    <th>Autore</th>
+                    <th>Volume</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in reservation.books  %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.volume }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
 
     {% else %}
         <p class="text-danger">il Richiedente ha caricato un file, controllare nella mail.</p>
     {% endif %}
+
+
+
+
+        </div>
+    </div>
+</div>
 {% endblock %}
