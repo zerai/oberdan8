@@ -37,7 +37,7 @@
                 </div>
             </form>
 
-
+            <h3>Total: {{ pagination.totalItemCount }}</h3>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -50,7 +50,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for reservation in backoffice_reservations %}
+                {% for reservation in pagination %}
                     <tr>
                         <td>{{ reservation.id }}</td>
                         <td>{{ reservation.lastName }}</td>
@@ -75,7 +75,10 @@
                 </tbody>
             </table>
 
-
+            {# display navigation #}
+{#            <div class="navigation">#}
+                {{ knp_pagination_render(pagination) }}
+{#            </div>#}
 
 
         </div>
