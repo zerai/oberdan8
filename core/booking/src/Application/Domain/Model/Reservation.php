@@ -76,10 +76,10 @@ class Reservation
     private string $otherInformation = '';
 
     /**
-     * @ORM\OneToOne(targetEntity=ReservationSeleDetail::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=ReservationSaleDetail::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private ReservationSeleDetail $saleDetail;
+    private ReservationSaleDetail $saleDetail;
 
     public function __construct()
     {
@@ -217,12 +217,12 @@ class Reservation
         return $this;
     }
 
-    public function getSaleDetail(): ?ReservationSeleDetail
+    public function getSaleDetail(): ?ReservationSaleDetail
     {
         return $this->saleDetail;
     }
 
-    public function setSaleDetail(ReservationSeleDetail $saleDetail): self
+    public function setSaleDetail(ReservationSaleDetail $saleDetail): self
     {
         $this->saleDetail = $saleDetail;
 

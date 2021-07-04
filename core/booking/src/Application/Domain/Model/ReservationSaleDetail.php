@@ -3,7 +3,6 @@
 
 namespace Booking\Application\Domain\Model;
 
-use Booking\Adapter\Persistance\ReservationSeleDetailRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
@@ -11,7 +10,7 @@ use Ramsey\Uuid\UuidInterface;
 /**
  * @ORM\Entity(repositoryClass=ReservationSeleDetailRepository::class)
  */
-class ReservationSeleDetail
+class ReservationSaleDetail
 {
     /**
      * @var UuidInterface
