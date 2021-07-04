@@ -25,12 +25,12 @@ class ReservationSaleDetail
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $ReservationPackageId;
+    private ?string $ReservationPackageId = null;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private string $GeneralNotes;
+    private ?string $GeneralNotes = null;
 
     /**
      * @ORM\Column(type="reservation_status")
