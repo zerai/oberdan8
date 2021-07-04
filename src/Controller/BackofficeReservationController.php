@@ -20,11 +20,18 @@ class BackofficeReservationController extends AbstractController
     /**
      * @Route("/", name="backoffice_reservation_index", methods={"GET"})
      */
-    public function index(ReservationRepositoryInterface $repository): Response
+    public function index(ReservationRepositoryInterface $repository, Request $request): Response
     {
+        $q = $request->query->get('q');
+
+        $queryBuilder = $repository->getWithSearchQueryBuilder($q);
+
+        $searchedReservation = $queryBuilder->getQuery()->getResult();
+
         return $this->render('backoffice/reservation/index.html.twig', [
             //'backoffice_reservations' => $repository->findAll(),
-            'backoffice_reservations' => $repository->findAllForBackoffice(),
+            //'backoffice_reservations' => $repository->findAllForBackoffice(),
+            'backoffice_reservations' => $searchedReservation,
         ]);
     }
 

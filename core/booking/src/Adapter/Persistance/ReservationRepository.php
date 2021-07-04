@@ -5,6 +5,7 @@ namespace Booking\Adapter\Persistance;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
 
@@ -88,6 +89,29 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->setMaxResults(100)
             ->getQuery()
             ->getResult()
+            ;
+    }
+
+    /**
+     * @param string|null $term
+     * @return QueryBuilder
+     */
+    public function getWithSearchQueryBuilder(?string $term): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('r')
+            //->innerJoin('c.article', 'a')
+            ->innerJoin('r.saleDetail', 's')
+            ->addSelect('s');
+
+        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
+        if ($term) {
+            $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }
+
+        return $qb
+            ->orderBy('r.registrationDate', 'DESC')
             ;
     }
 }
