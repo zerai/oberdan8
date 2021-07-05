@@ -1,5 +1,7 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
+{% import "backoffice/reservation/macros.twig" as macro %}
+
 {% block title %}
     Prenotazioni
     {{ parent() }}
@@ -70,7 +72,7 @@
                             Stato prenotazione
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{ reservation.saleDetail.status }}</p>
+                            <p class="card-text">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</p>
                         </div>
 
                     </div>
