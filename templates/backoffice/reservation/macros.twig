@@ -1,0 +1,38 @@
+{% macro renderReservationStatus(reservationStatus) %}
+
+    {% set status = '' %}
+
+    {% if reservationStatus == 'NewArrival' %}
+
+        {% set status = 'Nuova' %}
+
+    {% elseif reservationStatus == 'InProgress' %}
+
+        {% set status = 'In lavorazione' %}
+
+    {% elseif reservationStatus == 'Pending' %}
+
+        {% set status = 'In sospeso' %}
+
+    {% elseif reservationStatus == 'Rejected' %}
+
+        {% set status = 'Rifiutato' %}
+
+    {% elseif reservationStatus == 'Confirmed' %}
+
+        {% set status = 'Confermato' %}
+
+    {% elseif reservationStatus == 'Sale' %}
+
+        {% set status = 'Vendita' %}
+
+    {% elseif reservationStatus == 'PickedUp' %}
+
+        {% set status = 'Ritirato' %}
+
+    {% endif %}
+
+
+    {{ status }}
+
+{% endmacro %}

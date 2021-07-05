@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\BackofficeUser;
+use App\Form\BackofficeReservationEditType;
 use App\Form\BackofficeUserType;
+use App\Form\Model\BackofficeReservationEditFormModel;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
+use Booking\Application\Domain\Model\ReservationStatus;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +35,7 @@ class BackofficeReservationController extends AbstractController
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(), //$query, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            10 /*limit per page*/
+            15 /*limit per page*/
         );
 
         return $this->render('backoffice/reservation/index.html.twig', [
@@ -83,6 +86,50 @@ class BackofficeReservationController extends AbstractController
     {
         return $this->render('backoffice/reservation/show.html.twig', [
             'reservation' => $reservation,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="backoffice_reservation_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Reservation $reservation): Response
+    {
+        //create form model
+        $formModel = new BackofficeReservationEditFormModel();
+        $formModel->notes = $reservation->getSaleDetail()->getStatus()->toString();
+        $formModel->notes = $reservation->getSaleDetail()->getReservationPackageId();
+        $formModel->notes = $reservation->getSaleDetail()->getGeneralNotes();
+
+        $form = $this->createForm(BackofficeReservationEditType::class, $formModel);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            //update status
+            $reservation->getSaleDetail()->setStatus(
+                ReservationStatus::fromName($form->get('status')->getData())
+            );
+
+            //update reservation packageId
+            $reservation->getSaleDetail()->setReservationPackageId($form->get('packageId')->getData());
+
+            // update notes
+            $reservation->getSaleDetail()->setGeneralNotes($form->get('notes')->getData());
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($reservation);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Prenotazione modificata.');
+
+            return $this->redirectToRoute('backoffice_reservation_index', [
+                'id' => $reservation->getId(),
+            ]);
+        }
+
+        return $this->render('backoffice/reservation/edit.html.twig', [
+            //'backoffice_user' => $reservation,
+            'form' => $form->createView(),
         ]);
     }
 

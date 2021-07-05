@@ -1,5 +1,7 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
+{% import "backoffice/reservation/macros.twig" as macro %}
+
 {% block title %}
     Prenotazioni
     {{ parent() }}
@@ -8,6 +10,7 @@
 
 {% block content_toolbar %}
     <a class="btn btn-info" href="{{ path('backoffice_reservation_index') }}">Lista</a>
+    <a class="btn btn-info" href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i> Modifica</a>
 
 {#    <a class="btn btn-info" href="{{ path('backoffice_user_edit', {'id': reservation.id}) }}"><i class="fa fa-pen"></i> Modifica</a>#}
 
@@ -16,7 +19,7 @@
 {% endblock %}
 
 {% block content_title %}
-    Prenotazione:  Id #{{ reservation.id }}
+    Prenotazione:<br>  <p class="text-muted">Id #{{ reservation.id }}</p>
 {% endblock %}
 
 
@@ -69,7 +72,7 @@
                             Stato prenotazione
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{ reservation.saleDetail.status }}</p>
+                            <p class="card-text">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</p>
                         </div>
 
                     </div>

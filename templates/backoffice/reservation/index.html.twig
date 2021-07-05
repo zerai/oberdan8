@@ -1,5 +1,7 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
+{% import "backoffice/reservation/macros.twig" as macro %}
+
 {% block title %}
     Prenotazioni
     {{ parent() }}
@@ -37,7 +39,7 @@
                 </div>
             </form>
 
-            <h3>Total: {{ pagination.totalItemCount }}</h3>
+            <h4>Totale: {{ pagination.totalItemCount }}</h4>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -51,18 +53,17 @@
                 </thead>
                 <tbody>
                 {% for reservation in pagination %}
-                    <tr>
+                    <tr class="tr-{{ reservation.saleDetail.status }}">
                         <td>{{ reservation.id }}</td>
                         <td>{{ reservation.lastName }}</td>
                         <td>{{ reservation.firstName }}</td>
                         <td>{{ reservation.registrationDate|date("m/d/Y") }}</td>
         {#                <td>{{ reservation.email }}</td>#}
         {#                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>#}
-        {#                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>#}
-                        <td>{{ reservation.saleDetail.status }}</td>
+                        <td>{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
                         <td>
                             <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
-        {#                    <a href="{{ path('backoffice_reservation_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>#}
+                            <a href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i></a>
                         </td>
                     </tr>
                 {% else %}
