@@ -256,6 +256,36 @@ parameters:
 			path: src/Controller/BackofficeReservationController.php
 
 		-
+			message: "#^Cannot call method getGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getReservationPackageId\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method setGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method setReservationPackageId\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method setStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
 			message: "#^Method App\\\\Controller\\\\BackofficeSecurityController\\:\\:logout\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but return statement is missing\\.$#"
 			count: 1
 			path: src/Controller/BackofficeSecurityController.php
@@ -435,6 +465,16 @@ parameters:
 			path: src/Factory/ReservationFactory.php
 
 		-
+			message: "#^Method App\\\\Form\\\\BackofficeReservationEditType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeReservationEditType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\BackofficeReservationEditType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeReservationEditType.php
+
+		-
 			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/BackofficeUserChangePasswordType.php
@@ -563,6 +603,16 @@ parameters:
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 8
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:getId\\(\\)\\.$#"
+			count: 1
+			path: tests/Functional/Backoffice/ReservationCrudTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 1
+			path: tests/Functional/Backoffice/ReservationCrudTest.php
 
 		-
 			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"

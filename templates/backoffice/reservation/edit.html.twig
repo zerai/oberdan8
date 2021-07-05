@@ -1,0 +1,32 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% block title %}
+    Prenotazioni
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Prenotazioni
+{% endblock %}
+
+
+{% block content_toolbar %}
+    {#    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}"><i class="fa fa-plus"></i> Crea utente</a>#}
+{% endblock %}
+
+{% block content_body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                {{ form_errors(form) }}
+
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

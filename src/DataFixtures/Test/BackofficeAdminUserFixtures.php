@@ -34,6 +34,6 @@ class BackofficeAdminUserFixtures extends Fixture implements FixtureGroupInterfa
 
     public static function getGroups(): array
     {
-        return ['test', 'testSecurity', 'stageAdminUser'];
+        return ['test', 'testSecurity', 'testAdminUser'];
     }
 }

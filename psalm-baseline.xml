@@ -297,22 +297,31 @@
     </PossiblyNullReference>
   </file>
   <file src="src/Controller/BackofficeReservationController.php">
-    <MixedArgument occurrences="1">
+    <MixedArgument occurrences="4">
+      <code>$form-&gt;get('notes')-&gt;getData()</code>
+      <code>$form-&gt;get('packageId')-&gt;getData()</code>
+      <code>$form-&gt;get('status')-&gt;getData()</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
     </MixedArgument>
-    <MixedAssignment occurrences="3">
+    <MixedAssignment occurrences="2">
       <code>$q</code>
       <code>$queryBuilder</code>
-      <code>$searchedReservation</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="3">
+    <MixedMethodCall occurrences="2">
       <code>getQuery</code>
-      <code>getResult</code>
       <code>toString</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
+    <PossiblyNullReference occurrences="6">
+      <code>getGeneralNotes</code>
+      <code>getReservationPackageId</code>
+      <code>getStatus</code>
+      <code>setGeneralNotes</code>
+      <code>setReservationPackageId</code>
+      <code>setStatus</code>
+    </PossiblyNullReference>
     <UndefinedInterfaceMethod occurrences="1">
       <code>getWithSearchQueryBuilder</code>
     </UndefinedInterfaceMethod>
@@ -507,6 +516,12 @@
       <code>phoneNumber</code>
     </UndefinedMagicMethod>
   </file>
+  <file src="src/Form/BackofficeReservationEditType.php">
+    <MissingReturnType occurrences="2">
+      <code>buildForm</code>
+      <code>configureOptions</code>
+    </MissingReturnType>
+  </file>
   <file src="src/Form/BackofficeUserChangePasswordType.php">
     <MissingReturnType occurrences="2">
       <code>buildForm</code>
@@ -524,6 +539,13 @@
       <code>buildForm</code>
       <code>configureOptions</code>
     </MissingReturnType>
+  </file>
+  <file src="src/Form/Model/BackofficeReservationEditFormModel.php">
+    <MissingConstructor occurrences="3">
+      <code>$notes</code>
+      <code>$packageId</code>
+      <code>$status</code>
+    </MissingConstructor>
   </file>
   <file src="src/Form/RegistrationFormType.php">
     <MissingReturnType occurrences="2">
