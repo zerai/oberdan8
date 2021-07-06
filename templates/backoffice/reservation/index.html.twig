@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                 {% for reservation in pagination %}
-                    <tr class="tr-{{ reservation.saleDetail.status }}">
+                    <tr class="{{ reservation.saleDetail.status }}">
                         <td>{{ reservation.id }}</td>
                         <td>{{ reservation.lastName }}</td>
                         <td>{{ reservation.firstName }}</td>
