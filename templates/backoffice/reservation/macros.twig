@@ -30,6 +30,10 @@
 
         {% set status = 'Ritirato' %}
 
+    {% elseif reservationStatus == 'Blacklist' %}
+
+        {% set status = 'Blacklist' %}
+
     {% endif %}
 
 

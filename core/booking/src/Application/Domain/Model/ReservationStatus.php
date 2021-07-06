@@ -18,7 +18,18 @@ final class ReservationStatus
 
     public const PickedUp = 6;
 
-    public const Options = ['NewArrival', 'InProgress', 'Pending', 'Rejected', 'Confirmed', 'Sale', 'PickedUp'];
+    public const Blacklist = 7;
+
+    public const Options = [
+        'NewArrival',
+        'InProgress',
+        'Pending',
+        'Rejected',
+        'Confirmed',
+        'Sale',
+        'PickedUp',
+        'Blacklist',
+    ];
 
     private string $name;
 
@@ -57,6 +68,11 @@ final class ReservationStatus
     public static function PickedUp(): self
     {
         return new self('PickedUp', 6);
+    }
+
+    public static function Blacklist(): self
+    {
+        return new self('Blacklist', 7);
     }
 
     private function __construct(string $name, int $value)

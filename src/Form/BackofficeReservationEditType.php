@@ -44,6 +44,7 @@ class BackofficeReservationEditType extends AbstractType
                     'Confermato' => 'Confirmed',
                     'Vendita' => 'Sale',
                     'Ritirato' => 'PickedUp',
+                    'Blacklist' => 'Blacklist',
                 ],
             ])
             ->add(

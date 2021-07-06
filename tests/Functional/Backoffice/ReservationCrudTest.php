@@ -128,6 +128,7 @@ class ReservationCrudTest extends SecurityWebtestCase
             yield 'Confirmed' => ['Confirmed', 'Confermato'],
             yield 'Sale' => ['Sale', 'Vendita'],
             yield 'PickedUp' => ['PickedUp', 'Ritirato'],
+            yield 'Blacklist' => ['Blacklist', 'Blacklist'],
         ];
     }
 
