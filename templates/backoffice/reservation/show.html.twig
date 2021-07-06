@@ -71,7 +71,7 @@
                         <div class="card-header">
                             Stato prenotazione
                         </div>
-                        <div class="card-body">
+                        <div class="card-body {{ reservation.saleDetail.status }}">
                             <p class="card-text">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</p>
                         </div>
 

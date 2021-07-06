@@ -96,8 +96,8 @@ class BackofficeReservationController extends AbstractController
     {
         //create form model
         $formModel = new BackofficeReservationEditFormModel();
-        $formModel->notes = $reservation->getSaleDetail()->getStatus()->toString();
-        $formModel->notes = $reservation->getSaleDetail()->getReservationPackageId();
+        $formModel->status = $reservation->getSaleDetail()->getStatus()->toString();
+        $formModel->packageId = $reservation->getSaleDetail()->getReservationPackageId();
         $formModel->notes = $reservation->getSaleDetail()->getGeneralNotes();
 
         $form = $this->createForm(BackofficeReservationEditType::class, $formModel);
