@@ -20,8 +20,23 @@ class UserCrudTest extends SecurityWebtestCase
     /** @test */
     public function shouldBeAbleToCreateAUser(): void
     {
-        self::markTestIncomplete();
-        //$this->logInAsAdmin();
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/user/new');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $crawler = $this->client->submitForm('Salva', [
+            'backoffice_user[email]' => 'anewuser@example.com',
+            'backoffice_user[plainPassword]' => 'demodemo',
+            'backoffice_user[active]' => 1,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        self::assertStringContainsString('anewuser@example.com', $this->client->getResponse()->getContent());
     }
 
     /** @test */
