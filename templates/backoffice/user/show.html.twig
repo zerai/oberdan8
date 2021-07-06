@@ -1,7 +1,7 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
 {% block title %}
-    User
+    Utenti
     {{ parent() }}
 {% endblock %}
 
@@ -15,32 +15,38 @@
 {% endblock %}
 
 {% block content_title %}
-    User
+    Visualizza utente
 {% endblock %}
 
 
 
 {% block content_body %}
-
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ backoffice_user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ backoffice_user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ backoffice_user.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ backoffice_user.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>Roles</th>
+                            <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Active</th>
+                            <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

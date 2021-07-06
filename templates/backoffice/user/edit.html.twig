@@ -1,7 +1,7 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
 {% block title %}
-    User
+    Utenti
     {{ parent() }}
 {% endblock %}
 
@@ -15,5 +15,11 @@
 {% endblock %}
 
 {% block content_body %}
-    {{ include('backoffice/user/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {{ include('backoffice/user/_form.html.twig', {'button_label': 'Aggiorna'}) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

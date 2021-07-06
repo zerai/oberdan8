@@ -1,13 +1,13 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
 {% block title %}
-    User
+    Utenti
     {{ parent() }}
 {% endblock %}
 
 
 {% block content_title %}
-    User index
+    Gestione utenti
 {% endblock %}
 
 
@@ -16,34 +16,41 @@
 {% endblock %}
 
 {% block content_body %}
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Ruoli</th>
-                <th>Attivo</th>
-                <th>Azioni</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for backoffice_user in backoffice_users %}
-            <tr>
-                <td>{{ backoffice_user.id }}</td>
-                <td>{{ backoffice_user.email }}</td>
-                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
-                <td>{{ backoffice_user.active ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('backoffice_user_show', {'id': backoffice_user.id}) }}"><i class="fa fa-eye"></i></a>
-                    <a href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">Nessun risultato trovato.</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>Ruoli</th>
+                        <th>Attivo</th>
+                        <th>Azioni</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for backoffice_user in backoffice_users %}
+                        <tr>
+                            <td>{{ backoffice_user.id }}</td>
+                            <td>{{ backoffice_user.email }}</td>
+                            <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>
+                            <td>{{ backoffice_user.active ? 'Si' : 'No' }}</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{{ path('backoffice_user_show', {'id': backoffice_user.id}) }}"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-primary btn-sm" href="{{ path('backoffice_user_edit', {'id': backoffice_user.id}) }}"><i class="fa fa-pencil"></i></a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Nessun risultato trovato.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
