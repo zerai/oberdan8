@@ -90,8 +90,11 @@ class ReservationCrudTest extends SecurityWebtestCase
         self::assertSelectorExists('.pagination');
     }
 
-    /** @test */
-    public function shouldEditTheReservationStatusForAReservation(): void
+    /**
+     * @test
+     * @dataProvider changeReservationStatusDataProvider
+     */
+    public function shouldEditTheReservationStatusForAReservation(string $newStatus, string $expectedStatusInPage): void
     {
         /** @var Reservation $reservation */
         $reservation = ReservationFactory::createOne()->object();
@@ -105,15 +108,27 @@ class ReservationCrudTest extends SecurityWebtestCase
         $this->client->followRedirects(true);
 
         $crawler = $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[status]' => 'InProgress',
+            'backoffice_reservation_edit[status]' => $newStatus,
         ]);
 
         self::assertResponseIsSuccessful();
 
         self::assertGreaterThan(
             0,
-            $crawler->filter('html table.table:contains("In lavorazione")')->count()
+            $crawler->filter("html table.table:contains(\"${expectedStatusInPage}\")")->count()
         );
+    }
+
+    public function changeReservationStatusDataProvider(): \Generator
+    {
+        return [
+            yield 'InProgress' => ['InProgress', 'In lavorazione'],
+            yield 'Pending' => ['Pending', 'In sospeso'],
+            yield 'Rejected' => ['Rejected', 'Rifiutato'],
+            yield 'Confirmed' => ['Confirmed', 'Confermato'],
+            yield 'Sale' => ['Sale', 'Vendita'],
+            yield 'PickedUp' => ['PickedUp', 'Ritirato'],
+        ];
     }
 
     /** @test */
