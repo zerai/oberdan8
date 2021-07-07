@@ -114,4 +114,36 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->orderBy('r.registrationDate', 'DESC')
             ;
     }
+
+    /**
+     * @return Reservation[]
+     */
+    public function findAllNewArrivalOrderByNewest()
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'NewArrival')
+            ->orderBy('r.registrationDate', 'DESC')
+            ->setMaxResults(1000)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return Reservation[]
+     */
+    public function findAllConfirmedOrderByOldest()
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Confirmed')
+            ->orderBy('r.registrationDate', 'ASC')
+            ->setMaxResults(1000)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

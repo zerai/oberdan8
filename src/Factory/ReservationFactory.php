@@ -45,7 +45,7 @@ final class ReservationFactory extends ModelFactory
             'phone' => self::faker()->phoneNumber(),
             'city' => self::faker()->city(),
             'classe' => 'Prima',
-            'registrationDate' => new \DateTimeImmutable('now'),
+            'registrationDate' => new \DateTimeImmutable('now', new \DateTimeZone('Europe/Rome')),
             //'registrationDate' => self::faker()->dateTime('now', 'UTC'),
             'saleDetail' => $defaultSaleDetail,
         ];
@@ -62,5 +62,64 @@ final class ReservationFactory extends ModelFactory
     protected static function getClass(): string
     {
         return Reservation::class;
+    }
+
+    public function withConfirmedStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('Confirmed'),
+        ]);
+    }
+
+    public function withInProgressStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('InProgress'),
+        ]);
+    }
+
+    public function withPendingStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('Pending'),
+        ]);
+    }
+
+    public function withRejectedStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('Rejected'),
+        ]);
+    }
+
+    public function withSaleStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('Sale'),
+        ]);
+    }
+
+    public function withPickedUpStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('PickedUp'),
+        ]);
+    }
+
+    public function withBlacklistStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('Blacklist'),
+        ]);
+    }
+
+    private function createReservationDetailWithStatus(string $status = 'NewArrival'): ReservationSaleDetail
+    {
+        $defaultSaleDetail = new ReservationSaleDetail();
+        $defaultSaleDetail->setStatus(
+            ReservationStatus::fromName($status)
+        );
+
+        return $defaultSaleDetail;
     }
 }
