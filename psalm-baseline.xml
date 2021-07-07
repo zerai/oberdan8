@@ -52,6 +52,11 @@
     <LessSpecificImplementedReturnType occurrences="1">
       <code>Reservation[]</code>
     </LessSpecificImplementedReturnType>
+    <MixedInferredReturnType occurrences="2">
+      <code>Reservation[]</code>
+      <code>Reservation[]</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="2"/>
   </file>
   <file src="core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php">
     <LessSpecificImplementedReturnType occurrences="1">
@@ -218,6 +223,11 @@
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
     </PossiblyNullOperand>
+  </file>
+  <file src="core/booking/tests/Integration/ReservationRepositoryReadSideTest.php">
+    <MissingDependency occurrences="1">
+      <code>KernelTestCase</code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryTest.php">
     <MissingDependency occurrences="1">
