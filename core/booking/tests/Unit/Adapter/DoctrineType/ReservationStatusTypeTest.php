@@ -12,6 +12,9 @@ use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \Booking\Adapter\Persistance\DoctrineType\ReservationStatusType
+ */
 class ReservationStatusTypeTest extends TestCase
 {
     /** @var Type|null */
