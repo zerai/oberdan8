@@ -495,6 +495,16 @@ parameters:
 			path: src/Form/BackofficeReservationEditType.php
 
 		-
+			message: "#^Method App\\\\Form\\\\BackofficeReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeReservationType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\BackofficeReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeReservationType.php
+
+		-
 			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/BackofficeUserChangePasswordType.php
@@ -523,6 +533,11 @@ parameters:
 			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/InfoBoxType.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Model\\\\BackofficeReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
+			count: 1
+			path: src/Form/Model/BackofficeReservationFormModel.php
 
 		-
 			message: "#^Method App\\\\Form\\\\RegistrationFormType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"

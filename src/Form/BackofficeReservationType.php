@@ -57,10 +57,10 @@ class BackofficeReservationType extends AbstractType
                 'empty_data' => '',
             ])
 
-            ->add('privacyConfirmed', CheckboxType::class, [
-                'label' => 'Acconsento al trattamento dei dati secondo la normativa sulla privacy',
-                'required' => true,
-            ])
+//            ->add('privacyConfirmed', CheckboxType::class, [
+//                'label' => 'Acconsento al trattamento dei dati secondo la normativa sulla privacy',
+//                'required' => true,
+//            ])
 
             ->add(
                 'submit',

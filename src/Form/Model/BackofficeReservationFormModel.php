@@ -31,8 +31,8 @@ class BackofficeReservationFormModel
 
     public string $otherInfo;
 
-    /**
-     * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")
-     */
-    public bool $privacyConfirmed;
+//    /**
+//     * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")
+//     */
+//    public bool $privacyConfirmed;
 }

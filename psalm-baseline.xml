@@ -312,6 +312,9 @@
     </PossiblyNullReference>
   </file>
   <file src="src/Controller/BackofficeReservationController.php">
+    <MissingPropertyType occurrences="1">
+      <code>$formData-&gt;books</code>
+    </MissingPropertyType>
     <MixedArgument occurrences="5">
       <code>$form-&gt;get('notes')-&gt;getData()</code>
       <code>$form-&gt;get('packageId')-&gt;getData()</code>
@@ -543,6 +546,12 @@
       <code>configureOptions</code>
     </MissingReturnType>
   </file>
+  <file src="src/Form/BackofficeReservationType.php">
+    <MissingReturnType occurrences="2">
+      <code>buildForm</code>
+      <code>configureOptions</code>
+    </MissingReturnType>
+  </file>
   <file src="src/Form/BackofficeUserChangePasswordType.php">
     <MissingReturnType occurrences="2">
       <code>buildForm</code>
@@ -567,6 +576,11 @@
       <code>$packageId</code>
       <code>$status</code>
     </MissingConstructor>
+  </file>
+  <file src="src/Form/Model/BackofficeReservationFormModel.php">
+    <MissingPropertyType occurrences="1">
+      <code>$books</code>
+    </MissingPropertyType>
   </file>
   <file src="src/Form/RegistrationFormType.php">
     <MissingReturnType occurrences="2">
