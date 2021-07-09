@@ -6,6 +6,7 @@ use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Infrastructure\BackofficeEmailRetriever;
 use Booking\Infrastructure\BookingEmailSender;
 use PHPUnit\Framework\TestCase;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Mailer\MailerInterface;
 
 /**
@@ -22,6 +23,8 @@ class BookingMailerTest extends TestCase
     private const BACKOFFICE_RETRIEVER_AS = 'Gestione prenotazioni';
 
     private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan 8: Prenotazione ricevuta';
+
+    private const RESERVATION_THANKS_EMAIL_SUBJECT = 'Oberdan 8 Ti ringraziamo per averci scelto';
 
     private const FIRST_NAME = 'irrelevant';
 
@@ -100,6 +103,37 @@ class BookingMailerTest extends TestCase
         $recipientAddress = $sendedEmail->getTo();
         self::assertSame(self::BACKOFFICE_RETRIEVER_MAIL, $recipientAddress[0]->getAddress());
         self::assertSame(self::CONTACT_EMAIL, $sendedEmail->getReplyTo()[0]->getAddress());
+    }
+
+    /** @test */
+    public function shouldSendThanksMailToClient(): void
+    {
+        $reservationId = Uuid::uuid4()->toString();
+        $sender = new BookingEmailSender(self::MAIL_FROM, self::MAIL_FROM_SHOW_AS);
+        $backofficeRetriever = new BackofficeEmailRetriever(self::BACKOFFICE_RETRIEVER_MAIL, self::BACKOFFICE_RETRIEVER_AS);
+        $symfonyMailer = $this->createMock(MailerInterface::class);
+        $symfonyMailer->expects(self::once())
+            ->method('send');
+        $bookingMailer = new BookingMailer(
+            $symfonyMailer,
+            $sender,
+            $backofficeRetriever
+        );
+
+        $sendedEmail = $bookingMailer->notifyReservationThanksEmailToClient('example@example.com', $reservationId);
+
+        self::assertSame(self::RESERVATION_THANKS_EMAIL_SUBJECT, $sendedEmail->getSubject());
+
+        $recipientAddress = $sendedEmail->getTo();
+        self::assertSame('example@example.com', $recipientAddress[0]->getAddress());
+
+        $senderAddress = $sendedEmail->getFrom();
+        self::assertSame(self::MAIL_FROM, $senderAddress[0]->getAddress());
+        self::assertSame(self::MAIL_FROM_SHOW_AS, $senderAddress[0]->getName());
+
+        $emailBody = (string) $sendedEmail->getHtmlBody();
+
+        self::assertStringContainsString($emailBody, 'Il Banco 8 ti ringrazia!');
     }
 
     private function getPersonData(): array

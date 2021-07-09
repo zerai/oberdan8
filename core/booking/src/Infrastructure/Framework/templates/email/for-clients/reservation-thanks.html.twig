@@ -1,0 +1,61 @@
+{% apply inky_to_html|inline_css(encore_entry_css_source('email-tanks')) %}
+    <wrapper class="header" bgcolor="#8a8a8a">
+        <container>
+            <row class="collapse">
+                <columns small="6" valign="middle">
+                    {#                <img src="{{ absolute_url(asset('build/images/mailer/logo.png')) }}" alt="Oberdan Logo">#}
+
+                    <img src="{{ email.image('@mailer-images/logo.png') }}" alt="Oberdan Logo">
+
+                </columns>
+                <columns small="6" valign="middle">
+                </columns>
+            </row>
+        </container>
+    </wrapper>
+
+    <container>
+
+        <spacer size="16"></spacer>
+
+        <row>
+            <columns>
+                <h1>Il Banco 8 ti ringrazia!</h1>
+                <p class="lead">
+                    Puoi contattarci in qualsiasi momento ai numeri 324 629 9631 e 349 355 02 79 (anche WhatsApp).
+                </p>
+                <callout class="primary">
+                    <p>
+                        Se sei rimasto soddisfatto del nostro servizio, consigliaci ai tuoi amici e riceveranno lo stesso trattamento. È il miglior regalo che tu possa farci!
+                    </p>
+                </callout>
+
+                <p>NOI COMPRIAMO LIBRI scolastici, universitari e vari, anche rottamazione.</p>
+
+                <p>Grazie
+                    OBERDAN BANCO 8 </p>
+            </columns>
+        </row>
+
+        <wrapper class="secondary">
+            <spacer size="16"></spacer>
+            <row>
+                <columns small="12" large="6">
+                    <h5>Seguici:</h5>
+                    <menu class="vertical">
+                        <item style="text-align: left;" href="https://www.oberdan8.it">www.oberdan8.it</item>
+                        <item style="text-align: left;" href="https://www.8viadeilibrai.it">prenotazioni on-line</item>
+                        <item style="text-align: left;" href="https://www.facebook.com/oberdanbanco8">Facebook</item>
+                    </menu>
+                </columns>
+                <columns small="12" large="6">
+                    <h5>Contatti:</h5>
+                    <p>Assistenza prenotazioni online: <br>324 62 99 631</p>
+                    <p>Assistenza mercato lungotevere: <br>324 62 99 631</p>
+                    <p>Email: <a href="mailto:info@oberdan8.it">info@oberdan8.it</a></p>
+                </columns>
+            </row>
+        </wrapper>
+
+    </container>
+{% endapply %}

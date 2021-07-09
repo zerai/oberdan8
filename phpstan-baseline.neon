@@ -111,6 +111,11 @@ parameters:
 			path: core/booking/src/Application/NotifyReservationConfirmationToClient.php
 
 		-
+			message: "#^Method Booking\\\\Application\\\\NotifyReservationThanksToClient\\:\\:notifyReservationThanksEmailToClient\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyReservationThanksToClient.php
+
+		-
 			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
@@ -277,7 +282,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
+			count: 2
 			path: src/Controller/BackofficeReservationController.php
 
 		-
@@ -292,6 +297,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method setStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$recipient of method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyReservationThanksEmailToClient\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
 
@@ -621,7 +631,7 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
-			count: 3
+			count: 4
 			path: tests/Functional/Backoffice/ReservationCrudTest.php
 
 		-
