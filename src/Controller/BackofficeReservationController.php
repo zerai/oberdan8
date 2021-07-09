@@ -6,6 +6,7 @@ use App\Entity\BackofficeUser;
 use App\Form\BackofficeReservationEditType;
 use App\Form\BackofficeUserType;
 use App\Form\Model\BackofficeReservationEditFormModel;
+use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Booking\Application\Domain\Model\ReservationStatus;
@@ -92,7 +93,7 @@ class BackofficeReservationController extends AbstractController
     /**
      * @Route("/{id}/edit", name="backoffice_reservation_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Reservation $reservation): Response
+    public function edit(Request $request, Reservation $reservation, BookingMailer $bookingMailer): Response
     {
         //create form model
         $formModel = new BackofficeReservationEditFormModel();
@@ -119,6 +120,12 @@ class BackofficeReservationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
+
+            if ($reservation->getSaleDetail()->getStatus()->name() === 'PickedUp') {
+                $bookingMailer->notifyReservationThanksEmailToClient($reservation->getEmail(), $reservation->getId()->toString());
+
+                $this->addFlash('info', 'La mail di ringraziamento è stata inviata all\' utente.');
+            }
 
             $this->addFlash('success', 'Prenotazione modificata.');
 

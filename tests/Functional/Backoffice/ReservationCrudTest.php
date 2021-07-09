@@ -38,7 +38,7 @@ class ReservationCrudTest extends SecurityWebtestCase
     {
         $this->logInAsAdmin();
 
-        $crawler = $this->client->request('GET', '/admin/prenotazioni/');
+        $this->client->request('GET', '/admin/prenotazioni/');
 
         self::assertResponseIsSuccessful();
 
@@ -52,7 +52,7 @@ class ReservationCrudTest extends SecurityWebtestCase
 
         $this->logInAsAdmin();
 
-        $crawler = $this->client->request('GET', '/admin/prenotazioni/');
+        $this->client->request('GET', '/admin/prenotazioni/');
 
         self::assertResponseIsSuccessful();
 
@@ -119,6 +119,34 @@ class ReservationCrudTest extends SecurityWebtestCase
         );
     }
 
+    /** @test */
+    public function shouldSendThanksMailWhenMovedToStatusPikedUp(string $pickedUpStatus = 'PickedUp'): void
+    {
+        /** @var Reservation $reservation */
+        $reservation = ReservationFactory::createOne()->object();
+
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $crawler = $this->client->submitForm('Invia', [
+            'backoffice_reservation_edit[status]' => $pickedUpStatus,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        self::assertStringContainsString('La mail di ringraziamento è stata inviata', $this->client->getResponse()->getContent());
+
+        self::assertGreaterThan(
+            0,
+            $crawler->filter("html table.table:contains('Ritirato')")->count()
+        );
+    }
+
     public function changeReservationStatusDataProvider(): \Generator
     {
         return [
@@ -146,7 +174,7 @@ class ReservationCrudTest extends SecurityWebtestCase
 
         $this->client->followRedirects(true);
 
-        $crawler = $this->client->submitForm('Invia', [
+        $this->client->submitForm('Invia', [
             'backoffice_reservation_edit[notes]' => 'A new notes.',
         ]);
 
@@ -176,7 +204,7 @@ class ReservationCrudTest extends SecurityWebtestCase
 
         $this->client->followRedirects(true);
 
-        $crawler = $this->client->submitForm('Invia', [
+        $this->client->submitForm('Invia', [
             'backoffice_reservation_edit[packageId]' => 'B-23',
         ]);
 
