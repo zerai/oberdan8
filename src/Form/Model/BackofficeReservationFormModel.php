@@ -2,7 +2,7 @@
 
 namespace App\Form\Model;
 
-use Booking\Infrastructure\Framework\Form\Dto\ClientDto;
+use App\Form\Dto\ClientDto;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

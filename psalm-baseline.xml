@@ -564,6 +564,21 @@
       <code>configureOptions</code>
     </MissingReturnType>
   </file>
+  <file src="src/Form/ClientType.php">
+    <MissingReturnType occurrences="2">
+      <code>buildForm</code>
+      <code>configureOptions</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Form/Dto/ClientDto.php">
+    <MissingConstructor occurrences="5">
+      <code>$city</code>
+      <code>$email</code>
+      <code>$firstName</code>
+      <code>$lastName</code>
+      <code>$phone</code>
+    </MissingConstructor>
+  </file>
   <file src="src/Form/InfoBoxType.php">
     <MissingReturnType occurrences="2">
       <code>buildForm</code>

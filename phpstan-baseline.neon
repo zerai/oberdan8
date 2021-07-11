@@ -525,6 +525,16 @@ parameters:
 			path: src/Form/BackofficeUserType.php
 
 		-
+			message: "#^Method App\\\\Form\\\\ClientType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/ClientType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\ClientType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/ClientType.php
+
+		-
 			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/InfoBoxType.php
