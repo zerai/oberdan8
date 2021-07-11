@@ -54,7 +54,7 @@
                 <tbody>
                 {% for reservation in pagination %}
                     <tr class="{{ reservation.saleDetail.status }}">
-                        <td>{{ reservation.id }}</td>
+                        <td>{{ reservation.id|u.truncate(5) }}</td>
                         <td>{{ reservation.lastName }}</td>
                         <td>{{ reservation.firstName }}</td>
                         <td>{{ reservation.registrationDate|date("m/d/Y") }}</td>
