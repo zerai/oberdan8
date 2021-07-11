@@ -4,6 +4,7 @@
 namespace Booking\Tests\Unit\Domain\ConfirmationStatus;
 
 use Booking\Application\Domain\Model\ConfirmationStatus\ConfirmationStatus;
+use Booking\Application\Domain\Model\ConfirmationStatus\extensionTime;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,10 +15,6 @@ class ConfirmationStatusTest extends TestCase
     /** @test */
     public function canBeCreated(): void
     {
-        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-
-        //dd($date->format('Y-m-d\TH:i:s.uP'));
-
         $sut = ConfirmationStatus::fromArray(
             [
                 'confirmedAt' => '2021-07-08T09:35:11.004408+02:00',
@@ -43,5 +40,69 @@ class ConfirmationStatusTest extends TestCase
 
         self::assertFalse($sut->extensionTime()->value());
         self::assertFalse($sut->expired()->value());
+    }
+
+    /** @test */
+    public function canCalculateNegativeExpiration(): void
+    {
+        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        $date = $date->modify("- 5 days"); //->modify('- 2 days');
+
+        $sut = ConfirmationStatus::create(
+            $date
+        );
+
+        $sut->isExpired();
+
+        self::assertFalse($sut->isExpired());
+    }
+
+    /** @test */
+    public function canCalculatePositiveExpiration(): void
+    {
+        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        $date = $date->modify("- 8 days"); //->modify('- 2 days');
+
+        $sut = ConfirmationStatus::create(
+            $date
+        );
+
+        $sut->isExpired();
+
+        self::assertTrue($sut->isExpired());
+    }
+
+    /** @test */
+    public function canCalculateNegativeExpirationWithExtensionTime(): void
+    {
+        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        $date = $date->modify("- 8 days"); //->modify('- 2 days');
+
+        $sut = ConfirmationStatus::create(
+            $date
+        );
+
+        $sut = $sut->withExtensionTime(new extensionTime(true));
+
+        $sut->isExpired();
+
+        self::assertFalse($sut->isExpired());
+    }
+
+    /** @test */
+    public function canCalculatePositiveExpirationWithExtensionTime(): void
+    {
+        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        $date = $date->modify("- 14 days"); //->modify('- 2 days');
+
+        $sut = ConfirmationStatus::create(
+            $date
+        );
+
+        $sut = $sut->withExtensionTime(new extensionTime(true));
+
+        $sut->isExpired();
+
+        self::assertTrue($sut->isExpired());
     }
 }

@@ -12,6 +12,16 @@ use DateTimeImmutable;
  */
 final class ConfirmationStatus
 {
+    /**
+     * @var int  numero di giorni prima di essere considerato scaduto
+     */
+    private const DEFAULT_EXPIRATION_TIME = 7;
+
+    /**
+     * @var int numero di giorni da sommare al default expiration time
+     */
+    private const EXTENDED_EXPIRATION_TIME = 7;
+
     private DateTimeImmutable $confirmedAt;
 
     private extensionTime $extensionTime;
@@ -32,6 +42,21 @@ final class ConfirmationStatus
             new extensionTime(false),
             new expired(false)
         );
+    }
+
+    public function isExpired(): bool
+    {
+        $today = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+
+        $expirationDays = $this->extensionTime()->value() === true ? self::DEFAULT_EXPIRATION_TIME + self::EXTENDED_EXPIRATION_TIME : self::DEFAULT_EXPIRATION_TIME;
+
+        $interval = $this->confirmedAt()->diff($today);
+
+        if ($interval->days >= $expirationDays) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function confirmedAt(): DateTimeImmutable
