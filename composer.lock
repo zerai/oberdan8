@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd4a3c1b58e81eabfb544bd44312de45",
+    "content-hash": "09ca576468851f32db0e9547ed347bab",
     "packages": [
         {
             "name": "brick/math",
@@ -2281,6 +2281,263 @@
                 }
             ],
             "time": "2021-05-28T08:32:12+00:00"
+        },
+        {
+            "name": "nette/php-generator",
+            "version": "v3.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/php-generator.git",
+                "reference": "59bb35ed6e8da95854fbf7b7d47dce6156b42915"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/59bb35ed6e8da95854fbf7b7d47dce6156b42915",
+                "reference": "59bb35ed6e8da95854fbf7b7d47dce6156b42915",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.1.2",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/tester": "^2.0",
+                "nikic/php-parser": "^4.4",
+                "phpstan/phpstan": "^0.12",
+                "tracy/tracy": "^2.3"
+            },
+            "suggest": {
+                "nikic/php-parser": "to use ClassType::withBodiesFrom() & GlobalFunction::withBodyFrom()"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.5-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 8.0 features.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "code",
+                "nette",
+                "php",
+                "scaffolding"
+            ],
+            "support": {
+                "issues": "https://github.com/nette/php-generator/issues",
+                "source": "https://github.com/nette/php-generator/tree/v3.5.4"
+            },
+            "time": "2021-07-05T12:02:42+00:00"
+        },
+        {
+            "name": "nette/utils",
+            "version": "v3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/utils.git",
+                "reference": "967cfc4f9a1acd5f1058d76715a424c53343c20c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/utils/zipball/967cfc4f9a1acd5f1058d76715a424c53343c20c",
+                "reference": "967cfc4f9a1acd5f1058d76715a424c53343c20c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2 <8.1"
+            },
+            "conflict": {
+                "nette/di": "<3.0.6"
+            },
+            "require-dev": {
+                "nette/tester": "~2.0",
+                "phpstan/phpstan": "^0.12",
+                "tracy/tracy": "^2.3"
+            },
+            "suggest": {
+                "ext-gd": "to use Image",
+                "ext-iconv": "to use Strings::webalize(), toAscii(), chr() and reverse()",
+                "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
+                "ext-json": "to use Nette\\Utils\\Json",
+                "ext-mbstring": "to use Strings::lower() etc...",
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()",
+                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🛠  Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "array",
+                "core",
+                "datetime",
+                "images",
+                "json",
+                "nette",
+                "paginator",
+                "password",
+                "slugify",
+                "string",
+                "unicode",
+                "utf-8",
+                "utility",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/nette/utils/issues",
+                "source": "https://github.com/nette/utils/tree/v3.2.2"
+            },
+            "time": "2021-03-03T22:53:25+00:00"
+        },
+        {
+            "name": "phunkie/phunkie",
+            "version": "0.11.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phunkie/phunkie.git",
+                "reference": "99af2a5470447fdf4c5f71fa566ff5ca487c8bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phunkie/phunkie/zipball/99af2a5470447fdf4c5f71fa566ff5ca487c8bb0",
+                "reference": "99af2a5470447fdf4c5f71fa566ff5ca487c8bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "bossa/phpspec2-expect": "~3",
+                "giorgiosironi/eris": "~0.11",
+                "phpspec/phpspec": "~6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "": [
+                        "src/"
+                    ]
+                },
+                "files": [
+                    "src/Phunkie/Functions/common.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcello Duarte",
+                    "homepage": "http://marcelloduarte.net/"
+                }
+            ],
+            "description": "Functional structures library for PHP",
+            "support": {
+                "issues": "https://github.com/phunkie/phunkie/issues",
+                "source": "https://github.com/phunkie/phunkie/tree/0.11.2"
+            },
+            "time": "2020-08-08T09:24:03+00:00"
+        },
+        {
+            "name": "prolic/fpp",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prolic/fpp.git",
+                "reference": "2ddc6db0502eab54d80fd0ab5a1fcb4672160696"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prolic/fpp/zipball/2ddc6db0502eab54d80fd0ab5a1fcb4672160696",
+                "reference": "2ddc6db0502eab54d80fd0ab5a1fcb4672160696",
+                "shasum": ""
+            },
+            "require": {
+                "nette/php-generator": "^3.4.0",
+                "nette/utils": "^3.1.2",
+                "php": "^7.4",
+                "phunkie/phunkie": "^0.11.1"
+            },
+            "require-dev": {
+                "kahlan/kahlan": "^5.1.3",
+                "prooph/php-cs-fixer-config": "^0.4.0",
+                "satooshi/php-coveralls": "^2.2",
+                "vimeo/psalm": "^4.0.1"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/fpp"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sascha-Oliver Prolic",
+                    "email": "saschaprolic@googlemail.com"
+                }
+            ],
+            "description": "Functional PHP Preprocessor",
+            "support": {
+                "issues": "https://github.com/prolic/fpp/issues",
+                "source": "https://github.com/prolic/fpp/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/prolic",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-07-07T18:54:33+00:00"
         },
         {
             "name": "psr/cache",
@@ -8982,7 +9239,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "prolic/fpp": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
