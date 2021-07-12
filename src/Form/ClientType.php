@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use Booking\Infrastructure\Framework\Form\Dto\ClientDto;
+use App\Form\Dto\ClientDto;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
