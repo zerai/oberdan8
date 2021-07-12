@@ -620,6 +620,16 @@ parameters:
 			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
+			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/ReservationCrudControllerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\ReservationCrudControllerTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/ReservationCrudControllerTest.php
+
+		-
 			message: "#^Cannot call method setValue\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
 			count: 12
 			path: tests/E2E/RegularReservation/ReservationControllerTest.php
