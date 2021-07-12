@@ -495,6 +495,16 @@ parameters:
 			path: src/Form/BackofficeReservationEditType.php
 
 		-
+			message: "#^Method App\\\\Form\\\\BackofficeReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeReservationType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\BackofficeReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/BackofficeReservationType.php
+
+		-
 			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/BackofficeUserChangePasswordType.php
@@ -515,6 +525,16 @@ parameters:
 			path: src/Form/BackofficeUserType.php
 
 		-
+			message: "#^Method App\\\\Form\\\\ClientType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/ClientType.php
+
+		-
+			message: "#^Method App\\\\Form\\\\ClientType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: src/Form/ClientType.php
+
+		-
 			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/InfoBoxType.php
@@ -523,6 +543,11 @@ parameters:
 			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/InfoBoxType.php
+
+		-
+			message: "#^Property App\\\\Form\\\\Model\\\\BackofficeReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
+			count: 1
+			path: src/Form/Model/BackofficeReservationFormModel.php
 
 		-
 			message: "#^Method App\\\\Form\\\\RegistrationFormType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
@@ -595,6 +620,31 @@ parameters:
 			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\CrudDeleteControllerTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/ReservationCrudControllerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\ReservationCrudControllerTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/ReservationCrudControllerTest.php
+
+		-
 			message: "#^Cannot call method setValue\\(\\) on array\\<array\\<Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\>\\|Symfony\\\\Component\\\\DomCrawler\\\\Field\\\\FormField\\.$#"
 			count: 12
 			path: tests/E2E/RegularReservation/ReservationControllerTest.php
@@ -625,17 +675,17 @@ parameters:
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:getId\\(\\)\\.$#"
-			count: 1
-			path: tests/Functional/Backoffice/ReservationCrudTest.php
-
-		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
 			count: 4
 			path: tests/Functional/Backoffice/ReservationCrudTest.php
 
 		-
 			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 1
+			path: tests/Functional/Backoffice/ReservationCrudTest.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/ReservationCrudTest.php
 

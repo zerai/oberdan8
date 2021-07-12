@@ -127,7 +127,14 @@ jobs:
         DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
     - name: Run test suite
-      run: bin/phpunit
+      run: |
+        bin/phpunit tests/Unit
+        bin/phpunit tests/Integration
+        bin/phpunit tests/Functional
+        bin/phpunit tests/E2E/Backoffice
+        bin/phpunit tests/E2E/AdozioniReservation
+        bin/phpunit tests/E2E/RegularReservation
+
       env:
         PANTHER_APP_ENV: test
         DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
