@@ -23,6 +23,8 @@ class ReservationCrudControllerTest extends PantherTestCase
         $this->client = static::createPantherClient([
             'browser' => static::FIREFOX,
         ]);
+        $this->client->request('GET', '/');
+        $this->logInAsAdmin();
     }
 
     public function tearDown(): void
@@ -44,12 +46,9 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function newReservationPageShouldBeAccessibile(): void
     {
-        //self::markTestIncomplete();
-        //$this->client = static::createClient();
         $this->client->request('GET', '/');
-        //$this->logInAsAdmin();
+
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
-        //self::assertResponseIsSuccessful();
 
         self::assertPageTitleSame('Prenotazioni Administration - Oberdan 8');
     }
@@ -57,19 +56,10 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function validDataShouldPassTheFormValidation(): void
     {
-        //self::markTestIncomplete();
-        //$this->client = static::createClient();
-        //$this->client = Client::createChromeClient();
-//        $this->client = static::createPantherClient([
-//            'browser' => static::FIREFOX,
-//        ]);
-        //$this->client = static::createPantherClient(['browser' => static::CHROME]);
 
         $this->client->request('GET', '/');
-        //$this->logInAsAdmin();
 
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
-        //self::assertResponseIsSuccessful();
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
 
@@ -92,22 +82,16 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
         $form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
-        //$form['backoffice_reservation[privacyConfirmed]']->setValue(true);
 
         $this->client->submit($form);
 
         $this->client->takeScreenshot('var/error-screenshots/screen.png');
         self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
-        //$this->client->takeScreenshot('var/error-screenshots/screen.png');
     }
 
     /** @test */
     public function fullfilledFormWithoutOtherInfoShouldPassTheFormValidation(): void
     {
-//        self::markTestIncomplete();
-//        $this->client = static::createPantherClient([
-//            'browser' => static::FIREFOX,
-//        ]);
 
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
 
@@ -237,6 +221,7 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function submitAReservationWithTwoBooks(): void
     {
+        $this->client->request('GET', '/');
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
@@ -273,6 +258,9 @@ class ReservationCrudControllerTest extends PantherTestCase
         $this->client->submit($form);
 
         self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
+
+        /** @var BackofficeUserRepository $backofficeUserRepository */
+        $backofficeUserRepository = static::$kernel->getContainer()->get('App\Repository\BackofficeUserRepository');
     }
 
     protected function logInAsAdmin(): void
@@ -280,11 +268,9 @@ class ReservationCrudControllerTest extends PantherTestCase
         $kernel = static::createKernel();
 
         $kernel->boot();
-        //dd($kernel);
+
         /** @var BackofficeUserRepository $backofficeUserRepository */
         $backofficeUserRepository = static::$kernel->getContainer()->get('App\Repository\BackofficeUserRepository');
-
-        //$backofficeUserRepository = $this->client->getContainer()->get('App\Repository\BackofficeUserRepository');
 
         $admin = $backofficeUserRepository->findOneBy([
             'email' => 'admin@example.com',
