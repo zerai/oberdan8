@@ -1,0 +1,7 @@
+<form method="post"
+      action="{{ path('backoffice_reservation_delete', {'id': reservation.id}) }}"
+      onsubmit="return confirm('Sicuro?? Vuoi eliminare questa prenotazione?');"
+>
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.id) }}">
+    <button class="btn btn-info">Elimina</button>
+</form>

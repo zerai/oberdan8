@@ -14,7 +14,7 @@
 
 
 {% block content_toolbar %}
-{#    <a class="btn btn-info" href="{{ path('backoffice_user_new') }}"><i class="fa fa-plus"></i> Crea utente</a>#}
+    <a class="btn btn-info" href="{{ path('backoffice_reservation_new') }}"><i class="fa fa-plus"></i> Crea prenotazione</a>
 {% endblock %}
 
 {% block content_body %}
@@ -54,7 +54,7 @@
                 <tbody>
                 {% for reservation in pagination %}
                     <tr class="{{ reservation.saleDetail.status }}">
-                        <td>{{ reservation.id }}</td>
+                        <td>{{ reservation.id|u.truncate(5) }}</td>
                         <td>{{ reservation.lastName }}</td>
                         <td>{{ reservation.firstName }}</td>
                         <td>{{ reservation.registrationDate|date("m/d/Y") }}</td>

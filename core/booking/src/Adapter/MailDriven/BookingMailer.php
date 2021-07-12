@@ -7,6 +7,7 @@ use Booking\Application\NotifyAdozioniReservationConfirmationToClient;
 use Booking\Application\NotifyNewAdozioniReservationToBackoffice;
 use Booking\Application\NotifyNewReservationToBackoffice;
 use Booking\Application\NotifyReservationConfirmationToClient;
+use Booking\Application\NotifyReservationThanksToClient;
 use Booking\Infrastructure\BackofficeEmailRetriever;
 use Booking\Infrastructure\BookingEmailSender;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -14,9 +15,11 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 
-class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewReservationToBackoffice, NotifyAdozioniReservationConfirmationToClient, NotifyNewAdozioniReservationToBackoffice
+class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewReservationToBackoffice, NotifyAdozioniReservationConfirmationToClient, NotifyNewAdozioniReservationToBackoffice, NotifyReservationThanksToClient
 {
     private const RESERVATION_CONFIRMATION_EMAIL_SUBJECT = 'Oberdan 8: Prenotazione ricevuta';
+
+    private const RESERVATION_THANKS_EMAIL_SUBJECT = 'Oberdan 8 Ti ringraziamo per averci scelto';
 
     private MailerInterface $mailer;
 
@@ -147,6 +150,22 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
             //dd($file);
             $email->attachFromPath($file->getRealPath());
         }
+
+        $this->mailer->send($email);
+
+        return $email;
+    }
+
+    public function notifyReservationThanksEmailToClient(string $recipient, string $reservationId): TemplatedEmail
+    {
+        $email = (new TemplatedEmail())
+            ->from(new Address($this->sender->address(), $this->sender->name()))
+            ->to(new Address($recipient))
+            ->subject(self::RESERVATION_THANKS_EMAIL_SUBJECT)
+            ->htmlTemplate('@booking/email/for-clients/reservation-thanks.html.twig')
+            ->context([
+            ])
+        ;
 
         $this->mailer->send($email);
 
