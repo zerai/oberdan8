@@ -2,8 +2,7 @@
 
 namespace Booking\Application\Domain\Model\ConfirmationStatus;
 
-
-final class extensionTime
+final class ExtensionTime
 {
     private bool $value;
 

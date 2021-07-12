@@ -109,6 +109,15 @@
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
   </file>
+  <file src="core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php">
+    <MixedArgument occurrences="2">
+      <code>$data['confirmedAt']</code>
+      <code>$data['confirmedAt']</code>
+    </MixedArgument>
+    <RedundantIdentityWithTrue occurrences="1">
+      <code>$this-&gt;extensionTime()-&gt;value() === true</code>
+    </RedundantIdentityWithTrue>
+  </file>
   <file src="core/booking/src/Application/Domain/Model/Reservation.php">
     <MismatchingDocblockReturnType occurrences="1">
       <code>Collection|Book[]</code>
@@ -260,6 +269,16 @@
     </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Domain/Client/ClientTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Domain/ConfirmationStatus/ConfirmationStatusTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Domain/ReservationSaleDetailTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>

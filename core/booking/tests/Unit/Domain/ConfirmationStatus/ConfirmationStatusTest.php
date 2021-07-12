@@ -4,7 +4,7 @@
 namespace Booking\Tests\Unit\Domain\ConfirmationStatus;
 
 use Booking\Application\Domain\Model\ConfirmationStatus\ConfirmationStatus;
-use Booking\Application\Domain\Model\ConfirmationStatus\extensionTime;
+use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -82,7 +82,7 @@ class ConfirmationStatusTest extends TestCase
             $date
         );
 
-        $sut = $sut->withExtensionTime(new extensionTime(true));
+        $sut = $sut->withExtensionTime(new ExtensionTime(true));
 
         $sut->isExpired();
 
@@ -99,7 +99,7 @@ class ConfirmationStatusTest extends TestCase
             $date
         );
 
-        $sut = $sut->withExtensionTime(new extensionTime(true));
+        $sut = $sut->withExtensionTime(new ExtensionTime(true));
 
         $sut->isExpired();
 

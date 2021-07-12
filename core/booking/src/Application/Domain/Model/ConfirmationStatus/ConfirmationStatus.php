@@ -18,9 +18,9 @@ final class ConfirmationStatus
 
     private DateTimeImmutable $confirmedAt;
 
-    private extensionTime $extensionTime;
+    private ExtensionTime $extensionTime;
 
-    public function __construct(DateTimeImmutable $confirmedAt, extensionTime $extensionTime)
+    public function __construct(DateTimeImmutable $confirmedAt, ExtensionTime $extensionTime)
     {
         $this->confirmedAt = $confirmedAt;
         $this->extensionTime = $extensionTime;
@@ -30,7 +30,7 @@ final class ConfirmationStatus
     {
         return new self(
             $confirmedAt,
-            new extensionTime(false)
+            new ExtensionTime(false)
         );
     }
 
@@ -62,12 +62,12 @@ final class ConfirmationStatus
         );
     }
 
-    public function extensionTime(): extensionTime
+    public function extensionTime(): ExtensionTime
     {
         return $this->extensionTime;
     }
 
-    public function withExtensionTime(extensionTime $extensionTime): self
+    public function withExtensionTime(ExtensionTime $extensionTime): self
     {
         return new self(
             $this->confirmedAt,
@@ -96,7 +96,7 @@ final class ConfirmationStatus
 
                 return $_x;
             })(),
-            new extensionTime($data['extensionTime']),
+            new ExtensionTime($data['extensionTime']),
         );
     }
 
