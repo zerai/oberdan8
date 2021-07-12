@@ -101,6 +101,11 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/ReservationSaleDetail.php
 
 		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\:\\:\\$pvtConfirmedAt has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ReservationSaleDetail.php
+
+		-
 			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php

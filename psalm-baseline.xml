@@ -159,9 +159,22 @@
       <code>$id</code>
       <code>$status</code>
     </MissingConstructor>
+    <MissingPropertyType occurrences="1">
+      <code>$pvtConfirmedAt</code>
+    </MissingPropertyType>
     <MissingReturnType occurrences="1">
       <code>getId</code>
     </MissingReturnType>
+    <MixedInferredReturnType occurrences="1">
+      <code>\DateTimeImmutable|null</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;pvtConfirmedAt</code>
+    </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="2">
+      <code>$this-&gt;getPvtConfirmedAt()</code>
+      <code>$this-&gt;getPvtExtensionTime()</code>
+    </PossiblyNullArgument>
   </file>
   <file src="core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php">
     <MissingReturnType occurrences="1">
