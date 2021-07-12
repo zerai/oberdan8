@@ -33,7 +33,6 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function reservationPageShouldBeAccessibile(): void
     {
-
         $this->client->request('GET', '/');
         $this->logInAsAdmin();
         $crawler = $this->client->request('GET', '/admin/prenotazioni');
