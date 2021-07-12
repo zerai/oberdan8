@@ -660,17 +660,17 @@ parameters:
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:getId\\(\\)\\.$#"
-			count: 1
-			path: tests/Functional/Backoffice/ReservationCrudTest.php
-
-		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
 			count: 4
 			path: tests/Functional/Backoffice/ReservationCrudTest.php
 
 		-
 			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 1
+			path: tests/Functional/Backoffice/ReservationCrudTest.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/ReservationCrudTest.php
 
