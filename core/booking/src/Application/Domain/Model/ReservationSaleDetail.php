@@ -3,6 +3,7 @@
 
 namespace Booking\Application\Domain\Model;
 
+use Booking\Application\Domain\Model\ConfirmationStatus\ConfirmationStatus;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
@@ -36,6 +37,29 @@ class ReservationSaleDetail
      * @ORM\Column(type="reservation_status")
      */
     private ReservationStatus $status;
+
+    private ?ConfirmationStatus $confirmationStatus = null;
+
+    /**
+     * @return ConfirmationStatus|null
+     */
+    public function getConfirmationStatus(): ?ConfirmationStatus
+    {
+        return $this->confirmationStatus;
+    }
+
+    /**
+     * @param ConfirmationStatus $confirmationStatus
+     */
+    public function setConfirmationStatus(ConfirmationStatus $confirmationStatus): void
+    {
+        $this->confirmationStatus = $confirmationStatus;
+    }
+
+    private function resetConfirmationStatus(): void
+    {
+        $this->confirmationStatus = null;
+    }
 
     public function getId()
     {
@@ -73,6 +97,16 @@ class ReservationSaleDetail
 
     public function setStatus(ReservationStatus $status): self
     {
+        if ($status->name() === 'Confirmed') {
+            $newConfirmationStatus = ConfirmationStatus::create(
+                new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
+            );
+
+            $this->setConfirmationStatus($newConfirmationStatus);
+        } else {
+            $this->resetConfirmationStatus();
+        }
+
         $this->status = $status;
 
         return $this;
