@@ -56,7 +56,6 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function validDataShouldPassTheFormValidation(): void
     {
-
         $this->client->request('GET', '/');
 
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
@@ -92,7 +91,6 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function fullfilledFormWithoutOtherInfoShouldPassTheFormValidation(): void
     {
-
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');

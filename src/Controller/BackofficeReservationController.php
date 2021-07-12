@@ -208,24 +208,28 @@ class BackofficeReservationController extends AbstractController
 //        ]);
 //    }
 //
-//    /**
-//     * @Route("/{id}", name="backoffice_user_delete", methods={"POST"})
-//     */
-//    public function delete(Request $request, BackofficeUser $backofficeUser): Response
-//    {
-//        if ($this->isCsrfTokenValid('delete' . $backofficeUser->getId(), $request->request->get('_token'))) {
-//            $entityManager = $this->getDoctrine()->getManager();
-//            $entityManager->remove($backofficeUser);
-//            $entityManager->flush();
-//        }
-//
-//        return $this->redirectToRoute('backoffice_user_index');
-//    }
+
+    /**
+     * @Route("/{id}", name="backoffice_reservation_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Reservation $reservation): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $reservation->getId()->toString(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($reservation);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La prenotazione è stata eliminata.');
+        }
+
+        return $this->redirectToRoute('backoffice_reservation_index');
+    }
 
     /**
      * @Route("/{id}", name="backoffice_reservation_send_tanks_mail", methods={"POST"})
      */
-    public function delete(Request $request, Reservation $reservation): Response
+    //public function delete(Request $request, Reservation $reservation): Response
+    public function sendThanksMail(Request $request, Reservation $reservation): Response
     {
         if ($this->isCsrfTokenValid('send_tanks_mail' . $reservation->getId()->toString(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

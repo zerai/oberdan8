@@ -620,6 +620,21 @@ parameters:
 			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\CrudDeleteControllerTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
 			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/ReservationCrudControllerTest.php
