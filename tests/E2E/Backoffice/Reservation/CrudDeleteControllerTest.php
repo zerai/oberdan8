@@ -5,7 +5,6 @@ namespace App\Tests\E2E\Backoffice\Reservation;
 use App\Entity\BackofficeUser;
 use App\Factory\ReservationFactory;
 use App\Repository\BackofficeUserRepository;
-use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Booking\Adapter\Persistance\ReservationRepository;
 use Booking\Application\Domain\Model\Reservation;
 use Symfony\Component\BrowserKit\Cookie;
@@ -80,7 +79,6 @@ class CrudDeleteControllerTest extends PantherTestCase
 //        $result = $reservationRepository->findAll();
 //
 //        dd($result);
-
     }
 
     protected function logInAsAdmin(): void
