@@ -3,6 +3,8 @@
 
 namespace Booking\Application\Domain\Model;
 
+use Booking\Application\Domain\Model\ConfirmationStatus\ConfirmationStatus;
+use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
@@ -36,6 +38,54 @@ class ReservationSaleDetail
      * @ORM\Column(type="reservation_status")
      */
     private ReservationStatus $status;
+
+    private ?ConfirmationStatus $confirmationStatus = null;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private ?bool $pvtExtensionTime = null;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $pvtConfirmedAt;
+
+    /**
+     * @return ConfirmationStatus|null
+     */
+    public function getConfirmationStatus(): ?ConfirmationStatus
+    {
+        if ($this->getPvtConfirmedAt() === null || $this->getPvtExtensionTime() === null) {
+            return null;
+        }
+
+        return new ConfirmationStatus(
+            $this->getPvtConfirmedAt(),
+            new ExtensionTime($this->getPvtExtensionTime())
+        );
+        //Todo remove use a runtime ConfirmationStatus
+        //return $this->confirmationStatus;
+    }
+
+    /**
+     * @param ConfirmationStatus $confirmationStatus
+     */
+    public function setConfirmationStatus(ConfirmationStatus $confirmationStatus): void
+    {
+        // TODO make private method
+
+        $this->setPvtConfirmedAt($confirmationStatus->confirmedAt());
+        $this->setPvtExtensionTime($confirmationStatus->extensionTime()->value());
+        //$this->confirmationStatus = $confirmationStatus;
+    }
+
+    private function resetConfirmationStatus(): void
+    {
+        $this->pvtConfirmedAt = null;
+        $this->pvtExtensionTime = null;
+        //$this->confirmationStatus = null;
+    }
 
     public function getId()
     {
@@ -73,7 +123,59 @@ class ReservationSaleDetail
 
     public function setStatus(ReservationStatus $status): self
     {
+        if ($status->name() === 'Confirmed') {
+            $newConfirmationStatus = ConfirmationStatus::create(
+                new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
+            );
+
+            $this->setConfirmationStatus($newConfirmationStatus);
+        } else {
+            $this->resetConfirmationStatus();
+        }
+
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @internal
+     * @return bool|null
+     */
+    public function getPvtExtensionTime(): ?bool
+    {
+        return $this->pvtExtensionTime;
+    }
+
+    /**
+     * @internal
+     * @param bool|null $pvtExtensionTime
+     * @return $this
+     */
+    public function setPvtExtensionTime(?bool $pvtExtensionTime): self
+    {
+        $this->pvtExtensionTime = $pvtExtensionTime;
+
+        return $this;
+    }
+
+    /**
+     * @internal
+     * @return \DateTimeImmutable|null
+     */
+    public function getPvtConfirmedAt(): ?\DateTimeImmutable
+    {
+        return $this->pvtConfirmedAt;
+    }
+
+    /**
+     * @internal
+     * @param \DateTimeImmutable|null $pvtConfirmedAt
+     * @return $this
+     */
+    public function setPvtConfirmedAt(?\DateTimeImmutable $pvtConfirmedAt): self
+    {
+        $this->pvtConfirmedAt = $pvtConfirmedAt;
 
         return $this;
     }

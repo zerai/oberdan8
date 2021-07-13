@@ -1,0 +1,65 @@
+<?php declare(strict_types=1);
+
+namespace Booking\Tests\Unit\Adapter\DoctrineType;
+
+use Booking\Adapter\Persistance\DoctrineType\ExtensionTimeType;
+use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Platforms\MySqlPlatform;
+use Doctrine\DBAL\Types\Type;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @covers \Booking\Adapter\Persistance\DoctrineType\ExtensionTimeType
+ */
+class ExtensionTimeTypeTest extends TestCase
+{
+    /** @var Type|null */
+    private $type;
+
+    /** @var AbstractPlatform|null */
+    private $platform;
+
+    public function setUp(): void
+    {
+        $this->platform = new MySqlPlatform();
+        try {
+            $this->type = Type::getType('confirmation_extension_time_test');
+        } catch (DBALException $e) {
+        }
+    }
+
+    public static function setUpBeforeClass(): void
+    {
+        Type::addType('confirmation_extension_time_test', ExtensionTimeType::class);
+    }
+
+    /** @test */
+    public function itCanGetName(): void
+    {
+        self::assertEquals('confirmation_extension_time', $this->type->getName());
+    }
+
+    /** @test */
+    public function itCanConvertFromPhpValueToADatabaseValue(): void
+    {
+        $extensionTime = new ExtensionTime(true);
+
+        self::assertEquals($extensionTime, $this->type->convertToDatabaseValue($extensionTime, $this->platform));
+    }
+
+    /**
+     * @test
+     */
+    public function itCanConvertFromDatabaseValueToAPhpValue(): void
+    {
+        $value = false;
+
+        $originalValue = new ExtensionTime($value);
+
+        $convertedPHPValue = $this->type->convertToPHPValue($value, $this->platform);
+
+        self::assertTrue($originalValue->equals($convertedPHPValue));
+    }
+}

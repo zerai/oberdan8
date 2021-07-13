@@ -109,6 +109,15 @@
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
   </file>
+  <file src="core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php">
+    <MixedArgument occurrences="2">
+      <code>$data['confirmedAt']</code>
+      <code>$data['confirmedAt']</code>
+    </MixedArgument>
+    <RedundantIdentityWithTrue occurrences="1">
+      <code>$this-&gt;extensionTime()-&gt;value() === true</code>
+    </RedundantIdentityWithTrue>
+  </file>
   <file src="core/booking/src/Application/Domain/Model/Reservation.php">
     <MismatchingDocblockReturnType occurrences="1">
       <code>Collection|Book[]</code>
@@ -150,9 +159,22 @@
       <code>$id</code>
       <code>$status</code>
     </MissingConstructor>
+    <MissingPropertyType occurrences="1">
+      <code>$pvtConfirmedAt</code>
+    </MissingPropertyType>
     <MissingReturnType occurrences="1">
       <code>getId</code>
     </MissingReturnType>
+    <MixedInferredReturnType occurrences="1">
+      <code>\DateTimeImmutable|null</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;pvtConfirmedAt</code>
+    </MixedReturnStatement>
+    <PossiblyNullArgument occurrences="2">
+      <code>$this-&gt;getPvtConfirmedAt()</code>
+      <code>$this-&gt;getPvtExtensionTime()</code>
+    </PossiblyNullArgument>
   </file>
   <file src="core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php">
     <MissingReturnType occurrences="1">
@@ -264,6 +286,16 @@
       <code>TestCase</code>
     </MissingDependency>
   </file>
+  <file src="core/booking/tests/Unit/Domain/ConfirmationStatus/ConfirmationStatusTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Domain/ReservationSaleDetailTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
   <file src="core/booking/tests/Unit/Infrastructure/BookingConfigurationTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
@@ -315,10 +347,11 @@
     <MissingPropertyType occurrences="1">
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
-    <MixedArgument occurrences="6">
+    <MixedArgument occurrences="7">
       <code>$form-&gt;get('notes')-&gt;getData()</code>
       <code>$form-&gt;get('packageId')-&gt;getData()</code>
       <code>$form-&gt;get('status')-&gt;getData()</code>
+      <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
@@ -327,27 +360,32 @@
       <code>$q</code>
       <code>$queryBuilder</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="4">
+    <MixedMethodCall occurrences="5">
       <code>getQuery</code>
       <code>toString</code>
       <code>toString</code>
       <code>toString</code>
+      <code>toString</code>
     </MixedMethodCall>
-    <MixedOperand occurrences="2">
+    <MixedOperand occurrences="3">
+      <code>$reservation-&gt;getId()-&gt;toString()</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
     <PossiblyNullArgument occurrences="1">
       <code>$reservation-&gt;getEmail()</code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="7">
+    <PossiblyNullReference occurrences="10">
+      <code>getConfirmationStatus</code>
       <code>getGeneralNotes</code>
       <code>getReservationPackageId</code>
       <code>getStatus</code>
       <code>getStatus</code>
+      <code>setConfirmationStatus</code>
       <code>setGeneralNotes</code>
       <code>setReservationPackageId</code>
       <code>setStatus</code>
+      <code>withExtensionTime</code>
     </PossiblyNullReference>
     <UndefinedInterfaceMethod occurrences="1">
       <code>getWithSearchQueryBuilder</code>

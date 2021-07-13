@@ -1,0 +1,15 @@
+<?php declare(strict_types=1);
+
+namespace Booking\Adapter\Persistance\DoctrineType;
+
+use Doctrine\DBAL\Types\BooleanType;
+
+class ExtensionTimeType extends BooleanType
+{
+    public const NAME = 'confirmation_extension_time';
+
+    public function getName()
+    {
+        return self::NAME;
+    }
+}

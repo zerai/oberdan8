@@ -71,6 +71,16 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Book.php
 
 		-
+			message: "#^Anonymous function should have native return typehint \"DateTimeImmutable\"\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
+
+		-
+			message: "#^Only booleans are allowed in a negated boolean, DateTimeImmutable\\|false given\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
+
+		-
 			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:getBooks\\(\\) return type with generic interface Doctrine\\\\Common\\\\Collections\\\\Collection does not specify its types\\: TKey, T$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Reservation.php
@@ -87,6 +97,11 @@ parameters:
 
 		-
 			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\:\\:getId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ReservationSaleDetail.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\:\\:\\$pvtConfirmedAt has no typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/ReservationSaleDetail.php
 
@@ -211,6 +226,11 @@ parameters:
 			path: core/booking/tests/Unit/Adapter/MailDriven/BookingMailerAdozioniReservationConfirmationTest.php
 
 		-
+			message: "#^Cannot call method extensionTime\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Domain/ReservationSaleDetailTest.php
+
+		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: core/booking/tests/Unit/Infrastructure/Form/AdozioniReservationFormTest.php
@@ -271,6 +291,11 @@ parameters:
 			path: src/Controller/BackofficeReservationController.php
 
 		-
+			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
 			message: "#^Cannot call method getGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
@@ -286,6 +311,11 @@ parameters:
 			path: src/Controller/BackofficeReservationController.php
 
 		-
+			message: "#^Cannot call method setConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
 			message: "#^Cannot call method setGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
@@ -297,6 +327,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method setStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method withExtensionTime\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
 
