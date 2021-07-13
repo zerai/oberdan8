@@ -163,9 +163,12 @@ class BackofficeReservationController extends AbstractController
             $entityManager->flush();
 
             if ($reservation->getSaleDetail()->getStatus()->name() === 'PickedUp') {
-                $bookingMailer->notifyReservationThanksEmailToClient($reservation->getEmail(), $reservation->getId()->toString());
-
-                $this->addFlash('info', 'La mail di ringraziamento è stata inviata all\' utente.');
+                if ($reservation->getEmail() !== null) {
+                    $bookingMailer->notifyReservationThanksEmailToClient($reservation->getEmail(), $reservation->getId()->toString());
+                    $this->addFlash('info', 'La mail di ringraziamento è stata inviata all\' utente.');
+                } else {
+                    $this->addFlash('info', 'Impossibile invio della mail di ringraziamento, questa prenotazione non ha un indirizzo email.');
+                }
             }
 
             $this->addFlash('success', 'Prenotazione modificata.');

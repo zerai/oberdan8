@@ -87,6 +87,10 @@ services:
     Booking\Application\Domain\Model\ReservationRepositoryInterface:
         class: Booking\Adapter\Persistance\ReservationRepository
 
+    # TODO added for test purpose  remove...
+    Booking\Adapter\Persistance\ReservationRepository:
+        public: true
+
 
     App\Repository\BackofficeUserRepository:
         public: true
