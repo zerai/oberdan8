@@ -15,6 +15,7 @@ class ClasseField extends AbstractType
             [
                 'label' => 'Classe',
                 // 'help' => 'La tua classe (es: 3B)',
+                //'empty_data' => '',
                 'constraints' => [
                     //new NotBlank(),
                     //new LeanpubInvoiceIdConstraint()

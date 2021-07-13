@@ -15,10 +15,7 @@ class BackofficeReservationFormModel
      */
     public ClientDto $person;
 
-    /**
-     * @Assert\NotNull(message="Seleziona un' opzione.")
-     */
-    public string $classe;
+    public string $classe = '';
 
     /**
      * @Assert\Valid

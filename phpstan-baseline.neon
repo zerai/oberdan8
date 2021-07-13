@@ -570,6 +570,11 @@ parameters:
 			path: src/Form/ClientType.php
 
 		-
+			message: "#^Access to an undefined property App\\\\Form\\\\Dto\\\\ClientDto\\:\\:\\$classe\\.$#"
+			count: 2
+			path: src/Form/Dto/ClientDto.php
+
+		-
 			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Form/InfoBoxType.php
