@@ -10,6 +10,7 @@ use App\Form\Model\BackofficeReservationEditFormModel;
 use App\Form\Model\BackofficeReservationFormModel;
 use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Application\Domain\Model\Book;
+use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
@@ -242,5 +243,29 @@ class BackofficeReservationController extends AbstractController
         }
 
         return $this->redirectToRoute('backoffice_reservation_index');
+    }
+
+    /**
+     * @Route("/{id}/add-extension-time", name="backoffice_reservation_add_extension_time", methods={"POST"})
+     */
+    public function addExtensionTimeToConfirmation(Request $request, Reservation $reservation): Response
+    {
+        if ($this->isCsrfTokenValid('add-extension-time' . $reservation->getId()->toString(), $request->request->get('_token'))) {
+
+            //Todo before check if status is Confirmed and confirmationStatus not null
+            $newConfirmationStatusWithExtensionTime = $reservation->getSaleDetail()->getConfirmationStatus()->withExtensionTime(ExtensionTime::true());
+
+            $reservation->getSaleDetail()->setConfirmationStatus($newConfirmationStatusWithExtensionTime);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($reservation);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'E\' stato aggiunto un estensione di tempo (7 giorni) per il ritiro.');
+        }
+
+        return $this->redirectToRoute('backoffice_reservation_show', [
+            'id' => $reservation->getId(),
+        ]);
     }
 }

@@ -291,6 +291,11 @@ parameters:
 			path: src/Controller/BackofficeReservationController.php
 
 		-
+			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
 			message: "#^Cannot call method getGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
@@ -306,6 +311,11 @@ parameters:
 			path: src/Controller/BackofficeReservationController.php
 
 		-
+			message: "#^Cannot call method setConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
 			message: "#^Cannot call method setGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
@@ -317,6 +327,11 @@ parameters:
 
 		-
 			message: "#^Cannot call method setStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method withExtensionTime\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeReservationController.php
 

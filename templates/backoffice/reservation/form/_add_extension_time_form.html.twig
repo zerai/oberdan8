@@ -1,0 +1,7 @@
+<form method="post"
+      action="{{ path('backoffice_reservation_add_extension_time', {'id': reservation.id}) }}"
+      onsubmit="return confirm('Sicuro?? Verrà aggiunto del tempo supplementare (7 giorni) per il ritiro della prenotazione ?');"
+>
+    <input type="hidden" name="_token" value="{{ csrf_token('add-extension-time' ~ reservation.id) }}">
+    <button class="btn btn-info">Estendi tempo per il ritiro</button>
+</form>

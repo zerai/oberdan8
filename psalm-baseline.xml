@@ -347,10 +347,11 @@
     <MissingPropertyType occurrences="1">
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
-    <MixedArgument occurrences="6">
+    <MixedArgument occurrences="7">
       <code>$form-&gt;get('notes')-&gt;getData()</code>
       <code>$form-&gt;get('packageId')-&gt;getData()</code>
       <code>$form-&gt;get('status')-&gt;getData()</code>
+      <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
@@ -359,27 +360,32 @@
       <code>$q</code>
       <code>$queryBuilder</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="4">
+    <MixedMethodCall occurrences="5">
       <code>getQuery</code>
       <code>toString</code>
       <code>toString</code>
       <code>toString</code>
+      <code>toString</code>
     </MixedMethodCall>
-    <MixedOperand occurrences="2">
+    <MixedOperand occurrences="3">
+      <code>$reservation-&gt;getId()-&gt;toString()</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
     <PossiblyNullArgument occurrences="1">
       <code>$reservation-&gt;getEmail()</code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="7">
+    <PossiblyNullReference occurrences="10">
+      <code>getConfirmationStatus</code>
       <code>getGeneralNotes</code>
       <code>getReservationPackageId</code>
       <code>getStatus</code>
       <code>getStatus</code>
+      <code>setConfirmationStatus</code>
       <code>setGeneralNotes</code>
       <code>setReservationPackageId</code>
       <code>setStatus</code>
+      <code>withExtensionTime</code>
     </PossiblyNullReference>
     <UndefinedInterfaceMethod occurrences="1">
       <code>getWithSearchQueryBuilder</code>

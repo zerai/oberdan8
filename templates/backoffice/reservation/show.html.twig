@@ -73,7 +73,21 @@
                             Stato prenotazione
                         </div>
                         <div class="card-body {{ reservation.saleDetail.status }}">
-                            <p class="card-text">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</p>
+                            <p class="card-text"><strong>{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</strong></p>
+                            {% if reservation.saleDetail.confirmationStatus is not null %}
+                                <p class="card-text"><strong>Scaduto:</strong> {{ reservation.saleDetail.confirmationStatus.isExpired ? 'Si' : 'No' }}</p>
+                                <p class="card-text"><strong>Confermato il:</strong> {{ reservation.saleDetail.confirmationStatus.confirmedAt|date("d/m/Y") }}</p>
+                                <p class="card-text"><strong>Scade il:</strong> {{ reservation.saleDetail.confirmationStatus.expireAt|date("d/m/Y") }}</p>
+
+                                {% if reservation.saleDetail.confirmationStatus.extensionTime.value %}
+                                    <p class="card-text"><strong>Estensione tempo:</strong> Attiva</p>
+                                {% else %}
+                                    <p class="card-text"><strong>Estensione tempo:</strong> non Attiva</p>
+
+                                    {{ include('backoffice/reservation/form/_add_extension_time_form.html.twig') }}
+                                {% endif %}
+
+                            {% endif %}
                         </div>
 
                     </div>
