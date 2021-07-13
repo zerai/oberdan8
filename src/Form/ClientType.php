@@ -15,7 +15,8 @@ class ClientType extends AbstractType
         $builder
             ->add('last_name', TextType::class, [
                 'label' => 'Cognome',
-                'required' => true,
+                'required' => false,
+                'empty_data' => '',
             ])
             ->add('first_name', TextType::class, [
                 'label' => 'Nome',

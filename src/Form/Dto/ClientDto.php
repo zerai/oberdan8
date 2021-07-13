@@ -112,7 +112,7 @@ class ClientDto
     public string $firstName;
 
     /**
-     * @Assert\NotBlank(message="Inserisci il tuo cognome")
+     *
      * @Assert\Length(min=3, minMessage="La lughezza minima per il cognome è 3 caratteri!!")
      */
     public string $lastName;
