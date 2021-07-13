@@ -25,18 +25,13 @@ class BackofficeConfirmedReservationController extends AbstractController
 
         $queryBuilder = $repository->findWithQueryBuilderAllConfirmedOrderByOldest($q);
 
-        //$searchedReservation = $queryBuilder->getQuery()->getResult();
-
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(), //$query, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            15 /*limit per page*/
+            50 /*limit per page*/
         );
 
         return $this->render('backoffice/reservation/confirmed/index.html.twig', [
-            //'backoffice_reservations' => $repository->findAll(),
-            //'backoffice_reservations' => $repository->findAllForBackoffice(),
-            //'backoffice_reservations' => $searchedReservation,
             'pagination' => $pagination,
         ]);
     }

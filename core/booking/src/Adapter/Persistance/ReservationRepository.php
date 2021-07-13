@@ -158,10 +158,6 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->addSelect('s')
             ->andWhere('s.status = :val')
             ->setParameter('val', 'Confirmed')
-
-            //->setMaxResults(1000)
-            //->getQuery()
-            //->getResult()
             ;
 
         // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
