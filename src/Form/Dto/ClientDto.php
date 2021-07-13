@@ -123,9 +123,6 @@ class ClientDto
 
     public string $phone;
 
-    /**
-     * @Assert\NotBlank(message="Inserisci una città")
-     */
     public string $city;
 
     public string $classe = '';

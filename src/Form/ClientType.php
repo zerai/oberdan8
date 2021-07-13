@@ -35,7 +35,8 @@ class ClientType extends AbstractType
             ])
             ->add('city', TextType::class, [
                 'label' => 'Città',
-                'required' => true,
+                'required' => false,
+                'empty_data' => '',
             ])
         ;
     }
