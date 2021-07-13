@@ -4,9 +4,9 @@ namespace App\Form;
 
 use App\Form\Model\BackofficeReservationFormModel;
 use Booking\Infrastructure\Framework\Form\BookType;
-use Booking\Infrastructure\Framework\Form\ClasseField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -23,8 +23,9 @@ class BackofficeReservationType extends AbstractType
                 'required' => true,
             ])
 
-            ->add('classe', ClasseField::class, [
+            ->add('classe', ChoiceType::class, [
                 'choices' => [
+                    'Non Disponibile' => 'non disponibile',
                     'Prima' => 'prima',
                     'Seconda' => 'seconda',
                     'Terza' => 'terza',
@@ -32,8 +33,10 @@ class BackofficeReservationType extends AbstractType
                     'Quinta' => 'Quinta',
                     'Varia' => 'varia',
                 ],
-                'required' => true,
-                'placeholder' => 'seleziona',
+                'required' => false,
+                //'empty_data' => null,
+                //'data' => '',
+                //'placeholder' => 'seleziona',
             ])
 
             ->add('books', CollectionType::class, [

@@ -125,5 +125,5 @@ class ClientDto
 
     public string $city;
 
-    public string $classe = '';
+    //public string $classe = '';
 }

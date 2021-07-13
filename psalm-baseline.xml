@@ -631,6 +631,18 @@
       <code>$lastName</code>
       <code>$phone</code>
     </MissingConstructor>
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;classe</code>
+    </MixedReturnStatement>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;classe</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="1">
+      <code>$this-&gt;classe</code>
+    </UndefinedThisPropertyFetch>
   </file>
   <file src="src/Form/InfoBoxType.php">
     <MissingReturnType occurrences="2">
