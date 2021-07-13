@@ -105,4 +105,35 @@ class ConfirmationStatusTest extends TestCase
 
         self::assertTrue($sut->isExpired());
     }
+
+    /** @test */
+    public function shouldShowExpirationDate(): void
+    {
+        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+
+        $expectedExpirationDate = $date->modify("+ 7 days");
+
+        $sut = ConfirmationStatus::create(
+            $date
+        );
+
+        self::assertEquals($expectedExpirationDate, $sut->expireAt());
+    }
+
+    /** @test */
+    public function shouldShowExpirationDateWhenExtensionTimeIsActive(): void
+    {
+        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+
+        $expectedExpirationDate = $date->modify("+ 14 days");
+
+        $sut = ConfirmationStatus::create(
+            $date
+        );
+
+        $sut = $sut->withExtensionTime(ExtensionTime::true());
+
+        self::assertTrue($sut->extensionTime()->value());
+        self::assertEquals($expectedExpirationDate, $sut->expireAt());
+    }
 }

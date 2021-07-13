@@ -30,7 +30,8 @@ final class ConfirmationStatus
     {
         return new self(
             $confirmedAt,
-            new ExtensionTime(false)
+            //new ExtensionTime(false)
+        ExtensionTime::false()
         );
     }
 
@@ -47,6 +48,24 @@ final class ConfirmationStatus
         } else {
             return false;
         }
+    }
+
+    public function expireAt(): DateTimeImmutable
+    {
+        if ($this->extensionTime()->value()) {
+            $expirationDays = self::DEFAULT_EXPIRATION_TIME + self::EXTENDED_EXPIRATION_TIME;
+        } else {
+            $expirationDays = self::DEFAULT_EXPIRATION_TIME;
+        }
+
+        $expirationDate = $this->confirmedAt();
+
+        $newDate = $expirationDate->modify(
+            //"+ ${expirationDays} days"
+            sprintf("+ %s days", (string) $expirationDays)
+        );
+
+        return $newDate;
     }
 
     public function confirmedAt(): DateTimeImmutable
