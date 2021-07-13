@@ -37,7 +37,7 @@ parameters:
 
 		-
 			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
-			count: 1
+			count: 2
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
@@ -254,6 +254,11 @@ parameters:
 			message: "#^Parameter \\#2 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\<string\\>\\|string given\\.$#"
 			count: 1
 			path: src/Command/DefaultAdminCreateCommand.php
+
+		-
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findWithQueryBuilderAllConfirmedOrderByOldest\\(\\)\\.$#"
+			count: 1
+			path: src/Controller/BackofficeConfirmedReservationController.php
 
 		-
 			message: "#^Call to an undefined method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:createQuery\\(\\)\\.$#"

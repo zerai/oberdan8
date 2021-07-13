@@ -306,6 +306,18 @@
       <code>$passwordArg</code>
     </PossiblyInvalidArgument>
   </file>
+  <file src="src/Controller/BackofficeConfirmedReservationController.php">
+    <MixedAssignment occurrences="2">
+      <code>$q</code>
+      <code>$queryBuilder</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getQuery</code>
+    </MixedMethodCall>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>findWithQueryBuilderAllConfirmedOrderByOldest</code>
+    </UndefinedInterfaceMethod>
+  </file>
   <file src="src/Controller/BackofficeInfoBoxController.php">
     <MixedArgument occurrences="1">
       <code>$request-&gt;request-&gt;get('_token')</code>
