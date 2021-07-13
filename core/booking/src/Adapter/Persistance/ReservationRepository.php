@@ -146,4 +146,31 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->getResult()
             ;
     }
+
+    /**
+     * @param string|null $term
+     * @return QueryBuilder
+     */
+    public function findWithQueryBuilderAllConfirmedOrderByOldest(?string $term): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->addSelect('s')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Confirmed')
+
+            //->setMaxResults(1000)
+            //->getQuery()
+            //->getResult()
+            ;
+
+        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
+        if ($term) {
+            $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }
+
+        return $qb->orderBy('r.registrationDate', 'ASC');
+    }
 }

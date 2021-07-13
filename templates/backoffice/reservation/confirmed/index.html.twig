@@ -1,0 +1,104 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% import "backoffice/reservation/macros.twig" as macro %}
+
+{% block title %}
+    Prenotazioni Confermate
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Prenotazioni Confermate
+{% endblock %}
+
+
+{% block content_toolbar %}
+{#    <a class="btn btn-info" href="{{ path('backoffice_reservation_new') }}"><i class="fa fa-plus"></i> Crea prenotazione</a>#}
+{% endblock %}
+
+{% block content_body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <form>
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="q"
+                           class="form-control"
+                           value="{{ app.request.query.get('q') }}"
+                           placeholder="Cerca tra i confermati..."
+                    >
+                    <div class="input-group-append">
+                        <button type="submit"
+                                class="btn btn-outline-secondary">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <h4>Totale: {{ pagination.totalItemCount }}</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Cognome</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Stato</th>
+                        <th>Data conferma</th>
+                        <th>Scaduto</th>
+                        <th>Scade il</th>
+                        <th>Extra time</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for reservation in pagination %}
+                    <tr >
+                        <td>{{ reservation.id|u.truncate(5) }}</td>
+                        <td>{{ reservation.lastName }}</td>
+                        <td>{{ reservation.firstName }}</td>
+                        <td>{{ reservation.registrationDate|date("m/d/Y") }}</td>
+                        <td class="{{ reservation.saleDetail.status }}">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
+                        <td>{{ reservation.saleDetail.confirmationStatus.confirmedAt|date("d/m/Y") }}</td>
+                        <td>{{ reservation.saleDetail.confirmationStatus.isExpired ? '<p class="text-danger">Si</p>' : '<p class="text-success">No</p>' }}</td>
+                        <td>{{ reservation.saleDetail.confirmationStatus.expireAt|date("d/m/Y") }}</td>
+
+                        <!-- TD extra time -->
+                        {% if reservation.saleDetail.confirmationStatus.extensionTime.value %}
+                            <td>{{ reservation.saleDetail.confirmationStatus.extensionTime.value ? 'Si' : 'No' }} </td>
+                        {% else %}
+                            <td>{{ include('backoffice/reservation/form/_add_extension_time_form.html.twig') }}</td>
+
+
+                        {% endif %}
+
+
+                        <td>
+                            <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
+                            <a href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            Nessun risultato trovato, non ci sono prenotazioni confermate.
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {# display navigation #}
+{#            <div class="navigation">#}
+                {{ knp_pagination_render(pagination) }}
+{#            </div>#}
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
