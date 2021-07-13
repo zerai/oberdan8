@@ -106,7 +106,6 @@ class ClientDto
     }
 
     /**
-     * @Assert\NotBlank(message="Inserisci il tuo nome")
      * @Assert\Length(min=3, minMessage="La lughezza minima per il nome è 3 caratteri!")
      */
     public string $firstName;
