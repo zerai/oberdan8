@@ -117,14 +117,10 @@ class ClientDto
     public string $lastName;
 
     /**
-     * @Assert\NotBlank(message="Inserisci la tua email")
      * @Assert\Email()
      */
     public string $email;
 
-    /**
-     * @Assert\NotBlank(message="Inserisci il tuo recapito telefonico")
-     */
     public string $phone;
 
     /**
