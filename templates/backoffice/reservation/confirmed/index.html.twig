@@ -44,9 +44,13 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Cognome</th>
+                        <th {% if pagination.isSorted('r.LastName') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'Cognome', 'r.LastName') }}
+                        </th>
                         <th>Nome</th>
-                        <th>Data</th>
+                        <th {% if pagination.isSorted('r.registrationDate') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'Data', 'r.registrationDate') }}
+                        </th>
                         <th>Stato</th>
                         <th>Data conferma</th>
                         <th>Scaduto</th>
