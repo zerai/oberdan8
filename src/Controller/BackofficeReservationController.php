@@ -147,10 +147,16 @@ class BackofficeReservationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            //update status
-            $reservation->getSaleDetail()->setStatus(
-                ReservationStatus::fromName($form->get('status')->getData())
-            );
+            //
+            // Aggiorna lo ReservationStatus solo se differente da quello attuale
+            // altrimenti il ConfirmedStatus viene ricalcolato
+            //
+            if ($reservation->getSaleDetail()->getStatus()->name() !== $form->get('status')->getData()) {
+                //update status
+                $reservation->getSaleDetail()->setStatus(
+                    ReservationStatus::fromName($form->get('status')->getData())
+                );
+            }
 
             //update reservation packageId
             $reservation->getSaleDetail()->setReservationPackageId($form->get('packageId')->getData());

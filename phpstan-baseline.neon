@@ -312,7 +312,7 @@ parameters:
 
 		-
 			message: "#^Cannot call method getStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 2
+			count: 3
 			path: src/Controller/BackofficeReservationController.php
 
 		-
@@ -518,6 +518,11 @@ parameters:
 			message: "#^Class App\\\\Factory\\\\ReservationFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
 			count: 1
 			path: src/Factory/ReservationFactory.php
+
+		-
+			message: "#^Class App\\\\Factory\\\\ReservationSaleDetailFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
+			count: 1
+			path: src/Factory/ReservationSaleDetailFactory.php
 
 		-
 			message: "#^Method App\\\\Form\\\\BackofficeReservationEditType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
@@ -738,6 +743,21 @@ parameters:
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudTest.php
+
+		-
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
+			count: 4
+			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
+
+		-
+			message: "#^Cannot call method confirmedAt\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
+			count: 2
+			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
+
+		-
+			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 2
+			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
 
 		-
 			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
