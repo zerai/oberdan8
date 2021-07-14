@@ -116,7 +116,7 @@ class ReservationCrudTest extends SecurityWebtestCase
 
         self::assertGreaterThan(
             0,
-            $crawler->filter("html table.table:contains(\"${expectedStatusInPage}\")")->count()
+            $crawler->filter("html div.card-status-prenotazione:contains(\"${expectedStatusInPage}\")")->count()
         );
     }
 

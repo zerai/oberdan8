@@ -44,7 +44,7 @@ class ReservationCrudMailingTest extends SecurityWebtestCase
 
         self::assertGreaterThan(
             0,
-            $crawler->filter("html table.table:contains('Ritirato')")->count()
+            $crawler->filter("html div.card-status-prenotazione:contains('Ritirato')")->count()
         );
     }
 
@@ -80,7 +80,7 @@ class ReservationCrudMailingTest extends SecurityWebtestCase
 
         self::assertGreaterThan(
             0,
-            $crawler->filter("html table.table:contains('Ritirato')")->count()
+            $crawler->filter("html div.card-status-prenotazione:contains('Ritirato')")->count()
         );
     }
 }
