@@ -163,7 +163,7 @@ class BackofficeReservationController extends AbstractController
             $entityManager->flush();
 
             if ($reservation->getSaleDetail()->getStatus()->name() === 'PickedUp') {
-                if ($reservation->getEmail() !== null) {
+                if ($reservation->getEmail() !== null && $reservation->getEmail() !== '') {
                     $bookingMailer->notifyReservationThanksEmailToClient($reservation->getEmail(), $reservation->getId()->toString());
                     $this->addFlash('info', 'La mail di ringraziamento è stata inviata all\' utente.');
                 } else {

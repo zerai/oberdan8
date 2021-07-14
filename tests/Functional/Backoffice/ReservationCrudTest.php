@@ -152,7 +152,6 @@ class ReservationCrudTest extends SecurityWebtestCase
     /** @test */
     public function shouldNotSendThanksMailWhenMovedToStatusPikedUp(string $pickedUpStatus = 'PickedUp'): void
     {
-        self::markTestIncomplete('MailNotNullInDataBase');
         /** @var Reservation $reservation */
         $reservation = ReservationFactory::createOne()->object();
 
