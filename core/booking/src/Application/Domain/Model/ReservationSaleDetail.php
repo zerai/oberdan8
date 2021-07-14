@@ -39,7 +39,7 @@ class ReservationSaleDetail
      */
     private ReservationStatus $status;
 
-    private ?ConfirmationStatus $confirmationStatus = null;
+    //private ?ConfirmationStatus $confirmationStatus = null;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
