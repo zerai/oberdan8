@@ -55,6 +55,9 @@
                         <th>Data conferma</th>
                         <th>Scaduto</th>
                         <th>Scade il</th>
+                        <th {% if pagination.isSorted('s.ReservationPackageId') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'C. busta', 's.ReservationPackageId') }}
+                        </th>
                         <th>Extra time</th>
                         <th>Azioni</th>
                     </tr>
@@ -70,6 +73,7 @@
                         <td>{{ reservation.saleDetail.confirmationStatus.confirmedAt|date("d/m/Y") }}</td>
                         <td>{{ reservation.saleDetail.confirmationStatus.isExpired ? '<p class="text-danger">Si</p>' : '<p class="text-success">No</p>' }}</td>
                         <td>{{ reservation.saleDetail.confirmationStatus.expireAt|date("d/m/Y") }}</td>
+                        <td>{{ reservation.saleDetail.reservationPackageId ?? 'Non assegnato'}}</td>
 
                         <!-- TD extra time -->
                         {% if reservation.saleDetail.confirmationStatus.extensionTime.value %}
