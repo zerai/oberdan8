@@ -173,7 +173,7 @@ class BackofficeReservationController extends AbstractController
 
             $this->addFlash('success', 'Prenotazione modificata.');
 
-            return $this->redirectToRoute('backoffice_reservation_index', [
+            return $this->redirectToRoute('backoffice_reservation_show', [
                 'id' => $reservation->getId(),
             ]);
         }
