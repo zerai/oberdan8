@@ -730,11 +730,6 @@ parameters:
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudMailingTest.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
-			count: 3
-			path: tests/Functional/Backoffice/Reservation/ReservationCrudTest.php
-
-		-
 			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudTest.php
