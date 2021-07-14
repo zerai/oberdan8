@@ -1,11 +1,10 @@
 <?php declare(strict_types=1);
 
 
-namespace App\Tests\Functional\Backoffice;
+namespace App\Tests\Functional\Backoffice\Reservation;
 
 use App\Factory\ReservationFactory;
 use App\Tests\Functional\SecurityWebtestCase;
-use Booking\Adapter\Persistance\ReservationRepository;
 use Booking\Application\Domain\Model\Reservation;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -118,71 +117,6 @@ class ReservationCrudTest extends SecurityWebtestCase
         self::assertGreaterThan(
             0,
             $crawler->filter("html table.table:contains(\"${expectedStatusInPage}\")")->count()
-        );
-    }
-
-    /** @test */
-    public function shouldSendThanksMailWhenMovedToStatusPikedUp(string $pickedUpStatus = 'PickedUp'): void
-    {
-        /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
-
-        $this->logInAsAdmin();
-
-        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
-
-        self::assertResponseIsSuccessful();
-
-        $this->client->followRedirects(true);
-
-        $crawler = $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[status]' => $pickedUpStatus,
-        ]);
-
-        self::assertResponseIsSuccessful();
-
-        self::assertStringContainsString('La mail di ringraziamento è stata inviata', $this->client->getResponse()->getContent());
-
-        self::assertGreaterThan(
-            0,
-            $crawler->filter("html table.table:contains('Ritirato')")->count()
-        );
-    }
-
-    /** @test */
-    public function shouldNotSendThanksMailWhenMovedToStatusPikedUp(string $pickedUpStatus = 'PickedUp'): void
-    {
-        /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
-
-        /** @var ReservationRepository $reservationRepository */
-        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistance\ReservationRepository');
-
-        $reservation->setEmail('');
-        $reservationRepository->save($reservation);
-
-        $this->logInAsAdmin();
-
-        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
-
-        self::assertResponseIsSuccessful();
-
-        $this->client->followRedirects(true);
-
-        $crawler = $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[status]' => $pickedUpStatus,
-        ]);
-
-        self::assertResponseIsSuccessful();
-
-        self::assertStringNotContainsString('La mail di ringraziamento è stata inviata', $this->client->getResponse()->getContent());
-
-        //Todo check messaggio di non invio mail.
-        //self::assertStringContainsString('Impossibile invio della mail di ringraziamento, questa prenotazione non ha un indirizzo email.', $this->client->getResponse()->getContent());
-
-        self::assertGreaterThan(
-            0,
-            $crawler->filter("html table.table:contains('Ritirato')")->count()
         );
     }
 

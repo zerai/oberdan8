@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
 
-namespace App\Tests\Functional\Backoffice;
+namespace App\Tests\Functional\Backoffice\Reservation;
 
 use App\Tests\Functional\SecurityWebtestCase;
 use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
-class ReservationCrudNewTest extends SecurityWebtestCase
+class ReservationCrudCreateTest extends SecurityWebtestCase
 {
     private const REDIRECT_AFTER_SUBMIT = '/admin/prenotazioni/';
 
