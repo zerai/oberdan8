@@ -387,10 +387,11 @@
     <PossiblyNullArgument occurrences="1">
       <code>$reservation-&gt;getEmail()</code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="10">
+    <PossiblyNullReference occurrences="11">
       <code>getConfirmationStatus</code>
       <code>getGeneralNotes</code>
       <code>getReservationPackageId</code>
+      <code>getStatus</code>
       <code>getStatus</code>
       <code>getStatus</code>
       <code>setConfirmationStatus</code>
@@ -592,6 +593,14 @@
       <code>lastName</code>
       <code>phoneNumber</code>
     </UndefinedMagicMethod>
+  </file>
+  <file src="src/Factory/ReservationSaleDetailFactory.php">
+    <ImplementedReturnTypeMismatch occurrences="1">
+      <code>ReservationSaleDetail|Proxy</code>
+    </ImplementedReturnTypeMismatch>
+    <MoreSpecificReturnType occurrences="1">
+      <code>self</code>
+    </MoreSpecificReturnType>
   </file>
   <file src="src/Form/BackofficeReservationEditType.php">
     <MissingReturnType occurrences="2">
