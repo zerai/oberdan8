@@ -1,0 +1,8 @@
+
+<ul class="list-group list-group-flush">
+   {% for book in reservation.books  %}
+   <li class="list-group-item">
+      <strong>{{ loop.index }}</strong> - {{ book.title }}  {% include 'backoffice/reservation/form/_delete_book_from_reservation_form.html.twig' with {'book_id': book.id}  %}
+   </li>
+   {% endfor %}
+</ul>

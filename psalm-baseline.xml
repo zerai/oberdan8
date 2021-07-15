@@ -359,33 +359,56 @@
     <MissingPropertyType occurrences="1">
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
-    <MixedArgument occurrences="7">
-      <code>$form-&gt;get('notes')-&gt;getData()</code>
+    <MixedArgument occurrences="15">
+      <code>$bookId</code>
+      <code>$form-&gt;get('classe')-&gt;getData()</code>
+      <code>$form-&gt;get('generalNotes')-&gt;getData()</code>
       <code>$form-&gt;get('packageId')-&gt;getData()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getCity()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getEmail()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getFirstName()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getLastName()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getPhone()</code>
       <code>$form-&gt;get('status')-&gt;getData()</code>
+      <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="3">
+      <code>$bookId</code>
       <code>$q</code>
       <code>$queryBuilder</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="5">
+    <MixedMethodCall occurrences="12">
+      <code>getCity</code>
+      <code>getEmail</code>
+      <code>getFirstName</code>
+      <code>getLastName</code>
+      <code>getPhone</code>
       <code>getQuery</code>
       <code>toString</code>
       <code>toString</code>
       <code>toString</code>
       <code>toString</code>
+      <code>toString</code>
+      <code>toString</code>
     </MixedMethodCall>
-    <MixedOperand occurrences="3">
+    <MixedOperand occurrences="5">
+      <code>$bookId</code>
+      <code>$reservation-&gt;getId()-&gt;toString()</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
-    <PossiblyNullArgument occurrences="1">
+    <PossiblyNullArgument occurrences="6">
+      <code>$reservation-&gt;getCity()</code>
       <code>$reservation-&gt;getEmail()</code>
+      <code>$reservation-&gt;getEmail()</code>
+      <code>$reservation-&gt;getFirstName()</code>
+      <code>$reservation-&gt;getLastName()</code>
+      <code>$reservation-&gt;getPhone()</code>
     </PossiblyNullArgument>
     <PossiblyNullReference occurrences="11">
       <code>getConfirmationStatus</code>

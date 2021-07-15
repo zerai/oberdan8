@@ -7,6 +7,7 @@ use App\Factory\BookFactory;
 use App\Factory\ReservationFactory;
 use App\Factory\ReservationSaleDetailFactory;
 use App\Tests\Functional\SecurityWebtestCase;
+use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Booking\Adapter\Persistance\ReservationRepository;
 use Booking\Application\Domain\Model\Reservation;
 use Zenstruck\Foundry\Test\Factories;
@@ -14,12 +15,206 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 
 class ReservationCrudUpdateTest extends SecurityWebtestCase
 {
+    private const REDIRECT_AFTER_SUBMIT = '/admin/prenotazioni/';
+
     use ResetDatabase;
     use Factories;
 
     public function setUp(): void
     {
         parent::setUp();
+    }
+
+    /** @test */
+    public function shouldEditTheReservationLastName(): void
+    {
+        /** @var Reservation $reservation */
+        $reservation = ReservationFactory::createOne()->object();
+
+        $lastName = ReservationStaticFixture::LAST_NAME;
+
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $this->client->submitForm('Invia', [
+            'backoffice_reservation[person][last_name]' => $lastName,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString());
+
+        self::assertResponseIsSuccessful();
+
+        self::assertGreaterThan(
+            0,
+            $crawler->filter("html div.card-person:contains(\"${lastName}\")")->count()
+        );
+    }
+
+    /** @test */
+    public function shouldEditTheReservationFirstName(): void
+    {
+        /** @var Reservation $reservation */
+        $reservation = ReservationFactory::createOne()->object();
+
+        $firstName = ReservationStaticFixture::FIRST_NAME;
+
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $this->client->submitForm('Invia', [
+            'backoffice_reservation[person][first_name]' => $firstName,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString());
+
+        self::assertResponseIsSuccessful();
+
+        self::assertGreaterThan(
+            0,
+            $crawler->filter("html div.card-person:contains(\"${firstName}\")")->count()
+        );
+    }
+
+    /** @test */
+    public function shouldEditTheReservationEmail(): void
+    {
+        /** @var Reservation $reservation */
+        $reservation = ReservationFactory::createOne()->object();
+
+        $email = ReservationStaticFixture::EMAIL;
+
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $this->client->submitForm('Invia', [
+            'backoffice_reservation[person][email]' => $email,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString());
+
+        self::assertResponseIsSuccessful();
+
+        self::assertGreaterThan(
+            0,
+            $crawler->filter("html div.card-person:contains(\"${email}\")")->count()
+        );
+    }
+
+    /** @test */
+    public function shouldEditTheReservationPhone(): void
+    {
+        /** @var Reservation $reservation */
+        $reservation = ReservationFactory::createOne()->object();
+
+        $phone = ReservationStaticFixture::PHONE;
+
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $this->client->submitForm('Invia', [
+            'backoffice_reservation[person][phone]' => $phone,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString());
+
+        self::assertResponseIsSuccessful();
+
+        self::assertGreaterThan(
+            0,
+            $crawler->filter("html div.card-person:contains(\"${phone}\")")->count()
+        );
+    }
+
+    /** @test */
+    public function shouldEditTheReservationCity(): void
+    {
+        /** @var Reservation $reservation */
+        $reservation = ReservationFactory::createOne()->object();
+
+        $city = ReservationStaticFixture::CITY;
+
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $this->client->submitForm('Invia', [
+            'backoffice_reservation[person][city]' => $city,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString());
+
+        self::assertResponseIsSuccessful();
+
+        self::assertGreaterThan(
+            0,
+            $crawler->filter("html div.card-person:contains(\"${city}\")")->count()
+        );
+    }
+
+    /** @test */
+    public function shouldEditTheReservationClasse(): void
+    {
+        /** @var Reservation $reservation */
+        $reservation = ReservationFactory::createOne()->object();
+
+        $classe = 'terza';
+
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString() . '/edit');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $this->client->submitForm('Invia', [
+            'backoffice_reservation[classe]' => $classe,
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/' . $reservation->getId()->toString());
+
+        self::assertResponseIsSuccessful();
+
+        self::assertGreaterThan(
+            0,
+            $crawler->filter("html div.card-person:contains(\"${classe}\")")->count()
+        );
     }
 
     /**
@@ -50,7 +245,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         $this->client->followRedirects(true);
 
         $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[packageId]' => 'B-23',
+            'backoffice_reservation[packageId]' => 'B-23',
         ]);
 
         self::assertResponseIsSuccessful();
@@ -81,7 +276,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         $this->client->followRedirects(true);
 
         $crawler = $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[status]' => $newStatus,
+            'backoffice_reservation[status]' => $newStatus,
         ]);
 
         self::assertResponseIsSuccessful();
@@ -120,7 +315,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         $this->client->followRedirects(true);
 
         $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[notes]' => 'A new notes.',
+            'backoffice_reservation[generalNotes]' => 'A new notes.',
         ]);
 
         self::assertResponseIsSuccessful();
@@ -131,7 +326,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
 
         self::assertGreaterThan(
             0,
-            $crawler->filter('html div.card:contains("A new notes.")')->count()
+            $crawler->filter('html div.card-general-notes:contains("A new notes.")')->count()
         );
     }
 
@@ -150,7 +345,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         $this->client->followRedirects(true);
 
         $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[packageId]' => 'B-23',
+            'backoffice_reservation[packageId]' => 'B-23',
         ]);
 
         self::assertResponseIsSuccessful();
@@ -161,7 +356,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
 
         self::assertGreaterThan(
             0,
-            $crawler->filter('html div.card:contains("B-23")')->count()
+            $crawler->filter('html div.card-package-id:contains("B-23")')->count()
         );
     }
 }

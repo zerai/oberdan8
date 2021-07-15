@@ -5,11 +5,11 @@ namespace App\Form;
 use App\Form\Model\BackofficeReservationFormModel;
 use Booking\Infrastructure\Framework\Form\BookType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -36,7 +36,7 @@ class BackofficeReservationType extends AbstractType
                 'required' => false,
                 //'empty_data' => null,
                 //'data' => '',
-                //'placeholder' => 'seleziona',
+                'placeholder' => false,
             ])
 
             ->add('books', CollectionType::class, [
@@ -52,16 +52,14 @@ class BackofficeReservationType extends AbstractType
                 'block_name' => 'book_lists',
             ])
 
-            ->add('otherInfo', TextareaType::class, [
-                'label' => 'Altre informazioni',
+            ->add('generalNotes', TextareaType::class, [
                 'required' => false,
+                'label' => 'Note',
                 'empty_data' => '',
+                'attr' => [
+                    'label' => 'Note',
+                ],
             ])
-
-//            ->add('privacyConfirmed', CheckboxType::class, [
-//                'label' => 'Acconsento al trattamento dei dati secondo la normativa sulla privacy',
-//                'required' => true,
-//            ])
 
             ->add(
                 'submit',
@@ -71,6 +69,35 @@ class BackofficeReservationType extends AbstractType
                 ]
             )
         ;
+
+        if ($options['include_reservation_status']) {
+            $builder->add('status', ChoiceType::class, [
+                'required' => true,
+                //'mapped' => false,
+                'label' => 'Status',
+                'choices' => [
+                    'Nuovo' => 'NewArrival',
+                    'In lavorazione' => 'InProgress',
+                    'Sospeso' => 'Pending',
+                    'Rifiutato' => 'Rejected',
+                    'Confermato' => 'Confirmed',
+                    'Vendita' => 'Sale',
+                    'Ritirato' => 'PickedUp',
+                    'Blacklist' => 'Blacklist',
+                ],
+            ]);
+        }
+
+        if ($options['include_packageId']) {
+            $builder->add('packageId', TextType::class, [
+                'required' => false,
+                'label' => 'Codice busta',
+                'empty_data' => '',
+                'attr' => [
+                    'label' => 'Codice busta',
+                ],
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -78,6 +105,8 @@ class BackofficeReservationType extends AbstractType
         $resolver->setDefaults([
             'data_class' => BackofficeReservationFormModel::class,
             'csrf_token_id' => 'reservation',
+            'include_reservation_status' => false,
+            'include_packageId' => false,
         ]);
     }
 }

@@ -151,7 +151,7 @@ class Reservation
         return $this;
     }
 
-    public function getClasse(): ?string
+    public function getClasse(): string
     {
         return $this->classe;
     }

@@ -1,5 +1,10 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('reservation_page') }}
+{% endblock %}
+
 {% block title %}
     Prenotazioni
     {{ parent() }}
@@ -7,7 +12,7 @@
 
 
 {% block content_title %}
-    Prenotazioni
+    Prenotazione - modifica
 {% endblock %}
 
 
@@ -20,12 +25,13 @@
         <div class="row">
             <div class="col-md-12">
 
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{#                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
 
-                {{ form_errors(form) }}
+{#                {{ form_errors(form) }}#}
 
-                {{ form_widget(form) }}
-                {{ form_end(form) }}
+{#                {{ form_widget(form) }}#}
+{#                {{ form_end(form) }}#}
+                {% include 'backoffice/reservation/form/_reservation.html.twig' %}
             </div>
         </div>
     </div>

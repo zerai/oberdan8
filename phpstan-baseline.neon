@@ -341,6 +341,31 @@ parameters:
 			path: src/Controller/BackofficeReservationController.php
 
 		-
+			message: "#^Parameter \\#1 \\$city of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setCity\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setEmail\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$firstName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setFirstName\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$lastName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setLastName\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$phone of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setPhone\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/BackofficeReservationController.php
+
+		-
 			message: "#^Method App\\\\Controller\\\\BackofficeSecurityController\\:\\:logout\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but return statement is missing\\.$#"
 			count: 1
 			path: src/Controller/BackofficeSecurityController.php
@@ -720,11 +745,6 @@ parameters:
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: tests/Functional/Backoffice/Reservation/ReservationCrudCreateTest.php
-
-		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
 			count: 2
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudMailingTest.php
@@ -741,7 +761,7 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
-			count: 4
+			count: 10
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
 
 		-

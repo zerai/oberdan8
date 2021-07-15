@@ -53,8 +53,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],
@@ -63,8 +62,6 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
         );
 
         self::assertResponseRedirects(self::REDIRECT_AFTER_SUBMIT);
-
-        //self::assertEmailCount(2);
     }
 
     /** @test */
@@ -100,8 +97,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],
@@ -145,8 +141,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],
@@ -190,8 +185,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],
@@ -235,8 +229,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],
@@ -280,8 +273,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],
@@ -295,7 +287,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     /** @test */
     public function canSendFormWithoutClasse(): void
     {
-        self::markTestIncomplete();
+        //self::markTestIncomplete();
         $this->logInAsAdmin();
 
         $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
@@ -312,7 +304,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                         "phone" => ReservationStaticFixture::PHONE,
                         "city" => ReservationStaticFixture::CITY,
                     ],
-                    'classe' => '',
+                    // 'non disponibile' is default in form
+                    'classe' => 'non disponibile',
                     'books' => [
                         [
                             "isbn" => ReservationStaticFixture::BOOK_ONE_ISBN,
@@ -326,8 +319,51 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
+                    "submit" => "",
+                    "_token" => $csrfToken->getValue(),
+                ],
+            ],
+            [],
+        );
+
+        self::assertResponseRedirects(self::REDIRECT_AFTER_SUBMIT);
+    }
+
+    /** @test */
+    public function canSendFormWithoutGeneralNotes(): void
+    {
+        $this->logInAsAdmin();
+
+        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+
+        $this->client->request(
+            'POST',
+            '/admin/prenotazioni/new',
+            [
+                'backoffice_reservation' => [
+                    'person' => [
+                        "last_name" => ReservationStaticFixture::LAST_NAME,
+                        "first_name" => ReservationStaticFixture::FIRST_NAME,
+                        "email" => ReservationStaticFixture::EMAIL,
+                        "phone" => ReservationStaticFixture::PHONE,
+                        "city" => '',
+                    ],
+                    'classe' => ReservationStaticFixture::CLASSE,
+                    'books' => [
+                        [
+                            "isbn" => ReservationStaticFixture::BOOK_ONE_ISBN,
+                            "title" => ReservationStaticFixture::BOOK_ONE_TITLE,
+                            "author" => ReservationStaticFixture::BOOK_ONE_AUTHOR,
+                            "volume" => ReservationStaticFixture::BOOK_ONE_VOLUME,
+                        ],
+                        [
+                            "isbn" => ReservationStaticFixture::BOOK_TWO_ISBN,
+                            "title" => ReservationStaticFixture::BOOK_TWO_TITLE,
+                            "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
+                            "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
+                        ],                    ],
+                    "generalNotes" => "",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],

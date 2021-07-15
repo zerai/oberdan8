@@ -35,7 +35,7 @@ class ReservationCrudMailingTest extends SecurityWebtestCase
         $this->client->followRedirects(true);
 
         $crawler = $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[status]' => $pickedUpStatus,
+            'backoffice_reservation[status]' => $pickedUpStatus,
         ]);
 
         self::assertResponseIsSuccessful();
@@ -69,7 +69,7 @@ class ReservationCrudMailingTest extends SecurityWebtestCase
         $this->client->followRedirects(true);
 
         $crawler = $this->client->submitForm('Invia', [
-            'backoffice_reservation_edit[status]' => $pickedUpStatus,
+            'backoffice_reservation[status]' => $pickedUpStatus,
         ]);
 
         self::assertResponseIsSuccessful();
