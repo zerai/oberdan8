@@ -79,7 +79,8 @@ class BackofficeReservationController extends AbstractController
                 ->setPhone($formData->person->getPhone())
                 ->setCity($formData->person->getCity())
                 ->setClasse($formData->classe)
-                ->setOtherInformation($formData->otherInfo)
+                //Todo remove other info
+                //->setOtherInformation($formData->otherInfo)
                 ->setRegistrationDate(
                     new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
                 );

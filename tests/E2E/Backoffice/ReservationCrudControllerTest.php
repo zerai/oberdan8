@@ -80,7 +80,8 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
-        $form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
+        //todo remove other info
+        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 
@@ -113,7 +114,8 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
-        $form['backoffice_reservation[otherInfo]'] = '';
+        //todo remove other info
+        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 
@@ -145,7 +147,8 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
-        $form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
+        //todo remove other info
+        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 
@@ -177,7 +180,8 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = '';
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
-        $form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
+        //todo remove other info
+        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 
@@ -209,7 +213,8 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = '';
 
-        $form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
+        //todo remove other info
+        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 
@@ -251,7 +256,8 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][1][author]'] = ReservationStaticFixture::BOOK_TWO_AUTHOR;
         $form['backoffice_reservation[books][1][volume]'] = ReservationStaticFixture::BOOK_TWO_VOLUME;
 
-        $form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
+        //todo remove other info
+        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 

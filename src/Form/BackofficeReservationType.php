@@ -52,11 +52,11 @@ class BackofficeReservationType extends AbstractType
                 'block_name' => 'book_lists',
             ])
 
-            ->add('otherInfo', TextareaType::class, [
-                'label' => 'Altre informazioni',
-                'required' => false,
-                'empty_data' => '',
-            ])
+//            ->add('otherInfo', TextareaType::class, [
+//                'label' => 'Altre informazioni',
+//                'required' => false,
+//                'empty_data' => '',
+//            ])
 
 //            ->add('privacyConfirmed', CheckboxType::class, [
 //                'label' => 'Acconsento al trattamento dei dati secondo la normativa sulla privacy',

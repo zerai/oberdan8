@@ -53,7 +53,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    //todo remove other info
+                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     //"privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -100,7 +101,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    //todo remove other info
+                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     //"privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -145,7 +147,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    //todo remove other info
+                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     //"privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -190,7 +193,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    //todo remove other info
+                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     //"privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -235,7 +239,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    //todo remove other info
+                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     //"privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -280,7 +285,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    //todo remove other info
+                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     //"privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -326,7 +332,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    //todo remove other info
+                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     //"privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
