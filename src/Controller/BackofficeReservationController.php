@@ -88,6 +88,7 @@ class BackofficeReservationController extends AbstractController
             // add saleDetail to reservation
             $saleDetail = new ReservationSaleDetail();
             $saleDetail->setStatus(ReservationStatus::NewArrival());
+            $saleDetail->setGeneralNotes($formData->generalNotes);
             $reservation->setSaleDetail($saleDetail);
 
             // add book to reservation

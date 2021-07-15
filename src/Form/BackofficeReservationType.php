@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Form\Model\BackofficeReservationFormModel;
 use Booking\Infrastructure\Framework\Form\BookType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -52,16 +51,14 @@ class BackofficeReservationType extends AbstractType
                 'block_name' => 'book_lists',
             ])
 
-//            ->add('otherInfo', TextareaType::class, [
-//                'label' => 'Altre informazioni',
-//                'required' => false,
-//                'empty_data' => '',
-//            ])
-
-//            ->add('privacyConfirmed', CheckboxType::class, [
-//                'label' => 'Acconsento al trattamento dei dati secondo la normativa sulla privacy',
-//                'required' => true,
-//            ])
+            ->add('generalNotes', TextareaType::class, [
+                'required' => false,
+                'label' => 'Note',
+                'empty_data' => '',
+                'attr' => [
+                    'label' => 'Note',
+                ],
+            ])
 
             ->add(
                 'submit',
