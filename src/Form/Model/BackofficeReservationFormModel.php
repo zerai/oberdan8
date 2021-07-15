@@ -28,6 +28,10 @@ class BackofficeReservationFormModel
 
     public string $generalNotes;
 
+    public string $status;
+
+    public ?string $packageId;
+
 //    /**
 //     * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")
 //     */

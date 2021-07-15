@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -68,6 +69,35 @@ class BackofficeReservationType extends AbstractType
                 ]
             )
         ;
+
+        if ($options['include_reservation_status']) {
+            $builder->add('status', ChoiceType::class, [
+                'required' => true,
+                //'mapped' => false,
+                'label' => 'Status',
+                'choices' => [
+                    'Nuovo' => 'NewArrival',
+                    'In lavorazione' => 'InProgress',
+                    'Sospeso' => 'Pending',
+                    'Rifiutato' => 'Rejected',
+                    'Confermato' => 'Confirmed',
+                    'Vendita' => 'Sale',
+                    'Ritirato' => 'PickedUp',
+                    'Blacklist' => 'Blacklist',
+                ],
+            ]);
+        }
+
+        if ($options['include_packageId']) {
+            $builder->add('packageId', TextType::class, [
+                'required' => false,
+                'label' => 'Codice busta',
+                'empty_data' => '',
+                'attr' => [
+                    'label' => 'Codice busta',
+                ],
+            ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -75,6 +105,8 @@ class BackofficeReservationType extends AbstractType
         $resolver->setDefaults([
             'data_class' => BackofficeReservationFormModel::class,
             'csrf_token_id' => 'reservation',
+            'include_reservation_status' => false,
+            'include_packageId' => false,
         ]);
     }
 }
