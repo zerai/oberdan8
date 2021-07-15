@@ -97,7 +97,6 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    //todo remove other info
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -288,7 +287,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     /** @test */
     public function canSendFormWithoutClasse(): void
     {
-        self::markTestIncomplete();
+        //self::markTestIncomplete();
         $this->logInAsAdmin();
 
         $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
@@ -305,7 +304,8 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                         "phone" => ReservationStaticFixture::PHONE,
                         "city" => ReservationStaticFixture::CITY,
                     ],
-                    'classe' => '',
+                    // 'non disponibile' is default in form
+                    'classe' => 'non disponibile',
                     'books' => [
                         [
                             "isbn" => ReservationStaticFixture::BOOK_ONE_ISBN,
@@ -319,9 +319,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                             "author" => ReservationStaticFixture::BOOK_TWO_AUTHOR,
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
-                    //todo remove other info
-                    //"otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
-                    //"privacyConfirmed" => "1",
+                    "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
                 ],
