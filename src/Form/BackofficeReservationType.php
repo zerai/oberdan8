@@ -36,7 +36,7 @@ class BackofficeReservationType extends AbstractType
                 'required' => false,
                 //'empty_data' => null,
                 //'data' => '',
-                //'placeholder' => 'seleziona',
+                'placeholder' => false,
             ])
 
             ->add('books', CollectionType::class, [

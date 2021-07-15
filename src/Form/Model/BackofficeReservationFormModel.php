@@ -19,7 +19,7 @@ class BackofficeReservationFormModel
 
     /**
      * @Assert\Valid
-     * @Assert\Count(
+     * Assert\Count(
      *      min = 1,
      *      minMessage = "Inserire almeno un libro.",
      * )
@@ -31,9 +31,4 @@ class BackofficeReservationFormModel
     public string $status;
 
     public ?string $packageId;
-
-//    /**
-//     * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")
-//     */
-//    public bool $privacyConfirmed;
 }

@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\BackofficeUser;
-use App\Form\BackofficeReservationEditType;
 use App\Form\BackofficeReservationType;
-use App\Form\BackofficeUserType;
-use App\Form\Model\BackofficeReservationEditFormModel;
+use App\Form\Dto\ClientDto;
 use App\Form\Model\BackofficeReservationFormModel;
 use Booking\Adapter\MailDriven\BookingMailer;
+use Booking\Adapter\Persistance\BookRepository;
 use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
 use Booking\Application\Domain\Model\Reservation;
@@ -18,11 +16,12 @@ use Booking\Application\Domain\Model\ReservationStatus;
 use Booking\Infrastructure\Framework\Form\Dto\BookDto;
 
 use Knp\Component\Pager\PaginatorInterface;
+use Psr\Log\LoggerInterface;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/admin/prenotazioni")
@@ -133,21 +132,70 @@ class BackofficeReservationController extends AbstractController
         ]);
     }
 
+    private function mapReservationToFormModel(Reservation $reservation): BackofficeReservationFormModel
+    {
+        //create clientDto
+        $clientDto = new ClientDto();
+        $clientDto->setLastName($reservation->getLastName());
+        $clientDto->setFirstName($reservation->getFirstName());
+        $clientDto->setEmail($reservation->getEmail());
+        $clientDto->setPhone($reservation->getPhone());
+        $clientDto->setCity($reservation->getCity());
+
+        $formModel = new BackofficeReservationFormModel();
+        $formModel->person = $clientDto;
+        $formModel->classe = $reservation->getClasse();
+        $formModel->status = $reservation->getSaleDetail()->getStatus()->toString();
+        $formModel->packageId = $reservation->getSaleDetail()->getReservationPackageId();
+        $formModel->generalNotes = $reservation->getSaleDetail()->getGeneralNotes() ?? '';
+
+        return $formModel;
+    }
+
     /**
      * @Route("/{id}/edit", name="backoffice_reservation_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Reservation $reservation, BookingMailer $bookingMailer): Response
     {
-        //create form model
-        $formModel = new BackofficeReservationEditFormModel();
-        $formModel->status = $reservation->getSaleDetail()->getStatus()->toString();
-        $formModel->packageId = $reservation->getSaleDetail()->getReservationPackageId();
-        $formModel->notes = $reservation->getSaleDetail()->getGeneralNotes();
+        $formModel = $this->mapReservationToFormModel($reservation);
 
-        $form = $this->createForm(BackofficeReservationEditType::class, $formModel);
+        $form = $this->createForm(BackofficeReservationType::class, $formModel, [
+            'include_reservation_status' => true,
+            'include_packageId' => true,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //update reservation lastname
+            $reservation->setLastName($form->get('person')->getData()->getLastName());
+
+            //update reservation lastname
+            $reservation->setFirstName($form->get('person')->getData()->getFirstName());
+
+            //update reservation email
+            $reservation->setEmail($form->get('person')->getData()->getEmail());
+
+            //update reservation phone
+            $reservation->setPhone($form->get('person')->getData()->getPhone());
+
+            //update reservation city
+            $reservation->setCity($form->get('person')->getData()->getCity());
+
+            //update reservation classe
+            $reservation->setClasse($form->get('classe')->getData());
+
+            // update books
+
+            /** @var BookDto $formBook */
+            foreach ($form->get('books')->getData() as $formBook) {
+                $book = new Book();
+                $book->setIsbn($formBook->getIsbn());
+                $book->setTitle($formBook->getTitle());
+                $book->setAuthor($formBook->getAuthor());
+                $book->setVolume($formBook->getVolume());
+
+                $reservation->addBook($book);
+            }
 
             //
             // Aggiorna lo ReservationStatus solo se differente da quello attuale
@@ -164,7 +212,7 @@ class BackofficeReservationController extends AbstractController
             $reservation->getSaleDetail()->setReservationPackageId($form->get('packageId')->getData());
 
             // update notes
-            $reservation->getSaleDetail()->setGeneralNotes($form->get('notes')->getData());
+            $reservation->getSaleDetail()->setGeneralNotes($form->get('generalNotes')->getData());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reservation);
@@ -188,38 +236,10 @@ class BackofficeReservationController extends AbstractController
 
         return $this->render('backoffice/reservation/edit.html.twig', [
             //'backoffice_user' => $reservation,
+            'reservation' => $reservation,
             'form' => $form->createView(),
         ]);
     }
-
-//
-//    /**
-//     * @Route("/{id}/edit", name="backoffice_user_edit", methods={"GET","POST"})
-//     */
-//    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, BackofficeUser $backofficeUser): Response
-//    {
-//        $form = $this->createForm(BackofficeUserType::class, $backofficeUser);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            // encode the plain password
-//            $backofficeUser->setPassword(
-//                $passwordEncoder->encodePassword(
-//                    $backofficeUser,
-//                    $form->get('plainPassword')->getData()
-//                )
-//            );
-//            $this->getDoctrine()->getManager()->flush();
-//
-//            return $this->redirectToRoute('backoffice_user_index');
-//        }
-//
-//        return $this->render('backoffice/user/edit.html.twig', [
-//            'backoffice_user' => $backofficeUser,
-//            'form' => $form->createView(),
-//        ]);
-//    }
-//
 
     /**
      * @Route("/{id}", name="backoffice_reservation_delete", methods={"POST"})
@@ -235,6 +255,37 @@ class BackofficeReservationController extends AbstractController
         }
 
         return $this->redirectToRoute('backoffice_reservation_index');
+    }
+
+    /**
+     * @Route("/{id}/delete-book/{book_id}", name="backoffice_reservation_delete_book", methods={"POST"})
+     */
+    public function deleteBookFromReservation(Request $request, Reservation $reservation, BookRepository $bookRepository, LoggerInterface $logger): Response
+    {
+        $bookId = $request->get('book_id'); // dd($bookId);
+
+        if ($this->isCsrfTokenValid('delete-book' . $bookId . $reservation->getId()->toString(), $request->request->get('_token'))) {
+            $book = $bookRepository->findOneBy([
+                'id' => Uuid::fromString($bookId),
+            ]);
+
+            if ($book !== null) {
+                $reservation->removeBook($book);
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($reservation);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'La prenotazione è stata modificata.');
+            } else {
+                //TODO throw exception, message to user
+                $logger->alert('Impossibile rimuvere libro da prenotazione.');
+            }
+        }
+
+        return $this->redirectToRoute('backoffice_reservation_edit', [
+            'id' => $reservation->getId()->toString(),
+        ]);
     }
 
     /**
