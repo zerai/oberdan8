@@ -47,12 +47,12 @@
                         <th>Id</th>
 
                         <th {% if pagination.isSorted('r.LastName') %} class="sorted"{% endif %} >
-                            {{ knp_pagination_sortable(pagination, 'Cognome', 'r.LastName') }}
+                            {{ knp_pagination_sortable(pagination, 'Nominativo', 'r.LastName') }}
                         </th>
 
-                        <th {% if pagination.isSorted('r.firstName') %} class="sorted"{% endif %} >
-                            {{ knp_pagination_sortable(pagination, 'Nome', 'r.firstName') }}
-                        </th>
+{#                        <th {% if pagination.isSorted('r.firstName') %} class="sorted"{% endif %} >#}
+{#                            {{ knp_pagination_sortable(pagination, 'Nome', 'r.firstName') }}#}
+{#                        </th>#}
 
                         <th {% if pagination.isSorted('s.ReservationPackageId') %} class="sorted"{% endif %} >
                             {{ knp_pagination_sortable(pagination, 'C. busta', 's.ReservationPackageId') }}
@@ -69,8 +69,8 @@
                 {% for reservation in pagination %}
                     <tr class="{{ reservation.saleDetail.status }}">
                         <td>{{ reservation.id|u.truncate(5) }}</td>
-                        <td>{{ reservation.lastName }}</td>
-                        <td>{{ reservation.firstName }}</td>
+                        <td>{{ reservation.lastName }} {{ reservation.firstName }}</td>
+{#                        <td>{{ reservation.firstName }}</td>#}
 
                         <!-- TD packageId -->
                         {% if reservation.saleDetail.reservationPackageId is empty or reservation.saleDetail.reservationPackageId is null %}
