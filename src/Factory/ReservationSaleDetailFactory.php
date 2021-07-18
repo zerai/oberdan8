@@ -112,4 +112,11 @@ final class ReservationSaleDetailFactory extends ModelFactory
             'pvtConfirmedAt' => (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify('- 16 days'),
         ]);
     }
+
+    public function withPackageId(string $packageId): self
+    {
+        return $this->addState([
+            'ReservationPackageId' => $packageId,
+        ]);
+    }
 }
