@@ -35,4 +35,6 @@ class ReservationStaticFixture
     public const BOOK_TWO_AUTHOR = 'Ferruccio Bianchi, Patrizia Farello, Carlo Scataglini';
 
     public const BOOK_TWO_VOLUME = 'vol.1';
+
+    public const PACKAGE_ID = '150';
 }
