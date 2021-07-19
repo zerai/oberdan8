@@ -13,6 +13,12 @@
 {% endblock %}
 
 
+            {% block reservation_overview %}
+                {# reservation status badge overview area #}
+{#                {% include('backoffice/reservation/_badge_status_navbar.html.twig') %}#}
+                {{ render(path('backoffice_stats_reservation_overview')) }}
+            {% endblock %}
+
 {% block content_toolbar %}
     <a class="btn btn-info" href="{{ path('backoffice_reservation_new') }}"><i class="fa fa-plus"></i> Crea prenotazione</a>
 {% endblock %}

@@ -1,0 +1,58 @@
+<div class="mb-3 mt-2">
+
+    {# status confirmed #}
+    <div class="d-inline p-2 bg-confirmed text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Confermati">
+        <span class="badge badge-light">
+            {{ status_confirmed }}
+        </span>
+    </div>
+
+    {# status newArrival #}
+    <div class="d-inline p-2 bg-newarrival text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Nuovi">
+        <span class="badge badge-light">
+            {{ status_pending }}
+        </span>
+    </div>
+
+    {# status pending #}
+    <div class="d-inline p-2 bg-pending text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="In sospeso">
+        <span class="badge badge-light">
+            {{ status_pending }}
+        </span>
+    </div>
+
+    {# status inprogress #}
+    <div class="d-inline p-2 bg-inprogress text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="In lavorazione">
+        <span class="badge badge-light">
+            {{ status_inprogress }}
+        </span>
+    </div>
+
+    {# status rejected #}
+    <div class="d-inline p-2 bg-rejected text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Rifiutati">
+        <span class="badge badge-light">
+            {{ status_rejected }}
+        </span>
+    </div>
+
+    {# status sale #}
+    <div class="d-inline p-2 bg-sale text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Vendita">
+        <span class="badge badge-light">
+            {{ status_sale }}
+        </span>
+    </div>
+
+    {# status pickedup #}
+    <div class="d-inline p-2 bg-pickedup text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Ritirato">
+        <span class="badge badge-light">
+            {{ status_pickedup }}
+        </span>
+    </div>
+
+{#    -#}
+    {# status expired #}
+{#    <div class="d-inline p-2 bg-expired text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Confermati scaduti">#}
+{#        <span class="badge badge-light">10</span>#}
+{#    </div>#}
+
+</div>

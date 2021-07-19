@@ -16,9 +16,15 @@
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">{% block content_title %}Content title{% endblock %}</h1>
+
+
+            {% block reservation_overview %}
+                {# reservation status badge overview area #}
+            {% endblock %}
             <div class="btn-toolbar mb-2 mb-md-0">
                 {% block content_toolbar %}Content toolbar{% endblock %}
             </div>
+
         </div>
 
         {% block content_body %}{% endblock %}
