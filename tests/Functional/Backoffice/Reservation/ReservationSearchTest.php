@@ -160,20 +160,6 @@ class ReservationSearchTest extends SecurityWebtestCase
         self::assertStringContainsString($secondTempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /** @test */
     public function shouldSearchByReservationStatus(): void
     {
@@ -184,8 +170,11 @@ class ReservationSearchTest extends SecurityWebtestCase
         $secondPackageId = '502';
         $secondTempName = 'second-target-result';
 
-        ReservationFactory::createMany(5,
-        [ 'saleDetail' => ReservationSaleDetailFactory::new()->withRejectedStatus()]
+        ReservationFactory::createMany(
+            5,
+            [
+                'saleDetail' => ReservationSaleDetailFactory::new()->withRejectedStatus(),
+            ]
         );
 
         $this->logInAsAdmin();
@@ -211,8 +200,4 @@ class ReservationSearchTest extends SecurityWebtestCase
         self::assertStringContainsString($tempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
         self::assertStringContainsString($secondTempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
     }
-
-
-
-
 }
