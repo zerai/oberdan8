@@ -96,7 +96,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
      * @param string|null $term
      * @return QueryBuilder
      */
-    public function getWithSearchQueryBuilder(?string $term): QueryBuilder
+    public function getWithSearchQueryBuilder(?string $term, ?string $status): QueryBuilder
     {
         $qb = $this->createQueryBuilder('r')
             //->innerJoin('c.article', 'a')
@@ -110,6 +110,12 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ;
         }
 
+        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
+        if ($status) {
+            $qb->andWhere(' s.status LIKE :status ')
+                ->setParameter('status', '%' . $status . '%')
+            ;
+        }
         return $qb
             ->orderBy('r.registrationDate', 'DESC')
             ;
