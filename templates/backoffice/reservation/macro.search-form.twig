@@ -1,0 +1,115 @@
+{% macro renderReservationStatusInFormSelect(reservationStatus) %}
+
+    {{ dump(reservationStatus) }}
+
+    {% set formSelectOptions = '' %}
+
+    {% if reservationStatus == 'default' %}
+        {% set formSelectOptions = '
+            <option value="" disabled selected>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+    {% elseif reservationStatus == 'NewArrival' %}
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival" selected>Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+    {% elseif reservationStatus == 'InProgress' %}
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress" selected>In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+    {% elseif reservationStatus == 'Pending' %}
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending" selected>Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+    {% elseif reservationStatus == 'Rejected' %}
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected" selected>Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+    {% elseif reservationStatus == 'Confirmed' %}
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+    {% elseif reservationStatus == 'Sale' %}
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale" selected>Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+
+    {% elseif reservationStatus == 'PickedUp' %}
+
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp" selected>Ritirato</option>
+            <option value="Blacklist">Blacklist</option>
+        ' %}
+
+    {% elseif reservationStatus == 'Blacklist' %}
+
+        {% set formSelectOptions = '
+            <option value="" disabled>stato</option>
+            <option value="NewArrival">Nuovo</option>
+            <option value="InProgress">In lavorazione</option>
+            <option value="Pending">Sospeso</option>
+            <option value="Rejected">Rifiutato</option>
+            <option value="Sale">Vendita</option>
+            <option value="PickedUp">Ritirato</option>
+            <option value="Blacklist" selected>Blacklist</option>
+        ' %}
+    {% endif %}
+
+
+    {{ formSelectOptions }}
+
+{% endmacro renderReservationStatusInFormSelect %}

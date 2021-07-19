@@ -159,4 +159,60 @@ class ReservationSearchTest extends SecurityWebtestCase
         self::assertStringContainsString($tempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
         self::assertStringContainsString($secondTempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /** @test */
+    public function shouldSearchByReservationStatus(): void
+    {
+
+        //TODO remove tempName (mettere colonna packageId in table)
+        $packageId = '501';
+        $tempName = 'target-result';
+        $secondPackageId = '502';
+        $secondTempName = 'second-target-result';
+
+        ReservationFactory::createMany(5,
+        [ 'saleDetail' => ReservationSaleDetailFactory::new()->withRejectedStatus()]
+        );
+
+        $this->logInAsAdmin();
+
+        $this->client->followRedirects(true);
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/');
+
+        self::assertResponseIsSuccessful();
+
+        self::assertPageTitleSame('Prenotazioni Administration - Oberdan 8');
+
+        $this->client->submitForm(
+            'backoffice_reservation_search_submit',
+            [
+                'q' => '',
+                'status' => '',
+            ],
+            'GET'
+        );
+
+        self::assertResponseIsSuccessful();
+        self::assertStringContainsString($tempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
+        self::assertStringContainsString($secondTempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
+    }
+
+
+
+
 }
