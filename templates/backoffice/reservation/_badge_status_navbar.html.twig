@@ -1,53 +1,67 @@
 <div class="mb-3 mt-2">
 
     {# status confirmed #}
-    <div class="d-inline p-2 bg-confirmed text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Confermati">
-        <span class="badge badge-light">
-            {{ status_confirmed }}
-        </span>
-    </div>
+    <a href="{{ path('backoffice_reservation_confirmed_index') }}">
+        <div class="d-inline p-2 bg-confirmed text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Confermati">
+            <span class="badge badge-light">
+                {{ status_confirmed }}
+            </span>
+        </div>
+    </a>
 
     {# status newArrival #}
-    <div class="d-inline p-2 bg-newarrival text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Nuovi">
-        <span class="badge badge-light">
-            {{ status_newarrival }}
-        </span>
-    </div>
+    <a href="{{ path('backoffice_reservation_index', {'status': 'NewArrival'}) }}">
+        <div class="d-inline p-2 bg-newarrival text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Nuovi">
+            <span class="badge badge-light">
+                {{ status_newarrival }}
+            </span>
+        </div>
+    </a>
 
     {# status pending #}
-    <div class="d-inline p-2 bg-pending text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="In sospeso">
-        <span class="badge badge-light">
-            {{ status_pending }}
-        </span>
-    </div>
+    <a href="{{ path('backoffice_reservation_index', {'status': 'Pending'}) }}">
+        <div class="d-inline p-2 bg-pending text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="In sospeso">
+            <span class="badge badge-light">
+                {{ status_pending }}
+            </span>
+        </div>
+    </a>
 
     {# status inprogress #}
-    <div class="d-inline p-2 bg-inprogress text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="In lavorazione">
-        <span class="badge badge-light">
-            {{ status_inprogress }}
-        </span>
-    </div>
+    <a href="{{ path('backoffice_reservation_index', {'status': 'InProgress'}) }}">
+        <div class="d-inline p-2 bg-inprogress text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="In lavorazione">
+            <span class="badge badge-light">
+                {{ status_inprogress }}
+            </span>
+        </div>
+    </a>
 
     {# status rejected #}
-    <div class="d-inline p-2 bg-rejected text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Rifiutati">
-        <span class="badge badge-light">
-            {{ status_rejected }}
-        </span>
-    </div>
+    <a href="{{ path('backoffice_reservation_index', {'status': 'Rejected'}) }}">
+        <div class="d-inline p-2 bg-rejected text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Rifiutati">
+            <span class="badge badge-light">
+                {{ status_rejected }}
+            </span>
+        </div>
+    </a>
 
     {# status sale #}
-    <div class="d-inline p-2 bg-sale text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Vendita">
-        <span class="badge badge-light">
-            {{ status_sale }}
-        </span>
-    </div>
+    <a href="{{ path('backoffice_reservation_index', {'status': 'Sale'}) }}">
+        <div class="d-inline p-2 bg-sale text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Vendita">
+            <span class="badge badge-light">
+                {{ status_sale }}
+            </span>
+        </div>
+    </a>
 
     {# status pickedup #}
-    <div class="d-inline p-2 bg-pickedup text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Ritirato">
-        <span class="badge badge-light">
-            {{ status_pickedup }}
-        </span>
-    </div>
+    <a href="{{ path('backoffice_reservation_index', {'status': 'PickedUp'}) }}">
+        <div class="d-inline p-2 bg-pickedup text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Ritirato">
+            <span class="badge badge-light">
+                {{ status_pickedup }}
+            </span>
+        </div>
+    </a>
 
 {#    -#}
     {# status expired #}
