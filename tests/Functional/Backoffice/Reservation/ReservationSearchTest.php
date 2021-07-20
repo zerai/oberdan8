@@ -161,14 +161,36 @@ class ReservationSearchTest extends SecurityWebtestCase
     }
 
     /** @test */
+    public function shouldNotFindRecordsWhenSearchByReservationStatus(): void
+    {
+        //TODO remove tempName (mettere colonna packageId in table)
+        $this->logInAsAdmin();
+
+        $this->client->followRedirects(true);
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/');
+
+        self::assertResponseIsSuccessful();
+
+        self::assertPageTitleSame('Prenotazioni Administration - Oberdan 8');
+
+        $this->client->submitForm(
+            'backoffice_reservation_search_submit',
+            [
+                'q' => '',
+                'status' => '',
+            ],
+            'GET'
+        );
+
+        self::assertResponseIsSuccessful();
+        self::assertStringContainsString('Nessun risultato trovato.', $this->client->getResponse()->getContent());
+    }
+
+    /** @test */
     public function shouldSearchByReservationStatus(): void
     {
-
-        //TODO remove tempName (mettere colonna packageId in table)
-        $packageId = '501';
-        $tempName = 'target-result';
-        $secondPackageId = '502';
-        $secondTempName = 'second-target-result';
+//        //TODO remove tempName (mettere colonna packageId in table)
 
         ReservationFactory::createMany(
             5,
@@ -191,13 +213,15 @@ class ReservationSearchTest extends SecurityWebtestCase
             'backoffice_reservation_search_submit',
             [
                 'q' => '',
-                'status' => '',
+                'status' => 'Rejected',
             ],
             'GET'
         );
 
         self::assertResponseIsSuccessful();
-        self::assertStringContainsString($tempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
-        self::assertStringContainsString($secondTempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
+        self::assertEquals(
+            5,
+            $crawler->filterXPath('//td//a/i[@class="fa fa-eye"]')->count()
+        );
     }
 }
