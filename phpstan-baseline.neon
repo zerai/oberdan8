@@ -2,17 +2,17 @@ parameters:
 	ignoreErrors:
 		-
 			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Service\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
-			count: 1
+			count: 3
 			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
 
 		-
 			message: "#^If condition is always true\\.$#"
-			count: 1
+			count: 3
 			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
 
 		-
 			message: "#^Only booleans are allowed in an if condition, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile given\\.$#"
-			count: 1
+			count: 3
 			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
 
 		-
@@ -678,6 +678,11 @@ parameters:
 			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
 			count: 1
 			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationMultipleUploadTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
 
 		-
 			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationTest\\:\\:\\$client has no typehint specified\\.$#"
