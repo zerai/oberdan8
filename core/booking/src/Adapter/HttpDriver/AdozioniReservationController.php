@@ -25,24 +25,66 @@ class AdozioniReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $mailAttachments = [];
             ############################ inizio single file upload
             /** @var UploadedFile $adozioniFile */
             $adozioniFile = $form->get('adozioni')->getData();
 
             // and is not empty
+            // TODO static analysis Only booleans are allowed in an if condition, Symfony\Component\HttpFoundation\File\UploadedFile given.
             if ($adozioniFile) {
                 try {
                     // original call
                     //$newFilename = $uploader->uploadAdozioniFile($adozioniFile);
 
                     $newFilename = $uploader->uploadAdozioniFileAndReturnFile($adozioniFile);
+                    $mailAttachments[] = $newFilename;
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                     throw $e;
                 }
             }
             ############################ fine single file upload
+
+            ############################ inizio second file upload
+            /** @var UploadedFile $secondAdozioniFile */
+            $secondAdozioniFile = $form->get('adozioni2')->getData();
+
+            // and is not empty
+            // TODO static analysis Only booleans are allowed in an if condition, Symfony\Component\HttpFoundation\File\UploadedFile given.
+            if ($secondAdozioniFile) {
+                try {
+                    // original call
+                    //$newFilename = $uploader->uploadAdozioniFile($adozioniFile);
+
+                    $secondFilename = $uploader->uploadAdozioniFileAndReturnFile($secondAdozioniFile);
+                    $mailAttachments[] = $secondFilename;
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    throw $e;
+                }
+            }
+            ############################ fine second file upload
+
+            ############################ inizio third file upload
+            /** @var UploadedFile $thirdAdozioniFile */
+            $thirdAdozioniFile = $form->get('adozioni3')->getData();
+
+            // and is not empty
+            // TODO static analysis Only booleans are allowed in an if condition, Symfony\Component\HttpFoundation\File\UploadedFile given.
+            if ($thirdAdozioniFile) {
+                try {
+                    // original call
+                    //$newFilename = $uploader->uploadAdozioniFile($adozioniFile);
+
+                    $thirdFilename = $uploader->uploadAdozioniFileAndReturnFile($thirdAdozioniFile);
+                    $mailAttachments[] = $thirdFilename;
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    throw $e;
+                }
+            }
+            ############################ fine third file upload
 
             /** @var AdozioniReservationFormModel $formData */
             $formData = $form->getData();
@@ -90,7 +132,7 @@ class AdozioniReservationController extends AbstractController
             $bookingMailer->notifyNewAdozioniReservationToBackoffice(
                 $this->mapPersonDataToReservationConfirmationEmail($formData),
                 //[$adozioniFile->getClientOriginalName()],
-                [$newFilename],
+                $mailAttachments,
                 [],
                 $formData->otherInfo
             );
