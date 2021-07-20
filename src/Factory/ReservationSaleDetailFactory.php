@@ -59,6 +59,13 @@ final class ReservationSaleDetailFactory extends ModelFactory
         return ReservationStatus::fromName($status);
     }
 
+    public function withRejectedStatus(): self
+    {
+        return $this->addState([
+            'status' => $this->withReservationStatus('Rejected'),
+        ]);
+    }
+
     public function withConfirmed1DayAgo(): self
     {
         return $this->addState([

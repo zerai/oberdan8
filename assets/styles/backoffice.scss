@@ -116,32 +116,65 @@ body {
 .NewArrival {
     background-color: #D2D2D2;
 }
+.bg-newarrival {
+    background-color: #D2D2D2 !important;
+}
+
 
 .InProgress {
     background-color: #00A5E3;
 }
+.bg-inprogress {
+    background-color: #00A5E3 !important;
+}
+
 
 .Pending {
     background-color: #FF8100;
 }
+.bg-pending {
+    background-color: #FF8100 !important;
+}
+
 
 .Rejected {
     background-color: #FF0000;
 }
+.bg-rejected {
+    background-color: #FF0000 !important;
+}
+
 
 .Confirmed {
     //background-color: #008000;
     background-color: #E0FFBF;
 }
+.bg-confirmed {
+    background-color: #E0FFBF !important;
+}
 
 .Sale {
     background-color: #FF9F9F;
+}
+.bg-sale {
+    background-color: #FF9F9F !important
 }
 
 .PickedUp {
     background-color: #FF8080 ;
 }
 
+.bg-pickedup {
+    background-color: #FF8080 !important;
+}
 .Blacklist {
     background-color: #FFFFFF;
+}
+.bg-blacklist {
+    background-color: #FFFFFF !important;
+}
+
+
+.bg-expired {
+    background-color: #000000 !important;
 }

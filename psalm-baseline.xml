@@ -376,10 +376,11 @@
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedArgument>
-    <MixedAssignment occurrences="3">
+    <MixedAssignment occurrences="4">
       <code>$bookId</code>
       <code>$q</code>
       <code>$queryBuilder</code>
+      <code>$status</code>
     </MixedAssignment>
     <MixedMethodCall occurrences="12">
       <code>getCity</code>

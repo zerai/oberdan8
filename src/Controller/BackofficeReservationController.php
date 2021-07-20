@@ -35,7 +35,9 @@ class BackofficeReservationController extends AbstractController
     {
         $q = $request->query->get('q');
 
-        $queryBuilder = $repository->getWithSearchQueryBuilder($q);
+        $status = $request->query->get('status');
+
+        $queryBuilder = $repository->getWithSearchQueryBuilder($q, $status);
 
         //$searchedReservation = $queryBuilder->getQuery()->getResult();
 
