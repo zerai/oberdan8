@@ -1,7 +1,7 @@
 {% extends 'backoffice/default-layout.html.twig' %}
 
 {% import "backoffice/reservation/macros.twig" as macro %}
-{% import "backoffice/reservation/macro.search-form.twig" as formmacro %}
+
 
 {% block title %}
     Prenotazioni
@@ -14,35 +14,23 @@
 {% endblock %}
 
 
-            {% block reservation_overview %}
-                {# reservation status badge overview area #}
-{#                {% include('backoffice/reservation/_badge_status_navbar.html.twig') %}#}
-                {{ render(path('backoffice_stats_reservation_overview')) }}
-            {% endblock %}
+{% block reservation_overview %}
+    {# reservation status badge overview area #}
+    {{ render(path('backoffice_stats_reservation_overview')) }}
+{% endblock %}
+
 
 {% block content_toolbar %}
     <a class="btn btn-info" href="{{ path('backoffice_reservation_new') }}"><i class="fa fa-plus"></i> Crea prenotazione</a>
 {% endblock %}
 
+
 {% block content_body %}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            {{ app.request.query.get('status') }} xxxxxxxxxxxxx
-            {% if app.request.query.get('status') is defined and app.request.query.get('status') is not empty %}
-                status is defined and not empty defined
-                {% set status = app.request.query.get('status') %}
-            {% else %}
-                {% set status = 'default' %}
-{#                status defined#}
-{#                {% if app.request.query.get('status') is empty %}#}
-{#                    status is empty#}
-{#                    {% else %}#}
-{#                    status in not empty#}
-{#                {% endif %}#}
 
-            {% endif %}
-
+            {% set reservationStatus = [ 'NewArrival', 'InProgress', 'Pending', 'Rejected', 'Sale', 'PickedUp', 'Blacklist' ] %}
 
             <form name="backoffice_reservation_search">
                 <div class="input-group mb-3">
@@ -54,22 +42,25 @@
                     >
                     <div class="input-group-append">
                         <select class="custom-select" id="status-id" name="status" aria-label="stato della prenotazione">
-                            {{ formmacro.renderReservationStatusInFormSelect(status) }}
+
+                            {% if app.request.query.get('status') is not defined or app.request.query.get('status') is  empty %}
+                                <option value="" disabled selected>Stato</option>
+                            {% else %}
+                                    <option value="" >Tutti</option>
+                            {% endif %}
+
+
+                            {% for current_status in reservationStatus %}
+                                {% set selected = '' %}
+
+                                {% if app.request.query.get('status') == current_status %}
+                                    {% set selected = 'selected' %}
+
+                                {% endif %}
+
+                                <option value="{{ current_status }}" {{ selected }} > {{ macro.renderReservationStatus( current_status ) }} </option>
+                            {% endfor %}
                         </select>
-
-                        {#                                <option value="" disabled selected>stato</option>#}
-
-                        {#                                <option value="NewArrival">Nuovo</option>#}
-                        {#                                <option value="InProgress">In lavorazione</option>#}
-                        {#                                <option value="Pending">Sospeso</option>#}
-                        {#                                <option value="Rejected">Rifiutato</option>#}
-
-                        {#                                <option value="Confirmed">Confermato</option>#}
-                        {#                                <option value="Sale">Vendita</option>#}
-                        {#                                <option value="PickedUp">Ritirato</option>#}
-                        {#                                <option value="Blacklist">Blacklist</option>#}
-
-
                         <button type="submit"
                                 name="backoffice_reservation_search_submit"
                                 class="btn btn-outline-secondary">
@@ -85,11 +76,9 @@
                     <tr>
                         <th>Id</th>
                         <th {% if pagination.isSorted('r.LastName') %} class="sorted"{% endif %} >
-{#                            Cognome#}
                             {{ knp_pagination_sortable(pagination, 'Cognome', 'r.LastName') }}
                         </th>
                         <th {% if pagination.isSorted('r.firstName') %} class="sorted"{% endif %} >
-{#                            Nome#}
                             {{ knp_pagination_sortable(pagination, 'Nome', 'r.firstName') }}
                         </th>
                         <th {% if pagination.isSorted('r.registrationDate') %} class="sorted"{% endif %} >
@@ -97,9 +86,6 @@
                         </th>
                         <th>
                             Stato
-{#                            {{ knp_pagination_filter(pagination, {#}
-{#                                's.status': 'Name',#}
-{#                            }) }}#}
                         </th>
                         <th>Azioni</th>
                     </tr>
@@ -111,8 +97,6 @@
                         <td>{{ reservation.lastName }}</td>
                         <td>{{ reservation.firstName }}</td>
                         <td>{{ reservation.registrationDate|date("d/m/Y") }}</td>
-        {#                <td>{{ reservation.email }}</td>#}
-        {#                <td>{{ backoffice_user.roles ? backoffice_user.roles|json_encode : '' }}</td>#}
                         <td>{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
                         <td>
                             <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
