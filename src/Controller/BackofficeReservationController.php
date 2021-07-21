@@ -61,7 +61,9 @@ class BackofficeReservationController extends AbstractController
     public function new(Request $request, ReservationRepositoryInterface $repository): Response
     {
         $reservationFormModel = new BackofficeReservationFormModel();
-        $form = $this->createForm(BackofficeReservationType::class, $reservationFormModel);
+        $form = $this->createForm(BackofficeReservationType::class, $reservationFormModel, [
+            'include_packageId' => true,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -89,6 +91,11 @@ class BackofficeReservationController extends AbstractController
             // add saleDetail to reservation
             $saleDetail = new ReservationSaleDetail();
             $saleDetail->setStatus(ReservationStatus::NewArrival());
+
+            if (isset($formData->packageId)) {
+                $saleDetail->setReservationPackageId($formData->packageId);
+            }
+
             $saleDetail->setGeneralNotes($formData->generalNotes);
             $reservation->setSaleDetail($saleDetail);
 

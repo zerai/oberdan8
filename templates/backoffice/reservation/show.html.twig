@@ -99,7 +99,11 @@
                         <div class="card-body">
 
                             <p class="card-text">
-                                {{ reservation.saleDetail.reservationPackageId ?? 'Non assegnato'}}
+                                {% if reservation.saleDetail.reservationPackageId is empty or reservation.saleDetail.reservationPackageId is null %}
+                                    Non assegnato
+                                {% else %}
+                                    {{ reservation.saleDetail.reservationPackageId}}
+                                {% endif %}
                             </p>
                         </div>
 

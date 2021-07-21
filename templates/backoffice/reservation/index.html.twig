@@ -30,6 +30,7 @@
     <div class="row">
         <div class="col-md-12">
 
+            <!-- Search form -->
             {% set reservationStatus = [ 'NewArrival', 'InProgress', 'Pending', 'Rejected', 'Sale', 'PickedUp', 'Blacklist' ] %}
 
             <form name="backoffice_reservation_search">
@@ -75,12 +76,15 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+
                         <th {% if pagination.isSorted('r.LastName') %} class="sorted"{% endif %} >
-                            {{ knp_pagination_sortable(pagination, 'Cognome', 'r.LastName') }}
+                            {{ knp_pagination_sortable(pagination, 'Nominativo', 'r.LastName') }}
                         </th>
-                        <th {% if pagination.isSorted('r.firstName') %} class="sorted"{% endif %} >
-                            {{ knp_pagination_sortable(pagination, 'Nome', 'r.firstName') }}
+
+                        <th {% if pagination.isSorted('s.ReservationPackageId') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'C. busta', 's.ReservationPackageId') }}
                         </th>
+
                         <th {% if pagination.isSorted('r.registrationDate') %} class="sorted"{% endif %} >
                             {{ knp_pagination_sortable(pagination, 'Data', 'r.registrationDate') }}
                         </th>
@@ -94,31 +98,38 @@
                 {% for reservation in pagination %}
                     <tr class="{{ reservation.saleDetail.status }}">
                         <td>{{ reservation.id|u.truncate(5) }}</td>
-                        <td>{{ reservation.lastName }}</td>
-                        <td>{{ reservation.firstName }}</td>
+                        <td>{{ reservation.lastName }} {{ reservation.firstName }}</td>
+{#                        <td>{{ reservation.firstName }}</td>#}
+
+                        <!-- TD packageId -->
+                        {% if reservation.saleDetail.reservationPackageId is empty or reservation.saleDetail.reservationPackageId is null %}
+                            <td>Non assegnato</td>
+                        {% else %}
+                            <td>{{ reservation.saleDetail.reservationPackageId}}</td>
+                        {% endif %}
+
                         <td>{{ reservation.registrationDate|date("d/m/Y") }}</td>
                         <td>{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
                         <td>
-                            <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
-                            <a href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm btn-outline-dark" href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-sm btn-outline-dark" href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i></a>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6" class="text-center">
+                        <td colspan="7" class="text-center">
                             Nessun risultato trovato.
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-
-            {# display navigation #}
-{#            <div class="navigation">#}
-                {{ knp_pagination_render(pagination) }}
-{#            </div>#}
-
-
+        </div>
+    </div>
+    {# display table navigation class="navigation" #}
+    <div class="row justify-content-center">
+        <div class="col-6">
+            {{ knp_pagination_render(pagination) }}
         </div>
     </div>
 </div>

@@ -22,6 +22,7 @@
     <div class="row">
         <div class="col-md-12">
 
+            <!-- Search form -->
             <form name="backoffice_reservation_search">
                 <div class="input-group mb-3">
                     <input type="text"
@@ -45,21 +46,29 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+
                         <th {% if pagination.isSorted('r.LastName') %} class="sorted"{% endif %} >
-                            {{ knp_pagination_sortable(pagination, 'Cognome', 'r.LastName') }}
+                            {{ knp_pagination_sortable(pagination, 'Nominativo', 'r.LastName') }}
                         </th>
-                        <th>Nome</th>
-                        <th {% if pagination.isSorted('r.registrationDate') %} class="sorted"{% endif %} >
-                            {{ knp_pagination_sortable(pagination, 'Data', 'r.registrationDate') }}
-                        </th>
-                        <th>Stato</th>
-                        <th>Data conferma</th>
-                        <th>Scaduto</th>
-                        <th>Scade il</th>
+
                         <th {% if pagination.isSorted('s.ReservationPackageId') %} class="sorted"{% endif %} >
                             {{ knp_pagination_sortable(pagination, 'C. busta', 's.ReservationPackageId') }}
                         </th>
+
+                        <th {% if pagination.isSorted('r.registrationDate') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'Data', 'r.registrationDate') }}
+                        </th>
+
+                        <th>Stato</th>
+
+                        <th>Data conferma</th>
+
+                        <th>Scaduto</th>
+
+                        <th>Scade il</th>
+
                         <th>Extra time</th>
+
                         <th>Azioni</th>
                     </tr>
                 </thead>
@@ -67,46 +76,48 @@
                 {% for reservation in pagination %}
                     <tr >
                         <td>{{ reservation.id|u.truncate(5) }}</td>
-                        <td>{{ reservation.lastName }}</td>
-                        <td>{{ reservation.firstName }}</td>
+                        <td>{{ reservation.lastName }} {{ reservation.firstName }}</td>
+
+                        <!-- TD packageId -->
+                        {% if reservation.saleDetail.reservationPackageId is empty or reservation.saleDetail.reservationPackageId is null %}
+                            <td>Non assegnato</td>
+                        {% else %}
+                            <td>{{ reservation.saleDetail.reservationPackageId}}</td>
+                        {% endif %}
+
                         <td>{{ reservation.registrationDate|date("d/m/Y") }}</td>
                         <td class="{{ reservation.saleDetail.status }}">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
                         <td>{{ reservation.saleDetail.confirmationStatus.confirmedAt|date("d/m/Y") }}</td>
                         <td>{{ reservation.saleDetail.confirmationStatus.isExpired ? '<p class="text-danger">Si</p>' : '<p class="text-success">No</p>' }}</td>
                         <td>{{ reservation.saleDetail.confirmationStatus.expireAt|date("d/m/Y") }}</td>
-                        <td>{{ reservation.saleDetail.reservationPackageId ?? 'Non assegnato'}}</td>
 
                         <!-- TD extra time -->
                         {% if reservation.saleDetail.confirmationStatus.extensionTime.value %}
                             <td>{{ reservation.saleDetail.confirmationStatus.extensionTime.value ? 'Si' : 'No' }} </td>
                         {% else %}
                             <td>{{ include('backoffice/reservation/form/_add_extension_time_form.html.twig') }}</td>
-
-
                         {% endif %}
 
-
                         <td>
-                            <a href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
-                            <a href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm btn-outline-dark" href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-sm btn-outline-dark" href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i></a>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6" class="text-center">
+                        <td colspan="10" class="text-center">
                             Nessun risultato trovato, non ci sono prenotazioni confermate.
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-
-            {# display navigation #}
-{#            <div class="navigation">#}
-                {{ knp_pagination_render(pagination) }}
-{#            </div>#}
-
-
+        </div>
+    </div>
+    {# display table navigation class="navigation" #}
+    <div class="row justify-content-center">
+        <div class="col-6">
+            {{ knp_pagination_render(pagination) }}
         </div>
     </div>
 </div>
