@@ -96,7 +96,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
      * @param string|null $term
      * @return QueryBuilder
      */
-    public function getWithSearchQueryBuilder(?string $term): QueryBuilder
+    public function getWithSearchQueryBuilder(?string $term, ?string $status): QueryBuilder
     {
         $qb = $this->createQueryBuilder('r')
             //->innerJoin('c.article', 'a')
@@ -110,6 +110,12 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ;
         }
 
+        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
+        if ($status) {
+            $qb->andWhere(' s.status LIKE :status ')
+                ->setParameter('status', '%' . $status . '%')
+            ;
+        }
         return $qb
             ->orderBy('r.registrationDate', 'DESC')
             ;
@@ -168,5 +174,129 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
         }
 
         return $qb->orderBy('r.registrationDate', 'ASC');
+    }
+
+    //
+    //  Stats query
+    //
+
+    public function countWithStatusNewArrival(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'NewArrival')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function countWithStatusInProgress(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'InProgress')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function countWithStatusPending(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Pending')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function countWithStatusRejected(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Rejected')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function countWithStatusConfirmed(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Confirmed')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function countWithStatusSale(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Sale')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function countWithStatusPickedUp(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'PickedUp')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
+
+    public function countWithStatusBlacklist(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Blacklist')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
     }
 }

@@ -159,4 +159,69 @@ class ReservationSearchTest extends SecurityWebtestCase
         self::assertStringContainsString($tempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
         self::assertStringContainsString($secondTempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
     }
+
+    /** @test */
+    public function shouldNotFindRecordsWhenSearchByReservationStatus(): void
+    {
+        //TODO remove tempName (mettere colonna packageId in table)
+        $this->logInAsAdmin();
+
+        $this->client->followRedirects(true);
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/');
+
+        self::assertResponseIsSuccessful();
+
+        self::assertPageTitleSame('Prenotazioni Administration - Oberdan 8');
+
+        $this->client->submitForm(
+            'backoffice_reservation_search_submit',
+            [
+                'q' => '',
+                'status' => '',
+            ],
+            'GET'
+        );
+
+        self::assertResponseIsSuccessful();
+        self::assertStringContainsString('Nessun risultato trovato.', $this->client->getResponse()->getContent());
+    }
+
+    /** @test */
+    public function shouldSearchByReservationStatus(): void
+    {
+//        //TODO remove tempName (mettere colonna packageId in table)
+
+        ReservationFactory::createMany(
+            5,
+            [
+                'saleDetail' => ReservationSaleDetailFactory::new()->withRejectedStatus(),
+            ]
+        );
+
+        $this->logInAsAdmin();
+
+        $this->client->followRedirects(true);
+
+        $crawler = $this->client->request('GET', '/admin/prenotazioni/');
+
+        self::assertResponseIsSuccessful();
+
+        self::assertPageTitleSame('Prenotazioni Administration - Oberdan 8');
+
+        $this->client->submitForm(
+            'backoffice_reservation_search_submit',
+            [
+                'q' => '',
+                'status' => 'Rejected',
+            ],
+            'GET'
+        );
+
+        self::assertResponseIsSuccessful();
+        self::assertEquals(
+            5,
+            $crawler->filterXPath('//td//a/i[@class="fa fa-eye"]')->count()
+        );
+    }
 }

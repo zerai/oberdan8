@@ -31,6 +31,26 @@ class AdozioniReservationFormModel
      */
     public string $adozioni;
 
+    /**
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg"},
+     *     mimeTypesMessage = "Il file selezionato non è un PDF o un JPEG."
+     * )
+     *
+     */
+    public string $adozioni2;
+
+    /**
+     * @Assert\File(
+     *     maxSize = "5M",
+     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg"},
+     *     mimeTypesMessage = "Il file selezionato non è un PDF o un JPEG."
+     * )
+     *
+     */
+    public string $adozioni3;
+
     public string $otherInfo;
 
     /**

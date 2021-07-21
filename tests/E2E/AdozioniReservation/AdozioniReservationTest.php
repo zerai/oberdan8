@@ -4,23 +4,38 @@ namespace App\Tests\E2E\AdozioniReservation;
 
 use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Symfony\Component\Panther\PantherTestCase;
+use Zenstruck\Foundry\Test\Factories;
+use Zenstruck\Foundry\Test\ResetDatabase;
 
 class AdozioniReservationTest extends PantherTestCase
 {
+    use ResetDatabase;
+    use Factories;
+
     private const REDIRECT_AFTER_SUBMIT = '/esito';
 
     private const PDF_FILE_1 = 'RMPC00500D_3A-NT-LI01-UNDEF.pdf';
 
     private const JPEG_FILE_1 = 'jpeg-fixture-file-1.jpg';
 
+    protected $client = null;
+
+    public function setUp(): void
+    {
+        $this->client = static::createPantherClient([
+            'browser' => static::FIREFOX,
+        ]);
+    }
+
+    public function tearDown(): void
+    {
+        $this->client = null;
+    }
+
     /** @test */
     public function fullfilledFormWithPdfFileShouldPassTheFormValidation(): void
     {
-        $client = self::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation/adozioni');
+        $crawler = $this->client->request('GET', '/reservation/adozioni');
 
         $form = $crawler->selectButton('Invia')->form();
 
@@ -38,19 +53,15 @@ class AdozioniReservationTest extends PantherTestCase
         $form['adozioni_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['adozioni_reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /** @test */
     public function fullfilledFormWithJpegFileShouldPassTheFormValidation(): void
     {
-        $client = self::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation/adozioni');
+        $crawler = $this->client->request('GET', '/reservation/adozioni');
 
         $form = $crawler->selectButton('Invia')->form();
 
@@ -68,19 +79,15 @@ class AdozioniReservationTest extends PantherTestCase
         $form['adozioni_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['adozioni_reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /** @test */
     public function fullfilledFormWithoutOtherInfoShouldPassTheFormValidation(): void
     {
-        $client = self::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation/adozioni');
+        $crawler = $this->client->request('GET', '/reservation/adozioni');
 
         $form = $crawler->selectButton('Invia')->form();
 
@@ -98,9 +105,9 @@ class AdozioniReservationTest extends PantherTestCase
         $form['adozioni_reservation[otherInfo]'] = '';
         $form['adozioni_reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /**
@@ -109,11 +116,7 @@ class AdozioniReservationTest extends PantherTestCase
      */
     public function ShouldSeeErrorMessageForMissingData(string $missingField): void
     {
-        $client = self::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation/adozioni');
+        $crawler = $this->client->request('GET', '/reservation/adozioni');
 
         $form = $crawler->selectButton('Invia')->form();
 
@@ -141,11 +144,11 @@ class AdozioniReservationTest extends PantherTestCase
             $form['adozioni_reservation[privacyConfirmed]']->setValue(true);
         }
 
-        $client->submit($form);
+        $this->client->submit($form);
 
         self::assertSelectorIsVisible('.form-error-message');
 
-        //self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        //self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     public function missingFieldDataProvider(): \Generator

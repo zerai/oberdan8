@@ -4,6 +4,7 @@
 namespace Booking\Tests\Integration;
 
 use App\Factory\ReservationFactory;
+use App\Factory\ReservationSaleDetailFactory;
 use Booking\Adapter\Persistance\ReservationRepository;
 use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
@@ -131,6 +132,212 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         $reservation->addBook($firstChild);
 
         return $reservation;
+    }
+
+    /** @test */
+    public function shouldCountReservationWithStatusNewArrival(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Confirmed(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusNewArrival();
+
+        self::assertEquals(10, $count);
+    }
+
+    /** @test */
+    public function shouldCountReservationWithStatusInProgress(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::InProgress(),
+            ]),
+        ]);
+
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Confirmed(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusInProgress();
+
+        self::assertEquals(10, $count);
+    }
+
+    /** @test */
+    public function shouldCountReservationWithStatusInPending(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::InProgress(),
+            ]),
+        ]);
+
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Confirmed(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusPending();
+
+        self::assertEquals(10, $count);
+    }
+
+    /** @test */
+    public function shouldCountReservationWithStatusRejected(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Rejected(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusRejected();
+
+        self::assertEquals(10, $count);
+    }
+
+    /** @test */
+    public function shouldCountReservationWithStatusSale(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Sale(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusSale();
+
+        self::assertEquals(10, $count);
+    }
+
+    /** @test */
+    public function shouldCountReservationWithStatusPickedUp(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::PickedUp(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusPickedUp();
+
+        self::assertEquals(10, $count);
+    }
+
+    /** @test */
+    public function shouldCountReservationWithStatusBlacklist(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Blacklist(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusBlacklist();
+
+        self::assertEquals(10, $count);
+    }
+
+    /** @test */
+    public function shouldCountReservationWithConfirmedStatus(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Confirmed(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusConfirmed();
+
+        self::assertEquals(10, $count);
     }
 
     protected function tearDown(): void

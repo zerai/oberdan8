@@ -2,6 +2,7 @@
 
 {% import "backoffice/reservation/macros.twig" as macro %}
 
+
 {% block title %}
     Prenotazioni
     {{ parent() }}
@@ -13,9 +14,16 @@
 {% endblock %}
 
 
+{% block reservation_overview %}
+    {# reservation status badge overview area #}
+    {{ render(path('backoffice_stats_reservation_overview')) }}
+{% endblock %}
+
+
 {% block content_toolbar %}
     <a class="btn btn-info" href="{{ path('backoffice_reservation_new') }}"><i class="fa fa-plus"></i> Crea prenotazione</a>
 {% endblock %}
+
 
 {% block content_body %}
 <div class="container">
@@ -23,6 +31,8 @@
         <div class="col-md-12">
 
             <!-- Search form -->
+            {% set reservationStatus = [ 'NewArrival', 'InProgress', 'Pending', 'Rejected', 'Sale', 'PickedUp', 'Blacklist' ] %}
+
             <form name="backoffice_reservation_search">
                 <div class="input-group mb-3">
                     <input type="text"
@@ -32,6 +42,26 @@
                            placeholder="Cerca..."
                     >
                     <div class="input-group-append">
+                        <select class="custom-select" id="status-id" name="status" aria-label="stato della prenotazione">
+
+                            {% if app.request.query.get('status') is not defined or app.request.query.get('status') is  empty %}
+                                <option value="" disabled selected>Stato</option>
+                            {% else %}
+                                    <option value="" >Tutti</option>
+                            {% endif %}
+
+
+                            {% for current_status in reservationStatus %}
+                                {% set selected = '' %}
+
+                                {% if app.request.query.get('status') == current_status %}
+                                    {% set selected = 'selected' %}
+
+                                {% endif %}
+
+                                <option value="{{ current_status }}" {{ selected }} > {{ macro.renderReservationStatus( current_status ) }} </option>
+                            {% endfor %}
+                        </select>
                         <button type="submit"
                                 name="backoffice_reservation_search_submit"
                                 class="btn btn-outline-secondary">
@@ -51,10 +81,6 @@
                             {{ knp_pagination_sortable(pagination, 'Nominativo', 'r.LastName') }}
                         </th>
 
-{#                        <th {% if pagination.isSorted('r.firstName') %} class="sorted"{% endif %} >#}
-{#                            {{ knp_pagination_sortable(pagination, 'Nome', 'r.firstName') }}#}
-{#                        </th>#}
-
                         <th {% if pagination.isSorted('s.ReservationPackageId') %} class="sorted"{% endif %} >
                             {{ knp_pagination_sortable(pagination, 'C. busta', 's.ReservationPackageId') }}
                         </th>
@@ -62,7 +88,9 @@
                         <th {% if pagination.isSorted('r.registrationDate') %} class="sorted"{% endif %} >
                             {{ knp_pagination_sortable(pagination, 'Data', 'r.registrationDate') }}
                         </th>
-                        <th>Stato</th>
+                        <th>
+                            Stato
+                        </th>
                         <th>Azioni</th>
                     </tr>
                 </thead>

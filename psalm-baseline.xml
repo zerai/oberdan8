@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.7.2@83a0325c0a95c0ab531d6b90c877068b464377b5">
   <file src="core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php">
-    <MixedAssignment occurrences="1">
+    <MixedAssignment occurrences="6">
+      <code>$mailAttachments[]</code>
+      <code>$mailAttachments[]</code>
+      <code>$mailAttachments[]</code>
       <code>$newFilename</code>
+      <code>$secondFilename</code>
+      <code>$thirdFilename</code>
     </MixedAssignment>
-    <PossiblyUndefinedVariable occurrences="1">
-      <code>$newFilename</code>
-    </PossiblyUndefinedVariable>
-    <RedundantConditionGivenDocblockType occurrences="1">
+    <RedundantConditionGivenDocblockType occurrences="3">
       <code>$adozioniFile</code>
+      <code>$secondAdozioniFile</code>
+      <code>$thirdAdozioniFile</code>
     </RedundantConditionGivenDocblockType>
-    <UndefinedInterfaceMethod occurrences="1">
+    <UndefinedInterfaceMethod occurrences="3">
+      <code>uploadAdozioniFileAndReturnFile</code>
+      <code>uploadAdozioniFileAndReturnFile</code>
       <code>uploadAdozioniFileAndReturnFile</code>
     </UndefinedInterfaceMethod>
   </file>
@@ -376,10 +382,11 @@
       <code>$request-&gt;request-&gt;get('_token')</code>
       <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedArgument>
-    <MixedAssignment occurrences="3">
+    <MixedAssignment occurrences="4">
       <code>$bookId</code>
       <code>$q</code>
       <code>$queryBuilder</code>
+      <code>$status</code>
     </MixedAssignment>
     <MixedMethodCall occurrences="12">
       <code>getCity</code>

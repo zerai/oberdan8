@@ -40,6 +40,16 @@ class AdozioniReservationType extends AbstractType
                 'required' => true,
             ])
 
+            ->add('adozioni2', FileType::class, [
+                'label' => 'File delle adozioni (formato PDF o immagine JPEG) - facoltativo',
+                'required' => false,
+            ])
+
+            ->add('adozioni3', FileType::class, [
+                'label' => 'File delle adozioni (formato PDF o immagine JPEG) - facoltativo',
+                'required' => false,
+            ])
+
             ->add('otherInfo', TextareaType::class, [
                 'label' => 'Altre informazioni',
                 'required' => false,
