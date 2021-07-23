@@ -10,27 +10,32 @@ class ReservationControllerTest extends PantherTestCase
 {
     private const REDIRECT_AFTER_SUBMIT = '/esito';
 
+    protected $client = null;
+
+    public function setUp(): void
+    {
+        $this->client = static::createPantherClient([
+            'browser' => static::FIREFOX,
+        ]);
+    }
+
+    public function tearDown(): void
+    {
+        $this->client = null;
+    }
+
     /** @test */
     public function reservationPageShouldBeAccessibile(): void
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/reservation');
-        self::assertResponseIsSuccessful();
+        $this->client->request('GET', '/reservation');
 
         self::assertPageTitleSame('Oberdan - banco 8 - prenotazioni', $message = 'Unexpected title in reservation page');
     }
 
     /** @test */
-    public function validDataShouldPassTheFormValidation(): void
+    public function shouldSubmitFormWithAllFields(): void
     {
-        //$client = static::createClient();
-        //$client = Client::createChromeClient();
-        $client = static::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-        //$client = static::createPantherClient(['browser' => static::CHROME]);
-        $crawler = $client->request('GET', '/reservation');
-        //self::assertResponseIsSuccessful();
+        $crawler = $this->client->request('GET', '/reservation');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
 
@@ -44,7 +49,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
-        $client->executeScript("document.querySelector('.js-add-book-item').click()");
+        $this->client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add books data
         $form['reservation[books][0][isbn]'] = ReservationStaticFixture::BOOK_ONE_ISBN;
@@ -55,19 +60,15 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /** @test */
-    public function fullfilledFormWithoutOtherInfoShouldPassTheFormValidation(): void
+    public function shouldSubmitDataWithoutOtherInfoField(): void
     {
-        $client = static::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation');
+        $crawler = $this->client->request('GET', '/reservation');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
 
@@ -81,7 +82,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
-        $client->executeScript("document.querySelector('.js-add-book-item').click()");
+        $this->client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add books data
         $form['reservation[books][0][isbn]'] = ReservationStaticFixture::BOOK_ONE_ISBN;
@@ -92,19 +93,15 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[otherInfo]'] = '';
         $form['reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /** @test */
-    public function fullfilledFormWithoutIsbnBookShouldPassTheFormValidation(): void
+    public function shouldSubmitFormWithoutIsbnBook(): void
     {
-        $client = static::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation');
+        $crawler = $this->client->request('GET', '/reservation');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
 
@@ -118,7 +115,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
-        $client->executeScript("document.querySelector('.js-add-book-item').click()");
+        $this->client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add books data
         $form['reservation[books][0][isbn]'] = '';
@@ -129,19 +126,15 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /** @test */
-    public function fullfilledFormWithoutAuthorsBookShouldPassTheFormValidation(): void
+    public function shouldSubmitFormWithoutAuthorsBookFiled(): void
     {
-        $client = static::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation');
+        $crawler = $this->client->request('GET', '/reservation');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
 
@@ -155,7 +148,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
-        $client->executeScript("document.querySelector('.js-add-book-item').click()");
+        $this->client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add books data
         $form['reservation[books][0][isbn]'] = ReservationStaticFixture::BOOK_ONE_ISBN;
@@ -166,19 +159,15 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /** @test */
-    public function fullfilledFormWithoutVolumeBookShouldPassTheFormValidation(): void
+    public function shouldSubmitFormWithoutVolumeBookField(): void
     {
-        $client = static::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-
-        $crawler = $client->request('GET', '/reservation');
+        $crawler = $this->client->request('GET', '/reservation');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
 
@@ -192,7 +181,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
-        $client->executeScript("document.querySelector('.js-add-book-item').click()");
+        $this->client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add books data
         $form['reservation[books][0][isbn]'] = ReservationStaticFixture::BOOK_ONE_ISBN;
@@ -203,18 +192,15 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     /** @test */
-    public function submitAReservationWithTwoBooks(): void
+    public function shouldSubmitAReservationWithTwoBooks(): void
     {
-        $client = static::createPantherClient([
-            'browser' => static::FIREFOX,
-        ]);
-        $crawler = $client->request('GET', '/reservation');
+        $crawler = $this->client->request('GET', '/reservation');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
 
@@ -228,7 +214,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // click add button
-        $client->executeScript("document.querySelector('.js-add-book-item').click()");
+        $this->client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add first book data
         $form['reservation[books][0][isbn]'] = ReservationStaticFixture::BOOK_ONE_ISBN;
@@ -237,7 +223,7 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
         // click add button
-        $client->executeScript("document.querySelector('.js-add-book-item').click()");
+        $this->client->executeScript("document.querySelector('.js-add-book-item').click()");
 
         // Add second book data
         $form['reservation[books][1][isbn]'] = ReservationStaticFixture::BOOK_TWO_ISBN;
@@ -248,8 +234,8 @@ class ReservationControllerTest extends PantherTestCase
         $form['reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['reservation[privacyConfirmed]']->setValue(true);
 
-        $client->submit($form);
+        $this->client->submit($form);
 
-        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $client->getCurrentURL());
+        self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 }
