@@ -3,7 +3,6 @@
 namespace App\Tests\E2E\RegularReservation;
 
 use App\Tests\Support\Fixtures\ReservationStaticFixture;
-use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\PantherTestCase;
 
 class ReservationControllerTest extends PantherTestCase
