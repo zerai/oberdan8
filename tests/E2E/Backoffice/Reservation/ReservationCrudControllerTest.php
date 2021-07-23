@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests\E2E\Backoffice;
+namespace App\Tests\E2E\Backoffice\Reservation;
 
 use App\Entity\BackofficeUser;
 use App\Repository\BackofficeUserRepository;
