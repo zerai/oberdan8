@@ -35,10 +35,7 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function reservationPageShouldBeAccessibile(): void
     {
-        $this->client->request('GET', '/');
-        $this->logInAsAdmin();
-        $crawler = $this->client->request('GET', '/admin/prenotazioni');
-        //self::assertResponseIsSuccessful();
+        $this->client->request('GET', '/admin/prenotazioni');
 
         self::assertPageTitleSame('Prenotazioni Administration - Oberdan 8');
     }
@@ -46,9 +43,7 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function newReservationPageShouldBeAccessibile(): void
     {
-        $this->client->request('GET', '/');
-
-        $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
+        $this->client->request('GET', '/admin/prenotazioni/new');
 
         self::assertPageTitleSame('Prenotazioni Administration - Oberdan 8');
     }
@@ -56,8 +51,6 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function validDataShouldPassTheFormValidation(): void
     {
-        $this->client->request('GET', '/');
-
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
@@ -79,9 +72,6 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][title]'] = ReservationStaticFixture::BOOK_ONE_TITLE;
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
-
-        //todo remove other info
-        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 
@@ -114,9 +104,6 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
-        //todo remove other info
-        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
-
         $this->client->submit($form);
 
         self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
@@ -146,9 +133,6 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][title]'] = ReservationStaticFixture::BOOK_ONE_TITLE;
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
-
-        //todo remove other info
-        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
 
         $this->client->submit($form);
 
@@ -180,9 +164,6 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = '';
         $form['backoffice_reservation[books][0][volume]'] = ReservationStaticFixture::BOOK_ONE_VOLUME;
 
-        //todo remove other info
-        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
-
         $this->client->submit($form);
 
         self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
@@ -213,9 +194,6 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][0][author]'] = ReservationStaticFixture::BOOK_ONE_AUTHOR;
         $form['backoffice_reservation[books][0][volume]'] = '';
 
-        //todo remove other info
-        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
-
         $this->client->submit($form);
 
         self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
@@ -224,7 +202,6 @@ class ReservationCrudControllerTest extends PantherTestCase
     /** @test */
     public function submitAReservationWithTwoBooks(): void
     {
-        $this->client->request('GET', '/');
         $crawler = $this->client->request('GET', '/admin/prenotazioni/new');
 
         $buttonCrawlerNode = $crawler->selectButton('Invia');
@@ -256,15 +233,9 @@ class ReservationCrudControllerTest extends PantherTestCase
         $form['backoffice_reservation[books][1][author]'] = ReservationStaticFixture::BOOK_TWO_AUTHOR;
         $form['backoffice_reservation[books][1][volume]'] = ReservationStaticFixture::BOOK_TWO_VOLUME;
 
-        //todo remove other info
-        //$form['backoffice_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
-
         $this->client->submit($form);
 
         self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
-
-        /** @var BackofficeUserRepository $backofficeUserRepository */
-        $backofficeUserRepository = static::$kernel->getContainer()->get('App\Repository\BackofficeUserRepository');
     }
 
     protected function logInAsAdmin(): void
