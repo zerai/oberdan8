@@ -47,7 +47,6 @@ class AdozioniReservationTest extends PantherTestCase
         $form['adozioni_reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // UPLOADED FILE
-        //$form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/' . self::PDF_FILE_1);
         $form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
 
         $form['adozioni_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
@@ -73,7 +72,6 @@ class AdozioniReservationTest extends PantherTestCase
         $form['adozioni_reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // UPLOADED FILE
-        //$form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/' . self::PDF_FILE_1);
         $form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::JPEG_FILE_1);
 
         $form['adozioni_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
@@ -99,7 +97,6 @@ class AdozioniReservationTest extends PantherTestCase
         $form['adozioni_reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // UPLOADED FILE
-        //$form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/' . self::PDF_FILE_1);
         $form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
 
         $form['adozioni_reservation[otherInfo]'] = '';
@@ -133,7 +130,6 @@ class AdozioniReservationTest extends PantherTestCase
         }
 
         // UPLOADED FILE
-        //$form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/' . self::PDF_FILE_1);
         $form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
 
         $form['adozioni_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
@@ -147,8 +143,6 @@ class AdozioniReservationTest extends PantherTestCase
         $this->client->submit($form);
 
         self::assertSelectorIsVisible('.form-error-message');
-
-        //self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
     }
 
     public function missingFieldDataProvider(): \Generator
