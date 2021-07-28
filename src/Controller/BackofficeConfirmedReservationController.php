@@ -35,4 +35,39 @@ class BackofficeConfirmedReservationController extends AbstractController
             'pagination' => $pagination,
         ]);
     }
+
+    /**
+     * @Route("/scadute", name="backoffice_reservation_expired_index", methods={"GET"})
+     */
+    public function expired(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
+    {
+        $q = $request->query->get('q');
+
+        // trova tutti i confermati
+        $queryBuilder = $repository->findWithQueryBuilderAllConfirmedOrderByOldest($q);
+
+        $confirmedReservation = $queryBuilder->getQuery()->getResult();
+
+        // Filtra se scaduti
+
+        $expiredReservation = [];
+        /** @var Reservation $reservation */
+        foreach ($confirmedReservation as $reservation) {
+            if ($reservation->getSaleDetail()->getConfirmationStatus()->isExpired()) {
+                $expiredReservation[] = $reservation;
+            }
+        }
+
+        //passa array al paginator
+
+        $pagination = $paginator->paginate(
+            $expiredReservation,
+            $request->query->getInt('page', 1), /*page number*/
+            50 /*limit per page*/
+        );
+
+        return $this->render('backoffice/reservation/expired/index.html.twig', [
+            'pagination' => $pagination,
+        ]);
+    }
 }

@@ -5,6 +5,7 @@ namespace Booking\Adapter\Persistance;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
@@ -174,6 +175,56 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
         }
 
         return $qb->orderBy('r.registrationDate', 'ASC');
+    }
+
+    /**
+     * @param string|null $term
+     * @return QueryBuilder
+     */
+    public function findWithQueryBuilderAllConfirmedAndExpiredOrderByOldest(?string $term): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->addSelect('s')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Confirmed')
+        ;
+
+        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
+        if ($term) {
+            $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }
+
+        $todayMinus7 = (new \DateTimeImmutable("today"))->modify('- 7days'); //dd($todayMinus7);
+        $qb->andWhere('s.pvtConfirmedAt < :todayMinus7 AND s.pvtExtensionTime = false')
+            //->setParameter('todayMinus7', $todayMinus7->format('Y-m-d'));
+            ->setParameter('todayMinus7', $todayMinus7, Types::DATETIME_IMMUTABLE);
+
+        $todayMinus14 = (new \DateTimeImmutable("today"))->modify('- 14days'); //dd($todayPlus7);
+        $qb->orWhere('s.pvtConfirmedAt < :todayMinus14 AND s.pvtExtensionTime = true')
+            ->setParameter('todayMinus14', $todayMinus14, Types::DATETIME_IMMUTABLE);
+
+        return $qb->orderBy('r.registrationDate', 'ASC');
+    }
+
+    public function countWithStatusConfirmedAndExpired(): int
+    {
+        $expired = [];
+
+        $qb = $this->findWithQueryBuilderAllConfirmedOrderByOldest('');
+
+        $result = $qb->getQuery()->getResult();
+
+        /** @var Reservation $reservation */
+        foreach ($result as $reservation) {
+            if ($reservation->getSaleDetail()->getConfirmationStatus()->isExpired()) {
+                $expired[] = $reservation;
+            }
+        }
+
+        return (int) \count($expired);
     }
 
     //

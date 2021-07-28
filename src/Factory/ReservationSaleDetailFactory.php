@@ -120,6 +120,22 @@ final class ReservationSaleDetailFactory extends ModelFactory
         ]);
     }
 
+    public function withConfirmationDate(\DateTimeImmutable $confirmationDate): self
+    {
+        return $this->addState([
+            'status' => $this->withReservationStatus('Confirmed'),
+            'pvtExtensionTime' => false,
+            'pvtConfirmedAt' => $confirmationDate,
+        ]);
+    }
+
+    public function withExtensionTime(): self
+    {
+        return $this->addState([
+            'pvtExtensionTime' => true,
+        ]);
+    }
+
     public function withPackageId(string $packageId): self
     {
         return $this->addState([

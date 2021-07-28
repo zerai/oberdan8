@@ -31,13 +31,28 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
 
 		-
+			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Cannot call method isExpired\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Casting to int\\<0, max\\> something that's already int\\<0, max\\>\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
 			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
 			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
-			count: 3
+			count: 4
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
@@ -178,6 +193,21 @@ parameters:
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
 			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$confirmationDate of method App\\\\Factory\\\\ReservationSaleDetailFactory\\:\\:withConfirmationDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
+			count: 16
+			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
+
+		-
+			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryExpiredReadSideTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
+
+		-
+			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
 		-
@@ -257,6 +287,16 @@ parameters:
 
 		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findWithQueryBuilderAllConfirmedOrderByOldest\\(\\)\\.$#"
+			count: 2
+			path: src/Controller/BackofficeConfirmedReservationController.php
+
+		-
+			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: src/Controller/BackofficeConfirmedReservationController.php
+
+		-
+			message: "#^Cannot call method isExpired\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeConfirmedReservationController.php
 
@@ -384,6 +424,11 @@ parameters:
 			message: "#^Parameter \\#2 \\$user of method App\\\\Security\\\\EmailVerifier\\:\\:handleEmailConfirmation\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, object\\|null given\\.$#"
 			count: 1
 			path: src/Controller/RegistrationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$confirmationDate of method App\\\\Factory\\\\ReservationSaleDetailFactory\\:\\:withConfirmationDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
+			count: 4
+			path: src/DataFixtures/LibraiStage/ReservationFixturesExpired.php
 
 		-
 			message: "#^Method App\\\\Entity\\\\BackofficeUser\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
