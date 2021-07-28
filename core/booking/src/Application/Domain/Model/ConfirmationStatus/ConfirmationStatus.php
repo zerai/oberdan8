@@ -37,7 +37,8 @@ final class ConfirmationStatus
 
     public function isExpired(): bool
     {
-        $today = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        //$today = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        $today = new \DateTimeImmutable("today", new \DateTimeZone('Europe/Rome'));
 
         $expirationDays = $this->extensionTime()->value() === true ? self::DEFAULT_EXPIRATION_TIME + self::EXTENDED_EXPIRATION_TIME : self::DEFAULT_EXPIRATION_TIME;
 

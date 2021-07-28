@@ -13,43 +13,66 @@ use PHPUnit\Framework\TestCase;
 class ConfirmationStatusTest extends TestCase
 {
     /** @test */
-    public function canBeCreated(): void
+    public function canBeCreatedFromArray(): void
     {
         $sut = ConfirmationStatus::fromArray(
             [
                 'confirmedAt' => '2021-07-08T09:35:11.004408+02:00',
                 'extensionTime' => false,
-                //'expired' => false,
             ]
         );
 
         self::assertFalse($sut->extensionTime()->value());
-        //self::assertFalse($sut->expired()->value());
     }
 
     /** @test */
     public function canBeCreatedWithCreateFactoryMethod(): void
     {
-        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        $aDate = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
 
         //dd($date->format('Y-m-d\TH:i:s.uP'));
 
         $sut = ConfirmationStatus::create(
-            $date
+            $aDate
         );
 
         self::assertFalse($sut->extensionTime()->value());
-        //self::assertFalse($sut->expired()->value());
+    }
+
+    /**
+     * @test
+     * @dataProvider  todayMinus7DaysDataProvider
+     */
+    public function shouldNotBeExpired_whenUnder7Days(\DateTimeImmutable $aDate): void
+    {
+        $sut = ConfirmationStatus::create(
+            $aDate
+        );
+
+        $sut->isExpired();
+
+        self::assertFalse($sut->isExpired());
+    }
+
+    public function todayMinus7DaysDataProvider(): \Generator
+    {
+        yield ' - 1 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 1 days")];
+        yield ' - 2 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 2 days")];
+        yield ' - 3 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 3 days")];
+        yield ' - 4 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 4 days")];
+        yield ' - 5 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 5 days")];
+        yield ' - 6 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 6 days")];
+        yield ' - 7 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 7 days")];
     }
 
     /** @test */
-    public function canCalculateNegativeExpiration(): void
+    public function shouldNotBeExpired_whenEqual7Days(): void
     {
         $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-        $date = $date->modify("- 5 days"); //->modify('- 2 days');
+        $aDate = $date->modify("- 7 days");
 
         $sut = ConfirmationStatus::create(
-            $date
+            $aDate
         );
 
         $sut->isExpired();
@@ -58,13 +81,13 @@ class ConfirmationStatusTest extends TestCase
     }
 
     /** @test */
-    public function canCalculatePositiveExpiration(): void
+    public function shouldBeExpired_after7days(): void
     {
         $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-        $date = $date->modify("- 8 days"); //->modify('- 2 days');
+        $aDate = $date->modify("- 8 days");
 
         $sut = ConfirmationStatus::create(
-            $date
+            $aDate
         );
 
         $sut->isExpired();
@@ -72,14 +95,52 @@ class ConfirmationStatusTest extends TestCase
         self::assertTrue($sut->isExpired());
     }
 
-    /** @test */
-    public function canCalculateNegativeExpirationWithExtensionTime(): void
+    /**
+     * @test
+     * @dataProvider todayMinus14DaysDataProvider
+     */
+    public function shouldNotBeExpired_whenUnder14Days_andExtensionTimeIsActive(\DateTimeImmutable $aDate): void
     {
-        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-        $date = $date->modify("- 8 days"); //->modify('- 2 days');
+        //$date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        //$aDate = $date->modify("- 8 days");
 
         $sut = ConfirmationStatus::create(
-            $date
+            $aDate
+        );
+
+        $sut = $sut->withExtensionTime(new ExtensionTime(true));
+
+        $sut->isExpired();
+
+        self::assertFalse($sut->isExpired());
+    }
+
+    public function todayMinus14DaysDataProvider(): \Generator
+    {
+        yield ' - 1 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 1 days")];
+        yield ' - 2 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 2 days")];
+        yield ' - 3 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 3 days")];
+        yield ' - 4 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 4 days")];
+        yield ' - 5 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 5 days")];
+        yield ' - 6 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 6 days")];
+        yield ' - 7 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 7 days")];
+        yield ' - 8 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 8 days")];
+        yield ' - 9 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 9 days")];
+        yield ' - 10 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 10 days")];
+        yield ' - 11 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 11 days")];
+        yield ' - 12 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 12 days")];
+        yield ' - 13 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 13 days")];
+        yield ' - 14 day' => [(new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify("- 14 days")];
+    }
+
+    /** @test */
+    public function shouldNotBeExpired_whenEqual14Days_andExtensionTimeIsActive(): void
+    {
+        $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
+        $aDate = $date->modify("- 14 days");
+
+        $sut = ConfirmationStatus::create(
+            $aDate
         );
 
         $sut = $sut->withExtensionTime(new ExtensionTime(true));
@@ -90,13 +151,13 @@ class ConfirmationStatusTest extends TestCase
     }
 
     /** @test */
-    public function canCalculatePositiveExpirationWithExtensionTime(): void
+    public function shouldBeExpired_after14days(): void
     {
         $date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-        $date = $date->modify("- 14 days"); //->modify('- 2 days');
+        $aDate = $date->modify("- 15 days");
 
         $sut = ConfirmationStatus::create(
-            $date
+            $aDate
         );
 
         $sut = $sut->withExtensionTime(new ExtensionTime(true));
