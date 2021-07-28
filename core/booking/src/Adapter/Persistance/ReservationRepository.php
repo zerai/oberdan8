@@ -215,12 +215,6 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
 
         $qb = $this->findWithQueryBuilderAllConfirmedOrderByOldest('');
 
-//        $qb->select($qb->expr()->count('r.id'))
-//            ->leftJoin('r.saleDetail', 's')
-//            ->andWhere('s.status = :val')
-//            ->setParameter('val', 'NewArrival')
-//        ;
-
         $result = $qb->getQuery()->getResult();
 
         /** @var Reservation $reservation */

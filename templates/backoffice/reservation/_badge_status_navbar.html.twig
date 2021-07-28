@@ -63,10 +63,14 @@
         </div>
     </a>
 
-{#    -#}
+
     {# status expired #}
-{#    <div class="d-inline p-2 bg-expired text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Confermati scaduti">#}
-{#        <span class="badge badge-light">10</span>#}
-{#    </div>#}
+    <a href="{{ path('backoffice_reservation_expired_index') }}">
+        <div class="d-inline p-2 bg-expired text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Confermati & Scaduti">
+            <span class="badge badge-light">
+                {{ status_expired|default('N/D') }}
+            </span>
+        </div>
+    </a>
 
 </div>

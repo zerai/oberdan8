@@ -37,19 +37,11 @@ class BackofficeConfirmedReservationController extends AbstractController
     }
 
     /**
-     * @Route("/scadute", name="backoffice_reservation_confirmed_expired_index", methods={"GET"})
+     * @Route("/scadute", name="backoffice_reservation_expired_index", methods={"GET"})
      */
     public function expired(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $q = $request->query->get('q');
-
-//        $queryBuilder = $repository->findWithQueryBuilderAllConfirmedAndExpiredOrderByOldest($q);
-//
-//        $pagination = $paginator->paginate(
-//            $queryBuilder->getQuery(), //$query, /* query NOT result */
-//            $request->query->getInt('page', 1), /*page number*/
-//            50 /*limit per page*/
-//        );
 
         // trova tutti i confermati
         $queryBuilder = $repository->findWithQueryBuilderAllConfirmedOrderByOldest($q);
@@ -69,13 +61,12 @@ class BackofficeConfirmedReservationController extends AbstractController
         //passa array al paginator
 
         $pagination = $paginator->paginate(
-            //$queryBuilder->getQuery(), //$query, /* query NOT result */
             $expiredReservation,
             $request->query->getInt('page', 1), /*page number*/
             50 /*limit per page*/
         );
 
-        return $this->render('backoffice/reservation/confirmed/index.html.twig', [
+        return $this->render('backoffice/reservation/expired/index.html.twig', [
             'pagination' => $pagination,
         ]);
     }
