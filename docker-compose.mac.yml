@@ -5,10 +5,12 @@ services:
     build:
       context: buildDocker/php
       shm_size: '512m'
+    container_name: app
     volumes:
       - ./:/var/www/html/symfony
     depends_on:
       - mysql
+
   web:
     build: buildDocker/nginx
     ports:

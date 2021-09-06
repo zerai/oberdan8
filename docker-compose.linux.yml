@@ -3,6 +3,7 @@ version: '3.8'
 services:
   app:
     image: webdevops/php-nginx-dev:7.4
+    container_name: app
     user: application
     working_dir: /app
     environment:
