@@ -94,6 +94,6 @@ class SendingThanksMailToClientTest extends TestCase
 
         $replyToAddress = $sendedEmail->getReplyTo();
         self::assertNotEmpty($replyToAddress, "'ReplyTo' is missing ");
-        self::assertSame(self::CONTACT_EMAIL, $replyToAddress[0]->getAddress());
+        self::assertSame(self::BACKOFFICE_RETRIEVER_MAIL, $replyToAddress[0]->getAddress());
     }
 }
