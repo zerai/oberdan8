@@ -2,6 +2,13 @@
 
 {% import "backoffice/reservation/macros.twig" as macro %}
 
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('reservation_confirmed_page') }}
+    <!-- add popup sulla colonna busta, come in reservation_confirmed_page -->
+{% endblock %}
+
 {% block title %}
     Prenotazioni Scadute
     {{ parent() }}
@@ -82,7 +89,23 @@
                         {% if reservation.saleDetail.reservationPackageId is empty or reservation.saleDetail.reservationPackageId is null %}
                             <td>Non assegnato</td>
                         {% else %}
-                            <td>{{ reservation.saleDetail.reservationPackageId}}</td>
+                            <!-- add popover(notes) to packageId-->
+                            {% if reservation.saleDetail.generalNotes is empty or reservation.saleDetail.generalNotes is null %}
+                                <td>{{ reservation.saleDetail.reservationPackageId}}</td>
+                            {% else %}
+                                <td>
+                                    <strong>
+                                        <a tabindex="0" class="text-dark"
+                                           role="button"
+                                           data-toggle="popover"
+                                           data-trigger="focus"
+                                           title="Note prenotazione"
+                                           data-content="{{ reservation.saleDetail.generalNotes }}">
+                                            {{ reservation.saleDetail.reservationPackageId}}
+                                        </a>
+                                    </strong>
+                                </td>
+                            {% endif %}
                         {% endif %}
 
                         <td>{{ reservation.registrationDate|date("d/m/Y") }}</td>
