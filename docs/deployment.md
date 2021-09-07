@@ -39,11 +39,19 @@ oppure
 
 #### deployer name: production
 
-Run deploy:
+Avviare il deploy di una nuova versione dell'applicazione:
 
 ```shell
 ./vendor/bin/dep deploy production
 ```
+
+In caso di errori o bug nella nuova versione è possibile effettuare
+il rollback alla versione precedente.
+
+```shell
+./vendor/bin/dep rollback production
+```
+
 
 ## Deployment Stage Environment
 
@@ -55,4 +63,10 @@ Run deploy:
 
 ```shell
 ./vendor/bin/dep deploy stage-librai
+```
+
+Run rollback
+
+```shell
+./vendor/bin/dep rollback stage-librai
 ```
