@@ -42,9 +42,12 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
 
     public function notifyReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData, string $otherInfo = ''): TemplatedEmail
     {
+        $replyTo = new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name());
+
         $email = (new TemplatedEmail())
             ->from(new Address($this->sender->address(), $this->sender->name()))
             ->to(new Address($recipient))
+            ->replyTo($replyTo)
             ->subject(self::RESERVATION_CONFIRMATION_EMAIL_SUBJECT)
             ->htmlTemplate('@booking/email/for-clients/reservation-confirmation.html.twig')
             ->context([
