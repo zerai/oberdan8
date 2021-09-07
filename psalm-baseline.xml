@@ -282,17 +282,32 @@
       <code>KernelTestCase</code>
     </MissingDependency>
   </file>
-  <file src="core/booking/tests/Unit/Adapter/BookingMailerTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
-  </file>
   <file src="core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
   </file>
-  <file src="core/booking/tests/Unit/Adapter/MailDriven/BookingMailerAdozioniReservationConfirmationTest.php">
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToClientTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewReservationEmailToBackofficeTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingReservationConfirmationMailToClientTest.php">
+    <MissingDependency occurrences="1">
+      <code>TestCase</code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php">
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
