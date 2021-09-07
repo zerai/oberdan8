@@ -34,6 +34,7 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('backoffice', './assets/backoffice.js')
     .addEntry('reservation_page', './assets/js/app/reservation_page.js')
+    .addEntry('reservation_confirmed_page', './assets/js/app/reservation_confirmed_page.js')
     .addStyleEntry('email', './assets/styles/mailer/email.scss')
     .addStyleEntry('email-base', './assets/styles/mailer/email-base.scss')
     .addStyleEntry('email-tanks', './assets/styles/mailer/email-tanks.scss')
