@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+#  php:
+#    build:
+#      context: .
+#      dockerfile: docker/webdevilops/php-dev/Dockerfile
+#    container_name: app
+#    #user: application
+#    ports:
+#      - "9021:9021"
+#    volumes:
+#      - "./:/app"
+#    environment:
+#      WEB_DOCUMENT_ROOT: /app/public
+#      WEB_DOCUMENT_INDEX: index.php
+#      PHP_DEBUGGER: xdebug
+#      XDEBUG_MODE: coverage
+#      XDEBUG_REMOTE_AUTOSTART: 1
+#      XDEBUG_REMOTE_CONNECT_BACK: 1
+#      # IMPORTANT: please change this ip address to your docker host ip. Get your docker host ip:
+#      # docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' docker_php_1
+#      #- XDEBUG_REMOTE_HOST=172.19.0.1
+#      XDEBUG_REMOTE_PORT: 9021
+#    depends_on:
+#      - mysql
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/webdevilops/php-nginx-dev/Dockerfile
+    working_dir: /app
+    ports:
+      - "80:80"
+    volumes:
+      - "./:/app"
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mariadb:10.3.29
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'docker'
+      MYSQL_DATABASE: 'symfony'
+      MYSQL_USER: 'symfony'
+      MYSQL_PASSWORD: 'docker'
+#    volumes:
+#      - ./build/mysql:/var/lib/mysql
+
+  mysql-test:
+    image: mariadb:10.3.29
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 'docker'
+      MYSQL_DATABASE: 'symfony_test'
+      MYSQL_USER: 'symfony'
+      MYSQL_PASSWORD: 'docker'
+
+
+#  phpmyadmin:
+#    image: 'phpmyadmin/phpmyadmin'
+#    ports:
+#      - '81:80'
+#    links:
+#      - db:mysql
+#    environment:
+#      MYSQL_USERNAME: root
+#      MYSQL_ROOT_PASSWORD: docker
+#      PMA_HOST: mysql
+
+  encore:
+    build:
+      context: buildDocker/node
+    #image: node:12-alpine
+    container_name: encore
+    environment:
+      USER: node
+      PYTHON: python3
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: ["yarn", "encore", "dev", "--watch" ]

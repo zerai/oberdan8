@@ -3,7 +3,7 @@ version: '3.8'
 services:
   php:
     build:
-      context: buildDocker/php
+      context: ../buildDocker/php
       shm_size: '512m'
     container_name: app
     volumes:
@@ -12,7 +12,7 @@ services:
       - mysql
 
   web:
-    build: buildDocker/nginx
+    build: ../buildDocker/nginx
     ports:
       - '80:80'
     volumes:
@@ -56,7 +56,7 @@ services:
 
   encore:
     build:
-      context: buildDocker/node
+      context: ../buildDocker/node
     #image: node:12-alpine
     container_name: encore
     environment:
