@@ -7,7 +7,7 @@ sentry:
         cache:
             enabled: true
         twig: # templating engine
-            enabled: false
+            enabled: true
 
 monolog:
     handlers:
