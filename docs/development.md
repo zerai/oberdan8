@@ -1,5 +1,11 @@
 #### Development
 
+Solo per la prima volta va eseguito il seguente comandp
+
+```shell
+docker-compose -f docker-compose.linux.yml run encore yarn install
+```
+
 Avviare l'ambiente di sviluppo tramite docker-compose.
 
 ```shell
