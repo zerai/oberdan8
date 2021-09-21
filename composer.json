@@ -7,6 +7,7 @@
         "php": ">=7.4 || 8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-xsl": "*",
         "composer/package-versions-deprecated": "1.11.99.2",
         "corley/maintenance-bundle": "^0.4",
         "doctrine/annotations": "^1.13",
