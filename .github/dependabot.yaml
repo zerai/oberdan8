@@ -14,6 +14,24 @@ updates:
     schedule:
       interval: "weekly"
     versioning-strategy: "increase"
+    ignore:
+      - dependency-name: "symfony/framework-bundle"
+        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/dotenv"
+        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/form"
+        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/mailer"
+        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/yaml"
+        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/validator"
+        versions: ["5.x", "6.x"]
+#      - dependency-name: "symfony/phpunit-bridge"
+#        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/browser-kit"
+        versions: ["5.x", "6.x"]
+
 
 #  - commit-message:
 #      include: "scope"
