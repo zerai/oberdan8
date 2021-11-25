@@ -68,7 +68,7 @@
         "symfony/phpunit-bridge": "^5.2",
         "symfony/stopwatch": "^4.4",
         "symfony/var-dumper": "4.4.*",
-        "symfony/web-profiler-bundle": "^4.4",
+        "symfony/web-profiler-bundle": "^5.0",
         "zenstruck/foundry": "^1.11"
     },
     "config": {
