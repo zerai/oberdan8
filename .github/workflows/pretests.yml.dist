@@ -74,23 +74,23 @@ jobs:
       - name: Install dev tools
         run: composer bin all install
 
-      - name: Run coding standard
-        run: ./vendor/bin/ecs check
+#      - name: Run coding standard
+#        run: ./vendor/bin/ecs check
 
-      - name: Run phpstan
-        run: ./vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
+#      - name: Run phpstan
+#        run: ./vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
 
-      - name: Run psalm
-        run: ./vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
+#      - name: Run psalm
+#        run: ./vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
 
-      - name: Run architecture check (Bounded Context)
-        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
+#      - name: Run architecture check (Bounded Context)
+#        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
+#
+#      - name: Run architecture check (Booking domain isolation)
+#        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
 
-      - name: Run architecture check (Booking domain isolation)
-        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
-
-      - name: Run yaml linter
-        run: |
-          ./bin/console lint:yaml config/
-          ./bin/console lint:yaml src/
-          ./bin/console lint:yaml core/booking/src/
+#      - name: Run yaml linter
+#        run: |
+#          ./bin/console lint:yaml config/
+#          ./bin/console lint:yaml src/
+#          ./bin/console lint:yaml core/booking/src/

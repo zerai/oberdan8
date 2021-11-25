@@ -367,3 +367,6 @@ jobs:
 
       - name: Run architecture check (Booking domain isolation)
         run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
+
+      - name: Run architecture check (Bounded Context)
+        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
