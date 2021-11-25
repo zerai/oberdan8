@@ -6,6 +6,7 @@
 /auth.json
 /public/adozioni/
 /public/uploads
+/workflow
 
 ###> symfony/framework-bundle ###
 /.env.local
