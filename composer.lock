@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa4c95d304c150ccbe30db8e0f8048be",
+    "content-hash": "5a5284ba150929b1822932c449eb29de",
     "packages": [
         {
             "name": "brick/math",
@@ -10194,16 +10194,16 @@
         },
         {
             "name": "dbrekelmans/bdi",
-            "version": "0.3",
+            "version": "1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dbrekelmans/bdi.git",
-                "reference": "d94d818ebe20b419a7d9f17dc21e9c66a10b171f"
+                "reference": "bdc41bd339558242bf748b99c394a78e2dfbdb4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dbrekelmans/bdi/zipball/d94d818ebe20b419a7d9f17dc21e9c66a10b171f",
-                "reference": "d94d818ebe20b419a7d9f17dc21e9c66a10b171f",
+                "url": "https://api.github.com/repos/dbrekelmans/bdi/zipball/bdc41bd339558242bf748b99c394a78e2dfbdb4f",
+                "reference": "bdc41bd339558242bf748b99c394a78e2dfbdb4f",
                 "shasum": ""
             },
             "require": {
@@ -10237,9 +10237,9 @@
                 "browser-driver-installer"
             ],
             "support": {
-                "source": "https://github.com/dbrekelmans/bdi/tree/0.3"
+                "source": "https://github.com/dbrekelmans/bdi/tree/1.0"
             },
-            "time": "2020-12-13T21:43:40+00:00"
+            "time": "2021-10-16T09:40:32+00:00"
         },
         {
             "name": "doctrine/data-fixtures",
