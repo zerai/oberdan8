@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05f9f7fef75714c392a3eac2b1de0e20",
+    "content-hash": "fa4c95d304c150ccbe30db8e0f8048be",
     "packages": [
         {
             "name": "brick/math",
@@ -6111,39 +6111,46 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v4.4.25",
+            "version": "v5.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "00bb90bfb0b3823f700d7251735dced581f9dd90"
+                "reference": "3f55da60fc3c3d6e6a4144ee65a37d23a637107e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/00bb90bfb0b3823f700d7251735dced581f9dd90",
-                "reference": "00bb90bfb0b3823f700d7251735dced581f9dd90",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/3f55da60fc3c3d6e6a4144ee65a37d23a637107e",
+                "reference": "3f55da60fc3c3d6e6a4144ee65a37d23a637107e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
-                "psr/log": "^1.0",
-                "symfony/http-client-contracts": "^1.1.10|^2",
+                "php": ">=7.2.5",
+                "psr/log": "^1|^2|^3",
+                "symfony/deprecation-contracts": "^2.1",
+                "symfony/http-client-contracts": "^2.4",
                 "symfony/polyfill-php73": "^1.11",
+                "symfony/polyfill-php80": "^1.16",
                 "symfony/service-contracts": "^1.0|^2"
             },
             "provide": {
                 "php-http/async-client-implementation": "*",
                 "php-http/client-implementation": "*",
                 "psr/http-client-implementation": "1.0",
-                "symfony/http-client-implementation": "1.1|2.0"
+                "symfony/http-client-implementation": "2.4"
             },
             "require-dev": {
+                "amphp/amp": "^2.5",
+                "amphp/http-client": "^4.2.1",
+                "amphp/http-tunnel": "^1.0",
+                "amphp/socket": "^1.1",
                 "guzzlehttp/promises": "^1.4",
                 "nyholm/psr7": "^1.0",
                 "php-http/httplug": "^1.0|^2.0",
                 "psr/http-client": "^1.0",
-                "symfony/dependency-injection": "^4.3|^5.0",
-                "symfony/http-kernel": "^4.4.13",
-                "symfony/process": "^4.2|^5.0"
+                "symfony/dependency-injection": "^4.4|^5.0",
+                "symfony/http-kernel": "^4.4.13|^5.1.5",
+                "symfony/process": "^4.4|^5.0",
+                "symfony/stopwatch": "^4.4|^5.0"
             },
             "type": "library",
             "autoload": {
@@ -6171,7 +6178,7 @@
             "description": "Provides powerful methods to fetch HTTP resources synchronously or asynchronously",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v4.4.25"
+                "source": "https://github.com/symfony/http-client/tree/v5.3.11"
             },
             "funding": [
                 {
@@ -6187,7 +6194,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T11:20:16+00:00"
+            "time": "2021-11-20T16:42:42+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -9457,16 +9464,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.4.24",
+            "version": "v4.4.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "8b6d1b97521e2f125039b3fcb4747584c6dfa0ef"
+                "reference": "2c309e258adeb9970229042be39b360d34986fad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/8b6d1b97521e2f125039b3fcb4747584c6dfa0ef",
-                "reference": "8b6d1b97521e2f125039b3fcb4747584c6dfa0ef",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/2c309e258adeb9970229042be39b360d34986fad",
+                "reference": "2c309e258adeb9970229042be39b360d34986fad",
                 "shasum": ""
             },
             "require": {
@@ -9508,7 +9515,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v4.4.24"
+                "source": "https://github.com/symfony/yaml/tree/v4.4.34"
             },
             "funding": [
                 {
@@ -9524,7 +9531,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-16T09:52:47+00:00"
+            "time": "2021-11-18T18:49:23+00:00"
         },
         {
             "name": "symfonycasts/verify-email-bundle",
@@ -10459,16 +10466,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.5",
+            "version": "v4.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f"
+                "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4432ba399e47c66624bc73c8c0f811e5c109576f",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/63a79e8daa781cac14e5195e63ed8ae231dd10fd",
+                "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd",
                 "shasum": ""
             },
             "require": {
@@ -10509,22 +10516,22 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.5"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.1"
             },
-            "time": "2021-05-03T19:11:20+00:00"
+            "time": "2021-11-03T20:52:16+00:00"
         },
         {
             "name": "php-webdriver/webdriver",
-            "version": "1.11.1",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-webdriver/php-webdriver.git",
-                "reference": "da16e39968f8dd5cfb7d07eef91dc2b731c69880"
+                "reference": "99d4856ed7dffcdf6a52eccd6551e83d8d557ceb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/da16e39968f8dd5cfb7d07eef91dc2b731c69880",
-                "reference": "da16e39968f8dd5cfb7d07eef91dc2b731c69880",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/99d4856ed7dffcdf6a52eccd6551e83d8d557ceb",
+                "reference": "99d4856ed7dffcdf6a52eccd6551e83d8d557ceb",
                 "shasum": ""
             },
             "require": {
@@ -10533,20 +10540,19 @@
                 "ext-zip": "*",
                 "php": "^5.6 || ~7.0 || ^8.0",
                 "symfony/polyfill-mbstring": "^1.12",
-                "symfony/process": "^2.8 || ^3.1 || ^4.0 || ^5.0"
+                "symfony/process": "^2.8 || ^3.1 || ^4.0 || ^5.0 || ^6.0"
             },
             "replace": {
                 "facebook/webdriver": "*"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
                 "ondram/ci-detector": "^2.1 || ^3.5 || ^4.0",
                 "php-coveralls/php-coveralls": "^2.4",
                 "php-mock/php-mock-phpunit": "^1.1 || ^2.0",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpunit/phpunit": "^5.7 || ^7 || ^8 || ^9",
                 "squizlabs/php_codesniffer": "^3.5",
-                "symfony/var-dumper": "^3.3 || ^4.0 || ^5.0"
+                "symfony/var-dumper": "^3.3 || ^4.0 || ^5.0 || ^6.0"
             },
             "suggest": {
                 "ext-SimpleXML": "For Firefox profile creation"
@@ -10575,9 +10581,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-webdriver/php-webdriver/issues",
-                "source": "https://github.com/php-webdriver/php-webdriver/tree/1.11.1"
+                "source": "https://github.com/php-webdriver/php-webdriver/tree/1.12.0"
             },
-            "time": "2021-05-21T15:12:49+00:00"
+            "time": "2021-10-14T09:30:02+00:00"
         },
         {
             "name": "symfony/maker-bundle",
@@ -10669,16 +10675,16 @@
         },
         {
             "name": "symfony/panther",
-            "version": "v1.0.1",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/panther.git",
-                "reference": "d129434b09c3cf920618471e094c928d3d320df8"
+                "reference": "e53feac1df95f2022979e86f40b2540306581c3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/panther/zipball/d129434b09c3cf920618471e094c928d3d320df8",
-                "reference": "d129434b09c3cf920618471e094c928d3d320df8",
+                "url": "https://api.github.com/repos/symfony/panther/zipball/e53feac1df95f2022979e86f40b2540306581c3c",
+                "reference": "e53feac1df95f2022979e86f40b2540306581c3c",
                 "shasum": ""
             },
             "require": {
@@ -10687,6 +10693,7 @@
                 "php": ">=7.1",
                 "php-webdriver/webdriver": "^1.8.2",
                 "symfony/browser-kit": "^4.4 || ^5.0",
+                "symfony/deprecation-contracts": "^2.4",
                 "symfony/dom-crawler": "^4.4 || ^5.0",
                 "symfony/http-client": "^4.4.11 || ^5.2",
                 "symfony/polyfill-php72": "^1.9",
@@ -10736,15 +10743,23 @@
             ],
             "support": {
                 "issues": "https://github.com/symfony/panther/issues",
-                "source": "https://github.com/symfony/panther/tree/v1.0.1"
+                "source": "https://github.com/symfony/panther/tree/v1.1.1"
             },
             "funding": [
                 {
                     "url": "https://www.panthera.org/donate",
                     "type": "custom"
+                },
+                {
+                    "url": "https://github.com/dunglas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/panther",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2021-02-03T21:52:39+00:00"
+            "time": "2021-07-14T08:28:19+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
@@ -10831,20 +10846,21 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.4.25",
+            "version": "v5.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "cd61e6dd273975c6625316de9d141ebd197f93c9"
+                "reference": "e498803a6e95ede78e9d5646ad32a2255c033a6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/cd61e6dd273975c6625316de9d141ebd197f93c9",
-                "reference": "cd61e6dd273975c6625316de9d141ebd197f93c9",
+                "url": "https://api.github.com/repos/symfony/process/zipball/e498803a6e95ede78e9d5646ad32a2255c033a6a",
+                "reference": "e498803a6e95ede78e9d5646ad32a2255c033a6a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3"
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.16"
             },
             "type": "library",
             "autoload": {
@@ -10872,7 +10888,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v4.4.25"
+                "source": "https://github.com/symfony/process/tree/v5.3.12"
             },
             "funding": [
                 {
@@ -10888,7 +10904,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T11:20:16+00:00"
+            "time": "2021-11-22T22:39:13+00:00"
         },
         {
             "name": "symfony/web-profiler-bundle",
