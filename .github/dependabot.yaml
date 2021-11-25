@@ -15,6 +15,8 @@ updates:
       interval: "weekly"
     versioning-strategy: "increase"
     ignore:
+      - dependency-name: "symfony/css-selector"
+        versions: ["5.x", "6.x"]
       - dependency-name: "symfony/framework-bundle"
         versions: ["5.x", "6.x"]
       - dependency-name: "symfony/dotenv"
@@ -30,6 +32,8 @@ updates:
 #      - dependency-name: "symfony/phpunit-bridge"
 #        versions: ["5.x", "6.x"]
       - dependency-name: "symfony/browser-kit"
+        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/web-profiler"
         versions: ["5.x", "6.x"]
 
 
