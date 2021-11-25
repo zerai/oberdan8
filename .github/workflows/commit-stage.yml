@@ -24,20 +24,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-  #      - name: Setup cache environment
-  #        id: cache-php-extensions
-  #        uses: shivammathur/cache-extensions@v1
-  #        with:
-  #          php-version: ${{ matrix.php }}
-  #          extensions: ${{ env.PHP_EXTENSIONS }}
-  #          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-  #
-  #      - name: Cache extensions
-  #        uses: actions/cache@v2
-  #        with:
-  #          path: ${{ steps.cache-php-extensions.outputs.dir }}
-  #          key: ${{ steps.cache-php-extensions.outputs.key }}
-  #          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -83,20 +83,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-#      - name: Setup cache environment
-#        id: cache-php-extensions
-#        uses: shivammathur/cache-extensions@v1
-#        with:
-#          php-version: ${{ matrix.php }}
-#          extensions: ${{ env.PHP_EXTENSIONS }}
-#          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-#
-#      - name: Cache extensions
-#        uses: actions/cache@v2
-#        with:
-#          path: ${{ steps.cache-php-extensions.outputs.dir }}
-#          key: ${{ steps.cache-php-extensions.outputs.key }}
-#          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -141,20 +141,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-#      - name: Setup cache environment
-#        id: cache-php-extensions
-#        uses: shivammathur/cache-extensions@v1
-#        with:
-#          php-version: ${{ matrix.php }}
-#          extensions: ${{ env.PHP_EXTENSIONS }}
-#          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-#
-#      - name: Cache extensions
-#        uses: actions/cache@v2
-#        with:
-#          path: ${{ steps.cache-php-extensions.outputs.dir }}
-#          key: ${{ steps.cache-php-extensions.outputs.key }}
-#          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -201,20 +201,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      #      - name: Setup cache environment
-      #        id: cache-php-extensions
-      #        uses: shivammathur/cache-extensions@v1
-      #        with:
-      #          php-version: ${{ matrix.php }}
-      #          extensions: ${{ env.PHP_EXTENSIONS }}
-      #          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-      #
-      #      - name: Cache extensions
-      #        uses: actions/cache@v2
-      #        with:
-      #          path: ${{ steps.cache-php-extensions.outputs.dir }}
-      #          key: ${{ steps.cache-php-extensions.outputs.key }}
-      #          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -261,20 +261,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      #      - name: Setup cache environment
-      #        id: cache-php-extensions
-      #        uses: shivammathur/cache-extensions@v1
-      #        with:
-      #          php-version: ${{ matrix.php }}
-      #          extensions: ${{ env.PHP_EXTENSIONS }}
-      #          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-      #
-      #      - name: Cache extensions
-      #        uses: actions/cache@v2
-      #        with:
-      #          path: ${{ steps.cache-php-extensions.outputs.dir }}
-      #          key: ${{ steps.cache-php-extensions.outputs.key }}
-      #          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -322,20 +322,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      #      - name: Setup cache environment
-      #        id: cache-php-extensions
-      #        uses: shivammathur/cache-extensions@v1
-      #        with:
-      #          php-version: ${{ matrix.php }}
-      #          extensions: ${{ env.PHP_EXTENSIONS }}
-      #          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
-      #
-      #      - name: Cache extensions
-      #        uses: actions/cache@v2
-      #        with:
-      #          path: ${{ steps.cache-php-extensions.outputs.dir }}
-      #          key: ${{ steps.cache-php-extensions.outputs.key }}
-      #          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
