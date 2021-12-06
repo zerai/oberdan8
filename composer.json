@@ -63,7 +63,7 @@
         "dama/doctrine-test-bundle": "^6.6",
         "dbrekelmans/bdi": "^0.3.0",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
-        "symfony/maker-bundle": "^1.31",
+        "symfony/maker-bundle": "^1.36",
         "symfony/panther": "^1.1",
         "symfony/phpunit-bridge": "^5.2",
         "symfony/stopwatch": "^4.4",
