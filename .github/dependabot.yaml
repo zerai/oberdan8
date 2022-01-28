@@ -25,6 +25,8 @@ updates:
         versions: ["5.x", "6.x"]
       - dependency-name: "symfony/mailer"
         versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/proxy-manager-bridge"
+        versions: ["5.x", "6.x"]
       - dependency-name: "symfony/yaml"
         versions: ["5.x", "6.x"]
       - dependency-name: "symfony/validator"
@@ -35,6 +37,7 @@ updates:
         versions: ["5.x", "6.x"]
       - dependency-name: "symfony/web-profiler"
         versions: ["5.x", "6.x"]
+
 
 
 #  - commit-message:
