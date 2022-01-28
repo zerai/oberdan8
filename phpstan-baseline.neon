@@ -820,6 +820,11 @@ parameters:
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
 
 		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: tests/Functional/Backoffice/UserCrudTest.php
+
+		-
 			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
 			count: 3
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
