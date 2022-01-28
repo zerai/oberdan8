@@ -429,6 +429,7 @@ jobs:
 
 
   symfony-test:
+    needs: [booking-unit-test]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
