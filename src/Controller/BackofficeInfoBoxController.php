@@ -88,7 +88,7 @@ class BackofficeInfoBoxController extends AbstractController
      */
     public function delete(Request $request, InfoBox $infoBox): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $infoBox->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $infoBox->getId(), (string) $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($infoBox);
             $entityManager->flush();

@@ -255,7 +255,7 @@ class BackofficeReservationController extends AbstractController
      */
     public function delete(Request $request, Reservation $reservation): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $reservation->getId()->toString(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($reservation);
             $entityManager->flush();
@@ -273,7 +273,7 @@ class BackofficeReservationController extends AbstractController
     {
         $bookId = $request->get('book_id'); // dd($bookId);
 
-        if ($this->isCsrfTokenValid('delete-book' . $bookId . $reservation->getId()->toString(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete-book' . $bookId . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
             $book = $bookRepository->findOneBy([
                 'id' => Uuid::fromString($bookId),
             ]);
@@ -303,7 +303,7 @@ class BackofficeReservationController extends AbstractController
     //public function delete(Request $request, Reservation $reservation): Response
     public function sendThanksMail(Request $request, Reservation $reservation): Response
     {
-        if ($this->isCsrfTokenValid('send_tanks_mail' . $reservation->getId()->toString(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('send_tanks_mail' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             //$entityManager->remove($backofficeUser);
             //$entityManager->flush();
@@ -321,7 +321,7 @@ class BackofficeReservationController extends AbstractController
      */
     public function addExtensionTimeToConfirmation(Request $request, Reservation $reservation): Response
     {
-        if ($this->isCsrfTokenValid('add-extension-time' . $reservation->getId()->toString(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('add-extension-time' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
 
             //Todo before check if status is Confirmed and confirmationStatus not null
             $newConfirmationStatusWithExtensionTime = $reservation->getSaleDetail()->getConfirmationStatus()->withExtensionTime(ExtensionTime::true());
