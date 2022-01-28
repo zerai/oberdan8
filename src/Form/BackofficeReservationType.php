@@ -70,7 +70,7 @@ class BackofficeReservationType extends AbstractType
             )
         ;
 
-        if ($options['include_reservation_status']) {
+        if ((bool) $options['include_reservation_status']) {
             $builder->add('status', ChoiceType::class, [
                 'required' => true,
                 //'mapped' => false,
@@ -88,7 +88,7 @@ class BackofficeReservationType extends AbstractType
             ]);
         }
 
-        if ($options['include_packageId']) {
+        if ((bool) $options['include_packageId']) {
             $builder->add('packageId', TextType::class, [
                 'required' => false,
                 'label' => 'Codice busta',
