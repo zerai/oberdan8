@@ -12,7 +12,7 @@
         "corley/maintenance-bundle": "^0.4",
         "doctrine/annotations": "^1.13",
         "doctrine/doctrine-bundle": "^2.4",
-        "doctrine/doctrine-migrations-bundle": "^3.1",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.9",
         "knplabs/knp-paginator-bundle": "^5.8",
         "league/commonmark": "^2.2",
