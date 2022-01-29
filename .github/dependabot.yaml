@@ -23,6 +23,8 @@ updates:
         versions: ["5.x", "6.x"]
       - dependency-name: "symfony/form"
         versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/google-mailer"
+        versions: ["5.x", "6.x"]
       - dependency-name: "symfony/mailer"
         versions: ["5.x", "6.x"]
       - dependency-name: "symfony/proxy-manager-bridge"
