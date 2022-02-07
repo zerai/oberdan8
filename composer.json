@@ -43,7 +43,7 @@
         "twig/inky-extra": "^3.3",
         "twig/markdown-extra": "^3.3",
         "twig/string-extra": "^3.3",
-        "twig/twig": "^3.3.4"
+        "twig/twig": "^3.3.8"
     },
     "replace": {
         "paragonie/random_compat": "2.*",
