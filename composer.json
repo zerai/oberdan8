@@ -72,17 +72,17 @@
         "zenstruck/foundry": "^1.11"
     },
     "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
+            "symfony/flex": true
+        },
         "platform": {
             "php": "7.4"
         },
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true,
-        "allow-plugins": {
-            "bamarni/composer-bin-plugin": true,
-            "symfony/flex": true
-        }
+        "sort-packages": true
     },
     "extra": {
         "bamarni-bin": {
