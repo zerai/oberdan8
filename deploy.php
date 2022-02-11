@@ -88,7 +88,10 @@ host('production')
     ->set('ssh_multiplexing', false)
 
     // git & composer settings
-    ->set('branch', 'main')
+    //->set('branch', 'main')
+    //->set('tag', '0.1.0')
+    //->set('tag', '0.1.1')
+    ->set('tag', '0.1.2')
     ->set('composer_options', '{{composer_action}} --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
 
 ;
