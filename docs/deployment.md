@@ -41,8 +41,10 @@ oppure
 
 Avviare il deploy di una nuova versione dell'applicazione:
 
+NB. specificare la versione usando l'opzione `--tag` in mancanza del tag viene usato l'ultimo commit sul branch `main`. 
+
 ```shell
-./vendor/bin/dep deploy production
+./vendor/bin/dep deploy production --tag=0.1.5
 ```
 
 In caso di errori o bug nella nuova versione è possibile effettuare
@@ -59,10 +61,10 @@ il rollback alla versione precedente.
 
 #### deployer name: stage-librai
 
-Run deploy:
+NB. specificare la versione usando l'opzione `--tag` in mancanza del tag viene usato l'ultimo commit sul branch `main`.
 
 ```shell
-./vendor/bin/dep deploy stage-librai
+./vendor/bin/dep deploy stage-librai --tag=0.1.5
 ```
 
 Run rollback
