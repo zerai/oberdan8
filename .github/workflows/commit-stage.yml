@@ -539,12 +539,12 @@ jobs:
           php bin/console doctrine:migrations:migrate -e test --no-interaction|| echo "No migrations found or migration failed"
           php bin/console doctrine:fixtures:load --group=test -e test --no-interaction
         env:
-          DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+          DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test?serverVersion=mariadb-10.3.29
 
       - name: Run database schema mapping validation
         run: ./bin/console doctrine:schema:validate -e test
         env:
-          DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+          DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test?serverVersion=mariadb-10.3.29
         continue-on-error: true
 
       - name: Run test suite
@@ -558,4 +558,4 @@ jobs:
 
         env:
           PANTHER_APP_ENV: test
-          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test?serverVersion=mariadb-10.3.29
