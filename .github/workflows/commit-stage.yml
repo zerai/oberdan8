@@ -449,7 +449,7 @@ jobs:
         php:
           - '7.4'
         node:
-          - '12.x'
+          - '16.x'
       fail-fast: true
 
     steps:

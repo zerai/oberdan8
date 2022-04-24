@@ -54,7 +54,7 @@ services:
 #      PMA_HOST: mysql
 
   encore:
-    image: node:12-alpine
+    image: node:16-alpine
     container_name: encore
     environment:
       USER: node
