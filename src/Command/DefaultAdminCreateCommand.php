@@ -47,9 +47,9 @@ class DefaultAdminCreateCommand extends Command
 
         $passwordArg = (string) $input->getArgument('password');
 
-        if ($passwordArg) {
-            $io->note(sprintf('You passed an argument: %s', $passwordArg));
-        }
+//        if ($passwordArg) {
+//            $io->note(sprintf('You passed an argument: %s', $passwordArg));
+//        }
 
         if ($input->getOption('option1')) {
             // ...
