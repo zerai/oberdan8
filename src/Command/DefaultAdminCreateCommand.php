@@ -45,15 +45,15 @@ class DefaultAdminCreateCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $passwordArg = (string) $input->getArgument('password');
+//        $passwordArg = (string) $input->getArgument('password');
 
 //        if ($passwordArg) {
 //            $io->note(sprintf('You passed an argument: %s', $passwordArg));
 //        }
 
-        if ($input->getOption('option1')) {
-            // ...
-        }
+//        if ($input->getOption('option1')) {
+//            // ...
+//        }
 
         $admin = new BackofficeUser();
         $admin->setEmail('admin@example.com');
