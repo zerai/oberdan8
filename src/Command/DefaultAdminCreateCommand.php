@@ -45,7 +45,7 @@ class DefaultAdminCreateCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $passwordArg = $input->getArgument('password');
+        $passwordArg = (string) $input->getArgument('password');
 
         if ($passwordArg) {
             $io->note(sprintf('You passed an argument: %s', $passwordArg));
