@@ -19,6 +19,7 @@ use function Zenstruck\Foundry\factory;
 class CrudDeleteControllerTest extends PantherTestCase
 {
     use ResetDatabase;
+
     use Factories;
 
     private const REDIRECT_AFTER_SUBMIT = '/admin/prenotazioni/';

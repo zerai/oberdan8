@@ -13,6 +13,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 class ReservationCrudMailingTest extends SecurityWebtestCase
 {
     use ResetDatabase;
+
     use Factories;
 
     public function setUp(): void

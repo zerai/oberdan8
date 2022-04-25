@@ -18,6 +18,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     private const REDIRECT_AFTER_SUBMIT = '/admin/prenotazioni/';
 
     use ResetDatabase;
+
     use Factories;
 
     public function setUp(): void

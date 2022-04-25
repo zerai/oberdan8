@@ -10,6 +10,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 class AdozioniReservationTest extends PantherTestCase
 {
     use ResetDatabase;
+
     use Factories;
 
     private const REDIRECT_AFTER_SUBMIT = '/esito';

@@ -24,6 +24,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     private ReservationRepository $repository;
 
     use ResetDatabase;
+
     use Factories;
 
     protected function setUp(): void

@@ -12,6 +12,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 class ConfirmedReservationSearchTest extends SecurityWebtestCase
 {
     use ResetDatabase;
+
     use Factories;
 
     public function setUp(): void
