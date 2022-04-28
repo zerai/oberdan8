@@ -30,46 +30,32 @@ class InfoBoxTest extends TestCase
 
     /**
      * @test
-     * @dataProvider validBoxTypeProvider
+     * @testWith ["none"]
+     *          ["info"]
+     *          ["warning"]
+     *          ["danger"]
      */
-    public function shouldAcceptValidBoxType(string $value): void
+    public function shouldAcceptValidBoxType(string $boxType): void
     {
         $sut = new InfoBox();
 
-        $sut->setBoxType($value);
+        $sut->setBoxType($boxType);
 
-        self::assertSame($value, $sut->getBoxType());
-    }
-
-    public function validBoxTypeProvider(): \Generator
-    {
-        return [
-            yield 'none' => ['none'],
-            yield 'info' => ['info'],
-            yield 'warning' => ['warning'],
-            yield 'danger' => ['danger'],
-        ];
+        self::assertSame($boxType, $sut->getBoxType());
     }
 
     /**
      * @test
-     * @dataProvider invalidBoxTypeProvider
+     * @testWith [" "]
+     *          ["null"]
+     *          ["1234"]
      */
-    public function shouldRejectInvalidBoxType(string $value): void
+    public function shouldRejectInvalidBoxType(string $boxType): void
     {
         self::expectException(\InvalidArgumentException::class);
 
         $sut = new InfoBox();
 
-        $sut->setBoxType($value);
-    }
-
-    public function invalidBoxTypeProvider(): \Generator
-    {
-        return [
-            yield 'empty' => [''],
-            yield 'null as string' => ['null'],
-            yield 'string number' => ['1233'],
-        ];
+        $sut->setBoxType($boxType);
     }
 }
