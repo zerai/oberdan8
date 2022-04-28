@@ -9,7 +9,16 @@ class BackofficeSecurityAccessTest extends WebTestCase
 {
     /**
      * @test
-     * @dataProvider  securedAreasUrlprovider
+     * @testWith ["/admin"]
+     *          ["/admin/dashboard"]
+     *          ["/admin/info-box/"]
+     *          ["/admin/info-box/manager"]
+     *          ["/admin/info-box/new"]
+     *          ["/admin/info-box/222/edit"]
+     *          ["/admin/my-account"]
+     *          ["/admin/my-account/change-password"]
+     *          ["/admin/prenotazioni"]
+     *          ["/admin/info-box"]
      */
     public function accessToSecuredAreasShouldBeProtected(string $url): void
     {
@@ -20,21 +29,5 @@ class BackofficeSecurityAccessTest extends WebTestCase
         self::assertTrue(
             $client->getResponse()->isRedirect('/admin/login')
         );
-    }
-
-    public function securedAreasUrlprovider(): array
-    {
-        return [
-            ['/admin'],
-            ['/admin/dashboard'],
-            ['/admin/info-box/'],
-            ['/admin/info-box/manager'],
-            ['/admin/info-box/new'],
-            ['/admin/info-box/222/edit'],
-            ['/admin/my-account'],
-            ['/admin/my-account/change-password'],
-            ['/admin/prenotazioni'],
-            ['/admin/info-box'],
-        ];
     }
 }
