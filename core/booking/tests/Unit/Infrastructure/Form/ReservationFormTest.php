@@ -13,7 +13,7 @@ use Symfony\Component\Form\Test\TypeTestCase;
 /**
  * Class ReservationFormTest
  *
- * @covers \Booking\Infrastructure\Framework\Form\AdozioniReservationType
+ * @covers \Booking\Infrastructure\Framework\Form\ReservationType
  * @package Booking\Tests\Unit\Infrastructure\Form
  */
 class ReservationFormTest extends TypeTestCase

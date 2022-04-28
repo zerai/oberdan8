@@ -8,6 +8,9 @@ use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
 use Booking\Infrastructure\Framework\Form\Dto\ClientDto;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+/**
+ * @covers \Booking\Infrastructure\Framework\Form\AdozioniReservationType
+ */
 class AdozioniReservationFormTest extends TypeTestCase
 {
     public function testSubmitValidData(): void
