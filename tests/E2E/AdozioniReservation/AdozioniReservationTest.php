@@ -110,7 +110,13 @@ class AdozioniReservationTest extends PantherTestCase
 
     /**
      * @test
-     * @dataProvider missingFieldDataProvider
+     * @testWith ["last_name"]
+     *          ["first_name"]
+     *          ["email"]
+     *          ["phone"]
+     *          ["city"]
+     *          ["classe"]
+     *          ["privacy"]
      */
     public function ShouldSeeErrorMessageForMissingData(string $missingField): void
     {
@@ -144,16 +150,5 @@ class AdozioniReservationTest extends PantherTestCase
         $this->client->submit($form);
 
         self::assertSelectorIsVisible('.form-error-message');
-    }
-
-    public function missingFieldDataProvider(): \Generator
-    {
-        yield 'missing last name' => ['last_name'];
-        yield 'missing first name' => ['first_name'];
-        yield 'missing email' => ['email'];
-        yield 'missing phone' => ['phone'];
-        yield 'missing city' => ['city'];
-        yield 'missing classe' => ['classe'];
-        yield 'missing privacy' => ['privacy'];
     }
 }
