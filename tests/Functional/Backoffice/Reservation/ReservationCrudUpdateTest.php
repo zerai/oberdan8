@@ -261,7 +261,13 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
 
     /**
      * @test
-     * @dataProvider changeReservationStatusDataProvider
+     * @testWith ["InProgress", "In lavorazione"]
+     *          ["Pending", "In sospeso"]
+     *          ["Rejected", "Rifiutato"]
+     *          ["Confirmed", "Confermato"]
+     *          ["Sale", "Vendita"]
+     *          ["PickedUp", "Ritirato"]
+     *          ["Blacklist", "Blacklist"]
      */
     public function shouldEditTheReservationStatusForAReservation(string $newStatus, string $expectedStatusInPage): void
     {
@@ -286,19 +292,6 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
             0,
             $crawler->filter("html div.card-status-prenotazione:contains(\"${expectedStatusInPage}\")")->count()
         );
-    }
-
-    public function changeReservationStatusDataProvider(): \Generator
-    {
-        return [
-            yield 'InProgress' => ['InProgress', 'In lavorazione'],
-            yield 'Pending' => ['Pending', 'In sospeso'],
-            yield 'Rejected' => ['Rejected', 'Rifiutato'],
-            yield 'Confirmed' => ['Confirmed', 'Confermato'],
-            yield 'Sale' => ['Sale', 'Vendita'],
-            yield 'PickedUp' => ['PickedUp', 'Ritirato'],
-            yield 'Blacklist' => ['Blacklist', 'Blacklist'],
-        ];
     }
 
     /** @test */
