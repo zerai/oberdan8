@@ -141,21 +141,6 @@ parameters:
 			path: core/booking/src/Application/NotifyReservationThanksToClient.php
 
 		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
-
-		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\AdozioniReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
-
-		-
-			message: "#^Property Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Dto\\\\ReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/Dto/ReservationFormModel.php
-
-		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php

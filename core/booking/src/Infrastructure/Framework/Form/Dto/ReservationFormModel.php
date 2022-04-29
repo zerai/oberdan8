@@ -26,7 +26,7 @@ class ReservationFormModel
      *      minMessage = "Inserire almeno un libro.",
      * )
      */
-    public $books;
+    public array $books;
 
     public string $otherInfo;
 
