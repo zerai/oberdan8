@@ -151,39 +151,9 @@ parameters:
 			path: core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php
 
 		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\BookType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/BookType.php
-
-		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\BookType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/BookType.php
-
-		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ClientType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/ClientType.php
-
-		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ClientType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/ClientType.php
-
-		-
 			message: "#^Property Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Dto\\\\ReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
 			count: 1
 			path: core/booking/src/Infrastructure/Framework/Form/Dto/ReservationFormModel.php
-
-		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
-
-		-
-			message: "#^Method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\ReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Infrastructure/Framework/Form/ReservationType.php
 
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
@@ -575,84 +545,14 @@ parameters:
 			path: src/Factory/ReservationSaleDetailFactory.php
 
 		-
-			message: "#^Method App\\\\Form\\\\BackofficeReservationEditType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeReservationEditType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\BackofficeReservationEditType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeReservationEditType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\BackofficeReservationType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeReservationType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\BackofficeReservationType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeReservationType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeUserChangePasswordType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\BackofficeUserChangePasswordType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeUserChangePasswordType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\BackofficeUserType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeUserType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\BackofficeUserType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/BackofficeUserType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\ClientType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/ClientType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\ClientType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/ClientType.php
-
-		-
 			message: "#^Access to an undefined property App\\\\Form\\\\Dto\\\\ClientDto\\:\\:\\$classe\\.$#"
 			count: 2
 			path: src/Form/Dto/ClientDto.php
 
 		-
-			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/InfoBoxType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\InfoBoxType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/InfoBoxType.php
-
-		-
 			message: "#^Property App\\\\Form\\\\Model\\\\BackofficeReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
 			count: 1
 			path: src/Form/Model/BackofficeReservationFormModel.php
-
-		-
-			message: "#^Method App\\\\Form\\\\RegistrationFormType\\:\\:buildForm\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/RegistrationFormType.php
-
-		-
-			message: "#^Method App\\\\Form\\\\RegistrationFormType\\:\\:configureOptions\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Form/RegistrationFormType.php
 
 		-
 			message:
@@ -675,11 +575,6 @@ parameters:
 
 		-
 			message: "#^Class App\\\\Repository\\\\InfoBoxRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: src/Repository/InfoBoxRepository.php
-
-		-
-			message: "#^Method App\\\\Repository\\\\InfoBoxRepository\\:\\:findDefaultInfoBox\\(\\) has parameter \\$isDefaultBox with no typehint specified\\.$#"
 			count: 1
 			path: src/Repository/InfoBoxRepository.php
 

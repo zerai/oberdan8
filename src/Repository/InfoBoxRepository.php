@@ -19,7 +19,7 @@ class InfoBoxRepository extends ServiceEntityRepository
         parent::__construct($registry, InfoBox::class);
     }
 
-    public function findDefaultInfoBox($isDefaultBox = true): ?InfoBox
+    public function findDefaultInfoBox(bool $isDefaultBox = true): ?InfoBox
     {
         return $this->createQueryBuilder('i')
             ->andWhere('i.defaultBox = :value')
@@ -28,33 +28,4 @@ class InfoBoxRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
             ;
     }
-
-    // /**
-    //  * @return InfoBox[] Returns an array of InfoBox objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?InfoBox
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
