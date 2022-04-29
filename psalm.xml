@@ -13,18 +13,22 @@
 
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
+            <containerXml>var/cache/dev/srcApp_KernelDevDebugContainer.xml</containerXml>
+            <containerXml>var/cache/dev/srcApp_KernelTestDebugContainer.xml</containerXml>
+        </pluginClass>
     </plugins>
 
     <projectFiles>
-        <directory name="src/" />
+        <directory name="src/"/>
 <!--        <directory name="tests/" />-->
-        <directory name="core/booking/src/" />
+        <directory name="core/booking/src/"/>
         <directory name="core/booking/tests/"/>
         <ignoreFiles>
-            <file name="src/Kernel.php" />
-            <file name="config/bootstrap.php" />
-            <directory name="src/DataFixtures" />
-            <directory name="vendor" />
+            <file name="src/Kernel.php"/>
+            <file name="config/bootstrap.php"/>
+            <directory name="src/DataFixtures"/>
+            <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
 

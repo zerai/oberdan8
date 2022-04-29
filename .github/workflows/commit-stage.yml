@@ -304,7 +304,9 @@ jobs:
         run: composer bin psalm install
 
       - name: Run psalm
-        run: ./vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
+        run: |
+          bin/console debug:container
+          ./vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
 
 
   architecture-check:
@@ -359,7 +361,7 @@ jobs:
       - name: Install phpunit dependencies
         run: bin/phpunit install
 
-      - name: Install psalm tool
+      - name: Install deptrac tool
         run: composer bin deptrac install
 
       - name: Run architecture check (Booking domain isolation)
