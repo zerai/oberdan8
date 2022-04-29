@@ -5,6 +5,7 @@ namespace Booking\Application\Domain\Model;
 
 use Booking\Application\Domain\Model\ConfirmationStatus\ConfirmationStatus;
 use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
@@ -49,7 +50,7 @@ class ReservationSaleDetail
     /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
-    private $pvtConfirmedAt;
+    private ?DateTimeImmutable $pvtConfirmedAt = null;
 
     /**
      * @return ConfirmationStatus|null
@@ -87,7 +88,7 @@ class ReservationSaleDetail
         //$this->confirmationStatus = null;
     }
 
-    public function getId()
+    public function getId(): UuidInterface
     {
         return $this->id;
     }
@@ -161,9 +162,9 @@ class ReservationSaleDetail
 
     /**
      * @internal
-     * @return \DateTimeImmutable|null
+     * @return DateTimeImmutable|null
      */
-    public function getPvtConfirmedAt(): ?\DateTimeImmutable
+    public function getPvtConfirmedAt(): ?DateTimeImmutable
     {
         return $this->pvtConfirmedAt;
     }
@@ -173,7 +174,7 @@ class ReservationSaleDetail
      * @param \DateTimeImmutable|null $pvtConfirmedAt
      * @return $this
      */
-    public function setPvtConfirmedAt(?\DateTimeImmutable $pvtConfirmedAt): self
+    public function setPvtConfirmedAt(?DateTimeImmutable $pvtConfirmedAt): self
     {
         $this->pvtConfirmedAt = $pvtConfirmedAt;
 

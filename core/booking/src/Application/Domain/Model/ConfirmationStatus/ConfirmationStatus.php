@@ -30,8 +30,7 @@ final class ConfirmationStatus
     {
         return new self(
             $confirmedAt,
-            //new ExtensionTime(false)
-        ExtensionTime::false()
+            ExtensionTime::false()
         );
     }
 
@@ -40,7 +39,7 @@ final class ConfirmationStatus
         //$today = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
         $today = new \DateTimeImmutable("today", new \DateTimeZone('Europe/Rome'));
 
-        $expirationDays = $this->extensionTime()->value() === true ? self::DEFAULT_EXPIRATION_TIME + self::EXTENDED_EXPIRATION_TIME : self::DEFAULT_EXPIRATION_TIME;
+        $expirationDays = $this->extensionTime()->value() ? self::DEFAULT_EXPIRATION_TIME + self::EXTENDED_EXPIRATION_TIME : self::DEFAULT_EXPIRATION_TIME;
 
         $interval = $this->confirmedAt()->diff($today);
 
@@ -97,7 +96,7 @@ final class ConfirmationStatus
 
     public static function fromArray(array $data): self
     {
-        if (! isset($data['confirmedAt']) || ! DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', $data['confirmedAt'], new \DateTimeZone('Europe/Rome'))
+        if (! isset($data['confirmedAt']) || ! DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', (string) $data['confirmedAt'], new \DateTimeZone('Europe/Rome'))
         ) {
             throw new \InvalidArgumentException('Error on "confirmedAt", datetime string expected');
         }
@@ -108,7 +107,7 @@ final class ConfirmationStatus
 
         return new self(
             (function () use ($data) {
-                $_x = DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', $data['confirmedAt'], new \DateTimeZone('Europe/Rome'));
+                $_x = DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', (string) $data['confirmedAt'], new \DateTimeZone('Europe/Rome'));
 
                 if (false === $_x) {
                     throw new \UnexpectedValueException('Expected a date time string');
