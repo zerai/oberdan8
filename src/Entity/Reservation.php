@@ -69,7 +69,7 @@ class Reservation
         $this->books = new ArrayCollection();
     }
 
-    public function getId()
+    public function getId(): UuidInterface
     {
         return $this->id;
     }
@@ -146,9 +146,6 @@ class Reservation
         return $this;
     }
 
-    /**
-     * @return Collection|Book[]
-     */
     public function getBooks(): Collection
     {
         return $this->books;

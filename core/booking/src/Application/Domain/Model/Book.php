@@ -49,7 +49,7 @@ class Book
      */
     private $reservation;
 
-    public function getId()
+    public function getId(): UuidInterface
     {
         return $this->id;
     }

@@ -23,18 +23,6 @@
       <code>uploadAdozioniFileAndReturnFile</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="core/booking/src/Adapter/HttpDriver/ReservationController.php">
-    <MissingPropertyType occurrences="2">
-      <code>$formData-&gt;books</code>
-      <code>$formData-&gt;books</code>
-    </MissingPropertyType>
-    <MixedInferredReturnType occurrences="1">
-      <code>array</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$formData-&gt;books</code>
-    </MixedReturnStatement>
-  </file>
   <file src="core/booking/src/Adapter/Persistance/BookRepository.php">
     <LessSpecificImplementedReturnType occurrences="2">
       <code>Book[]</code>
@@ -88,9 +76,6 @@
     <MissingPropertyType occurrences="1">
       <code>$reservation</code>
     </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>getId</code>
-    </MissingReturnType>
     <MixedInferredReturnType occurrences="1">
       <code>?Reservation</code>
     </MixedInferredReturnType>
@@ -123,38 +108,24 @@
       <code>list&lt;Book&gt;</code>
     </MixedReturnTypeCoercion>
   </file>
-  <file src="core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php">
-    <MixedArgument occurrences="2">
-      <code>$data['confirmedAt']</code>
-      <code>$data['confirmedAt']</code>
-    </MixedArgument>
-    <RedundantIdentityWithTrue occurrences="1">
-      <code>$this-&gt;extensionTime()-&gt;value() === true</code>
-    </RedundantIdentityWithTrue>
-  </file>
   <file src="core/booking/src/Application/Domain/Model/Reservation.php">
-    <MismatchingDocblockReturnType occurrences="1">
-      <code>Collection|Book[]</code>
-    </MismatchingDocblockReturnType>
     <MissingPropertyType occurrences="2">
       <code>$books</code>
       <code>$registrationDate</code>
     </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>getId</code>
-    </MissingReturnType>
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;books[]</code>
     </MixedArrayAssignment>
     <MixedInferredReturnType occurrences="2">
       <code>?\DateTimeImmutable</code>
-      <code>Collection|Book[]</code>
+      <code>Collection</code>
     </MixedInferredReturnType>
     <MixedMethodCall occurrences="2">
       <code>contains</code>
       <code>removeElement</code>
     </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
+    <MixedReturnStatement occurrences="2">
+      <code>$this-&gt;books</code>
       <code>$this-&gt;registrationDate</code>
     </MixedReturnStatement>
     <PropertyNotSetInConstructor occurrences="8">
@@ -173,96 +144,12 @@
       <code>$id</code>
       <code>$status</code>
     </MissingConstructor>
-    <MissingPropertyType occurrences="1">
-      <code>$pvtConfirmedAt</code>
-    </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>getId</code>
-    </MissingReturnType>
-    <MixedInferredReturnType occurrences="1">
-      <code>\DateTimeImmutable|null</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;pvtConfirmedAt</code>
-    </MixedReturnStatement>
     <PossiblyNullArgument occurrences="2">
       <code>$this-&gt;getPvtConfirmedAt()</code>
       <code>$this-&gt;getPvtExtensionTime()</code>
     </PossiblyNullArgument>
   </file>
-  <file src="core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php">
-    <MissingReturnType occurrences="1">
-      <code>notifyAdozioniReservationConfirmationEmailToClient</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Application/NotifyNewAdozioniReservationToBackoffice.php">
-    <MissingReturnType occurrences="1">
-      <code>notifyNewAdozioniReservationToBackoffice</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Application/NotifyNewReservationToBackoffice.php">
-    <MissingReturnType occurrences="1">
-      <code>notifyNewReservationToBackoffice</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Application/NotifyReservationConfirmationToClient.php">
-    <MissingReturnType occurrences="1">
-      <code>notifyReservationConfirmationEmailToClient</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Application/NotifyReservationThanksToClient.php">
-    <MissingReturnType occurrences="1">
-      <code>notifyReservationThanksEmailToClient</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/AdozioniReservationType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/BookType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/ClientType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/BookDto.php">
-    <MissingConstructor occurrences="2">
-      <code>$isbn</code>
-      <code>$title</code>
-    </MissingConstructor>
-  </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ClientDto.php">
-    <MissingConstructor occurrences="5">
-      <code>$city</code>
-      <code>$email</code>
-      <code>$firstName</code>
-      <code>$lastName</code>
-      <code>$phone</code>
-    </MissingConstructor>
-  </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/Dto/ReservationFormModel.php">
-    <MissingPropertyType occurrences="1">
-      <code>$books</code>
-    </MissingPropertyType>
-  </file>
-  <file src="core/booking/src/Infrastructure/Framework/Form/ReservationType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
   <file src="core/booking/src/Infrastructure/Framework/Form/Service/AdozioniUploader.php">
-    <ParamNameMismatch occurrences="1">
-      <code>$uploadedAdozioniFile</code>
-    </ParamNameMismatch>
     <PossiblyNullOperand occurrences="2">
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
       <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
@@ -362,9 +249,6 @@
     <MixedMethodCall occurrences="1">
       <code>execute</code>
     </MixedMethodCall>
-    <MixedOperand occurrences="1">
-      <code>$infoBox-&gt;getId()</code>
-    </MixedOperand>
     <UndefinedInterfaceMethod occurrences="1">
       <code>createQuery</code>
     </UndefinedInterfaceMethod>
@@ -399,7 +283,7 @@
     <MissingPropertyType occurrences="1">
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
-    <MixedArgument occurrences="11">
+    <MixedArgument occurrences="10">
       <code>$bookId</code>
       <code>$form-&gt;get('classe')-&gt;getData()</code>
       <code>$form-&gt;get('generalNotes')-&gt;getData()</code>
@@ -410,32 +294,21 @@
       <code>$form-&gt;get('person')-&gt;getData()-&gt;getLastName()</code>
       <code>$form-&gt;get('person')-&gt;getData()-&gt;getPhone()</code>
       <code>$form-&gt;get('status')-&gt;getData()</code>
-      <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedArgument>
     <MixedAssignment occurrences="2">
       <code>$bookId</code>
       <code>$queryBuilder</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="12">
+    <MixedMethodCall occurrences="6">
       <code>getCity</code>
       <code>getEmail</code>
       <code>getFirstName</code>
       <code>getLastName</code>
       <code>getPhone</code>
       <code>getQuery</code>
-      <code>toString</code>
-      <code>toString</code>
-      <code>toString</code>
-      <code>toString</code>
-      <code>toString</code>
-      <code>toString</code>
     </MixedMethodCall>
-    <MixedOperand occurrences="5">
+    <MixedOperand occurrences="1">
       <code>$bookId</code>
-      <code>$reservation-&gt;getId()-&gt;toString()</code>
-      <code>$reservation-&gt;getId()-&gt;toString()</code>
-      <code>$reservation-&gt;getId()-&gt;toString()</code>
-      <code>$reservation-&gt;getId()-&gt;toString()</code>
     </MixedOperand>
     <PossiblyNullArgument occurrences="6">
       <code>$reservation-&gt;getCity()</code>
@@ -461,9 +334,6 @@
     <UndefinedInterfaceMethod occurrences="1">
       <code>getWithSearchQueryBuilder</code>
     </UndefinedInterfaceMethod>
-    <UnusedVariable occurrences="1">
-      <code>$entityManager</code>
-    </UnusedVariable>
   </file>
   <file src="src/Controller/BackofficeSecurityController.php">
     <InvalidReturnType occurrences="1">
@@ -486,13 +356,9 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>$this-&gt;getUser()</code>
     </ArgumentTypeCoercion>
-    <InvalidNullableReturnType occurrences="1">
-      <code>Response</code>
-    </InvalidNullableReturnType>
     <MixedArgument occurrences="1">
       <code>$form-&gt;get('plainPassword')-&gt;getData()</code>
     </MixedArgument>
-    <NullableReturnStatement occurrences="1"/>
     <PossiblyNullArgument occurrences="2">
       <code>$this-&gt;getUser()</code>
       <code>$user-&gt;getEmail()</code>
@@ -507,9 +373,6 @@
       <code>$id</code>
       <code>$roles</code>
     </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>eraseCredentials</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$roles</code>
     </MixedArgument>
@@ -539,9 +402,6 @@
       <code>$title</code>
       <code>$volume</code>
     </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>getId</code>
-    </MissingReturnType>
     <MixedInferredReturnType occurrences="5">
       <code>?Reservation</code>
       <code>?string</code>
@@ -561,9 +421,6 @@
     <MissingConstructor occurrences="1">
       <code>$id</code>
     </MissingConstructor>
-    <MissingReturnType occurrences="1">
-      <code>getId</code>
-    </MissingReturnType>
   </file>
   <file src="src/Entity/MailOut.php">
     <MissingPropertyType occurrences="3">
@@ -583,9 +440,6 @@
     </MixedReturnStatement>
   </file>
   <file src="src/Entity/Reservation.php">
-    <MismatchingDocblockReturnType occurrences="1">
-      <code>Collection|Book[]</code>
-    </MismatchingDocblockReturnType>
     <MissingPropertyType occurrences="8">
       <code>$LastName</code>
       <code>$books</code>
@@ -596,9 +450,6 @@
       <code>$phone</code>
       <code>$registrationDate</code>
     </MissingPropertyType>
-    <MissingReturnType occurrences="1">
-      <code>getId</code>
-    </MissingReturnType>
     <MixedArrayAssignment occurrences="1">
       <code>$this-&gt;books[]</code>
     </MixedArrayAssignment>
@@ -610,14 +461,15 @@
       <code>?string</code>
       <code>?string</code>
       <code>?string</code>
-      <code>Collection|Book[]</code>
+      <code>Collection</code>
     </MixedInferredReturnType>
     <MixedMethodCall occurrences="2">
       <code>contains</code>
       <code>removeElement</code>
     </MixedMethodCall>
-    <MixedReturnStatement occurrences="7">
+    <MixedReturnStatement occurrences="8">
       <code>$this-&gt;LastName</code>
+      <code>$this-&gt;books</code>
       <code>$this-&gt;city</code>
       <code>$this-&gt;classe</code>
       <code>$this-&gt;email</code>
@@ -671,36 +523,6 @@
       <code>self</code>
     </MoreSpecificReturnType>
   </file>
-  <file src="src/Form/BackofficeReservationEditType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
-  <file src="src/Form/BackofficeReservationType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
-  <file src="src/Form/BackofficeUserChangePasswordType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
-  <file src="src/Form/BackofficeUserType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
-  <file src="src/Form/ClientType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
   <file src="src/Form/Dto/ClientDto.php">
     <MissingConstructor occurrences="5">
       <code>$city</code>
@@ -722,12 +544,6 @@
       <code>$this-&gt;classe</code>
     </UndefinedThisPropertyFetch>
   </file>
-  <file src="src/Form/InfoBoxType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
-  </file>
   <file src="src/Form/Model/BackofficeReservationEditFormModel.php">
     <MissingConstructor occurrences="3">
       <code>$notes</code>
@@ -739,12 +555,6 @@
     <MissingPropertyType occurrences="1">
       <code>$books</code>
     </MissingPropertyType>
-  </file>
-  <file src="src/Form/RegistrationFormType.php">
-    <MissingReturnType occurrences="2">
-      <code>buildForm</code>
-      <code>configureOptions</code>
-    </MissingReturnType>
   </file>
   <file src="src/Repository/BackofficeUserRepository.php">
     <LessSpecificImplementedReturnType occurrences="2">
@@ -763,9 +573,6 @@
       <code>InfoBox[]</code>
       <code>InfoBox[]</code>
     </LessSpecificImplementedReturnType>
-    <MissingParamType occurrences="1">
-      <code>$isDefaultBox</code>
-    </MissingParamType>
     <MixedInferredReturnType occurrences="1">
       <code>?InfoBox</code>
     </MixedInferredReturnType>
@@ -799,10 +606,6 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Security/LoginFormBackofficeAuthenticator.php">
-    <MixedArgument occurrences="2">
-      <code>$credentials['csrf_token']</code>
-      <code>$credentials['password']</code>
-    </MixedArgument>
     <MixedArrayAccess occurrences="3">
       <code>$credentials['csrf_token']</code>
       <code>$credentials['email']</code>
@@ -810,15 +613,8 @@
     </MixedArrayAccess>
   </file>
   <file src="src/Twig/AppExtension.php">
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="1">
       <code>$file</code>
-      <code>$files</code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="1">
-      <code>getCssFiles</code>
-    </MixedMethodCall>
-    <MixedOperand occurrences="1">
-      <code>$file</code>
-    </MixedOperand>
   </file>
 </files>

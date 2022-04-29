@@ -300,11 +300,10 @@ class BackofficeReservationController extends AbstractController
     /**
      * @Route("/{id}", name="backoffice_reservation_send_tanks_mail", methods={"POST"})
      */
-    //public function delete(Request $request, Reservation $reservation): Response
     public function sendThanksMail(Request $request, Reservation $reservation): Response
     {
         if ($this->isCsrfTokenValid('send_tanks_mail' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $this->getDoctrine()->getManager();
             //$entityManager->remove($backofficeUser);
             //$entityManager->flush();
 

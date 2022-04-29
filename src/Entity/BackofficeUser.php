@@ -121,6 +121,8 @@ class BackofficeUser implements UserInterface
 
     /**
      * @see UserInterface
+     *
+     * @return void
      */
     public function eraseCredentials()
     {

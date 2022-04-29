@@ -56,7 +56,7 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
 
     public function getEncoreEntryCssSource(string $entryName): string
     {
-        $files = (array) $this->container
+        $files = $this->container
             ->get(EntrypointLookupInterface::class)
             ->getCssFiles($entryName);
 

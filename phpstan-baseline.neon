@@ -56,11 +56,6 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php
 
 		-
-			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:getId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Book.php
-
-		-
 			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$author \\(string\\) does not accept string\\|null\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Book.php
@@ -306,11 +301,6 @@ parameters:
 			path: src/Controller/BackofficeSecurityController.php
 
 		-
-			message: "#^Method App\\\\Controller\\\\RegistrationController\\:\\:register\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but returns Symfony\\\\Component\\\\HttpFoundation\\\\Response\\|null\\.$#"
-			count: 1
-			path: src/Controller/RegistrationController.php
-
-		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$addresses of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:to\\(\\) expects string\\|Symfony\\\\Component\\\\Mime\\\\Address, string\\|null given\\.$#"
 			count: 1
 			path: src/Controller/RegistrationController.php
@@ -324,11 +314,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$confirmationDate of method App\\\\Factory\\\\ReservationSaleDetailFactory\\:\\:withConfirmationDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
 			count: 4
 			path: src/DataFixtures/LibraiStage/ReservationFixturesExpired.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\BackofficeUser\\:\\:eraseCredentials\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Entity/BackofficeUser.php
 
 		-
 			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$email has no typehint specified\\.$#"
@@ -353,11 +338,6 @@ parameters:
 				"""
 			count: 1
 			path: src/Entity/BackofficeUser.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Book\\:\\:getId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Entity/Book.php
 
 		-
 			message: "#^Property App\\\\Entity\\\\Book\\:\\:\\$author has no typehint specified\\.$#"
@@ -390,11 +370,6 @@ parameters:
 			path: src/Entity/InfoBox.php
 
 		-
-			message: "#^Method App\\\\Entity\\\\InfoBox\\:\\:getId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: src/Entity/InfoBox.php
-
-		-
 			message: "#^Property App\\\\Entity\\\\MailOut\\:\\:\\$content has no typehint specified\\.$#"
 			count: 1
 			path: src/Entity/MailOut.php
@@ -411,11 +386,6 @@ parameters:
 
 		-
 			message: "#^Method App\\\\Entity\\\\Reservation\\:\\:getBooks\\(\\) return type with generic interface Doctrine\\\\Common\\\\Collections\\\\Collection does not specify its types\\: TKey, T$#"
-			count: 1
-			path: src/Entity/Reservation.php
-
-		-
-			message: "#^Method App\\\\Entity\\\\Reservation\\:\\:getId\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: src/Entity/Reservation.php
 

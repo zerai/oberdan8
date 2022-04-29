@@ -163,9 +163,6 @@ class Reservation
         return $this;
     }
 
-    /**
-     * @return Collection|Book[]
-     */
     public function getBooks(): Collection
     {
         return $this->books;

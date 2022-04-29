@@ -54,7 +54,7 @@ class InfoBox
      */
     private bool $defaultBox = false;
 
-    public function getId()
+    public function getId(): UuidInterface
     {
         return $this->id;
     }

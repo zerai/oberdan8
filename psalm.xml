@@ -15,7 +15,7 @@
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
         <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
             <containerXml>var/cache/dev/srcApp_KernelDevDebugContainer.xml</containerXml>
-            <containerXml>var/cache/dev/srcApp_KernelTestDebugContainer.xml</containerXml>
+<!--            <containerXml>var/cache/dev/srcApp_KernelTestDebugContainer.xml</containerXml>-->
         </pluginClass>
     </plugins>
 
