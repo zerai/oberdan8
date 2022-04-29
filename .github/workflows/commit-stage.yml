@@ -303,10 +303,12 @@ jobs:
       - name: Install psalm tool
         run: composer bin psalm install
 
+      - name: Prepare symfony container
+        run: bin/console debug:container
+
       - name: Run psalm
-        run: |
-          bin/console debug:container
-          ./vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
+        run: ./vendor/bin/psalm --config psalm.xml --diff --show-info=false --stats --threads=4
+
 
 
   architecture-check:
