@@ -51,11 +51,6 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
-			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
-			count: 4
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
-
-		-
 			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationSaleDetailRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php

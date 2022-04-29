@@ -29,34 +29,6 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return Reservation[] Returns an array of Reservation objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Reservation
-    {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
     public function delete(Reservation $reservation): void
     {
         $this->_em->remove($reservation);
@@ -84,8 +56,6 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
     public function findAllForBackoffice()
     {
         return $this->createQueryBuilder('r')
-            //->andWhere('r.exampleField = :val')
-            //->setParameter('val', $value)
             ->orderBy('r.registrationDate', 'DESC')
             ->setMaxResults(100)
             ->getQuery()
@@ -100,19 +70,16 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
     public function getWithSearchQueryBuilder(?string $term, ?string $status): QueryBuilder
     {
         $qb = $this->createQueryBuilder('r')
-            //->innerJoin('c.article', 'a')
             ->innerJoin('r.saleDetail', 's')
             ->addSelect('s');
 
-        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
-        if ($term) {
+        if (\is_string($term)) {
             $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
                 ->setParameter('term', '%' . $term . '%')
             ;
         }
 
-        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
-        if ($status) {
+        if (\is_string($status)) {
             $qb->andWhere(' s.status LIKE :status ')
                 ->setParameter('status', '%' . $status . '%')
             ;
@@ -167,8 +134,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->setParameter('val', 'Confirmed')
             ;
 
-        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
-        if ($term) {
+        if (\is_string($term)) {
             $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
                 ->setParameter('term', '%' . $term . '%')
             ;
@@ -190,8 +156,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->setParameter('val', 'Confirmed')
         ;
 
-        // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
-        if ($term) {
+        if (\is_string($term)) {
             $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
                 ->setParameter('term', '%' . $term . '%')
             ;
