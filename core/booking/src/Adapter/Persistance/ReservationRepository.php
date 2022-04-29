@@ -74,6 +74,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->addSelect('s');
 
         if (\is_string($term)) {
+
             $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
                 ->setParameter('term', '%' . $term . '%')
             ;
