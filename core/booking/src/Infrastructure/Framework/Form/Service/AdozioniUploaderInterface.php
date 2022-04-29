@@ -7,5 +7,5 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface AdozioniUploaderInterface
 {
-    public function uploadAdozioniFile(UploadedFile $uploadedAdozioniAdozioniFile): string;
+    public function uploadAdozioniFile(UploadedFile $uploadedAdozioniFile): string;
 }

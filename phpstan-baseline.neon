@@ -116,31 +116,6 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/ReservationSaleDetail.php
 
 		-
-			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php
-
-		-
-			message: "#^Method Booking\\\\Application\\\\NotifyNewAdozioniReservationToBackoffice\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/NotifyNewAdozioniReservationToBackoffice.php
-
-		-
-			message: "#^Method Booking\\\\Application\\\\NotifyNewReservationToBackoffice\\:\\:notifyNewReservationToBackoffice\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/NotifyNewReservationToBackoffice.php
-
-		-
-			message: "#^Method Booking\\\\Application\\\\NotifyReservationConfirmationToClient\\:\\:notifyReservationConfirmationEmailToClient\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/NotifyReservationConfirmationToClient.php
-
-		-
-			message: "#^Method Booking\\\\Application\\\\NotifyReservationThanksToClient\\:\\:notifyReservationThanksEmailToClient\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: core/booking/src/Application/NotifyReservationThanksToClient.php
-
-		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
