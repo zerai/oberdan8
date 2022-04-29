@@ -105,14 +105,14 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->addSelect('s');
 
         // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
-        if ($term) {
+        if (is_string($term)) {
             $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
                 ->setParameter('term', '%' . $term . '%')
             ;
         }
 
         // TODO fix static analysis (Only booleans are allowed in an if condition, string|null given. )
-        if ($status) {
+        if (is_string($status)) {
             $qb->andWhere(' s.status LIKE :status ')
                 ->setParameter('status', '%' . $status . '%')
             ;
