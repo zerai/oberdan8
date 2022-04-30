@@ -1,6 +1,6 @@
-reservation_result:
-  path: /esito
-  controller: Booking\Adapter\HttpDriver\ReservationResultsController
+#reservation_result:
+#  path: /esito
+#  controller: Booking\Adapter\HttpDriver\ReservationResultsController
 
 #
 # Backoffice routes

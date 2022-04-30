@@ -49,9 +49,9 @@ services:
     #   BOOKING BOUNDED CONTEXT
     #
 
-    Booking\Adapter\HttpDriver\:
-        resource: '../core/booking/src/Adapter/HttpDriver/'
-        tags: [ 'controller.service_arguments' ]
+#    Booking\Adapter\HttpDriver\:
+#        resource: '../core/booking/src/Adapter/HttpDriver/'
+#        tags: [ 'controller.service_arguments' ]
 
     Booking\Adapter\Web\Free\:
         resource: '../core/booking/src/Adapter/Web/Free/'
