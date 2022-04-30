@@ -1,11 +1,3 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-
-home_oberdan:
-  path: /
-  controller: Booking\Adapter\HttpDriver\HomeController
-
 reservation:
   path: /reservation
   controller: Booking\Adapter\HttpDriver\ReservationController

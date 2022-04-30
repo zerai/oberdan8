@@ -53,6 +53,10 @@ services:
         resource: '../core/booking/src/Adapter/HttpDriver/'
         tags: [ 'controller.service_arguments' ]
 
+    Booking\Adapter\Web\Free\:
+        resource: '../core/booking/src/Adapter/Web/Free/'
+        tags: [ 'controller.service_arguments' ]
+
     Booking\Adapter\:
         resource: '../core/booking/src/Adapter/'
         exclude:
