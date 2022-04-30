@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/reservation", name="reservation", methods={"GET","POST"})
+ * @Route("/reservation", name="app_reservation", methods={"GET","POST"})
  */
 class ReservationController extends AbstractController
 {
@@ -73,13 +73,7 @@ class ReservationController extends AbstractController
                 //throw new \RuntimeException('Errore nel salvataggio dei dati');
             }
 
-            // send email to client
-            $bookingMailer->notifyReservationConfirmationEmailToClient(
-                $formData->person->getEmail(),
-                $this->mapPersonDataToReservationConfirmationEmail($formData),
-                $this->mapBookDataToReservationConfirmationEmail($formData),
-                $formData->otherInfo
-            );
+            $this->sendEmailToClient($bookingMailer, $formData);
 
             // send email to backoffice
             //$emailForBackoffice = $this->createRiepilogoEmailForBackoffice($formData);
@@ -115,5 +109,21 @@ class ReservationController extends AbstractController
     private function mapBookDataToReservationConfirmationEmail(ReservationFormModel $formData): array
     {
         return $formData->books;
+    }
+
+    /**
+     * @param BookingMailer $bookingMailer
+     * @param ReservationFormModel $formData
+     * @return void
+     */
+    private function sendEmailToClient(BookingMailer $bookingMailer, ReservationFormModel $formData): void
+    {
+        // send email to client
+        $bookingMailer->notifyReservationConfirmationEmailToClient(
+            $formData->person->getEmail(),
+            $this->mapPersonDataToReservationConfirmationEmail($formData),
+            $this->mapBookDataToReservationConfirmationEmail($formData),
+            $formData->otherInfo
+        );
     }
 }
