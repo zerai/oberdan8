@@ -1,7 +1,3 @@
-reservation:
-  path: /reservation
-  controller: Booking\Adapter\HttpDriver\ReservationController
-
 reservation_adozioni:
   path: /reservation/adozioni
   controller: Booking\Adapter\HttpDriver\AdozioniReservationController

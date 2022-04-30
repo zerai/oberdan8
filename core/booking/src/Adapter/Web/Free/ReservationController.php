@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Booking\Adapter\HttpDriver;
+namespace Booking\Adapter\Web\Free;
 
 use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Application\Domain\Model\Book;
@@ -14,7 +14,11 @@ use Booking\Infrastructure\Framework\Form\ReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/reservation", name="reservation", methods={"GET","POST"})
+ */
 class ReservationController extends AbstractController
 {
     public function __invoke(Request $request, BookingMailer $bookingMailer, ReservationRepositoryInterface $repository): Response
