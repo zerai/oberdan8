@@ -1,6 +1,6 @@
-reservation_adozioni:
-  path: /reservation/adozioni
-  controller: Booking\Adapter\HttpDriver\AdozioniReservationController
+#reservation_adozioni:
+#  path: /reservation/adozioni
+#  controller: Booking\Adapter\HttpDriver\AdozioniReservationController
 
 reservation_result:
   path: /esito

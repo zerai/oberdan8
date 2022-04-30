@@ -1,28 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
-  <file src="core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php">
-    <MixedAssignment occurrences="6">
-      <code>$mailAttachments[]</code>
-      <code>$mailAttachments[]</code>
-      <code>$mailAttachments[]</code>
-      <code>$newFilename</code>
-      <code>$secondFilename</code>
-      <code>$thirdFilename</code>
-    </MixedAssignment>
-    <RedundantConditionGivenDocblockType occurrences="6">
-      <code>$adozioniFile</code>
-      <code>$adozioniFile</code>
-      <code>$secondAdozioniFile</code>
-      <code>$secondAdozioniFile</code>
-      <code>$thirdAdozioniFile</code>
-      <code>$thirdAdozioniFile</code>
-    </RedundantConditionGivenDocblockType>
-    <UndefinedInterfaceMethod occurrences="3">
-      <code>uploadAdozioniFileAndReturnFile</code>
-      <code>uploadAdozioniFileAndReturnFile</code>
-      <code>uploadAdozioniFileAndReturnFile</code>
-    </UndefinedInterfaceMethod>
-  </file>
   <file src="core/booking/src/Adapter/Persistance/BookRepository.php">
     <LessSpecificImplementedReturnType occurrences="2">
       <code>Book[]</code>
@@ -64,6 +41,18 @@
       <code>ReservationSaleDetail[]</code>
       <code>ReservationSaleDetail[]</code>
     </LessSpecificImplementedReturnType>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Free/AdozioniReservationController.php">
+    <RedundantConditionGivenDocblockType occurrences="3">
+      <code>$adozioniFile !== null</code>
+      <code>$secondAdozioniFile !== null</code>
+      <code>$thirdAdozioniFile !== null</code>
+    </RedundantConditionGivenDocblockType>
+    <UndefinedInterfaceMethod occurrences="3">
+      <code>uploadAdozioniFileAndReturnFile</code>
+      <code>uploadAdozioniFileAndReturnFile</code>
+      <code>uploadAdozioniFileAndReturnFile</code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Book.php">
     <MissingConstructor occurrences="5">
@@ -544,13 +533,6 @@
       <code>$this-&gt;classe</code>
     </UndefinedThisPropertyFetch>
   </file>
-  <file src="src/Form/Model/BackofficeReservationEditFormModel.php">
-    <MissingConstructor occurrences="3">
-      <code>$notes</code>
-      <code>$packageId</code>
-      <code>$status</code>
-    </MissingConstructor>
-  </file>
   <file src="src/Form/Model/BackofficeReservationFormModel.php">
     <MissingPropertyType occurrences="1">
       <code>$books</code>
@@ -562,12 +544,6 @@
       <code>BackofficeUser[]</code>
     </LessSpecificImplementedReturnType>
   </file>
-  <file src="src/Repository/BookRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>Book[]</code>
-      <code>Book[]</code>
-    </LessSpecificImplementedReturnType>
-  </file>
   <file src="src/Repository/InfoBoxRepository.php">
     <LessSpecificImplementedReturnType occurrences="2">
       <code>InfoBox[]</code>
@@ -577,18 +553,6 @@
       <code>?InfoBox</code>
     </MixedInferredReturnType>
     <MixedReturnStatement occurrences="1"/>
-  </file>
-  <file src="src/Repository/MailOutRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>MailOut[]</code>
-      <code>MailOut[]</code>
-    </LessSpecificImplementedReturnType>
-  </file>
-  <file src="src/Repository/ReservationRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>Reservation[]</code>
-      <code>Reservation[]</code>
-    </LessSpecificImplementedReturnType>
   </file>
   <file src="src/Security/EmailVerifier.php">
     <MixedArgument occurrences="4">

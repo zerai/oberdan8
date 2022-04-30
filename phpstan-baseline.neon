@@ -1,21 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Service\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
-			count: 3
-			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
-
-		-
-			message: "#^If condition is always true\\.$#"
-			count: 3
-			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
-
-		-
-			message: "#^Only booleans are allowed in an if condition, Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile given\\.$#"
-			count: 3
-			path: core/booking/src/Adapter/HttpDriver/AdozioniReservationController.php
-
-		-
 			message: "#^Parameter \\#1 \\$path of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:attachFromPath\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
@@ -54,6 +39,16 @@ parameters:
 			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationSaleDetailRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php
+
+		-
+			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Service\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
+			count: 3
+			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile and null will always evaluate to true\\.$#"
+			count: 3
+			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
 
 		-
 			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$author \\(string\\) does not accept string\\|null\\.$#"
