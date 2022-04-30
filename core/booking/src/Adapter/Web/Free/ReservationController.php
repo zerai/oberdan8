@@ -79,7 +79,7 @@ class ReservationController extends AbstractController
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');
 
-            return $this->redirectToRoute('reservation_result');
+            return $this->redirectToRoute('app_reservation_result');
         }
 
         return $this->render('@booking/reservation-page.html.twig', [

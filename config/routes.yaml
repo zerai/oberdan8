@@ -1,9 +1,5 @@
-#reservation_result:
-#  path: /esito
-#  controller: Booking\Adapter\HttpDriver\ReservationResultsController
-
 #
-# Backoffice routes
+# Backoffice routes redirect to dashboard controller
 #
 admin_home:
   path: /admin
