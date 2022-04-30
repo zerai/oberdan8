@@ -31,15 +31,13 @@ class AdozioniReservationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $mailAttachments = [];
+
             ############################ inizio single file upload
             /** @var UploadedFile $adozioniFile */
             $adozioniFile = $form->get('adozioni')->getData();
 
             if ($adozioniFile !== null && $adozioniFile->isValid()) {
                 try {
-                    // original call
-                    //$newFilename = $uploader->uploadAdozioniFile($adozioniFile);
-
                     /** @var UploadedFile $newFilename */
                     $newFilename = $uploader->uploadAdozioniFileAndReturnFile($adozioniFile);
                     $mailAttachments[] = $newFilename;
@@ -56,12 +54,8 @@ class AdozioniReservationController extends AbstractController
 
             if ($secondAdozioniFile !== null && $secondAdozioniFile->isValid()) {
                 try {
-                    // original call
-                    //$newFilename = $uploader->uploadAdozioniFile($adozioniFile);
-
                     /** @var File $secondFilename */
                     $secondFilename = $uploader->uploadAdozioniFileAndReturnFile($secondAdozioniFile);
-
                     $mailAttachments[] = $secondFilename;
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
@@ -76,12 +70,8 @@ class AdozioniReservationController extends AbstractController
 
             if ($thirdAdozioniFile !== null && $thirdAdozioniFile->isValid()) {
                 try {
-                    // original call
-                    //$newFilename = $uploader->uploadAdozioniFile($adozioniFile);
-
                     /** @var File $thirdFilename */
                     $thirdFilename = $uploader->uploadAdozioniFileAndReturnFile($thirdAdozioniFile);
-
                     $mailAttachments[] = $thirdFilename;
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
@@ -124,22 +114,9 @@ class AdozioniReservationController extends AbstractController
                 //throw new \RuntimeException('Errore nel salvataggio dei dati');
             }
 
-            // send email to client
-            $bookingMailer->notifyAdozioniReservationConfirmationEmailToClient(
-                $formData->person->getEmail(),
-                $this->mapPersonDataToReservationConfirmationEmail($formData),
-                [$adozioniFile->getClientOriginalName()],
-                $formData->otherInfo
-            );
+            $this->sendEmailToClient($bookingMailer, $formData, $adozioniFile);
 
-            // send email to backoffice
-            $bookingMailer->notifyNewAdozioniReservationToBackoffice(
-                $this->mapPersonDataToReservationConfirmationEmail($formData),
-                //[$adozioniFile->getClientOriginalName()],
-                $mailAttachments,
-                [],
-                $formData->otherInfo
-            );
+            $this->sendEmailToBackoffice($bookingMailer, $formData, $mailAttachments);
 
             $this->addFlash('success', 'Prenotazine avvenuta con successo.');
 
@@ -161,5 +138,38 @@ class AdozioniReservationController extends AbstractController
             'city' => $formData->person->getCity(),
             'classe' => $formData->classe,
         ];
+    }
+
+    /**
+     * @param BookingMailer $bookingMailer
+     * @param AdozioniReservationFormModel $formData
+     * @param UploadedFile $adozioniFile
+     * @return void
+     */
+    private function sendEmailToClient(BookingMailer $bookingMailer, AdozioniReservationFormModel $formData, UploadedFile $adozioniFile): void
+    {
+        $bookingMailer->notifyAdozioniReservationConfirmationEmailToClient(
+            $formData->person->getEmail(),
+            $this->mapPersonDataToReservationConfirmationEmail($formData),
+            [$adozioniFile->getClientOriginalName()],
+            $formData->otherInfo
+        );
+    }
+
+    /**
+     * @param BookingMailer $bookingMailer
+     * @param AdozioniReservationFormModel $formData
+     * @param array $mailAttachments
+     * @return void
+     */
+    private function sendEmailToBackoffice(BookingMailer $bookingMailer, AdozioniReservationFormModel $formData, array $mailAttachments): void
+    {
+        $bookingMailer->notifyNewAdozioniReservationToBackoffice(
+            $this->mapPersonDataToReservationConfirmationEmail($formData),
+            //[$adozioniFile->getClientOriginalName()],
+            $mailAttachments,
+            [],
+            $formData->otherInfo
+        );
     }
 }
