@@ -56,11 +56,6 @@ services:
         resource: '../core/booking/src/Adapter/Web/Admin/'
         tags: [ 'controller.service_arguments' ]
 
-    Booking\Adapter\:
-        resource: '../core/booking/src/Adapter/'
-        exclude:
-            - '../core/booking/src/Adapter/HttpDriver'
-
     Booking\Infrastructure\Framework\:
         resource: '../core/booking/src/Infrastructure/Framework/'
         exclude:
