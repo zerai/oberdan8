@@ -9,3 +9,7 @@ kernel:
 controllers_public:
     resource: ../../core/booking/src/Adapter/Web/Free/
     type: annotation
+
+controllers_admin:
+    resource: ../../core/booking/src/Adapter/Web/Admin/
+    type: annotation

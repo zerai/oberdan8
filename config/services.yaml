@@ -52,6 +52,10 @@ services:
         resource: '../core/booking/src/Adapter/Web/Free/'
         tags: [ 'controller.service_arguments' ]
 
+    Booking\Adapter\Web\Admin\:
+        resource: '../core/booking/src/Adapter/Web/Admin/'
+        tags: [ 'controller.service_arguments' ]
+
     Booking\Adapter\:
         resource: '../core/booking/src/Adapter/'
         exclude:
