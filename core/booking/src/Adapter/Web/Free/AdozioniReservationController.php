@@ -9,7 +9,7 @@ use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
 use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
 use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
-use Booking\Infrastructure\Framework\Form\Service\AdozioniUploaderInterface;
+use Booking\Infrastructure\Uploader\AdozioniUploaderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;

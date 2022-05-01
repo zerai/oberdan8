@@ -131,7 +131,7 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Service\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
+			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Uploader\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
 			count: 3
 			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
 

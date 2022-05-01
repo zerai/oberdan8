@@ -67,7 +67,9 @@ services:
             - '../core/booking/src/Infrastructure/Framework/templates'
             - '../core/booking/src/Infrastructure/Framework/Form/Dto'
 
-    Booking\Infrastructure\Framework\Form\Service\AdozioniUploader:
+
+    Booking\Infrastructure\Uploader\AdozioniUploaderInterface: '@Booking\Infrastructure\Uploader\AdozioniUploader'
+    Booking\Infrastructure\Uploader\AdozioniUploader:
         arguments:
             - '%booking.adozioni_directory%'
 
