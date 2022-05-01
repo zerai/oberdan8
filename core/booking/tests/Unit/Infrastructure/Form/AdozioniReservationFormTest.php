@@ -3,9 +3,9 @@
 
 namespace Booking\Tests\Unit\Infrastructure\Form;
 
-use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
-use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
-use Booking\Infrastructure\Framework\Form\Dto\ClientDto;
+use Booking\Adapter\Web\Free\Form\AdozioniReservationType;
+use Booking\Adapter\Web\Free\Form\Dto\AdozioniReservationFormModel;
+use Booking\Adapter\Web\Free\Form\Dto\ClientDto;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**

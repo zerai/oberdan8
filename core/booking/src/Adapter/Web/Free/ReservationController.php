@@ -3,14 +3,14 @@
 namespace Booking\Adapter\Web\Free;
 
 use Booking\Adapter\MailDriven\BookingMailer;
+use Booking\Adapter\Web\Free\Form\Dto\BookDto;
+use Booking\Adapter\Web\Free\Form\Dto\ReservationFormModel;
+use Booking\Adapter\Web\Free\Form\ReservationType;
 use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
-use Booking\Infrastructure\Framework\Form\Dto\BookDto;
-use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
-use Booking\Infrastructure\Framework\Form\ReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

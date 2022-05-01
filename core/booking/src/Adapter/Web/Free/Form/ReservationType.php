@@ -1,18 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Booking\Infrastructure\Framework\Form;
+namespace Booking\Adapter\Web\Free\Form;
 
-use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
+use Booking\Adapter\Web\Free\Form\Dto\ReservationFormModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
-
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdozioniReservationType extends AbstractType
+class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -35,19 +34,17 @@ class AdozioniReservationType extends AbstractType
                 'placeholder' => 'seleziona',
             ])
 
-            ->add('adozioni', FileType::class, [
-                'label' => 'File delle adozioni (formato PDF o immagine JPEG)',
+            ->add('books', CollectionType::class, [
+                'label' => false,
                 'required' => true,
-            ])
-
-            ->add('adozioni2', FileType::class, [
-                'label' => 'File delle adozioni (formato PDF o immagine JPEG) - facoltativo',
-                'required' => false,
-            ])
-
-            ->add('adozioni3', FileType::class, [
-                'label' => 'File delle adozioni (formato PDF o immagine JPEG) - facoltativo',
-                'required' => false,
+                'entry_type' => BookType::class,
+                'entry_options' => [
+                    'label' => false,
+                ],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'block_name' => 'book_lists',
             ])
 
             ->add('otherInfo', TextareaType::class, [
@@ -67,14 +64,15 @@ class AdozioniReservationType extends AbstractType
                 [
                     'label' => 'Invia',
                 ]
-            );
+            )
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            // Configure your form options here
-            'data_class' => AdozioniReservationFormModel::class,
+            'data_class' => ReservationFormModel::class,
+            'csrf_token_id' => 'reservation',
         ]);
     }
 }

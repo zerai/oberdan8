@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace Booking\Infrastructure\Framework\Form\Dto;
+namespace Booking\Adapter\Web\Free\Form\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 

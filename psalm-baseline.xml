@@ -121,6 +121,11 @@
       <code>getWithSearchQueryBuilder</code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="core/booking/src/Adapter/Web/Admin/Form/Model/BackofficeReservationFormModel.php">
+    <MissingPropertyType occurrences="1">
+      <code>$books</code>
+    </MissingPropertyType>
+  </file>
   <file src="core/booking/src/Adapter/Web/Free/AdozioniReservationController.php">
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>$adozioniFile !== null</code>
@@ -511,32 +516,6 @@
     <MoreSpecificReturnType occurrences="1">
       <code>self</code>
     </MoreSpecificReturnType>
-  </file>
-  <file src="src/Form/Dto/ClientDto.php">
-    <MissingConstructor occurrences="5">
-      <code>$city</code>
-      <code>$email</code>
-      <code>$firstName</code>
-      <code>$lastName</code>
-      <code>$phone</code>
-    </MissingConstructor>
-    <MixedInferredReturnType occurrences="1">
-      <code>string</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;classe</code>
-    </MixedReturnStatement>
-    <UndefinedThisPropertyAssignment occurrences="1">
-      <code>$this-&gt;classe</code>
-    </UndefinedThisPropertyAssignment>
-    <UndefinedThisPropertyFetch occurrences="1">
-      <code>$this-&gt;classe</code>
-    </UndefinedThisPropertyFetch>
-  </file>
-  <file src="src/Form/Model/BackofficeReservationFormModel.php">
-    <MissingPropertyType occurrences="1">
-      <code>$books</code>
-    </MissingPropertyType>
   </file>
   <file src="src/Repository/BackofficeUserRepository.php">
     <LessSpecificImplementedReturnType occurrences="2">

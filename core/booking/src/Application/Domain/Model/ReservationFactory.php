@@ -3,7 +3,7 @@
 
 namespace Booking\Application\Domain\Model;
 
-use Booking\Infrastructure\Framework\Form\Dto\BookDto;
+use Booking\Adapter\Web\Free\Form\Dto\BookDto;
 use Ramsey\Uuid\UuidInterface;
 
 interface ReservationFactory

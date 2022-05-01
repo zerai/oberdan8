@@ -2,12 +2,12 @@
 
 namespace Booking\Tests\Unit\Infrastructure\Form;
 
-use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
-use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
-use Booking\Infrastructure\Framework\Form\Dto\BookDto;
-use Booking\Infrastructure\Framework\Form\Dto\ClientDto;
-use Booking\Infrastructure\Framework\Form\Dto\ReservationFormModel;
-use Booking\Infrastructure\Framework\Form\ReservationType;
+use Booking\Adapter\Web\Free\Form\AdozioniReservationType;
+use Booking\Adapter\Web\Free\Form\Dto\AdozioniReservationFormModel;
+use Booking\Adapter\Web\Free\Form\Dto\BookDto;
+use Booking\Adapter\Web\Free\Form\Dto\ClientDto;
+use Booking\Adapter\Web\Free\Form\Dto\ReservationFormModel;
+use Booking\Adapter\Web\Free\Form\ReservationType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**

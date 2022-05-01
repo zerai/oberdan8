@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Form\Dto;
+namespace Booking\Adapter\Web\Free\Form\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -9,28 +9,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class ClientDto
 {
-    /**
-     * @Assert\Length(min=3, minMessage="La lughezza minima per il nome è 3 caratteri!")
-     */
-    public string $firstName;
-
-    /**
-     *
-     * @Assert\Length(min=3, minMessage="La lughezza minima per il cognome è 3 caratteri!!")
-     */
-    public string $lastName;
-
-    /**
-     * @Assert\Email()
-     */
-    public string $email;
-
-    public string $phone;
-
-    public string $city;
-
-    //public string $classe = '';
-
     /**
      * @return string
      */
@@ -126,4 +104,34 @@ class ClientDto
     {
         $this->classe = $classe;
     }
+
+    /**
+     * @Assert\NotBlank(message="Inserisci il tuo nome")
+     * @Assert\Length(min=3, minMessage="La lughezza minima per il nome è 3 caratteri!")
+     */
+    public string $firstName;
+
+    /**
+     * @Assert\NotBlank(message="Inserisci il tuo cognome")
+     * @Assert\Length(min=3, minMessage="La lughezza minima per il cognome è 3 caratteri!!")
+     */
+    public string $lastName;
+
+    /**
+     * @Assert\NotBlank(message="Inserisci la tua email")
+     * @Assert\Email()
+     */
+    public string $email;
+
+    /**
+     * @Assert\NotBlank(message="Inserisci il tuo recapito telefonico")
+     */
+    public string $phone;
+
+    /**
+     * @Assert\NotBlank(message="Inserisci una città")
+     */
+    public string $city;
+
+    public string $classe = '';
 }

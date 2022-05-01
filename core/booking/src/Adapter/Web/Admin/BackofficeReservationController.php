@@ -2,18 +2,18 @@
 
 namespace Booking\Adapter\Web\Admin;
 
-use App\Form\BackofficeReservationType;
-use App\Form\Dto\ClientDto;
-use App\Form\Model\BackofficeReservationFormModel;
 use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Adapter\Persistance\BookRepository;
+use Booking\Adapter\Web\Admin\Form\BackofficeReservationType;
+use Booking\Adapter\Web\Admin\Form\Dto\ClientDto;
+use Booking\Adapter\Web\Admin\Form\Model\BackofficeReservationFormModel;
+use Booking\Adapter\Web\Free\Form\Dto\BookDto;
 use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
-use Booking\Infrastructure\Framework\Form\Dto\BookDto;
 
 use Knp\Component\Pager\PaginatorInterface;
 use Psr\Log\LoggerInterface;

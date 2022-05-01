@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Form\Model;
+namespace Booking\Adapter\Web\Admin\Form\Model;
 
-use App\Form\Dto\ClientDto;
+use Booking\Adapter\Web\Admin\Form\Dto\ClientDto;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

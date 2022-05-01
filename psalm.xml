@@ -35,8 +35,9 @@
     <issueHandlers>
         <MissingConstructor>
             <errorLevel type="suppress">
-                <file name="core/booking/src/Infrastructure/Framework/Form/Dto/ClientDto.php"/>
-                <file name="core/booking/src/Infrastructure/Framework/Form/Dto/BookDto.php"/>
+                <file name="core/booking/src/Adapter/Web/Free/Form/Dto/ClientDto.php"/>
+                <file name="core/booking/src/Adapter/Web/Free/Form/Dto/BookDto.php"/>
+                <file name="core/booking/src/Adapter/Web/Admin/Form/Dto/ClientDto.php"/>
             </errorLevel>
         </MissingConstructor>
     </issueHandlers>

@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace App\Form;
+namespace Booking\Adapter\Web\Admin\Form;
 
-use App\Form\Model\BackofficeReservationFormModel;
-use Booking\Infrastructure\Framework\Form\BookType;
+use Booking\Adapter\Web\Admin\Form\Model\BackofficeReservationFormModel;
+use Booking\Adapter\Web\Free\Form\BookType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;

@@ -3,12 +3,12 @@
 namespace Booking\Adapter\Web\Free;
 
 use Booking\Adapter\MailDriven\BookingMailer;
+use Booking\Adapter\Web\Free\Form\AdozioniReservationType;
+use Booking\Adapter\Web\Free\Form\Dto\AdozioniReservationFormModel;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
-use Booking\Infrastructure\Framework\Form\AdozioniReservationType;
-use Booking\Infrastructure\Framework\Form\Dto\AdozioniReservationFormModel;
 use Booking\Infrastructure\Uploader\AdozioniUploaderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;

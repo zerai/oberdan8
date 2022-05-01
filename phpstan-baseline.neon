@@ -106,29 +106,34 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
-			message: "#^Parameter \\#1 \\$city of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setCity\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$city of method Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Dto\\\\ClientDto\\:\\:setCity\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setEmail\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$email of method Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Dto\\\\ClientDto\\:\\:setEmail\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
-			message: "#^Parameter \\#1 \\$firstName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setFirstName\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$firstName of method Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Dto\\\\ClientDto\\:\\:setFirstName\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
-			message: "#^Parameter \\#1 \\$lastName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setLastName\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$lastName of method Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Dto\\\\ClientDto\\:\\:setLastName\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
-			message: "#^Parameter \\#1 \\$phone of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setPhone\\(\\) expects string, string\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$phone of method Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Dto\\\\ClientDto\\:\\:setPhone\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Property Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Model\\\\BackofficeReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/Form/Model/BackofficeReservationFormModel.php
 
 		-
 			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Uploader\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
@@ -453,16 +458,6 @@ parameters:
 			message: "#^Class App\\\\Factory\\\\ReservationSaleDetailFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
 			count: 1
 			path: src/Factory/ReservationSaleDetailFactory.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Form\\\\Dto\\\\ClientDto\\:\\:\\$classe\\.$#"
-			count: 2
-			path: src/Form/Dto/ClientDto.php
-
-		-
-			message: "#^Property App\\\\Form\\\\Model\\\\BackofficeReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
-			count: 1
-			path: src/Form/Model/BackofficeReservationFormModel.php
 
 		-
 			message:

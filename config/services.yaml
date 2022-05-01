@@ -53,22 +53,26 @@ services:
         exclude:
             - '../core/booking/src/Application/Domain/Model'
             - '../core/booking/src/Infrastructure/Framework/templates'
-            - '../core/booking/src/Infrastructure/Framework/Form/Dto'
+            - '../core/booking/src/Adapter/Web/Free/Form/Dto'
+            - '../core/booking/src/Adapter/Web/Admin/Form/Dto'
+            - '../core/booking/src/Adapter/Web/Admin/Form/Model'
 
     Booking\Adapter\Web\Free\:
         resource: '../core/booking/src/Adapter/Web/Free/'
+        exclude:
+            - '../core/booking/src/Adapter/Web/Free/Form'
         tags: [ 'controller.service_arguments' ]
 
     Booking\Adapter\Web\Admin\:
         resource: '../core/booking/src/Adapter/Web/Admin/'
+        exclude:
+            - '../core/booking/src/Adapter/Web/Admin/Form'
         tags: [ 'controller.service_arguments' ]
 
     Booking\Infrastructure\Framework\:
         resource: '../core/booking/src/Infrastructure/Framework/'
         exclude:
             - '../core/booking/src/Infrastructure/Framework/templates'
-            - '../core/booking/src/Infrastructure/Framework/Form/Dto'
-
 
     Booking\Infrastructure\Uploader\AdozioniUploaderInterface: '@Booking\Infrastructure\Uploader\AdozioniUploader'
     Booking\Infrastructure\Uploader\AdozioniUploader:
