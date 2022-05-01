@@ -48,6 +48,13 @@ services:
     #
     #   BOOKING BOUNDED CONTEXT
     #
+    Booking\:
+        resource: '../core/booking/src/'
+        exclude:
+            - '../core/booking/src/Application/Domain/Model'
+            - '../core/booking/src/Infrastructure/Framework/templates'
+            - '../core/booking/src/Infrastructure/Framework/Form/Dto'
+
     Booking\Adapter\Web\Free\:
         resource: '../core/booking/src/Adapter/Web/Free/'
         tags: [ 'controller.service_arguments' ]
