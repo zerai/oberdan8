@@ -17,12 +17,9 @@ class AdozioniUploader implements AdozioniUploaderInterface
 
     public function uploadAdozioniFile(UploadedFile $uploadedAdozioniFile): string
     {
-        // TODO: Implement uploadAdozioniFile() method.
-
         $destination = $this->adozioniUploadsDirectory;
-        $originalFilename = pathinfo($uploadedAdozioniFile->getClientOriginalName(), PATHINFO_FILENAME);
 
-        //$newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+        $originalFilename = pathinfo($uploadedAdozioniFile->getClientOriginalName(), PATHINFO_FILENAME);
 
         // this is needed to safely include the file name as part of the URL
         $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
@@ -37,12 +34,8 @@ class AdozioniUploader implements AdozioniUploaderInterface
 
     public function uploadAdozioniFileAndReturnFile(UploadedFile $uploadedAdozioniFile): File
     {
-        // TODO: Implement uploadAdozioniFile() method.
-
         $destination = $this->adozioniUploadsDirectory;
         $originalFilename = pathinfo($uploadedAdozioniFile->getClientOriginalName(), PATHINFO_FILENAME);
-
-        //$newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
 
         // this is needed to safely include the file name as part of the URL
         $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
