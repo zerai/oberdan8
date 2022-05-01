@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Controller;
+namespace Booking\Adapter\Web\Admin;
 
 use App\Form\BackofficeReservationType;
 use App\Form\Dto\ClientDto;
@@ -118,15 +118,10 @@ class BackofficeReservationController extends AbstractController
                 //throw new \RuntimeException('Errore nel salvataggio dei dati');
             }
 
-//            $entityManager = $this->getDoctrine()->getManager();
-//            $entityManager->persist($backofficeUser);
-//            $entityManager->flush();
-
             return $this->redirectToRoute('backoffice_reservation_index');
         }
 
         return $this->render('backoffice/reservation/new.html.twig', [
-            //'backoffice_user' => $backofficeUser,
             'form' => $form->createView(),
         ]);
     }
@@ -244,7 +239,6 @@ class BackofficeReservationController extends AbstractController
         }
 
         return $this->render('backoffice/reservation/edit.html.twig', [
-            //'backoffice_user' => $reservation,
             'reservation' => $reservation,
             'form' => $form->createView(),
         ]);
@@ -304,8 +298,6 @@ class BackofficeReservationController extends AbstractController
     {
         if ($this->isCsrfTokenValid('send_tanks_mail' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
             $this->getDoctrine()->getManager();
-            //$entityManager->remove($backofficeUser);
-            //$entityManager->flush();
 
             $this->addFlash('success', 'E\' stata inviata la mail di ringraziamento .');
         } else {

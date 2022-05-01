@@ -42,6 +42,65 @@
       <code>ReservationSaleDetail[]</code>
     </LessSpecificImplementedReturnType>
   </file>
+  <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
+    <InternalMethod occurrences="1">
+      <code>get</code>
+    </InternalMethod>
+    <MissingPropertyType occurrences="1">
+      <code>$formData-&gt;books</code>
+    </MissingPropertyType>
+    <MixedArgument occurrences="10">
+      <code>$bookId</code>
+      <code>$form-&gt;get('classe')-&gt;getData()</code>
+      <code>$form-&gt;get('generalNotes')-&gt;getData()</code>
+      <code>$form-&gt;get('packageId')-&gt;getData()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getCity()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getEmail()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getFirstName()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getLastName()</code>
+      <code>$form-&gt;get('person')-&gt;getData()-&gt;getPhone()</code>
+      <code>$form-&gt;get('status')-&gt;getData()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$bookId</code>
+      <code>$queryBuilder</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="6">
+      <code>getCity</code>
+      <code>getEmail</code>
+      <code>getFirstName</code>
+      <code>getLastName</code>
+      <code>getPhone</code>
+      <code>getQuery</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>$bookId</code>
+    </MixedOperand>
+    <PossiblyNullArgument occurrences="6">
+      <code>$reservation-&gt;getCity()</code>
+      <code>$reservation-&gt;getEmail()</code>
+      <code>$reservation-&gt;getEmail()</code>
+      <code>$reservation-&gt;getFirstName()</code>
+      <code>$reservation-&gt;getLastName()</code>
+      <code>$reservation-&gt;getPhone()</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="11">
+      <code>getConfirmationStatus</code>
+      <code>getGeneralNotes</code>
+      <code>getReservationPackageId</code>
+      <code>getStatus</code>
+      <code>getStatus</code>
+      <code>getStatus</code>
+      <code>setConfirmationStatus</code>
+      <code>setGeneralNotes</code>
+      <code>setReservationPackageId</code>
+      <code>setStatus</code>
+      <code>withExtensionTime</code>
+    </PossiblyNullReference>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getWithSearchQueryBuilder</code>
+    </UndefinedInterfaceMethod>
+  </file>
   <file src="core/booking/src/Adapter/Web/Free/AdozioniReservationController.php">
     <RedundantConditionGivenDocblockType occurrences="3">
       <code>$adozioniFile !== null</code>
@@ -264,65 +323,6 @@
       <code>getUsername</code>
       <code>setPassword</code>
     </PossiblyNullReference>
-  </file>
-  <file src="src/Controller/BackofficeReservationController.php">
-    <InternalMethod occurrences="1">
-      <code>get</code>
-    </InternalMethod>
-    <MissingPropertyType occurrences="1">
-      <code>$formData-&gt;books</code>
-    </MissingPropertyType>
-    <MixedArgument occurrences="10">
-      <code>$bookId</code>
-      <code>$form-&gt;get('classe')-&gt;getData()</code>
-      <code>$form-&gt;get('generalNotes')-&gt;getData()</code>
-      <code>$form-&gt;get('packageId')-&gt;getData()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getCity()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getEmail()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getFirstName()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getLastName()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getPhone()</code>
-      <code>$form-&gt;get('status')-&gt;getData()</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$bookId</code>
-      <code>$queryBuilder</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="6">
-      <code>getCity</code>
-      <code>getEmail</code>
-      <code>getFirstName</code>
-      <code>getLastName</code>
-      <code>getPhone</code>
-      <code>getQuery</code>
-    </MixedMethodCall>
-    <MixedOperand occurrences="1">
-      <code>$bookId</code>
-    </MixedOperand>
-    <PossiblyNullArgument occurrences="6">
-      <code>$reservation-&gt;getCity()</code>
-      <code>$reservation-&gt;getEmail()</code>
-      <code>$reservation-&gt;getEmail()</code>
-      <code>$reservation-&gt;getFirstName()</code>
-      <code>$reservation-&gt;getLastName()</code>
-      <code>$reservation-&gt;getPhone()</code>
-    </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="11">
-      <code>getConfirmationStatus</code>
-      <code>getGeneralNotes</code>
-      <code>getReservationPackageId</code>
-      <code>getStatus</code>
-      <code>getStatus</code>
-      <code>getStatus</code>
-      <code>setConfirmationStatus</code>
-      <code>setGeneralNotes</code>
-      <code>setReservationPackageId</code>
-      <code>setStatus</code>
-      <code>withExtensionTime</code>
-    </PossiblyNullReference>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>getWithSearchQueryBuilder</code>
-    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Controller/BackofficeSecurityController.php">
     <InvalidReturnType occurrences="1">

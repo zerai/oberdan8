@@ -41,6 +41,81 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php
 
 		-
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:getWithSearchQueryBuilder\\(\\)\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getReservationPackageId\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 3
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method setConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method setGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method setReservationPackageId\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method setStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method withExtensionTime\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$city of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setCity\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$email of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setEmail\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$firstName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setFirstName\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$lastName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setLastName\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Parameter \\#1 \\$phone of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setPhone\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
 			message: "#^Call to an undefined method Booking\\\\Infrastructure\\\\Framework\\\\Form\\\\Service\\\\AdozioniUploaderInterface\\:\\:uploadAdozioniFileAndReturnFile\\(\\)\\.$#"
 			count: 3
 			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
@@ -214,81 +289,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$user of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, App\\\\Entity\\\\BackofficeUser\\|null given\\.$#"
 			count: 1
 			path: src/Controller/BackofficeMyAccountController.php
-
-		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:getWithSearchQueryBuilder\\(\\)\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method getGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method getReservationPackageId\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method getStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 3
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method setConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method setGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method setReservationPackageId\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method setStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Cannot call method withExtensionTime\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$city of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setCity\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$email of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setEmail\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$firstName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setFirstName\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$lastName of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setLastName\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$phone of method App\\\\Form\\\\Dto\\\\ClientDto\\:\\:setPhone\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/BackofficeReservationController.php
 
 		-
 			message: "#^Method App\\\\Controller\\\\BackofficeSecurityController\\:\\:logout\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but return statement is missing\\.$#"
