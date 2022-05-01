@@ -42,6 +42,26 @@
       <code>ReservationSaleDetail[]</code>
     </LessSpecificImplementedReturnType>
   </file>
+  <file src="core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php">
+    <MixedAssignment occurrences="3">
+      <code>$confirmedReservation</code>
+      <code>$queryBuilder</code>
+      <code>$queryBuilder</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="3">
+      <code>getQuery</code>
+      <code>getQuery</code>
+      <code>getResult</code>
+    </MixedMethodCall>
+    <PossiblyNullReference occurrences="2">
+      <code>getConfirmationStatus</code>
+      <code>isExpired</code>
+    </PossiblyNullReference>
+    <UndefinedInterfaceMethod occurrences="2">
+      <code>findWithQueryBuilderAllConfirmedOrderByOldest</code>
+      <code>findWithQueryBuilderAllConfirmedOrderByOldest</code>
+    </UndefinedInterfaceMethod>
+  </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
     <InternalMethod occurrences="1">
       <code>get</code>
@@ -272,26 +292,6 @@
     <MissingDependency occurrences="1">
       <code>TestCase</code>
     </MissingDependency>
-  </file>
-  <file src="src/Controller/BackofficeConfirmedReservationController.php">
-    <MixedAssignment occurrences="3">
-      <code>$confirmedReservation</code>
-      <code>$queryBuilder</code>
-      <code>$queryBuilder</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="3">
-      <code>getQuery</code>
-      <code>getQuery</code>
-      <code>getResult</code>
-    </MixedMethodCall>
-    <PossiblyNullReference occurrences="2">
-      <code>getConfirmationStatus</code>
-      <code>isExpired</code>
-    </PossiblyNullReference>
-    <UndefinedInterfaceMethod occurrences="2">
-      <code>findWithQueryBuilderAllConfirmedOrderByOldest</code>
-      <code>findWithQueryBuilderAllConfirmedOrderByOldest</code>
-    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Controller/BackofficeInfoBoxController.php">
     <MixedMethodCall occurrences="1">
