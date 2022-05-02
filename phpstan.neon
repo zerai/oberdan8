@@ -19,4 +19,4 @@ parameters:
     excludes_analyse:
         - tests/bootstrap.php
 
-    tmpDir: .build/phpstan/
+    tmpDir: var/tools/phpstan/
