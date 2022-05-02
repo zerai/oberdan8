@@ -12,7 +12,7 @@
          beStrictAboutTodoAnnotatedTests="true"
          bootstrap="../../../../vendor/autoload.php"
          cacheResult="true"
-         cacheResultFile="../../../../.build/phpunit/core/unit.cache"
+         cacheResultFile="../../../../var/tools/phpunit/core/unit.cache"
          colors="true"
          columns="max"
          convertErrorsToExceptions="true"
