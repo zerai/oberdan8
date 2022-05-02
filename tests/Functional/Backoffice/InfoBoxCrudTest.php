@@ -20,8 +20,26 @@ class InfoBoxCrudTest extends SecurityWebtestCase
     /** @test */
     public function shouldBeAbleToCreateAnInfoBox(): void
     {
-        self::markTestIncomplete();
-        //$this->logInAsAdmin();
+        $this->logInAsAdmin();
+
+        $this->client->request('GET', '/admin/info-box/new');
+
+        self::assertResponseIsSuccessful();
+
+        $this->client->followRedirects(true);
+
+        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('_info_box_token');
+
+        $crawler = $this->client->submitForm('Salva', [
+            'info_box[title]' => 'irrelevant title',
+            'info_box[body]' => 'irrelevant',
+            'info_box[active]' => 1,
+            'info_box[boxType]' => 'info',
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        self::assertStringContainsString('irrelevant title', $this->client->getResponse()->getContent());
     }
 
     /** @test */
