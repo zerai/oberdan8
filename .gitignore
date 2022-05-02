@@ -1,6 +1,5 @@
 /.idea/
 /.vscode/
-/.build/
 /tools/*/vendor/
 /.deptrac.cache
 /auth.json
