@@ -28,6 +28,7 @@
             <file name="src/Kernel.php"/>
             <file name="config/bootstrap.php"/>
             <directory name="src/DataFixtures"/>
+            <directory name="src/Factory"/>
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
