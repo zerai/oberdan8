@@ -43,8 +43,10 @@
     </LessSpecificImplementedReturnType>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php">
-    <MixedAssignment occurrences="3">
+    <MixedAssignment occurrences="5">
       <code>$confirmedReservation</code>
+      <code>$q</code>
+      <code>$q</code>
       <code>$queryBuilder</code>
       <code>$queryBuilder</code>
     </MixedAssignment>
@@ -63,9 +65,6 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
-    <InternalMethod occurrences="1">
-      <code>get</code>
-    </InternalMethod>
     <MissingPropertyType occurrences="1">
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
@@ -81,9 +80,11 @@
       <code>$form-&gt;get('person')-&gt;getData()-&gt;getPhone()</code>
       <code>$form-&gt;get('status')-&gt;getData()</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="4">
       <code>$bookId</code>
+      <code>$q</code>
       <code>$queryBuilder</code>
+      <code>$status</code>
     </MixedAssignment>
     <MixedMethodCall occurrences="6">
       <code>getCity</code>
