@@ -92,7 +92,8 @@ host('production')
     //->set('tag', '0.1.0')
     //->set('tag', '0.1.1')
     //->set('tag', '0.1.2')
-    ->set('tag', '0.1.4')
+    //->set('tag', '0.1.4')
+    ->set('tag', '0.1.5')
     ->set('composer_options', '{{composer_action}} --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
 
 ;
