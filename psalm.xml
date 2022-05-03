@@ -9,6 +9,7 @@
     findUnusedVariablesAndParams="true"
     resolveFromConfigFile="true"
     strictBinaryOperands="true"
+    autoloader="vendor/bin/.phpunit/phpunit/vendor/autoload.php"
 >
 
     <plugins>
