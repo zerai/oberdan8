@@ -425,46 +425,6 @@ parameters:
 			path: src/Entity/Reservation.php
 
 		-
-			message: "#^Class App\\\\Factory\\\\BookFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
-			count: 1
-			path: src/Factory/BookFactory.php
-
-		-
-			message: "#^Class App\\\\Factory\\\\InfoBoxFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
-			count: 1
-			path: src/Factory/InfoBoxFactory.php
-
-		-
-			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:city\\(\\)\\.$#"
-			count: 1
-			path: src/Factory/ReservationFactory.php
-
-		-
-			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:email\\(\\)\\.$#"
-			count: 1
-			path: src/Factory/ReservationFactory.php
-
-		-
-			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:lastName\\(\\)\\.$#"
-			count: 1
-			path: src/Factory/ReservationFactory.php
-
-		-
-			message: "#^Call to an undefined method Faker\\\\Generator\\:\\:phoneNumber\\(\\)\\.$#"
-			count: 1
-			path: src/Factory/ReservationFactory.php
-
-		-
-			message: "#^Class App\\\\Factory\\\\ReservationFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
-			count: 1
-			path: src/Factory/ReservationFactory.php
-
-		-
-			message: "#^Class App\\\\Factory\\\\ReservationSaleDetailFactory extends generic class Zenstruck\\\\Foundry\\\\ModelFactory but does not specify its types\\: TModel$#"
-			count: 1
-			path: src/Factory/ReservationSaleDetailFactory.php
-
-		-
 			message:
 				"""
 					#^Parameter \\$routes of method App\\\\Kernel\\:\\:configureRoutes\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Routing\\\\RouteCollectionBuilder\\:
