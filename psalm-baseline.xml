@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.22.0@fc2c6ab4d5fa5d644d8617089f012f3bb84b8703">
   <file src="core/booking/src/Adapter/Persistance/BookRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>Book[]</code>
-      <code>Book[]</code>
-    </LessSpecificImplementedReturnType>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>BookRepository</code>
+      <code>BookRepository</code>
+      <code>BookRepository</code>
+    </PropertyNotSetInConstructor>
   </file>
   <file src="core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php">
     <MixedArgument occurrences="5">
@@ -16,10 +17,6 @@
     </MixedArgument>
   </file>
   <file src="core/booking/src/Adapter/Persistance/ReservationRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>Reservation[]</code>
-      <code>Reservation[]</code>
-    </LessSpecificImplementedReturnType>
     <MixedAssignment occurrences="1">
       <code>$result</code>
     </MixedAssignment>
@@ -32,15 +29,21 @@
       <code>getConfirmationStatus</code>
       <code>isExpired</code>
     </PossiblyNullReference>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>ReservationRepository</code>
+      <code>ReservationRepository</code>
+      <code>ReservationRepository</code>
+    </PropertyNotSetInConstructor>
     <RedundantCast occurrences="1">
       <code>(int) \count($expired)</code>
     </RedundantCast>
   </file>
   <file src="core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>ReservationSaleDetail[]</code>
-      <code>ReservationSaleDetail[]</code>
-    </LessSpecificImplementedReturnType>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>ReservationSaleDetailRepository</code>
+      <code>ReservationSaleDetailRepository</code>
+      <code>ReservationSaleDetailRepository</code>
+    </PropertyNotSetInConstructor>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php">
     <MixedAssignment occurrences="3">
@@ -476,25 +479,23 @@
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/Factory/BookFactory.php">
+    <MoreSpecificReturnType occurrences="1">
+      <code>self</code>
+    </MoreSpecificReturnType>
+  </file>
+  <file src="src/Factory/InfoBoxFactory.php">
     <ImplementedReturnTypeMismatch occurrences="5">
-      <code>Book[]|Proxy[]</code>
-      <code>Book[]|Proxy[]</code>
-      <code>Book|Proxy</code>
-      <code>Book|Proxy</code>
-      <code>Book|Proxy</code>
+      <code>InfoBox[]|Proxy[]</code>
+      <code>InfoBox[]|Proxy[]</code>
+      <code>InfoBox|Proxy</code>
+      <code>InfoBox|Proxy</code>
+      <code>InfoBox|Proxy</code>
     </ImplementedReturnTypeMismatch>
     <MoreSpecificReturnType occurrences="1">
       <code>self</code>
     </MoreSpecificReturnType>
   </file>
   <file src="src/Factory/ReservationFactory.php">
-    <ImplementedReturnTypeMismatch occurrences="5">
-      <code>Reservation[]|Proxy[]</code>
-      <code>Reservation[]|Proxy[]</code>
-      <code>Reservation|Proxy</code>
-      <code>Reservation|Proxy</code>
-      <code>Reservation|Proxy</code>
-    </ImplementedReturnTypeMismatch>
     <MoreSpecificReturnType occurrences="1">
       <code>self</code>
     </MoreSpecificReturnType>
@@ -506,32 +507,27 @@
     </UndefinedMagicMethod>
   </file>
   <file src="src/Factory/ReservationSaleDetailFactory.php">
-    <ImplementedReturnTypeMismatch occurrences="5">
-      <code>ReservationSaleDetail[]|Proxy[]</code>
-      <code>ReservationSaleDetail[]|Proxy[]</code>
-      <code>ReservationSaleDetail|Proxy</code>
-      <code>ReservationSaleDetail|Proxy</code>
-      <code>ReservationSaleDetail|Proxy</code>
-    </ImplementedReturnTypeMismatch>
     <MoreSpecificReturnType occurrences="1">
       <code>self</code>
     </MoreSpecificReturnType>
   </file>
   <file src="src/Repository/BackofficeUserRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>BackofficeUser[]</code>
-      <code>BackofficeUser[]</code>
-    </LessSpecificImplementedReturnType>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>BackofficeUserRepository</code>
+      <code>BackofficeUserRepository</code>
+      <code>BackofficeUserRepository</code>
+    </PropertyNotSetInConstructor>
   </file>
   <file src="src/Repository/InfoBoxRepository.php">
-    <LessSpecificImplementedReturnType occurrences="2">
-      <code>InfoBox[]</code>
-      <code>InfoBox[]</code>
-    </LessSpecificImplementedReturnType>
     <MixedInferredReturnType occurrences="1">
       <code>?InfoBox</code>
     </MixedInferredReturnType>
     <MixedReturnStatement occurrences="1"/>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>InfoBoxRepository</code>
+      <code>InfoBoxRepository</code>
+      <code>InfoBoxRepository</code>
+    </PropertyNotSetInConstructor>
   </file>
   <file src="src/Security/EmailVerifier.php">
     <MixedArgument occurrences="4">
