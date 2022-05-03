@@ -230,74 +230,137 @@
     </PossiblyNullOperand>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php">
-    <MissingDependency occurrences="1">
-      <code>KernelTestCase</code>
-    </MissingDependency>
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;repositoryClass</code>
+    </ArgumentTypeCoercion>
+    <MixedArgument occurrences="3">
+      <code>$reservations-&gt;getQuery()-&gt;getResult()</code>
+      <code>$reservations-&gt;getQuery()-&gt;getResult()</code>
+      <code>$reservations-&gt;getQuery()-&gt;getResult()</code>
+    </MixedArgument>
+    <PossiblyFalseArgument occurrences="16">
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
+    </PossiblyFalseArgument>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>null</code>
+    </PossiblyNullPropertyAssignmentValue>
+    <PropertyTypeCoercion occurrences="2"/>
+    <UnusedVariable occurrences="1">
+      <code>$noise</code>
+    </UnusedVariable>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryReadSideTest.php">
-    <MissingDependency occurrences="1">
-      <code>KernelTestCase</code>
-    </MissingDependency>
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;repositoryClass</code>
+    </ArgumentTypeCoercion>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>null</code>
+    </PossiblyNullPropertyAssignmentValue>
+    <PropertyTypeCoercion occurrences="2"/>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryTest.php">
-    <MissingDependency occurrences="1">
-      <code>KernelTestCase</code>
-    </MissingDependency>
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;repositoryClass</code>
+    </ArgumentTypeCoercion>
+    <MissingPropertyType occurrences="1">
+      <code>$repository</code>
+    </MissingPropertyType>
+    <MixedAssignment occurrences="5">
+      <code>$entityFromDatabase</code>
+      <code>$entityFromDatabase</code>
+      <code>$entityFromDatabase</code>
+      <code>$entityFromDatabase</code>
+      <code>$originalEntity</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="15">
+      <code>addBook</code>
+      <code>delete</code>
+      <code>find</code>
+      <code>find</code>
+      <code>find</code>
+      <code>find</code>
+      <code>find</code>
+      <code>getId</code>
+      <code>save</code>
+      <code>save</code>
+      <code>save</code>
+      <code>save</code>
+      <code>save</code>
+      <code>save</code>
+      <code>withId</code>
+    </MixedMethodCall>
+    <PossiblyNullPropertyAssignmentValue occurrences="1">
+      <code>null</code>
+    </PossiblyNullPropertyAssignmentValue>
+    <PropertyTypeCoercion occurrences="1"/>
   </file>
   <file src="core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
+    <MixedArgument occurrences="1">
+      <code>$convertedPHPValue</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$convertedPHPValue</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>\Generator</code>
+    </MixedInferredReturnType>
+    <PossiblyNullArgument occurrences="4">
+      <code>$this-&gt;platform</code>
+      <code>$this-&gt;platform</code>
+      <code>$this-&gt;platform</code>
+      <code>$this-&gt;platform</code>
+    </PossiblyNullArgument>
+    <PossiblyNullReference occurrences="5">
+      <code>convertToDatabaseValue</code>
+      <code>convertToPHPValue</code>
+      <code>convertToPHPValue</code>
+      <code>convertToPHPValue</code>
+      <code>getName</code>
+    </PossiblyNullReference>
   </file>
   <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
-  </file>
-  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToClientTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
+    <MixedArgument occurrences="2">
+      <code>$this-&gt;getPersonData()['firstName']</code>
+      <code>$this-&gt;getPersonData()['lastName']</code>
+    </MixedArgument>
+    <UnusedVariable occurrences="1">
+      <code>$fileList</code>
+    </UnusedVariable>
   </file>
   <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewReservationEmailToBackofficeTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
-  </file>
-  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingReservationConfirmationMailToClientTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
-  </file>
-  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
-  </file>
-  <file src="core/booking/tests/Unit/Domain/Book/BookTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
-  </file>
-  <file src="core/booking/tests/Unit/Domain/Client/ClientTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
+    <MixedArgument occurrences="2">
+      <code>$this-&gt;getPersonData()['firstName']</code>
+      <code>$this-&gt;getPersonData()['lastName']</code>
+    </MixedArgument>
   </file>
   <file src="core/booking/tests/Unit/Domain/ConfirmationStatus/ConfirmationStatusTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
+    <MixedInferredReturnType occurrences="2">
+      <code>\Generator</code>
+      <code>\Generator</code>
+    </MixedInferredReturnType>
   </file>
   <file src="core/booking/tests/Unit/Domain/ReservationSaleDetailTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
-  </file>
-  <file src="core/booking/tests/Unit/Infrastructure/BookingConfigurationTest.php">
-    <MissingDependency occurrences="1">
-      <code>TestCase</code>
-    </MissingDependency>
+    <MixedInferredReturnType occurrences="1">
+      <code>Generator</code>
+    </MixedInferredReturnType>
+    <PossiblyNullReference occurrences="1">
+      <code>extensionTime</code>
+    </PossiblyNullReference>
   </file>
   <file src="src/Controller/BackofficeInfoBoxController.php">
     <MixedMethodCall occurrences="1">
@@ -386,95 +449,10 @@
       <code>$this-&gt;id</code>
     </MixedReturnStatement>
   </file>
-  <file src="src/Entity/Book.php">
-    <MissingConstructor occurrences="1">
-      <code>$id</code>
-    </MissingConstructor>
-    <MissingPropertyType occurrences="5">
-      <code>$author</code>
-      <code>$isbn</code>
-      <code>$reservation</code>
-      <code>$title</code>
-      <code>$volume</code>
-    </MissingPropertyType>
-    <MixedInferredReturnType occurrences="5">
-      <code>?Reservation</code>
-      <code>?string</code>
-      <code>?string</code>
-      <code>?string</code>
-      <code>?string</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="5">
-      <code>$this-&gt;author</code>
-      <code>$this-&gt;isbn</code>
-      <code>$this-&gt;reservation</code>
-      <code>$this-&gt;title</code>
-      <code>$this-&gt;volume</code>
-    </MixedReturnStatement>
-  </file>
   <file src="src/Entity/InfoBox.php">
     <MissingConstructor occurrences="1">
       <code>$id</code>
     </MissingConstructor>
-  </file>
-  <file src="src/Entity/MailOut.php">
-    <MissingPropertyType occurrences="3">
-      <code>$content</code>
-      <code>$id</code>
-      <code>$recipient</code>
-    </MissingPropertyType>
-    <MixedInferredReturnType occurrences="3">
-      <code>?int</code>
-      <code>?string</code>
-      <code>?string</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="3">
-      <code>$this-&gt;content</code>
-      <code>$this-&gt;id</code>
-      <code>$this-&gt;recipient</code>
-    </MixedReturnStatement>
-  </file>
-  <file src="src/Entity/Reservation.php">
-    <MissingPropertyType occurrences="8">
-      <code>$LastName</code>
-      <code>$books</code>
-      <code>$city</code>
-      <code>$classe</code>
-      <code>$email</code>
-      <code>$firstName</code>
-      <code>$phone</code>
-      <code>$registrationDate</code>
-    </MissingPropertyType>
-    <MixedArrayAssignment occurrences="1">
-      <code>$this-&gt;books[]</code>
-    </MixedArrayAssignment>
-    <MixedInferredReturnType occurrences="8">
-      <code>?\DateTimeImmutable</code>
-      <code>?string</code>
-      <code>?string</code>
-      <code>?string</code>
-      <code>?string</code>
-      <code>?string</code>
-      <code>?string</code>
-      <code>Collection</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="2">
-      <code>contains</code>
-      <code>removeElement</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="8">
-      <code>$this-&gt;LastName</code>
-      <code>$this-&gt;books</code>
-      <code>$this-&gt;city</code>
-      <code>$this-&gt;classe</code>
-      <code>$this-&gt;email</code>
-      <code>$this-&gt;firstName</code>
-      <code>$this-&gt;phone</code>
-      <code>$this-&gt;registrationDate</code>
-    </MixedReturnStatement>
-    <PropertyNotSetInConstructor occurrences="1">
-      <code>$id</code>
-    </PropertyNotSetInConstructor>
   </file>
   <file src="src/Repository/BackofficeUserRepository.php">
     <LessSpecificImplementedReturnType occurrences="2">
