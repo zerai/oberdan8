@@ -18,7 +18,7 @@
             <containerXml>var/cache/dev/srcApp_KernelDevDebugContainer.xml</containerXml>
 <!--            <containerXml>var/cache/dev/srcApp_KernelTestDebugContainer.xml</containerXml>-->
         </pluginClass>
-    </plugins>
+    <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/></plugins>
 
     <projectFiles>
         <directory name="src/"/>
