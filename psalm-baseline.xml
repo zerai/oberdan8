@@ -20,14 +20,6 @@
       <code>Reservation[]</code>
       <code>Reservation[]</code>
     </LessSpecificImplementedReturnType>
-    <MixedAssignment occurrences="1">
-      <code>$result</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="2">
-      <code>Reservation[]</code>
-      <code>Reservation[]</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="2"/>
     <PossiblyNullReference occurrences="2">
       <code>getConfirmationStatus</code>
       <code>isExpired</code>
@@ -233,11 +225,6 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>$this-&gt;repositoryClass</code>
     </ArgumentTypeCoercion>
-    <MixedArgument occurrences="3">
-      <code>$reservations-&gt;getQuery()-&gt;getResult()</code>
-      <code>$reservations-&gt;getQuery()-&gt;getResult()</code>
-      <code>$reservations-&gt;getQuery()-&gt;getResult()</code>
-    </MixedArgument>
     <PossiblyFalseArgument occurrences="16">
       <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
       <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
@@ -268,6 +255,11 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>$this-&gt;repositoryClass</code>
     </ArgumentTypeCoercion>
+    <MixedMethodCall occurrences="3">
+      <code>getRegistrationDate</code>
+      <code>getRegistrationDate</code>
+      <code>getRegistrationDate</code>
+    </MixedMethodCall>
     <PossiblyNullPropertyAssignmentValue occurrences="1">
       <code>null</code>
     </PossiblyNullPropertyAssignmentValue>

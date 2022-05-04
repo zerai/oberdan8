@@ -25,14 +25,14 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
 
     public function save(Reservation $reservation): void
     {
-        $this->_em->persist($reservation);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($reservation);
+        $this->getEntityManager()->flush();
     }
 
     public function delete(Reservation $reservation): void
     {
-        $this->_em->remove($reservation);
-        $this->_em->flush();
+        $this->getEntityManager()->remove($reservation);
+        $this->getEntityManager()->flush();
     }
 
     public function withId(UuidInterface $reservationId): Reservation
@@ -65,6 +65,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
 
     /**
      * @param string|null $term
+     * @param string|null $status
      * @return QueryBuilder
      */
     public function getWithSearchQueryBuilder(?string $term, ?string $status): QueryBuilder
@@ -90,9 +91,9 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
     }
 
     /**
-     * @return Reservation[]
+     * @retrun array<array-key, Reservation>
      */
-    public function findAllNewArrivalOrderByNewest()
+    public function findAllNewArrivalOrderByNewest(): array
     {
         return $this->createQueryBuilder('r')
             ->leftJoin('r.saleDetail', 's')
@@ -106,9 +107,9 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
     }
 
     /**
-     * @return Reservation[]
+     * @retrun array<array-key, Reservation>
      */
-    public function findAllConfirmedOrderByOldest()
+    public function findAllConfirmedOrderByOldest(): array
     {
         return $this->createQueryBuilder('r')
             ->leftJoin('r.saleDetail', 's')

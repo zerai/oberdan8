@@ -32,8 +32,8 @@ class BackofficeUserRepository extends ServiceEntityRepository implements Passwo
         }
 
         $user->setPassword($newEncodedPassword);
-        $this->_em->persist($user);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
     }
 
     // /**
@@ -66,7 +66,7 @@ class BackofficeUserRepository extends ServiceEntityRepository implements Passwo
     */
     public function save(BackofficeUser $user): void
     {
-        $this->_em->persist($user);
-        $this->_em->flush();
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
     }
 }
