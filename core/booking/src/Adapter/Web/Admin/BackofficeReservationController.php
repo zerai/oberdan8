@@ -265,7 +265,7 @@ class BackofficeReservationController extends AbstractController
      */
     public function deleteBookFromReservation(Request $request, Reservation $reservation, BookRepository $bookRepository, LoggerInterface $logger): Response
     {
-        $bookId = $request->get('book_id'); // dd($bookId);
+        $bookId = $request->request->get('book_id');
 
         if ($this->isCsrfTokenValid('delete-book' . $bookId . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
             $book = $bookRepository->findOneBy([
