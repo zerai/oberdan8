@@ -267,6 +267,12 @@ class BackofficeReservationController extends AbstractController
     {
         $bookId = $request->request->get('book_id');
 
+        // TODO Migliore messaggio nel logger ?? Libro già rimosso? o altro
+        if ($bookId === null) {
+            //TODO throw exception, message to user
+            $logger->alert('Impossibile rimuvere libro da prenotazione.');
+        }
+
         if ($this->isCsrfTokenValid('delete-book' . $bookId . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
             $book = $bookRepository->findOneBy([
                 'id' => Uuid::fromString($bookId),
