@@ -5325,16 +5325,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.4.37",
+            "version": "v4.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "3ccfcfb96ecce1217d7b0875a0736976bc6e63dc"
+                "reference": "708e761740c16b02c86e3f0c932018a06b895d40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/3ccfcfb96ecce1217d7b0875a0736976bc6e63dc",
-                "reference": "3ccfcfb96ecce1217d7b0875a0736976bc6e63dc",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/708e761740c16b02c86e3f0c932018a06b895d40",
+                "reference": "708e761740c16b02c86e3f0c932018a06b895d40",
                 "shasum": ""
             },
             "require": {
@@ -5389,7 +5389,7 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/event-dispatcher/tree/v4.4.37"
+                "source": "https://github.com/symfony/event-dispatcher/tree/v4.4.42"
             },
             "funding": [
                 {
@@ -5405,7 +5405,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:41:36+00:00"
+            "time": "2022-05-05T15:33:49+00:00"
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -5678,16 +5678,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v4.4.41",
+            "version": "v4.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "d874bd4208741fd88bd5a1c6d22f2b30a28dc47e"
+                "reference": "b19668b10c18deb56ff8068070afa5300f01f500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/d874bd4208741fd88bd5a1c6d22f2b30a28dc47e",
-                "reference": "d874bd4208741fd88bd5a1c6d22f2b30a28dc47e",
+                "url": "https://api.github.com/repos/symfony/form/zipball/b19668b10c18deb56ff8068070afa5300f01f500",
+                "reference": "b19668b10c18deb56ff8068070afa5300f01f500",
                 "shasum": ""
             },
             "require": {
@@ -5756,7 +5756,7 @@
             "description": "Allows to easily create, process and reuse HTML forms",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/form/tree/v4.4.41"
+                "source": "https://github.com/symfony/form/tree/v4.4.42"
             },
             "funding": [
                 {
@@ -5772,7 +5772,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-22T17:25:21+00:00"
+            "time": "2022-05-21T14:03:14+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -6315,31 +6315,31 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v4.4.41",
+            "version": "v5.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "b95abb9cfb6d8ef4da80fef36ef7cabc1391682e"
+                "reference": "b9e17d7ab867ce99f89950ebced0fa91076ba12b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/b95abb9cfb6d8ef4da80fef36ef7cabc1391682e",
-                "reference": "b95abb9cfb6d8ef4da80fef36ef7cabc1391682e",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/b9e17d7ab867ce99f89950ebced0fa91076ba12b",
+                "reference": "b9e17d7ab867ce99f89950ebced0fa91076ba12b",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
-                "symfony/polyfill-intl-icu": "~1.0",
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-php80": "^1.16"
             },
             "require-dev": {
-                "symfony/filesystem": "^3.4|^4.0|^5.0"
-            },
-            "suggest": {
-                "ext-intl": "to use the component with locales other than \"en\""
+                "symfony/filesystem": "^4.4|^5.0|^6.0"
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "Resources/functions.php"
+                ],
                 "psr-4": {
                     "Symfony\\Component\\Intl\\": ""
                 },
@@ -6383,7 +6383,7 @@
                 "localization"
             ],
             "support": {
-                "source": "https://github.com/symfony/intl/tree/v4.4.41"
+                "source": "https://github.com/symfony/intl/tree/v5.4.8"
             },
             "funding": [
                 {
@@ -6399,7 +6399,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-07T09:33:50+00:00"
+            "time": "2022-04-07T09:39:59+00:00"
         },
         {
             "name": "symfony/mailer",
@@ -6721,20 +6721,22 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v4.4.37",
+            "version": "v5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "41d1e741a292574887629369400820c9645e8a87"
+                "reference": "cc1147cb11af1b43f503ac18f31aa3bec213aba8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/41d1e741a292574887629369400820c9645e8a87",
-                "reference": "41d1e741a292574887629369400820c9645e8a87",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/cc1147cb11af1b43f503ac18f31aa3bec213aba8",
+                "reference": "cc1147cb11af1b43f503ac18f31aa3bec213aba8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1.3",
+                "php": ">=7.2.5",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/polyfill-php73": "~1.0",
                 "symfony/polyfill-php80": "^1.16"
             },
             "type": "library",
@@ -6768,7 +6770,7 @@
                 "options"
             ],
             "support": {
-                "source": "https://github.com/symfony/options-resolver/tree/v4.4.37"
+                "source": "https://github.com/symfony/options-resolver/tree/v5.4.3"
             },
             "funding": [
                 {
@@ -6784,7 +6786,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:41:36+00:00"
+            "time": "2022-01-02T09:53:40+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
@@ -6866,93 +6868,6 @@
                 }
             ],
             "time": "2022-05-24T11:49:31+00:00"
-        },
-        {
-            "name": "symfony/polyfill-intl-icu",
-            "version": "v1.25.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "c023a439b8551e320cc3c8433b198e408a623af1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/c023a439b8551e320cc3c8433b198e408a623af1",
-                "reference": "c023a439b8551e320cc3c8433b198e408a623af1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "suggest": {
-                "ext-intl": "For best performance and support of other locales than \"en\""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.23-dev"
-                },
-                "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ],
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Icu\\": ""
-                },
-                "classmap": [
-                    "Resources/stubs"
-                ],
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill for intl's ICU-related data and classes",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "icu",
-                "intl",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "support": {
-                "source": "https://github.com/symfony/polyfill-intl-icu/tree/v1.25.0"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2021-10-26T17:16:04+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
