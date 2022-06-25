@@ -374,7 +374,6 @@ jobs:
 
 
   booking-unit-test:
-    needs: [lint-composer, coding-standard, phpstan, psalm, architecture-check]
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
