@@ -31,7 +31,7 @@
         "symfony/framework-bundle": "4.4.*",
         "symfony/google-mailer": "4.4.*",
         "symfony/mailer": "4.4.*",
-        "symfony/monolog-bundle": "^3.7",
+        "symfony/monolog-bundle": "^3.8",
         "symfony/proxy-manager-bridge": "4.4.*",
         "symfony/security-bundle": "4.4.*",
         "symfony/twig-bundle": "^4.4",
