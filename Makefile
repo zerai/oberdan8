@@ -35,7 +35,6 @@ core-tests: ## Runs unit tests For Core code with phpunit/phpunit
 
 .PHONY: core-coverage
 core-coverage: ## Collects Core code coverage from running unit tests with phpunit/phpunit
-	mkdir -p .build/phpunit/core
 	bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-html var/coverage/core
 
 .PHONY: core-architecture-check
@@ -57,3 +56,13 @@ pre-commit:  ## Check Core code architecture rules with deptrac
 	make static-code-analysis
 	make core-architecture-check
 	make core-tests
+
+.PHONY: alias-docker-print
+alias-docker-print:  ## Show alias for common commands executed in php docker container
+	echo alias dcs='docker-compose -f docker-compose.linux.yml exec app make coding-standards' \
+		alias dps="docker-compose -f docker-compose.linux.yml exec app make static-code-analysis" \
+		alias dpc="docker-compose -f docker-compose.linux.yml exec app make pre-commit"
+	echo ''
+	echo unalias dcs \
+		unalias dps \
+		unalias dpc
