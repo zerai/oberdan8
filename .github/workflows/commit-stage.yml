@@ -560,7 +560,7 @@ jobs:
           bin/phpunit tests/E2E/Backoffice
           bin/phpunit tests/E2E/AdozioniReservation
           bin/phpunit tests/E2E/RegularReservation
-
         env:
           PANTHER_APP_ENV: test
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test?serverVersion=mariadb-10.3.29
+          SYMFONY_DEPRECATIONS_HELPER: disabled
