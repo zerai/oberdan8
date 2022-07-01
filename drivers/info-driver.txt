@@ -1,0 +1,27 @@
+###############################################################################
+#   current version
+###############################################################################
+chromedriver 103.0.5060.53 installed to drivers/chromedriver
+geckodriver 0.31.0 installed to drivers/geckodriver
+
+
+
+###############################################################################
+#   How to update driver
+###############################################################################
+./vendor/bin/bdi driver:geckodriver --os=linux drivers
+./vendor/bin/bdi driver:chromedriver --os=linux drivers
+
+
+###############################################################################
+#   How to macos
+###############################################################################
+./vendor/bin/bdi driver:geckodriver --os=macos drivers
+./vendor/bin/bdi driver:chromedriver --os=macos drivers
+
+
+###############################################################################
+#   How to windows
+###############################################################################
+./vendor/bin/bdi driver:geckodriver --os=windows drivers
+./vendor/bin/bdi driver:chromedriver --os=windows drivers
