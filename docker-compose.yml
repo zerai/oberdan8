@@ -1,31 +1,58 @@
 version: '3.8'
 
 services:
-  php:
-    build:
-      context: buildDocker/php
-      shm_size: '512m'
+  app:
+    image: webdevops/php-dev:7.4
+    user: application
+    working_dir: /app
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      XDEBUG_MODE: coverage
     volumes:
-      - ./:/var/www/html/symfony
+      - .:/app
+    ports:
+      - "127.0.0.222:8888:80"
+      - "2222:22"
+    depends_on:
+      - mysql
+
 
   web:
-    build: buildDocker/nginx
+    image: webdevops/nginx:alpine
     ports:
-      - '80:80'
+      - "80:80"
+    depends_on:
+      - app
     volumes:
-      - ./:/var/www/html/symfony
+      - "./:/app"
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      WEB_PHP_SOCKET: app:9000
 
-#  db:
-#    image: mysql:5.7
-#    command: --default-authentication-plugin=mysql_native_password
-#    environment:
-#      MYSQL_ROOT_PASSWORD: 'docker'
-#      MYSQL_DATABASE: 'symfony'
-#      MYSQL_USER: 'symfony'
-#      MYSQL_PASSWORD: 'docker'
-#    volumes:
-#      - ./build/mysql:/var/lib/mysql
-#
+  mysql:
+    image: mariadb:10.3.29
+    #command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'oberdan'
+      MYSQL_USER: 'oberdan'
+      MYSQL_PASSWORD: 'oberdan'
+    #volumes:
+      #- ./build/mysql:/var/lib/mysql
+
+  mysql-test:
+    image: mariadb:10.3.29
+    #command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3366:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'docker'
+      MYSQL_DATABASE: 'symfony_test'
+      MYSQL_USER: 'symfony'
+      MYSQL_PASSWORD: 'docker'
+
 #  phpmyadmin:
 #    image: 'phpmyadmin/phpmyadmin'
 #    ports:
@@ -36,3 +63,12 @@ services:
 #      MYSQL_USERNAME: root
 #      MYSQL_ROOT_PASSWORD: docker
 #      PMA_HOST: mysql
+
+  encore:
+    image: node:16-alpine
+    environment:
+      USER: node
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: ["yarn", "encore", "dev", "--watch" ]

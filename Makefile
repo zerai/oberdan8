@@ -1,3 +1,20 @@
+.PHONY: dependency-install dependency-purge coding-standards static-code-analysis static-code-analysis-baseline core-coverage core-architecture-check
+
+help:
+	@awk 'BEGIN {FS = ":.*##"; printf "Use: make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+
+.PHONY: init
+init:  ## Initialize dev environment
+	- docker-compose run encore yarn install
+
+.PHONY: up
+up:  ## Start docker-compose
+	- docker-compose up -d
+
+.PHONY: down
+down:  ## Stop docker-compose
+	- docker-compose down -v --remove-orphans
+
 .PHONY: dependency-install
 dependency-install:  ## Install all dependency with composer
 	composer install
