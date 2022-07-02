@@ -6,14 +6,25 @@ help:
 .PHONY: init
 init:  ## Initialize dev environment
 	- docker-compose run encore yarn install
+	- make up
 
 .PHONY: up
 up:  ## Start docker-compose
+	- make down
 	- docker-compose up -d
 
 .PHONY: down
 down:  ## Stop docker-compose
 	- docker-compose down -v --remove-orphans
+
+.PHONY: status
+status:  ## Show containers status
+	- docker-compose ps
+
+.PHONY: db-prepare
+db-prepare:  ## Execute dev and test database migrations
+	- docker-compose exec app bin/console doctrine:migrations:migrate -n
+	- docker-compose exec app bin/console doctrine:migrations:migrate -n -e test
 
 .PHONY: dependency-install
 dependency-install:  ## Install all dependency with composer
@@ -76,10 +87,10 @@ pre-commit:  ## Check Core code architecture rules with deptrac
 
 .PHONY: alias-docker-print
 alias-docker-print:  ## Show alias for common commands executed in php docker container
-	echo alias dcs='docker-compose -f docker-compose.linux.yml exec app make coding-standards' \
-		alias dps="docker-compose -f docker-compose.linux.yml exec app make static-code-analysis" \
-		alias dpc="docker-compose -f docker-compose.linux.yml exec app make pre-commit"
+	echo alias dcs='docker-compose exec app make coding-standards' \
+		alias dsa="docker-compose exec app make static-code-analysis" \
+		alias dpc="docker-compose exec app make pre-commit"
 	echo ''
 	echo unalias dcs \
-		unalias dps \
+		unalias dsa \
 		unalias dpc
