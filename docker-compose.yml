@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     image: webdevops/php-dev:7.4
-    user: application
+    #user: application
     working_dir: /app
     environment:
       WEB_DOCUMENT_ROOT: /app/public
@@ -12,7 +12,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - "127.0.0.222:8888:80"
+      #- "127.0.0.222:8888:80"
       - "2222:22"
     depends_on:
       - mysql
