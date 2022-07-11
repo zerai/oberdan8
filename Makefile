@@ -21,6 +21,10 @@ down:  ## Stop docker-compose
 status:  ## Show containers status
 	- docker-compose ps
 
+.PHONY: bash
+bash:  ## Open a bash terminal inside php container
+	- docker-compose exec app bash
+
 .PHONY: db-prepare
 db-prepare:  ## Execute dev and test database migrations
 	- docker-compose exec app bin/console doctrine:migrations:migrate -n
@@ -28,9 +32,9 @@ db-prepare:  ## Execute dev and test database migrations
 
 .PHONY: dependency-install
 dependency-install:  ## Install all dependency with composer
-	composer install
-	./bin/phpunit install
-	composer bin all install
+	- docker-compose exec app composer install
+	- docker-compose exec app bin/phpunit install
+	- docker-compose exec app composer bin all install
 
 
 .PHONY: dependency-purge
@@ -42,23 +46,23 @@ dependency-purge:  ## Remove all dependency
 
 .PHONY: coding-standards
 coding-standards: ## Fixes code style issues with easy-coding-standard
-	vendor/bin/ecs check --fix --verbose
+	- docker-compose exec app vendor/bin/ecs check --fix --verbose
 
 .PHONY: static-code-analysis
 static-code-analysis: ## Runs a static code analysis with phpstan/phpstan and vimeo/psalm
-	vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
-	vendor/bin/psalm --config=psalm.xml --diff --show-info=false --stats --threads=4
+	- docker-compose exec app vendor/bin/phpstan --configuration=phpstan.neon --memory-limit=-1
+	- docker-compose exec app vendor/bin/psalm --config=psalm.xml --diff --show-info=false --stats --threads=4
 
 
 .PHONY: static-code-analysis-baseline
 static-code-analysis-baseline: vendor ## Generates a baseline for static code analysis with phpstan/phpstan and vimeo/psalm
-	vendor/bin/phpstan --configuration=phpstan.neon --generate-baseline --memory-limit=-1  || true
-	vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
+	- docker-compose exec app vendor/bin/phpstan --configuration=phpstan.neon --generate-baseline --memory-limit=-1  || true
+	- docker-compose exec app vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
 
 .PHONY: core-tests
-core-tests: ## Runs unit tests For Core code with phpunit/phpunit
-	bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-text
-	bin/phpunit --configuration core/booking/tests/Integration/phpunit.xml
+core-tests: ## Runs unit and integration tests For Core code with phpunit/phpunit
+	- docker-compose exec app bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-text
+	- docker-compose exec app bin/phpunit --configuration core/booking/tests/Integration/phpunit.xml
 
 
 .PHONY: core-coverage
@@ -72,9 +76,9 @@ core-architecture-check:  ## Check Core code architecture roules with deptrac
 
 .PHONY: lint-yaml
 lint-yaml: ## Run symfony linter for yaml files.
-	bin/console lint:yaml config/
-	bin/console lint:yaml src/
-	bin/console lint:yaml core/booking/src/
+	- docker-compose exec app bin/console lint:yaml config/
+	- docker-compose exec app bin/console lint:yaml src/
+	- docker-compose exec app bin/console lint:yaml core/booking/src/
 
 
 .PHONY: pre-commit
