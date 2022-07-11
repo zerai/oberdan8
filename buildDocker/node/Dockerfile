@@ -6,5 +6,5 @@ FROM node:16-alpine
 #  npm install --quiet && \
 #  apk del native-deps
 
-RUN apk update && apk add python make g++
+RUN apk update && apk add python3 make g++
 
