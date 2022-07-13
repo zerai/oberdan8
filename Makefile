@@ -26,9 +26,10 @@ bash:  ## Open a bash terminal inside php container
 	- docker-compose exec app bash
 
 .PHONY: db-prepare
-db-prepare:  ## Execute dev and test database migrations
+db-prepare:  ## Execute dev and test database migrations and load dev fixtures
 	- docker-compose exec app bin/console doctrine:migrations:migrate -n
 	- docker-compose exec app bin/console doctrine:migrations:migrate -n -e test
+	- docker-compose exec app bin/console doctrine:fixtures:load -n --group dev
 
 .PHONY: dependency-install
 dependency-install:  ## Install all dependency with composer
