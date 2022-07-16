@@ -2,7 +2,9 @@
 
 namespace Booking\Application\Domain\UseCase;
 
-interface ExportDataRetrieverInterface
+use Booking\Application\ApplicationPort;
+
+interface ExportDataRetrieverInterface extends ApplicationPort
 {
-    public function getData(): array;
+    public function getAllCustomerForNewsletter(): array;
 }

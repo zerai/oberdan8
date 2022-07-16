@@ -2,6 +2,8 @@
 
 namespace Booking\Application\Domain\UseCase;
 
+use Ramsey\Uuid\Uuid;
+
 class ExportCustomer implements ExportCustomerInterface
 {
     private ExportDataRetrieverInterface $datasource;
@@ -17,14 +19,27 @@ class ExportCustomer implements ExportCustomerInterface
     /**
      * @throws CouldNotExportDataException
      */
-    public function exportAllCustomer(): object
+    public function exportAllCustomer(): ExportedFileWrapperInterface
     {
-        $data = $this->datasource->getData();
+        $data = $this->datasource->getAllCustomerForNewsletter();
 
         if ($data === []) {
             throw new CouldNotExportDataException();
         }
 
-        return $this->encoder->convertData($data);
+        $exportedData = $this->encoder->convertData($data);
+
+        $fileWrapper = new ExportedFile($this->generateFilename(), $exportedData);
+
+        return $fileWrapper;
+    }
+
+    /**
+     * Generate a unique filename for the exported file
+     * @return string
+     */
+    private function generateFilename(): string
+    {
+        return sprintf('ExportCustomers_%s.csv', Uuid::uuid4()->toString());
     }
 }

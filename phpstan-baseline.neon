@@ -188,6 +188,21 @@ parameters:
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
 			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
+			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ExportDataRetrieverTest\\:\\:\\$dataRetriever \\(Booking\\\\Adapter\\\\Persistance\\\\ExportDataRetriever\\) does not accept null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
+			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ExportDataRetrieverTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
+			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
 		-
