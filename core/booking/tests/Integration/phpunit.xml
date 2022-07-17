@@ -40,6 +40,7 @@
 
     <server name="KERNEL_CLASS" value="\App\Kernel" />
     <server name="DATABASE_URL" value="mysql://root:docker@mysql-test:3306/symfony?serverVersion=mariadb-10.3.29" />
+    <server name="SENTRY_DSN" value="" />
   </php>
 
   <testsuites>

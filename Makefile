@@ -60,8 +60,11 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 	- docker-compose exec app vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
 
 .PHONY: core-tests
-core-tests: ## Runs unit and integration tests For Core code with phpunit/phpunit
+core-tests: ## Runs unit For Core code with phpunit/phpunit
 	- docker-compose exec app bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-text
+
+.PHONY: core-tests-integration
+core-tests-integration: ## Runs integration tests For Core code with phpunit/phpunit
 	- docker-compose exec app bin/phpunit --configuration core/booking/tests/Integration/phpunit.xml
 
 
