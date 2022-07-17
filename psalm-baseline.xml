@@ -226,10 +226,11 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>$this-&gt;entityManager</code>
     </ArgumentTypeCoercion>
-    <PossiblyNullPropertyAssignmentValue occurrences="2">
-      <code>null</code>
-      <code>null</code>
-    </PossiblyNullPropertyAssignmentValue>
+    <PossiblyNullReference occurrences="3">
+      <code>close</code>
+      <code>getAllCustomerForNewsletter</code>
+      <code>getAllCustomerForNewsletter</code>
+    </PossiblyNullReference>
     <PropertyTypeCoercion occurrences="1"/>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php">

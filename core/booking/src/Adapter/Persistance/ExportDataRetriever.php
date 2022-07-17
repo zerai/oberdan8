@@ -15,6 +15,8 @@ class ExportDataRetriever implements ExportDataRetrieverInterface
     }
 
     /**
+     * Return all customers with email
+     *
      * @return array
      * @throws \Doctrine\DBAL\Driver\Exception
      * @throws \Doctrine\DBAL\Exception
@@ -25,6 +27,7 @@ class ExportDataRetriever implements ExportDataRetrieverInterface
 
         $sql = '
             SELECT last_name, first_name, email FROM bkg_reservation r
+            WHERE r.email <> \'\'
             ORDER BY r.last_name ASC
             ';
         try {

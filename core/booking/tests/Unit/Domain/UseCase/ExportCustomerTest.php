@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Booking\Tests\Application\Domain\UseCase;
+namespace Booking\Tests\Unit\Domain\UseCase;
 
 use Booking\Application\Domain\UseCase\CouldNotExportDataException;
 use Booking\Application\Domain\UseCase\ExportCustomer;

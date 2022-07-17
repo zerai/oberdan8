@@ -7,7 +7,7 @@
 
 
 {% block content_title %}
-    Export
+    Esportazione Dati
 {% endblock %}
 
 {% block content_toolbar %}
@@ -17,11 +17,26 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <p>Esporta dati clienti.</p>
-                <p>Verranno esclusi i clienti senza indirizzo email.</p>
-                <a class="btn btn-info" href="{{ path('backoffice_export_customer_all') }}">Esporta clienti</a>
+            <div class="col-6">
+                <div class="card" >
+                    <div class="card-body">
+                        <h5 class="card-title">Esportazione per newsletter</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Tutti i clienti</h6>
+                        <p class="card-text">Esporta in formato csv tutti i clienti, verranno esclusi i record senza email .</p>
+                        <a class="btn btn-info" href="{{ path('backoffice_export_customer_all') }}">Esporta clienti</a>
+                    </div>
+                </div>
             </div>
+{#            <div class="col-6">#}
+{#                <div class="card" style="width: 18rem;">#}
+{#                    <div class="card-body">#}
+{#                        <h5 class="card-title">Esportazione per newsletter</h5>#}
+{#                        <h6 class="card-subtitle mb-2 text-muted">Esclusi blacklist</h6>#}
+{#                        <p class="card-text">Esporta in formato csv tutti i clienti, verranno esclusi i record senza email e gli ordini in blacklist.</p>#}
+{#                        <a class="btn btn-info" href="{{ path('backoffice_export_customer_all') }}">Esporta clienti</a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
         </div>
     </div>
 

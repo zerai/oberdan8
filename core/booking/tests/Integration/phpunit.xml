@@ -11,7 +11,7 @@
          beStrictAboutTodoAnnotatedTests="true"
          bootstrap="../../../../tests/bootstrap.php"
          cacheResult="true"
-         cacheResultFile="../../../../.build/phpunit/core/booking-integration-test.cache"
+         cacheResultFile="../../../../var/tools/phpunit/core/booking-integration-test.cache"
          colors="true"
          columns="max"
          convertErrorsToExceptions="true"
@@ -24,7 +24,7 @@
          stopOnSkipped="false"
          verbose="true"
          backupGlobals="false">
-  <coverage cacheDirectory="../../../../.build/phpunit/core/booking-integration-test.cache"
+  <coverage cacheDirectory="../../../../var/tools/phpunit/core/booking-integration-test.cache"
             processUncoveredFiles="true">
     <include>
       <directory suffix=".php">../../src</directory>

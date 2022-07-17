@@ -9,11 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
+/**
+ * @covers \Booking\Adapter\Persistance\ExportDataRetriever
+ */
 class ExportDataRetrieverTest extends KernelTestCase
 {
-//    private EntityManager $entityManager;
+    private ?EntityManager $entityManager;
 
-    private ExportDataRetriever $dataRetriever;
+    private ?ExportDataRetriever $dataRetriever;
 
     use ResetDatabase;
 
@@ -23,27 +26,35 @@ class ExportDataRetrieverTest extends KernelTestCase
     {
         $kernel = self::bootKernel();
 
-//        $this->entityManager = $kernel->getContainer()
-//            ->get('doctrine')
-//            ->getManager();
-
-//        $this->dataRetriever = new ExportDataRetriever($this->entityManager);
-        $this->dataRetriever = $kernel->getContainer()
-            ->get('\Booking\Adapter\Persistance\ExportDataRetriever')
+        $this->entityManager = $kernel->getContainer()
+            ->get('doctrine')
             ->getManager();
 
+        $this->dataRetriever = new ExportDataRetriever($this->entityManager);
+    }
+
+    /** @test */
+    public function shouldreturnAnEmptyArray(): void
+    {
+        $result = $this->dataRetriever->getAllCustomerForNewsletter();
+
+        self::assertEquals(0, \count($result), 'Expected empty resulset.');
     }
 
     /** @test */
     public function shouldExcludeCustomersWithoutEmail(): void
     {
         ReservationFactory::new()->create();
-        //ReservationFactory::new()->withConfirmedStatus()->create();
-        //ReservationFactory::new()->withConfirmedStatus()->create();
+        ReservationFactory::new()
+            ->withConfirmedStatus()
+            ->withAttributes([
+                'email' => '',
+            ])
+            ->create();
 
         $result = $this->dataRetriever->getAllCustomerForNewsletter();
 
-        self::assertEquals(1, \count($result));
+        self::assertEquals(1, \count($result), 'Expected 1 record, record without email should be excluded.');
     }
 
     protected function tearDown(): void
