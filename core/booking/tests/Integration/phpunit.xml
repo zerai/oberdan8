@@ -9,7 +9,7 @@
          beStrictAboutResourceUsageDuringSmallTests="true"
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutTodoAnnotatedTests="true"
-         bootstrap="../../../../vendor/autoload.php"
+         bootstrap="../../../../tests/bootstrap.php"
          cacheResult="true"
          cacheResultFile="../../../../.build/phpunit/core/booking-integration-test.cache"
          colors="true"
@@ -39,7 +39,6 @@
     <server name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
 
     <server name="KERNEL_CLASS" value="\App\Kernel" />
-    <server name="DATABASE_URL" value="mysql://root:docker@mysql-test:3306/symfony?serverVersion=mariadb-10.3.29" />
   </php>
 
   <testsuites>
