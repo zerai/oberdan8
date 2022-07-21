@@ -35,7 +35,7 @@
         "symfony/mailer": "4.4.*",
         "symfony/monolog-bundle": "^3.7",
         "symfony/property-access": "4.4.*",
-        "symfony/property-info": "4.4.*",
+        "symfony/property-info": "5.4.*",
         "symfony/proxy-manager-bridge": "4.4.*",
         "symfony/security-bundle": "4.4.*",
         "symfony/serializer": "4.4.*",
