@@ -38,7 +38,7 @@
         </testsuite>
     </testsuites>
 
-    <coverage cacheDirectory="../../../../.build/phpunit/core/unit.cache"
+    <coverage cacheDirectory="../../../../var/tools/phpunit/core/unit-coverage.cache"
               processUncoveredFiles="true">
         <include>
             <directory suffix=".php">../../src</directory>

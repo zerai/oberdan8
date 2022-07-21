@@ -26,9 +26,10 @@ bash:  ## Open a bash terminal inside php container
 	- docker-compose exec app bash
 
 .PHONY: db-prepare
-db-prepare:  ## Execute dev and test database migrations
+db-prepare:  ## Execute dev and test database migrations and load dev fixtures
 	- docker-compose exec app bin/console doctrine:migrations:migrate -n
 	- docker-compose exec app bin/console doctrine:migrations:migrate -n -e test
+	- docker-compose exec app bin/console doctrine:fixtures:load -n --group dev
 
 .PHONY: dependency-install
 dependency-install:  ## Install all dependency with composer
@@ -74,8 +75,8 @@ core-coverage: ## Collects Core code coverage from running unit tests with phpun
 
 .PHONY: core-architecture-check
 core-architecture-check:  ## Check Core code architecture roules with deptrac
-	vendor/bin/deptrac analyse core/depfile-booking.yaml
-	vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
+	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking.yaml
+	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
 
 .PHONY: lint-yaml
 lint-yaml: ## Run symfony linter for yaml files.
