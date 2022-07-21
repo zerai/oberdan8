@@ -43,7 +43,9 @@ dependency-purge:  ## Remove all dependency
 	rm -fR vendor
 	rm -fR tools/*/vendor
 	rm -fR bin/.phpunit
-
+	rm -fR var/log
+	rm -fR var/cache
+	rm -fR var/tools
 
 .PHONY: coding-standards
 coding-standards: ## Fixes code style issues with easy-coding-standard
