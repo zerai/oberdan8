@@ -149,8 +149,8 @@ task('deploy:build:assets', function (): void {
     //run('yarn install');
     //run('yarn encore production');
     if (PHP_OS === 'Linux'){
-        run('docker-compose -f docker-compose.linux.yml run encore yarn install');
-        run('docker-compose -f docker-compose.linux.yml run encore yarn encore production');
+        run('docker-compose run encore yarn install');
+        run('docker-compose run encore yarn encore production');
     }else{
         run('docker-compose -f docker-compose.mac.yml run encore yarn install');
         run('docker-compose -f docker-compose.mac.yml run encore yarn encore production');
