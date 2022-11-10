@@ -50,6 +50,9 @@ final class ConfirmationStatus
         }
     }
 
+    /**
+     * @psalm-suppress InvalidFalsableReturnType
+     */
     public function expireAt(): DateTimeImmutable
     {
         if ($this->extensionTime()->value()) {
@@ -65,6 +68,9 @@ final class ConfirmationStatus
             sprintf("+ %s days", (string) $expirationDays)
         );
 
+        /**
+         * @psalm-suppress FalsableReturnStatement
+         */
         return $newDate;
     }
 
