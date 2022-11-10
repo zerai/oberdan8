@@ -11,10 +11,7 @@ use Booking\Adapter\Web\Free\Form\ReservationType;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
- * Class ReservationFormTest
- *
- * @covers \Booking\Infrastructure\Framework\Form\ReservationType
- * @package Booking\Tests\Unit\Infrastructure\Form
+ * @covers \Booking\Adapter\Web\Free\Form\ReservationType
  */
 class ReservationFormTest extends TypeTestCase
 {

@@ -2,10 +2,12 @@
 
 namespace Booking\Application\Domain\UseCase;
 
-interface ExportCustomerInterface
+use Booking\Application\ApplicationPort;
+
+interface ExportCustomerInterface extends ApplicationPort
 {
     /**
      * @throws CouldNotExportDataException
      */
-    public function exportAllCustomer(): object;
+    public function exportAllCustomer(): ExportedFileWrapperInterface;
 }

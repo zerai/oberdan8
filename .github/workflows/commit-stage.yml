@@ -433,8 +433,87 @@ jobs:
           SYMFONY_DEPRECATIONS_HELPER: disabled
 
 
+  booking-integration-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      mysql:
+        image: mariadb:10.3.29
+        env:
+          MYSQL_ROOT_PASSWORD: test
+          MYSQL_USER: test
+          MYSQL_PASSWORD: test
+          MYSQL_DATABASE: symfony_test
+        ports:
+          - 3306/tcp
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+    strategy:
+      matrix:
+        php:
+          - '7.4'
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup cache environment
+        id: cache-php-extensions
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          key: ${{ env.PHP_EXTENSIONS_CACHE_KEY }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-php-extensions.outputs.dir }}
+          key: ${{ steps.cache-php-extensions.outputs.key }}
+          restore-keys: ${{ steps.cache-php-extensions.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: memory_limit=-1
+          coverage: none
+          tools: symfony
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --ansi --no-scripts
+
+      - name: Install phpunit dependencies
+        run: bin/phpunit install
+
+      - name: Run Migration & test fixtures
+        run: |
+          #php bin/console doctrine:schema:update --force -e test || echo "No migrations found or schema update failed"
+          php bin/console doctrine:migrations:migrate -e test --no-interaction|| echo "No migrations found or migration failed"
+        env:
+          DATABASE_URL: mysql://root:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test?serverVersion=mariadb-10.3.29
+
+      - name: Run integration test suite
+        run: bin/phpunit --configuration core/booking/tests/Integration/phpunit.xml
+        env:
+          PANTHER_APP_ENV: test
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test?serverVersion=mariadb-10.3.29
+          SYMFONY_DEPRECATIONS_HELPER: disabled
+
+
   symfony-test:
-    needs: [booking-unit-test]
+    needs: [booking-unit-test,booking-integration-test,architecture-check,coding-standard,phpstan,psalm]
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
@@ -555,11 +634,6 @@ jobs:
       - name: Run UNIT test
         run: |
           bin/phpunit tests/Unit
-#          bin/phpunit tests/Integration
-#          bin/phpunit tests/Functional
-#          bin/phpunit tests/E2E/Backoffice
-#          bin/phpunit tests/E2E/AdozioniReservation
-#          bin/phpunit tests/E2E/RegularReservation
         env:
           PANTHER_APP_ENV: test
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony_test?serverVersion=mariadb-10.3.29

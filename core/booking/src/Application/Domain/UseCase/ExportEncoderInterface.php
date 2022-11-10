@@ -4,5 +4,5 @@ namespace Booking\Application\Domain\UseCase;
 
 interface ExportEncoderInterface
 {
-    public function convertData(array $data): object;
+    public function convertData(array $data): string;
 }

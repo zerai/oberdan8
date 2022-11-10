@@ -1,6 +1,5 @@
 <?php declare(strict_types=1);
 
-
 namespace Booking\Tests\Unit\Infrastructure\Form;
 
 use Booking\Adapter\Web\Free\Form\AdozioniReservationType;
@@ -9,7 +8,7 @@ use Booking\Adapter\Web\Free\Form\Dto\ClientDto;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
- * @covers \Booking\Infrastructure\Framework\Form\AdozioniReservationType
+ * @covers \Booking\Adapter\Web\Free\Form\AdozioniReservationType
  */
 class AdozioniReservationFormTest extends TypeTestCase
 {

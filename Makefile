@@ -43,7 +43,9 @@ dependency-purge:  ## Remove all dependency
 	rm -fR vendor
 	rm -fR tools/*/vendor
 	rm -fR bin/.phpunit
-
+	rm -fR var/log
+	rm -fR var/cache
+	rm -fR var/tools
 
 .PHONY: coding-standards
 coding-standards: ## Fixes code style issues with easy-coding-standard
@@ -61,8 +63,11 @@ static-code-analysis-baseline: vendor ## Generates a baseline for static code an
 	- docker-compose exec app vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
 
 .PHONY: core-tests
-core-tests: ## Runs unit and integration tests For Core code with phpunit/phpunit
+core-tests: ## Runs unit For Core code with phpunit/phpunit
 	- docker-compose exec app bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-text
+
+.PHONY: core-tests-integration
+core-tests-integration: ## Runs integration tests For Core code with phpunit/phpunit
 	- docker-compose exec app bin/phpunit --configuration core/booking/tests/Integration/phpunit.xml
 
 
@@ -72,8 +77,8 @@ core-coverage: ## Collects Core code coverage from running unit tests with phpun
 
 .PHONY: core-architecture-check
 core-architecture-check:  ## Check Core code architecture roules with deptrac
-	vendor/bin/deptrac analyse core/depfile-booking.yaml
-	vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
+	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking.yaml
+	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
 
 .PHONY: lint-yaml
 lint-yaml: ## Run symfony linter for yaml files.

@@ -1,11 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Booking\Tests\Application\Domain\UseCase;
+namespace Booking\Tests\Unit\Domain\UseCase;
 
 use Booking\Application\Domain\UseCase\CouldNotExportDataException;
 use Booking\Application\Domain\UseCase\ExportCustomer;
 use Booking\Application\Domain\UseCase\ExportDataRetrieverInterface;
+use Booking\Application\Domain\UseCase\ExportedFile;
 use Booking\Application\Domain\UseCase\ExportEncoderInterface;
+use Booking\Infrastructure\Exporter\CsvEncoder;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,7 +22,7 @@ class ExportCustomerTest extends TestCase
         $useCase = new ExportCustomer($exporterDataRetriever, $exporterDataConverter);
 
         $exporterDataRetriever->expects(self::once())
-            ->method('getData')
+            ->method('getAllCustomerForNewsletter')
             ->willReturn([
                 1 => [
                     'foo' => 'bar',
@@ -39,7 +41,7 @@ class ExportCustomerTest extends TestCase
         $useCase = new ExportCustomer($exporterDataRetriever, $exporterDataConverter);
 
         $exporterDataRetriever->expects(self::once())
-            ->method('getData')
+            ->method('getAllCustomerForNewsletter')
             ->willReturn([
                 1 => [
                     'foo' => 'bar',
@@ -50,7 +52,7 @@ class ExportCustomerTest extends TestCase
 
         $exporterDataConverter->expects(self::once())
             ->method('convertData')
-            ->willReturn(new \stdClass());
+            ->willReturn('');
 
         $useCase->exportAllCustomer();
     }
@@ -64,9 +66,29 @@ class ExportCustomerTest extends TestCase
         $useCase = new ExportCustomer($exporterDataRetriever, $exporterDataConverter);
 
         $exporterDataRetriever->expects(self::once())
-            ->method('getData')
+            ->method('getAllCustomerForNewsletter')
             ->willReturn([]);
 
         $useCase->exportAllCustomer();
+    }
+
+    public function testShouldExportDataInCsv(): void
+    {
+        $exporterDataRetriever = self::createMock(ExportDataRetrieverInterface::class);
+        $exporterDataConverter = new CsvEncoder();
+        $useCase = new ExportCustomer($exporterDataRetriever, $exporterDataConverter);
+
+        $exporterDataRetriever->expects(self::once())
+            ->method('getAllCustomerForNewsletter')
+            ->willReturn([
+                [
+                    'foo' => 'foo',
+                    'bar' => 'bar',
+                ],
+            ]);
+
+        $result = $useCase->exportAllCustomer();
+
+        self::assertInstanceOf(ExportedFile::class, $result);
     }
 }

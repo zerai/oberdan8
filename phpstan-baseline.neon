@@ -186,6 +186,21 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Reservation.php
 
 		-
+			message: "#^Cannot call method close\\(\\) on Doctrine\\\\ORM\\\\EntityManager\\|null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
+			message: "#^Cannot call method getAllCustomerForNewsletter\\(\\) on Booking\\\\Adapter\\\\Persistance\\\\ExportDataRetriever\\|null\\.$#"
+			count: 2
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
+			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
