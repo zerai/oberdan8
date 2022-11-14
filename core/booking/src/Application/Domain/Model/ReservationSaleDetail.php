@@ -16,14 +16,12 @@ use Ramsey\Uuid\UuidInterface;
 class ReservationSaleDetail
 {
     /**
-     * @var UuidInterface
      *
      * @ORM\Id
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class=UuidGenerator::class)
-     */
-    private $id;
+     * @ORM\CustomIdGenerator(class=UuidGenerator::class)*/
+    private \Ramsey\Uuid\UuidInterface $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
