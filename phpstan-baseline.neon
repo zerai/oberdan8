@@ -186,6 +186,11 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Reservation.php
 
 		-
+			message: "#^Parameter \\#2 \\$filename of method Symfony\\\\Component\\\\HttpFoundation\\\\ResponseHeaderBag\\:\\:makeDisposition\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Exporter/ExportDataHttpResponseFactory.php
+
+		-
 			message: "#^Cannot call method close\\(\\) on Doctrine\\\\ORM\\\\EntityManager\\|null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
