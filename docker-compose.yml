@@ -2,34 +2,54 @@ version: '3.8'
 
 services:
   app:
-    image: webdevops/php-dev:7.4
-    user: application
-    working_dir: /app
-    environment:
-      WEB_DOCUMENT_ROOT: /app/public
-      WEB_DOCUMENT_INDEX: index.php
-      XDEBUG_MODE: coverage
-    volumes:
-      - .:/app
+    build:
+      context: .
+      target: php_dev
     ports:
-      #- "127.0.0.222:8888:80"
-      - "2222:22"
+      - "9000:9000"
     depends_on:
       - mysql
+    volumes:
+      - .:/app
 
+#  app_old:
+#    image: webdevops/php-dev:7.4
+#    user: application
+#    working_dir: /app
+#    environment:
+#      WEB_DOCUMENT_ROOT: /app/public
+#      WEB_DOCUMENT_INDEX: index.php
+#      XDEBUG_MODE: coverage
+#    volumes:
+#      - .:/app
+#    ports:
+#      #- "127.0.0.222:8888:80"
+#      - "2222:22"
+#    depends_on:
+#      - mysql
 
-  web:
-    image: webdevops/nginx:alpine
+  nginx:
+    image: nginx:1.22-alpine
     ports:
       - "80:80"
     depends_on:
       - app
     volumes:
-      - "./:/app"
-    environment:
-      WEB_DOCUMENT_ROOT: /app/public
-      WEB_DOCUMENT_INDEX: index.php
-      WEB_PHP_SOCKET: app:9000
+      - ./:/app
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+#  web_old:
+#    image: webdevops/nginx:alpine
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - app
+#    volumes:
+#      - "./:/app"
+#    environment:
+#      WEB_DOCUMENT_ROOT: /app/public
+#      WEB_DOCUMENT_INDEX: index.php
+#      WEB_PHP_SOCKET: app:9000
 
   mysql:
     image: mariadb:10.3.29
