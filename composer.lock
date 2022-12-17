@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76fa3b3c5a7ad7e309bd1fc385a2a881",
+    "content-hash": "6091b1616d01dc68db9de668ea7f94c3",
     "packages": [
         {
             "name": "brick/math",
@@ -333,31 +333,34 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.13.3",
+            "version": "1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "648b0343343565c4a056bfc8392201385e8d89f0"
+                "reference": "9e034d7a70032d422169f27d8759e8d84abb4f51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/648b0343343565c4a056bfc8392201385e8d89f0",
-                "reference": "648b0343343565c4a056bfc8392201385e8d89f0",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/9e034d7a70032d422169f27d8759e8d84abb4f51",
+                "reference": "9e034d7a70032d422169f27d8759e8d84abb4f51",
                 "shasum": ""
             },
             "require": {
-                "doctrine/lexer": "1.*",
+                "doctrine/lexer": "^1 || ^2",
                 "ext-tokenizer": "*",
                 "php": "^7.1 || ^8.0",
                 "psr/cache": "^1 || ^2 || ^3"
             },
             "require-dev": {
                 "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/coding-standard": "^6.0 || ^8.1",
-                "phpstan/phpstan": "^1.4.10 || ^1.8.0",
-                "phpunit/phpunit": "^7.5 || ^8.0 || ^9.1.5",
-                "symfony/cache": "^4.4 || ^5.2",
+                "doctrine/coding-standard": "^9 || ^10",
+                "phpstan/phpstan": "~1.4.10 || ^1.8.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "symfony/cache": "^4.4 || ^5.4 || ^6",
                 "vimeo/psalm": "^4.10"
+            },
+            "suggest": {
+                "php": "PHP 8.0 or higher comes with attributes, a native replacement for annotations"
             },
             "type": "library",
             "autoload": {
@@ -400,9 +403,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.13.3"
+                "source": "https://github.com/doctrine/annotations/tree/1.14.1"
             },
-            "time": "2022-07-02T10:48:51+00:00"
+            "time": "2022-12-12T12:46:12+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -499,26 +502,27 @@
         },
         {
             "name": "doctrine/collections",
-            "version": "1.6.8",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/collections.git",
-                "reference": "1958a744696c6bb3bb0d28db2611dc11610e78af"
+                "reference": "2b44dd4cbca8b5744327de78bafef5945c7e7b5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/collections/zipball/1958a744696c6bb3bb0d28db2611dc11610e78af",
-                "reference": "1958a744696c6bb3bb0d28db2611dc11610e78af",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/2b44dd4cbca8b5744327de78bafef5945c7e7b5e",
+                "reference": "2b44dd4cbca8b5744327de78bafef5945c7e7b5e",
                 "shasum": ""
             },
             "require": {
+                "doctrine/deprecations": "^0.5.3 || ^1",
                 "php": "^7.1.3 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^9.0",
-                "phpstan/phpstan": "^0.12",
+                "doctrine/coding-standard": "^9.0 || ^10.0",
+                "phpstan/phpstan": "^1.4.8",
                 "phpunit/phpunit": "^7.5 || ^8.5 || ^9.1.5",
-                "vimeo/psalm": "^4.2.1"
+                "vimeo/psalm": "^4.22"
             },
             "type": "library",
             "autoload": {
@@ -562,9 +566,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/collections/issues",
-                "source": "https://github.com/doctrine/collections/tree/1.6.8"
+                "source": "https://github.com/doctrine/collections/tree/1.8.0"
             },
-            "time": "2021-08-10T18:51:53+00:00"
+            "time": "2022-09-01T20:12:10+00:00"
         },
         {
             "name": "doctrine/common",
@@ -1008,37 +1012,35 @@
         },
         {
             "name": "doctrine/event-manager",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/event-manager.git",
-                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f"
+                "reference": "95aa4cb529f1e96576f3fda9f5705ada4056a520"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/41370af6a30faa9dc0368c4a6814d596e81aba7f",
-                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f",
+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/95aa4cb529f1e96576f3fda9f5705ada4056a520",
+                "reference": "95aa4cb529f1e96576f3fda9f5705ada4056a520",
                 "shasum": ""
             },
             "require": {
+                "doctrine/deprecations": "^0.5.3 || ^1",
                 "php": "^7.1 || ^8.0"
             },
             "conflict": {
-                "doctrine/common": "<2.9@dev"
+                "doctrine/common": "<2.9"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0",
-                "phpunit/phpunit": "^7.0"
+                "doctrine/coding-standard": "^9 || ^10",
+                "phpstan/phpstan": "~1.4.10 || ^1.8.8",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "vimeo/psalm": "^4.24"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Common\\": "lib/Doctrine/Common"
+                    "Doctrine\\Common\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1082,7 +1084,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/event-manager/issues",
-                "source": "https://github.com/doctrine/event-manager/tree/1.1.x"
+                "source": "https://github.com/doctrine/event-manager/tree/1.2.0"
             },
             "funding": [
                 {
@@ -1098,7 +1100,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-29T18:28:51+00:00"
+            "time": "2022-10-12T20:51:15+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1542,23 +1544,23 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "2.5.3",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "d7edf274b6d35ad82328e223439cc2bb2f92bd9e"
+                "reference": "38670dd6ac8f2d997a0b5b6c98cb380ef0ba9bd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/d7edf274b6d35ad82328e223439cc2bb2f92bd9e",
-                "reference": "d7edf274b6d35ad82328e223439cc2bb2f92bd9e",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/38670dd6ac8f2d997a0b5b6c98cb380ef0ba9bd3",
+                "reference": "38670dd6ac8f2d997a0b5b6c98cb380ef0ba9bd3",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.11 || ^2.0",
                 "doctrine/collections": "^1.0",
                 "doctrine/deprecations": "^0.5.3 || ^1",
-                "doctrine/event-manager": "^1.0",
+                "doctrine/event-manager": "^1 || ^2",
                 "php": "^7.1 || ^8.0",
                 "psr/cache": "^1.0 || ^2.0 || ^3.0"
             },
@@ -1569,12 +1571,12 @@
             "require-dev": {
                 "composer/package-versions-deprecated": "^1.11",
                 "doctrine/annotations": "^1.0",
-                "doctrine/coding-standard": "^9.0",
+                "doctrine/coding-standard": "^9 || ^10",
                 "doctrine/common": "^3.0",
-                "phpstan/phpstan": "~1.4.10 || 1.5.0",
+                "phpstan/phpstan": "~1.4.10 || 1.8.8",
                 "phpunit/phpunit": "^7.5.20 || ^8.5 || ^9.5",
                 "symfony/cache": "^4.4 || ^5.4 || ^6.0",
-                "vimeo/psalm": "4.22.0"
+                "vimeo/psalm": "4.29.0"
             },
             "type": "library",
             "autoload": {
@@ -1624,7 +1626,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/2.5.3"
+                "source": "https://github.com/doctrine/persistence/tree/2.5.5"
             },
             "funding": [
                 {
@@ -1640,7 +1642,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-03T09:16:53+00:00"
+            "time": "2022-10-13T07:17:40+00:00"
         },
         {
             "name": "doctrine/sql-formatter",
@@ -10691,20 +10693,20 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.19.0",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "d7f08a622b3346766325488aa32ddc93ccdecc75"
+                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/d7f08a622b3346766325488aa32ddc93ccdecc75",
-                "reference": "d7f08a622b3346766325488aa32ddc93ccdecc75",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/92efad6a967f0b79c499705c69b662f738cc9e4d",
+                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0",
+                "php": "^7.4 || ^8.0",
                 "psr/container": "^1.0 || ^2.0",
                 "symfony/deprecation-contracts": "^2.2 || ^3.0"
             },
@@ -10715,7 +10717,8 @@
                 "bamarni/composer-bin-plugin": "^1.4.1",
                 "doctrine/persistence": "^1.3 || ^2.0",
                 "ext-intl": "*",
-                "symfony/phpunit-bridge": "^4.4 || ^5.2"
+                "phpunit/phpunit": "^9.5.26",
+                "symfony/phpunit-bridge": "^5.4.16"
             },
             "suggest": {
                 "doctrine/orm": "Required to use Faker\\ORM\\Doctrine",
@@ -10727,7 +10730,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "v1.19-dev"
+                    "dev-main": "v1.21-dev"
                 }
             },
             "autoload": {
@@ -10752,9 +10755,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.19.0"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.21.0"
             },
-            "time": "2022-02-02T17:38:57+00:00"
+            "time": "2022-12-13T13:54:32+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -11427,16 +11430,16 @@
         },
         {
             "name": "zenstruck/assert",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/assert.git",
-                "reference": "37bdfb98bb3a67fae96c5d09900b4cd14712c16d"
+                "reference": "a1c6501c975339ded3bcf8092a17277f6e21ac82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/assert/zipball/37bdfb98bb3a67fae96c5d09900b4cd14712c16d",
-                "reference": "37bdfb98bb3a67fae96c5d09900b4cd14712c16d",
+                "url": "https://api.github.com/repos/zenstruck/assert/zipball/a1c6501c975339ded3bcf8092a17277f6e21ac82",
+                "reference": "a1c6501c975339ded3bcf8092a17277f6e21ac82",
                 "shasum": ""
             },
             "require": {
@@ -11447,7 +11450,6 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.4",
-                "phpstan/phpstan-phpunit": "^1.0",
                 "symfony/phpunit-bridge": "^5.3"
             },
             "type": "library",
@@ -11475,7 +11477,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/assert/issues",
-                "source": "https://github.com/zenstruck/assert/tree/v1.1.0"
+                "source": "https://github.com/zenstruck/assert/tree/v1.2.0"
             },
             "funding": [
                 {
@@ -11483,20 +11485,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-27T20:08:43+00:00"
+            "time": "2022-07-12T12:30:27+00:00"
         },
         {
             "name": "zenstruck/callback",
-            "version": "v1.4.2",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/callback.git",
-                "reference": "b65a8d67eb77ec1b9139cf22fded85d0fe5d1c03"
+                "reference": "eed9a532fd8974368e60c4a2550ed65eab7e5432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/callback/zipball/b65a8d67eb77ec1b9139cf22fded85d0fe5d1c03",
-                "reference": "b65a8d67eb77ec1b9139cf22fded85d0fe5d1c03",
+                "url": "https://api.github.com/repos/zenstruck/callback/zipball/eed9a532fd8974368e60c4a2550ed65eab7e5432",
+                "reference": "eed9a532fd8974368e60c4a2550ed65eab7e5432",
                 "shasum": ""
             },
             "require": {
@@ -11531,7 +11533,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/callback/issues",
-                "source": "https://github.com/zenstruck/callback/tree/v1.4.2"
+                "source": "https://github.com/zenstruck/callback/tree/v1.5.0"
             },
             "funding": [
                 {
@@ -11539,20 +11541,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-26T21:35:54+00:00"
+            "time": "2022-08-31T14:56:15+00:00"
         },
         {
             "name": "zenstruck/foundry",
-            "version": "v1.21.0",
+            "version": "v1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zenstruck/foundry.git",
-                "reference": "a535f83ef65680a63f615d64b04219cdeee35f1b"
+                "reference": "a3f3cdb397c70237ca743192aaeb4a4407f7e1d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/a535f83ef65680a63f615d64b04219cdeee35f1b",
-                "reference": "a535f83ef65680a63f615d64b04219cdeee35f1b",
+                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/a3f3cdb397c70237ca743192aaeb4a4407f7e1d3",
+                "reference": "a3f3cdb397c70237ca743192aaeb4a4407f7e1d3",
                 "shasum": ""
             },
             "require": {
@@ -11578,11 +11580,10 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                },
                 "bamarni-bin": {
-                    "target-directory": "bin/tools"
+                    "target-directory": "bin/tools",
+                    "bin-links": true,
+                    "forward-command": false
                 }
             },
             "autoload": {
@@ -11615,7 +11616,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zenstruck/foundry/issues",
-                "source": "https://github.com/zenstruck/foundry/tree/v1.21.0"
+                "source": "https://github.com/zenstruck/foundry/tree/v1.23.0"
             },
             "funding": [
                 {
@@ -11623,7 +11624,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-27T18:52:09+00:00"
+            "time": "2022-11-10T18:43:03+00:00"
         }
     ],
     "aliases": [],
