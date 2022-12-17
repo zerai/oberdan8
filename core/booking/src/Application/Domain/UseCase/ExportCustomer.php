@@ -29,9 +29,7 @@ class ExportCustomer implements ExportCustomerInterface
 
         $exportedData = $this->encoder->convertData($data);
 
-        $fileWrapper = new ExportedFile($this->generateFilename(), $exportedData);
-
-        return $fileWrapper;
+        return new ExportedFile($this->generateFilename(), $exportedData);
     }
 
     /**

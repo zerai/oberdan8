@@ -47,13 +47,11 @@ class LoginFormBackofficeAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getCredentials(Request $request)
     {
-        $credentials = [
+        return [
             'email' => $request->request->get('email'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
-
-        return $credentials;
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)

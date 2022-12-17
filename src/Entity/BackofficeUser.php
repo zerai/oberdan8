@@ -28,13 +28,14 @@ class BackofficeUser implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * The hashed password
+     *
      * @ORM\Column(type="string")
      */
-    private $password;
+    private ?string $password = null;
 
     /**
      * @var bool The account status
@@ -76,6 +77,8 @@ class BackofficeUser implements UserInterface
 
     /**
      * @see UserInterface
+     *
+     * @psalm-suppress MixedReturnTypeCoercion
      */
     public function getRoles(): array
     {
@@ -96,7 +99,7 @@ class BackofficeUser implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }

@@ -30,5 +30,5 @@ class BackofficeReservationFormModel
 
     public string $status;
 
-    public ?string $packageId;
+    public ?string $packageId = null;
 }

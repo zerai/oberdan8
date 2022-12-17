@@ -40,12 +40,9 @@ class AdozioniUploader implements AdozioniUploaderInterface
         // this is needed to safely include the file name as part of the URL
         $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
         $newFilename = $safeFilename . '-' . uniqid() . '.' . $uploadedAdozioniFile->guessExtension();
-
-        $newFile = $uploadedAdozioniFile->move(
+        return $uploadedAdozioniFile->move(
             $destination,
             $newFilename
         );
-
-        return $newFile;
     }
 }

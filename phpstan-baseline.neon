@@ -341,11 +341,6 @@ parameters:
 			path: src/Entity/BackofficeUser.php
 
 		-
-			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$roles has no typehint specified\\.$#"
-			count: 1
-			path: src/Entity/BackofficeUser.php
-
-		-
 			message:
 				"""
 					#^Return type of method App\\\\Entity\\\\BackofficeUser\\:\\:getRoles\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\:
