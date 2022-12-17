@@ -76,9 +76,9 @@ core-coverage: ## Collects Core code coverage from running unit tests with phpun
 	bin/phpunit --configuration core/booking/tests/Unit/phpunit.xml --coverage-html var/coverage/core
 
 .PHONY: core-architecture-check
-core-architecture-check:  ## Check Core code architecture roules with deptrac
-	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking.yaml
-	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking-iso.yaml
+core-architecture-check:  ## Check Core code architecture rules with deptrac
+	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking.yaml --cache-file var/tools/deptrac/.booking-deptrac.cache
+	- docker-compose exec app vendor/bin/deptrac analyse core/depfile-booking-iso.yaml --cache-file=var/tools/deptrac/.booking-iso-deptrac.cache
 
 .PHONY: lint-yaml
 lint-yaml: ## Run symfony linter for yaml files.
