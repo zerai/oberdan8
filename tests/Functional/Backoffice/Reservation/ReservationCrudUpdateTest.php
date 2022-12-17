@@ -223,7 +223,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
      */
     public function shouldNotChangeConfirmationStatusWhenEditOtherFields(): void
     {
-        /** @var Reservation $reservation *///$reservation = ReservationFactory::createOne()->object();
+        /** @var Reservation $reservation */ //$reservation = ReservationFactory::createOne()->object();
 
         $reservation = ReservationFactory::createOne([
             'books' => BookFactory::new()->many(5),
@@ -231,9 +231,9 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         ])->object();
 
         // /** @var ReservationRepository $reservationRepository */
-//        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistance\ReservationRepository');
-//        $reservationFromDb = $reservationRepository->withId($reservation->getId());
-//        self::assertEquals($reservation->getSaleDetail()->getConfirmationStatus()->confirmedAt(), $reservationFromDb->getSaleDetail()->getConfirmationStatus()->confirmedAt());
+        //        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistance\ReservationRepository');
+        //        $reservationFromDb = $reservationRepository->withId($reservation->getId());
+        //        self::assertEquals($reservation->getSaleDetail()->getConfirmationStatus()->confirmedAt(), $reservationFromDb->getSaleDetail()->getConfirmationStatus()->confirmedAt());
 
         $expectedReservationConfirmationDate = $reservation->getSaleDetail()->getConfirmationStatus()->confirmedAt();
 

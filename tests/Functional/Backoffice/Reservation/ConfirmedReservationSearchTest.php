@@ -69,7 +69,6 @@ class ConfirmedReservationSearchTest extends SecurityWebtestCase
     /** @test */
     public function searchByPackageIdShouldReturnOneRecord(): void
     {
-
         //TODO remove tempName (mettere colonna packageId in table)
         $packageId = '555';
         $tempName = 'target-result';
@@ -109,7 +108,6 @@ class ConfirmedReservationSearchTest extends SecurityWebtestCase
     /** @test */
     public function searchByPackageIdShouldReturnTwoRecord(): void
     {
-
         //TODO remove tempName (mettere colonna packageId in table)
         $packageId = '501';
         $tempName = 'target-result';

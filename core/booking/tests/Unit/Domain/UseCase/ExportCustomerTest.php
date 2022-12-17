@@ -29,7 +29,7 @@ class ExportCustomerTest extends TestCase
 
                 ],
             ])
-            ;
+        ;
 
         $useCase->exportAllCustomer();
     }

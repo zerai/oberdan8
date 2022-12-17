@@ -26,6 +26,6 @@ class InfoBoxRepository extends ServiceEntityRepository
             ->setParameter('value', $isDefaultBox)
             ->getQuery()
             ->getOneOrNullResult()
-            ;
+        ;
     }
 }

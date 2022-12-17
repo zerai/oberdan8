@@ -319,7 +319,6 @@ class BackofficeReservationController extends AbstractController
     public function addExtensionTimeToConfirmation(Request $request, Reservation $reservation): Response
     {
         if ($this->isCsrfTokenValid('add-extension-time' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
-
             //Todo before check if status is Confirmed and confirmationStatus not null
             $newConfirmationStatusWithExtensionTime = $reservation->getSaleDetail()->getConfirmationStatus()->withExtensionTime(ExtensionTime::true());
 

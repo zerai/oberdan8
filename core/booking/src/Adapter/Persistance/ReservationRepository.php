@@ -60,7 +60,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->setMaxResults(100)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
     /**
@@ -87,7 +87,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
         }
         return $qb
             ->orderBy('r.registrationDate', 'DESC')
-            ;
+        ;
     }
 
     /**
@@ -103,7 +103,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->setMaxResults(1000)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
     /**
@@ -119,7 +119,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->setMaxResults(1000)
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
     /**
@@ -133,7 +133,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->addSelect('s')
             ->andWhere('s.status = :val')
             ->setParameter('val', 'Confirmed')
-            ;
+        ;
 
         if (\is_string($term)) {
             $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
