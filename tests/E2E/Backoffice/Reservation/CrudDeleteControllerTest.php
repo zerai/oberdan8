@@ -72,14 +72,14 @@ class CrudDeleteControllerTest extends PantherTestCase
             $crawler->filterXPath('//td//a/i[@class="fa fa-eye"]')->count()
         );
 
-//        /** @var ReservationRepository $reservationRepository */
-//        $reservationRepository = self::$container->get('Booking\Adapter\Persistance\ReservationRepository');
-//
-//        $result = $reservationRepository->find($reservation->getId());
-//
-//        $result = $reservationRepository->findAll();
-//
-//        dd($result);
+        //        /** @var ReservationRepository $reservationRepository */
+        //        $reservationRepository = self::$container->get('Booking\Adapter\Persistance\ReservationRepository');
+        //
+        //        $result = $reservationRepository->find($reservation->getId());
+        //
+        //        $result = $reservationRepository->findAll();
+        //
+        //        dd($result);
     }
 
     protected function logInAsAdmin(): void

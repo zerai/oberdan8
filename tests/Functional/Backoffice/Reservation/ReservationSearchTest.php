@@ -71,7 +71,6 @@ class ReservationSearchTest extends SecurityWebtestCase
     /** @test */
     public function searchByPackageIdShouldReturnOneRecord(): void
     {
-
         //TODO remove tempName (mettere colonna packageId in table)
         $packageId = '555';
         $tempName = 'target-result';
@@ -111,7 +110,6 @@ class ReservationSearchTest extends SecurityWebtestCase
     /** @test */
     public function searchByPackageIdShouldReturnTwoRecord(): void
     {
-
         //TODO remove tempName (mettere colonna packageId in table)
         $packageId = '501';
         $tempName = 'target-result';
@@ -191,7 +189,7 @@ class ReservationSearchTest extends SecurityWebtestCase
     /** @test */
     public function shouldSearchByReservationStatus(): void
     {
-//        //TODO remove tempName (mettere colonna packageId in table)
+        //        //TODO remove tempName (mettere colonna packageId in table)
 
         ReservationFactory::createMany(
             5,
