@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
   <file src="core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php">
     <MixedArgument occurrences="5">
       <code>$value</code>
@@ -36,10 +36,8 @@
     </RedundantCast>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php">
-    <MixedAssignment occurrences="5">
+    <MixedAssignment occurrences="3">
       <code>$confirmedReservation</code>
-      <code>$q</code>
-      <code>$q</code>
       <code>$queryBuilder</code>
       <code>$queryBuilder</code>
     </MixedAssignment>
@@ -61,8 +59,7 @@
     <MissingPropertyType occurrences="1">
       <code>$formData-&gt;books</code>
     </MissingPropertyType>
-    <MixedArgument occurrences="10">
-      <code>$bookId</code>
+    <MixedArgument occurrences="9">
       <code>$form-&gt;get('classe')-&gt;getData()</code>
       <code>$form-&gt;get('generalNotes')-&gt;getData()</code>
       <code>$form-&gt;get('packageId')-&gt;getData()</code>
@@ -73,11 +70,8 @@
       <code>$form-&gt;get('person')-&gt;getData()-&gt;getPhone()</code>
       <code>$form-&gt;get('status')-&gt;getData()</code>
     </MixedArgument>
-    <MixedAssignment occurrences="4">
-      <code>$bookId</code>
-      <code>$q</code>
+    <MixedAssignment occurrences="1">
       <code>$queryBuilder</code>
-      <code>$status</code>
     </MixedAssignment>
     <MixedMethodCall occurrences="6">
       <code>getCity</code>
@@ -87,9 +81,6 @@
       <code>getPhone</code>
       <code>getQuery</code>
     </MixedMethodCall>
-    <MixedOperand occurrences="1">
-      <code>$bookId</code>
-    </MixedOperand>
     <PossiblyNullArgument occurrences="6">
       <code>$reservation-&gt;getCity()</code>
       <code>$reservation-&gt;getEmail()</code>
@@ -214,6 +205,11 @@
     <PossiblyNullArgument occurrences="2">
       <code>$this-&gt;getPvtConfirmedAt()</code>
       <code>$this-&gt;getPvtExtensionTime()</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="core/booking/src/Infrastructure/Exporter/ExportDataHttpResponseFactory.php">
+    <PossiblyNullArgument occurrences="1">
+      <code>$file-&gt;name()</code>
     </PossiblyNullArgument>
   </file>
   <file src="core/booking/src/Infrastructure/Uploader/AdozioniUploader.php">
@@ -427,23 +423,10 @@
     </PossiblyNullArgument>
   </file>
   <file src="src/Entity/BackofficeUser.php">
-    <MissingConstructor occurrences="1">
-      <code>$password</code>
-    </MissingConstructor>
-    <MissingPropertyType occurrences="3">
+    <MissingPropertyType occurrences="2">
       <code>$email</code>
       <code>$id</code>
-      <code>$roles</code>
     </MissingPropertyType>
-    <MixedArgument occurrences="1">
-      <code>$roles</code>
-    </MixedArgument>
-    <MixedArrayAssignment occurrences="1">
-      <code>$roles[]</code>
-    </MixedArrayAssignment>
-    <MixedAssignment occurrences="1">
-      <code>$roles</code>
-    </MixedAssignment>
     <MixedInferredReturnType occurrences="2">
       <code>?int</code>
       <code>?string</code>
