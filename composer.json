@@ -22,7 +22,7 @@
         "prolic/fpp": "dev-master",
         "psr/log": "^1.1",
         "ramsey/uuid": "^4.2",
-        "ramsey/uuid-doctrine": "^1.8",
+        "ramsey/uuid-doctrine": "^2.0",
         "sensio/framework-extra-bundle": "^6.1",
         "sentry/sentry-symfony": "^4.5",
         "symfony/apache-pack": "^1.0",
