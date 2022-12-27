@@ -14,7 +14,7 @@
         "doctrine/annotations": "^1.13",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.1",
-        "doctrine/orm": "^2.13",
+        "doctrine/orm": "^2.14",
         "knplabs/knp-paginator-bundle": "^5.9",
         "league/commonmark": "^2.3",
         "phpdocumentor/reflection-docblock": "^5.3",
