@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "505ba7ad8ad7d341832a278fe7f89fd6",
+    "content-hash": "5455deca852c719c0cd27dd9e9b1302a",
     "packages": [
         {
             "name": "brick/math",
@@ -2584,16 +2584,16 @@
         },
         {
             "name": "lorenzo/pinky",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lorenzo/pinky.git",
-                "reference": "61de35ec6a17badea8b0922e65a979472c886d01"
+                "reference": "60afc9f8c2b8fb6a2f77050b485ce93143dd8dcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lorenzo/pinky/zipball/61de35ec6a17badea8b0922e65a979472c886d01",
-                "reference": "61de35ec6a17badea8b0922e65a979472c886d01",
+                "url": "https://api.github.com/repos/lorenzo/pinky/zipball/60afc9f8c2b8fb6a2f77050b485ce93143dd8dcf",
+                "reference": "60afc9f8c2b8fb6a2f77050b485ce93143dd8dcf",
                 "shasum": ""
             },
             "require": {
@@ -2631,9 +2631,9 @@
             ],
             "support": {
                 "issues": "https://github.com/lorenzo/pinky/issues",
-                "source": "https://github.com/lorenzo/pinky/tree/1.0.6"
+                "source": "https://github.com/lorenzo/pinky/tree/1.0.7"
             },
-            "time": "2022-03-17T12:11:56+00:00"
+            "time": "2022-10-02T12:15:42+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -10027,16 +10027,16 @@
         },
         {
             "name": "twig/inky-extra",
-            "version": "v3.4.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/inky-extra.git",
-                "reference": "b515e6f7c1fede76f9f507dbd1bb369f46aa726b"
+                "reference": "2845c9c7ad25227c3b79285a2421ee9cebbf48e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/inky-extra/zipball/b515e6f7c1fede76f9f507dbd1bb369f46aa726b",
-                "reference": "b515e6f7c1fede76f9f507dbd1bb369f46aa726b",
+                "url": "https://api.github.com/repos/twigphp/inky-extra/zipball/2845c9c7ad25227c3b79285a2421ee9cebbf48e8",
+                "reference": "2845c9c7ad25227c3b79285a2421ee9cebbf48e8",
                 "shasum": ""
             },
             "require": {
@@ -10050,7 +10050,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.5-dev"
                 }
             },
             "autoload": {
@@ -10082,7 +10082,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/inky-extra/tree/v3.4.0"
+                "source": "https://github.com/twigphp/inky-extra/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -10094,7 +10094,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T10:02:25+00:00"
+            "time": "2022-12-27T12:23:36+00:00"
         },
         {
             "name": "twig/markdown-extra",
@@ -10243,16 +10243,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.4.3",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "c38fd6b0b7f370c198db91ffd02e23b517426b58"
+                "reference": "3ffcf4b7d890770466da3b2666f82ac054e7ec72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c38fd6b0b7f370c198db91ffd02e23b517426b58",
-                "reference": "c38fd6b0b7f370c198db91ffd02e23b517426b58",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3ffcf4b7d890770466da3b2666f82ac054e7ec72",
+                "reference": "3ffcf4b7d890770466da3b2666f82ac054e7ec72",
                 "shasum": ""
             },
             "require": {
@@ -10267,7 +10267,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "3.5-dev"
                 }
             },
             "autoload": {
@@ -10303,7 +10303,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.4.3"
+                "source": "https://github.com/twigphp/Twig/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -10315,7 +10315,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-28T08:42:51+00:00"
+            "time": "2022-12-27T12:28:18+00:00"
         },
         {
             "name": "webmozart/assert",
