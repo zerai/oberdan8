@@ -45,7 +45,7 @@
         "symfony/yaml": "4.4.*",
         "symfonycasts/verify-email-bundle": "^1.10",
         "twig/cssinliner-extra": "^3.4",
-        "twig/extra-bundle": "^3.3",
+        "twig/extra-bundle": "^3.5",
         "twig/inky-extra": "^3.4",
         "twig/markdown-extra": "^3.4",
         "twig/string-extra": "^3.4",
