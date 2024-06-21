@@ -7,7 +7,6 @@ use App\Repository\BackofficeUserRepository;
 use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\PantherTestCase;
 use Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken;
 use function Zenstruck\Foundry\factory;
