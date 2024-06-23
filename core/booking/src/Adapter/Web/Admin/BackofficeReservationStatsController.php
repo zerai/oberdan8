@@ -3,7 +3,6 @@
 namespace Booking\Adapter\Web\Admin;
 
 use Booking\Adapter\Persistance\ReservationRepository;
-use Booking\Application\Domain\Model\Reservation;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

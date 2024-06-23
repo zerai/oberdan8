@@ -1,477 +1,483 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+  <file src="core/booking/src/Adapter/Persistance/BookRepository.php">
+    <MissingTemplateParam>
+      <code><![CDATA[BookRepository]]></code>
+    </MissingTemplateParam>
+  </file>
   <file src="core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php">
-    <MixedArgument occurrences="5">
-      <code>$value</code>
-      <code>$value</code>
-      <code>$value</code>
-      <code>static::NAME</code>
-      <code>static::NAME</code>
+    <MixedArgument>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[$value]]></code>
+      <code><![CDATA[static::NAME]]></code>
+      <code><![CDATA[static::NAME]]></code>
     </MixedArgument>
   </file>
-  <file src="core/booking/src/Adapter/Persistance/ExportDataRetriever.php">
-    <MixedAssignment occurrences="1">
-      <code>$resultSet</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>array</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="1">
-      <code>fetchAllAssociative</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
-      <code>$resultSet-&gt;fetchAllAssociative()</code>
-    </MixedReturnStatement>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>executeQuery</code>
-    </UndefinedInterfaceMethod>
-  </file>
   <file src="core/booking/src/Adapter/Persistance/ReservationRepository.php">
-    <PossiblyNullReference occurrences="2">
-      <code>getConfirmationStatus</code>
-      <code>isExpired</code>
+    <MissingTemplateParam>
+      <code><![CDATA[ReservationRepository]]></code>
+    </MissingTemplateParam>
+    <PossiblyNullReference>
+      <code><![CDATA[getConfirmationStatus]]></code>
+      <code><![CDATA[isExpired]]></code>
     </PossiblyNullReference>
-    <RedundantCast occurrences="1">
-      <code>(int) \count($expired)</code>
+    <RedundantCast>
+      <code><![CDATA[(int) \count($expired)]]></code>
     </RedundantCast>
   </file>
+  <file src="core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php">
+    <MissingTemplateParam>
+      <code><![CDATA[ReservationSaleDetailRepository]]></code>
+    </MissingTemplateParam>
+  </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php">
-    <MixedAssignment occurrences="3">
-      <code>$confirmedReservation</code>
-      <code>$queryBuilder</code>
-      <code>$queryBuilder</code>
+    <MixedAssignment>
+      <code><![CDATA[$confirmedReservation]]></code>
+      <code><![CDATA[$queryBuilder]]></code>
+      <code><![CDATA[$queryBuilder]]></code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="3">
-      <code>getQuery</code>
-      <code>getQuery</code>
-      <code>getResult</code>
+    <MixedMethodCall>
+      <code><![CDATA[getQuery]]></code>
+      <code><![CDATA[getQuery]]></code>
+      <code><![CDATA[getResult]]></code>
     </MixedMethodCall>
-    <PossiblyNullReference occurrences="2">
-      <code>getConfirmationStatus</code>
-      <code>isExpired</code>
+    <PossiblyNullReference>
+      <code><![CDATA[getConfirmationStatus]]></code>
+      <code><![CDATA[isExpired]]></code>
     </PossiblyNullReference>
-    <UndefinedInterfaceMethod occurrences="2">
-      <code>findWithQueryBuilderAllConfirmedOrderByOldest</code>
-      <code>findWithQueryBuilderAllConfirmedOrderByOldest</code>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[findWithQueryBuilderAllConfirmedOrderByOldest]]></code>
+      <code><![CDATA[findWithQueryBuilderAllConfirmedOrderByOldest]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
-    <MissingPropertyType occurrences="1">
-      <code>$formData-&gt;books</code>
+    <MissingPropertyType>
+      <code><![CDATA[$formData->books]]></code>
     </MissingPropertyType>
-    <MixedArgument occurrences="9">
-      <code>$form-&gt;get('classe')-&gt;getData()</code>
-      <code>$form-&gt;get('generalNotes')-&gt;getData()</code>
-      <code>$form-&gt;get('packageId')-&gt;getData()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getCity()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getEmail()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getFirstName()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getLastName()</code>
-      <code>$form-&gt;get('person')-&gt;getData()-&gt;getPhone()</code>
-      <code>$form-&gt;get('status')-&gt;getData()</code>
+    <MixedArgument>
+      <code><![CDATA[$form->get('classe')->getData()]]></code>
+      <code><![CDATA[$form->get('generalNotes')->getData()]]></code>
+      <code><![CDATA[$form->get('packageId')->getData()]]></code>
+      <code><![CDATA[$form->get('person')->getData()->getCity()]]></code>
+      <code><![CDATA[$form->get('person')->getData()->getEmail()]]></code>
+      <code><![CDATA[$form->get('person')->getData()->getFirstName()]]></code>
+      <code><![CDATA[$form->get('person')->getData()->getLastName()]]></code>
+      <code><![CDATA[$form->get('person')->getData()->getPhone()]]></code>
+      <code><![CDATA[$form->get('status')->getData()]]></code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$queryBuilder</code>
+    <MixedAssignment>
+      <code><![CDATA[$queryBuilder]]></code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="6">
-      <code>getCity</code>
-      <code>getEmail</code>
-      <code>getFirstName</code>
-      <code>getLastName</code>
-      <code>getPhone</code>
-      <code>getQuery</code>
+    <MixedMethodCall>
+      <code><![CDATA[getCity]]></code>
+      <code><![CDATA[getEmail]]></code>
+      <code><![CDATA[getFirstName]]></code>
+      <code><![CDATA[getLastName]]></code>
+      <code><![CDATA[getPhone]]></code>
+      <code><![CDATA[getQuery]]></code>
     </MixedMethodCall>
-    <PossiblyNullArgument occurrences="6">
-      <code>$reservation-&gt;getCity()</code>
-      <code>$reservation-&gt;getEmail()</code>
-      <code>$reservation-&gt;getEmail()</code>
-      <code>$reservation-&gt;getFirstName()</code>
-      <code>$reservation-&gt;getLastName()</code>
-      <code>$reservation-&gt;getPhone()</code>
+    <PossiblyNullArgument>
+      <code><![CDATA[$reservation->getCity()]]></code>
+      <code><![CDATA[$reservation->getEmail()]]></code>
+      <code><![CDATA[$reservation->getEmail()]]></code>
+      <code><![CDATA[$reservation->getFirstName()]]></code>
+      <code><![CDATA[$reservation->getLastName()]]></code>
+      <code><![CDATA[$reservation->getPhone()]]></code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="11">
-      <code>getConfirmationStatus</code>
-      <code>getGeneralNotes</code>
-      <code>getReservationPackageId</code>
-      <code>getStatus</code>
-      <code>getStatus</code>
-      <code>getStatus</code>
-      <code>setConfirmationStatus</code>
-      <code>setGeneralNotes</code>
-      <code>setReservationPackageId</code>
-      <code>setStatus</code>
-      <code>withExtensionTime</code>
+    <PossiblyNullReference>
+      <code><![CDATA[getConfirmationStatus]]></code>
+      <code><![CDATA[getGeneralNotes]]></code>
+      <code><![CDATA[getReservationPackageId]]></code>
+      <code><![CDATA[getStatus]]></code>
+      <code><![CDATA[getStatus]]></code>
+      <code><![CDATA[getStatus]]></code>
+      <code><![CDATA[setConfirmationStatus]]></code>
+      <code><![CDATA[setGeneralNotes]]></code>
+      <code><![CDATA[setReservationPackageId]]></code>
+      <code><![CDATA[setStatus]]></code>
+      <code><![CDATA[withExtensionTime]]></code>
     </PossiblyNullReference>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>getWithSearchQueryBuilder</code>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[getWithSearchQueryBuilder]]></code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="core/booking/src/Adapter/Web/Admin/Form/BackofficeReservationType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[BackofficeReservationType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Admin/Form/ClientType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[ClientType]]></code>
+    </MissingTemplateParam>
+  </file>
   <file src="core/booking/src/Adapter/Web/Admin/Form/Model/BackofficeReservationFormModel.php">
-    <MissingPropertyType occurrences="1">
-      <code>$books</code>
+    <MissingPropertyType>
+      <code><![CDATA[$books]]></code>
     </MissingPropertyType>
   </file>
   <file src="core/booking/src/Adapter/Web/Free/AdozioniReservationController.php">
-    <RedundantConditionGivenDocblockType occurrences="3">
-      <code>$adozioniFile !== null</code>
-      <code>$secondAdozioniFile !== null</code>
-      <code>$thirdAdozioniFile !== null</code>
+    <RedundantConditionGivenDocblockType>
+      <code><![CDATA[$adozioniFile !== null]]></code>
+      <code><![CDATA[$secondAdozioniFile !== null]]></code>
+      <code><![CDATA[$thirdAdozioniFile !== null]]></code>
     </RedundantConditionGivenDocblockType>
-    <UndefinedInterfaceMethod occurrences="3">
-      <code>uploadAdozioniFileAndReturnFile</code>
-      <code>uploadAdozioniFileAndReturnFile</code>
-      <code>uploadAdozioniFileAndReturnFile</code>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[uploadAdozioniFileAndReturnFile]]></code>
+      <code><![CDATA[uploadAdozioniFileAndReturnFile]]></code>
+      <code><![CDATA[uploadAdozioniFileAndReturnFile]]></code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="core/booking/src/Adapter/Web/Free/Form/AdozioniReservationType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[AdozioniReservationType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Free/Form/BookType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[BookType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Free/Form/ClasseField.php">
+    <MissingTemplateParam>
+      <code><![CDATA[ClasseField]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Free/Form/ClientType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[ClientType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Free/Form/ReservationType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[ReservationType]]></code>
+    </MissingTemplateParam>
+  </file>
   <file src="core/booking/src/Application/Domain/Model/Book.php">
-    <MissingConstructor occurrences="5">
-      <code>$author</code>
-      <code>$id</code>
-      <code>$isbn</code>
-      <code>$title</code>
-      <code>$volume</code>
+    <MissingConstructor>
+      <code><![CDATA[$author]]></code>
+      <code><![CDATA[$id]]></code>
+      <code><![CDATA[$isbn]]></code>
+      <code><![CDATA[$title]]></code>
+      <code><![CDATA[$volume]]></code>
     </MissingConstructor>
-    <MissingPropertyType occurrences="1">
-      <code>$reservation</code>
+    <MissingPropertyType>
+      <code><![CDATA[$reservation]]></code>
     </MissingPropertyType>
-    <MixedInferredReturnType occurrences="1">
-      <code>?Reservation</code>
+    <MixedInferredReturnType>
+      <code><![CDATA[?Reservation]]></code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;reservation</code>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->reservation]]></code>
     </MixedReturnStatement>
-    <PossiblyNullPropertyAssignmentValue occurrences="3">
-      <code>$author</code>
-      <code>$isbn</code>
-      <code>$volume</code>
+    <PossiblyNullPropertyAssignmentValue>
+      <code><![CDATA[$author]]></code>
+      <code><![CDATA[$isbn]]></code>
+      <code><![CDATA[$volume]]></code>
     </PossiblyNullPropertyAssignmentValue>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Booking/RegularReservation.php">
-    <MixedArgument occurrences="1">
-      <code>$e</code>
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$this->books]]></code>
+      <code><![CDATA[$this->books]]></code>
+      <code><![CDATA[array_map(fn ($e) => Book::fromArray($e), $data['books'])]]></code>
+    </ArgumentTypeCoercion>
+    <LessSpecificReturnStatement>
+      <code><![CDATA[$this->books]]></code>
+    </LessSpecificReturnStatement>
+    <MixedArgument>
+      <code><![CDATA[$e]]></code>
     </MixedArgument>
-    <MixedArgumentTypeCoercion occurrences="3">
-      <code>$this-&gt;books</code>
-      <code>$this-&gt;books</code>
-      <code>array_map(fn ($e) =&gt; Book::fromArray($e), $data['books'])</code>
-    </MixedArgumentTypeCoercion>
-    <MixedAssignment occurrences="1">
-      <code>$v</code>
+    <MixedAssignment>
+      <code><![CDATA[$v]]></code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="1">
-      <code>equals</code>
+    <MixedMethodCall>
+      <code><![CDATA[equals]]></code>
     </MixedMethodCall>
-    <MixedReturnTypeCoercion occurrences="2">
-      <code>$this-&gt;books</code>
-      <code>list&lt;Book&gt;</code>
-    </MixedReturnTypeCoercion>
+    <MoreSpecificReturnType>
+      <code><![CDATA[list<Book>]]></code>
+    </MoreSpecificReturnType>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Reservation.php">
-    <MissingPropertyType occurrences="2">
-      <code>$books</code>
-      <code>$registrationDate</code>
+    <MissingPropertyType>
+      <code><![CDATA[$books]]></code>
+      <code><![CDATA[$registrationDate]]></code>
     </MissingPropertyType>
-    <MixedArrayAssignment occurrences="1">
-      <code>$this-&gt;books[]</code>
+    <MixedArrayAssignment>
+      <code><![CDATA[$this->books[]]]></code>
     </MixedArrayAssignment>
-    <MixedInferredReturnType occurrences="2">
-      <code>?\DateTimeImmutable</code>
-      <code>Collection</code>
+    <MixedInferredReturnType>
+      <code><![CDATA[?\DateTimeImmutable]]></code>
+      <code><![CDATA[Collection]]></code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="2">
-      <code>contains</code>
-      <code>removeElement</code>
+    <MixedMethodCall>
+      <code><![CDATA[contains]]></code>
+      <code><![CDATA[removeElement]]></code>
     </MixedMethodCall>
-    <MixedReturnStatement occurrences="2">
-      <code>$this-&gt;books</code>
-      <code>$this-&gt;registrationDate</code>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->books]]></code>
+      <code><![CDATA[$this->registrationDate]]></code>
     </MixedReturnStatement>
-    <PropertyNotSetInConstructor occurrences="8">
-      <code>$LastName</code>
-      <code>$city</code>
-      <code>$classe</code>
-      <code>$email</code>
-      <code>$firstName</code>
-      <code>$id</code>
-      <code>$phone</code>
-      <code>$saleDetail</code>
+    <PropertyNotSetInConstructor>
+      <code><![CDATA[$LastName]]></code>
+      <code><![CDATA[$city]]></code>
+      <code><![CDATA[$classe]]></code>
+      <code><![CDATA[$email]]></code>
+      <code><![CDATA[$firstName]]></code>
+      <code><![CDATA[$id]]></code>
+      <code><![CDATA[$phone]]></code>
+      <code><![CDATA[$saleDetail]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="core/booking/src/Application/Domain/Model/ReservationSaleDetail.php">
-    <MissingConstructor occurrences="2">
-      <code>$id</code>
-      <code>$status</code>
+    <MissingConstructor>
+      <code><![CDATA[$id]]></code>
+      <code><![CDATA[$status]]></code>
     </MissingConstructor>
-    <PossiblyNullArgument occurrences="2">
-      <code>$this-&gt;getPvtConfirmedAt()</code>
-      <code>$this-&gt;getPvtExtensionTime()</code>
+    <PossiblyNullArgument>
+      <code><![CDATA[$this->getPvtConfirmedAt()]]></code>
+      <code><![CDATA[$this->getPvtExtensionTime()]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="core/booking/src/Infrastructure/Exporter/ExportDataHttpResponseFactory.php">
-    <PossiblyNullArgument occurrences="1">
-      <code>$file-&gt;name()</code>
+    <PossiblyNullArgument>
+      <code><![CDATA[$file->name()]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="core/booking/src/Infrastructure/Uploader/AdozioniUploader.php">
-    <PossiblyNullOperand occurrences="2">
-      <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
-      <code>$uploadedAdozioniFile-&gt;guessExtension()</code>
+    <PossiblyNullOperand>
+      <code><![CDATA[$uploadedAdozioniFile->guessExtension()]]></code>
+      <code><![CDATA[$uploadedAdozioniFile->guessExtension()]]></code>
     </PossiblyNullOperand>
   </file>
   <file src="core/booking/tests/Integration/ExportDataRetrieverTest.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$this-&gt;entityManager</code>
-    </ArgumentTypeCoercion>
-    <PossiblyNullReference occurrences="3">
-      <code>close</code>
-      <code>getAllCustomerForNewsletter</code>
-      <code>getAllCustomerForNewsletter</code>
-    </PossiblyNullReference>
-    <PropertyTypeCoercion occurrences="1"/>
+    <MissingDependency>
+      <code><![CDATA[KernelTestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$this-&gt;repositoryClass</code>
-    </ArgumentTypeCoercion>
-    <PossiblyFalseArgument occurrences="16">
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-      <code>\DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo-&gt;format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))</code>
-    </PossiblyFalseArgument>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>null</code>
-    </PossiblyNullPropertyAssignmentValue>
-    <PropertyTypeCoercion occurrences="2"/>
-    <UnusedVariable occurrences="1">
-      <code>$noise</code>
-    </UnusedVariable>
+    <MissingDependency>
+      <code><![CDATA[KernelTestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryReadSideTest.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$this-&gt;repositoryClass</code>
-    </ArgumentTypeCoercion>
-    <MixedMethodCall occurrences="3">
-      <code>getRegistrationDate</code>
-      <code>getRegistrationDate</code>
-      <code>getRegistrationDate</code>
-    </MixedMethodCall>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>null</code>
-    </PossiblyNullPropertyAssignmentValue>
-    <PropertyTypeCoercion occurrences="2"/>
+    <MissingDependency>
+      <code><![CDATA[KernelTestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Integration/ReservationRepositoryTest.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$this-&gt;repositoryClass</code>
-    </ArgumentTypeCoercion>
-    <MissingPropertyType occurrences="1">
-      <code>$repository</code>
-    </MissingPropertyType>
-    <MixedAssignment occurrences="5">
-      <code>$entityFromDatabase</code>
-      <code>$entityFromDatabase</code>
-      <code>$entityFromDatabase</code>
-      <code>$entityFromDatabase</code>
-      <code>$originalEntity</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="15">
-      <code>addBook</code>
-      <code>delete</code>
-      <code>find</code>
-      <code>find</code>
-      <code>find</code>
-      <code>find</code>
-      <code>find</code>
-      <code>getId</code>
-      <code>save</code>
-      <code>save</code>
-      <code>save</code>
-      <code>save</code>
-      <code>save</code>
-      <code>save</code>
-      <code>withId</code>
-    </MixedMethodCall>
-    <PossiblyNullPropertyAssignmentValue occurrences="1">
-      <code>null</code>
-    </PossiblyNullPropertyAssignmentValue>
-    <PropertyTypeCoercion occurrences="1"/>
+    <MissingDependency>
+      <code><![CDATA[KernelTestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php">
-    <MixedArgument occurrences="1">
-      <code>$convertedPHPValue</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$convertedPHPValue</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>\Generator</code>
-    </MixedInferredReturnType>
-    <PossiblyNullArgument occurrences="4">
-      <code>$this-&gt;platform</code>
-      <code>$this-&gt;platform</code>
-      <code>$this-&gt;platform</code>
-      <code>$this-&gt;platform</code>
-    </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="5">
-      <code>convertToDatabaseValue</code>
-      <code>convertToPHPValue</code>
-      <code>convertToPHPValue</code>
-      <code>convertToPHPValue</code>
-      <code>getName</code>
-    </PossiblyNullReference>
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php">
-    <MixedArgument occurrences="2">
-      <code>$this-&gt;getPersonData()['firstName']</code>
-      <code>$this-&gt;getPersonData()['lastName']</code>
-    </MixedArgument>
-    <UnusedVariable occurrences="1">
-      <code>$fileList</code>
-    </UnusedVariable>
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToClientTest.php">
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingNewReservationEmailToBackofficeTest.php">
-    <MixedArgument occurrences="2">
-      <code>$this-&gt;getPersonData()['firstName']</code>
-      <code>$this-&gt;getPersonData()['lastName']</code>
-    </MixedArgument>
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingReservationConfirmationMailToClientTest.php">
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php">
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Domain/Book/BookTest.php">
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Domain/Client/ClientTest.php">
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Domain/ConfirmationStatus/ConfirmationStatusTest.php">
-    <MixedInferredReturnType occurrences="2">
-      <code>\Generator</code>
-      <code>\Generator</code>
-    </MixedInferredReturnType>
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="core/booking/tests/Unit/Domain/ReservationSaleDetailTest.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>Generator</code>
-    </MixedInferredReturnType>
-    <PossiblyNullReference occurrences="1">
-      <code>extensionTime</code>
-    </PossiblyNullReference>
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Domain/UseCase/ExportCustomerTest.php">
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
+  </file>
+  <file src="core/booking/tests/Unit/Infrastructure/BookingConfigurationTest.php">
+    <MissingDependency>
+      <code><![CDATA[TestCase]]></code>
+    </MissingDependency>
   </file>
   <file src="src/Controller/BackofficeInfoBoxController.php">
-    <MixedMethodCall occurrences="1">
-      <code>execute</code>
+    <MixedMethodCall>
+      <code><![CDATA[execute]]></code>
     </MixedMethodCall>
-    <UndefinedInterfaceMethod occurrences="1">
-      <code>createQuery</code>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[createQuery]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Controller/BackofficeMyAccountController.php">
-    <MixedArgument occurrences="1">
-      <code>$newPassword</code>
+    <MixedArgument>
+      <code><![CDATA[$newPassword]]></code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$newPassword</code>
+    <MixedAssignment>
+      <code><![CDATA[$newPassword]]></code>
     </MixedAssignment>
-    <MixedMethodCall occurrences="2">
-      <code>getEmail</code>
-      <code>getUsername</code>
+    <MixedMethodCall>
+      <code><![CDATA[getEmail]]></code>
+      <code><![CDATA[getUsername]]></code>
     </MixedMethodCall>
-    <MixedOperand occurrences="1">
-      <code>$this-&gt;getUser()-&gt;getEmail()</code>
+    <MixedOperand>
+      <code><![CDATA[$this->getUser()->getEmail()]]></code>
     </MixedOperand>
-    <PossiblyNullArgument occurrences="1">
-      <code>$backofficeUser</code>
+    <PossiblyNullArgument>
+      <code><![CDATA[$backofficeUser]]></code>
     </PossiblyNullArgument>
-    <PossiblyNullReference occurrences="3">
-      <code>getEmail</code>
-      <code>getUsername</code>
-      <code>setPassword</code>
+    <PossiblyNullReference>
+      <code><![CDATA[getEmail]]></code>
+      <code><![CDATA[getUsername]]></code>
+      <code><![CDATA[setPassword]]></code>
     </PossiblyNullReference>
   </file>
   <file src="src/Controller/BackofficeSecurityController.php">
-    <InvalidReturnType occurrences="1">
-      <code>Response</code>
+    <InvalidReturnType>
+      <code><![CDATA[Response]]></code>
     </InvalidReturnType>
   </file>
   <file src="src/Controller/BackofficeUserController.php">
-    <InvalidOperand occurrences="1">
-      <code>$backofficeUser-&gt;getId()</code>
+    <InvalidOperand>
+      <code><![CDATA[$backofficeUser->getId()]]></code>
     </InvalidOperand>
-    <MixedArgument occurrences="2">
-      <code>$form-&gt;get('plainPassword')-&gt;getData()</code>
-      <code>$form-&gt;get('plainPassword')-&gt;getData()</code>
+    <MixedArgument>
+      <code><![CDATA[$form->get('plainPassword')->getData()]]></code>
+      <code><![CDATA[$form->get('plainPassword')->getData()]]></code>
     </MixedArgument>
-    <PossiblyNullOperand occurrences="1">
-      <code>$backofficeUser-&gt;getId()</code>
+    <PossiblyNullOperand>
+      <code><![CDATA[$backofficeUser->getId()]]></code>
     </PossiblyNullOperand>
   </file>
   <file src="src/Controller/RegistrationController.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$this-&gt;getUser()</code>
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$this->getUser()]]></code>
     </ArgumentTypeCoercion>
-    <MixedArgument occurrences="1">
-      <code>$form-&gt;get('plainPassword')-&gt;getData()</code>
+    <MixedArgument>
+      <code><![CDATA[$form->get('plainPassword')->getData()]]></code>
     </MixedArgument>
-    <PossiblyNullArgument occurrences="2">
-      <code>$this-&gt;getUser()</code>
-      <code>$user-&gt;getEmail()</code>
+    <PossiblyNullArgument>
+      <code><![CDATA[$this->getUser()]]></code>
+      <code><![CDATA[$user->getEmail()]]></code>
     </PossiblyNullArgument>
   </file>
   <file src="src/Entity/BackofficeUser.php">
-    <MissingPropertyType occurrences="2">
-      <code>$email</code>
-      <code>$id</code>
+    <MissingPropertyType>
+      <code><![CDATA[$email]]></code>
+      <code><![CDATA[$id]]></code>
     </MissingPropertyType>
-    <MixedInferredReturnType occurrences="2">
-      <code>?int</code>
-      <code>?string</code>
+    <MixedInferredReturnType>
+      <code><![CDATA[?int]]></code>
+      <code><![CDATA[?string]]></code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="2">
-      <code>$this-&gt;email</code>
-      <code>$this-&gt;id</code>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->email]]></code>
+      <code><![CDATA[$this->id]]></code>
     </MixedReturnStatement>
   </file>
   <file src="src/Entity/InfoBox.php">
-    <MissingConstructor occurrences="1">
-      <code>$id</code>
+    <MissingConstructor>
+      <code><![CDATA[$id]]></code>
     </MissingConstructor>
   </file>
+  <file src="src/Form/BackofficeUserChangePasswordType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[BackofficeUserChangePasswordType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Form/BackofficeUserType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[BackofficeUserType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Form/InfoBoxType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[InfoBoxType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Form/RegistrationFormType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[RegistrationFormType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="src/Repository/BackofficeUserRepository.php">
+    <MissingTemplateParam>
+      <code><![CDATA[BackofficeUserRepository]]></code>
+    </MissingTemplateParam>
+  </file>
   <file src="src/Repository/InfoBoxRepository.php">
-    <MixedInferredReturnType occurrences="1">
-      <code>?InfoBox</code>
+    <MissingTemplateParam>
+      <code><![CDATA[InfoBoxRepository]]></code>
+    </MissingTemplateParam>
+    <MixedInferredReturnType>
+      <code><![CDATA[?InfoBox]]></code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1"/>
+    <MixedReturnStatement>
+      <code><![CDATA[$this->createQueryBuilder('i')
+            ->andWhere('i.defaultBox = :value')
+            ->setParameter('value', $isDefaultBox)
+            ->getQuery()
+            ->getOneOrNullResult()]]></code>
+    </MixedReturnStatement>
   </file>
   <file src="src/Security/EmailVerifier.php">
-    <MixedArgument occurrences="4">
-      <code>$user-&gt;getEmail()</code>
-      <code>$user-&gt;getEmail()</code>
-      <code>$user-&gt;getId()</code>
-      <code>$user-&gt;getId()</code>
+    <MixedArgument>
+      <code><![CDATA[$user->getEmail()]]></code>
+      <code><![CDATA[$user->getEmail()]]></code>
+      <code><![CDATA[$user->getId()]]></code>
+      <code><![CDATA[$user->getId()]]></code>
     </MixedArgument>
-    <UndefinedInterfaceMethod occurrences="5">
-      <code>getEmail</code>
-      <code>getEmail</code>
-      <code>getId</code>
-      <code>getId</code>
-      <code>setIsVerified</code>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[getEmail]]></code>
+      <code><![CDATA[getEmail]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[getId]]></code>
+      <code><![CDATA[setIsVerified]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Security/LoginFormBackofficeAuthenticator.php">
-    <MixedArrayAccess occurrences="3">
-      <code>$credentials['csrf_token']</code>
-      <code>$credentials['email']</code>
-      <code>$credentials['password']</code>
+    <MixedArrayAccess>
+      <code><![CDATA[$credentials['csrf_token']]]></code>
+      <code><![CDATA[$credentials['email']]]></code>
+      <code><![CDATA[$credentials['password']]]></code>
     </MixedArrayAccess>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[$targetPath = $this->getTargetPath($request->getSession(), $providerKey)]]></code>
+    </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Twig/AppExtension.php">
-    <MixedAssignment occurrences="1">
-      <code>$file</code>
+    <MixedAssignment>
+      <code><![CDATA[$file]]></code>
     </MixedAssignment>
   </file>
 </files>

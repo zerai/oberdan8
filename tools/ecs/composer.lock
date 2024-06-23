@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "symplify/easy-coding-standard",
-            "version": "11.1.24",
+            "version": "11.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "7d7eda3a8b42198b84ae0e5d67c4b15c2cd365d1"
+                "url": "https://github.com/easy-coding-standard/easy-coding-standard.git",
+                "reference": "1d2400f7bfe92e3754ce71f0782f2c0521bade3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/7d7eda3a8b42198b84ae0e5d67c4b15c2cd365d1",
-                "reference": "7d7eda3a8b42198b84ae0e5d67c4b15c2cd365d1",
+                "url": "https://api.github.com/repos/easy-coding-standard/easy-coding-standard/zipball/1d2400f7bfe92e3754ce71f0782f2c0521bade3d",
+                "reference": "1d2400f7bfe92e3754ce71f0782f2c0521bade3d",
                 "shasum": ""
             },
             "require": {
@@ -26,17 +26,13 @@
             },
             "conflict": {
                 "friendsofphp/php-cs-fixer": "<3.0",
-                "squizlabs/php_codesniffer": "<3.6"
+                "squizlabs/php_codesniffer": "<3.6",
+                "symplify/coding-standard": "<11.3"
             },
             "bin": [
                 "bin/ecs"
             ],
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "10.3-dev"
-                }
-            },
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -46,9 +42,16 @@
             "license": [
                 "MIT"
             ],
-            "description": "Prefixed scoped version of ECS package",
+            "description": "Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer",
+            "keywords": [
+                "Code style",
+                "automation",
+                "fixer",
+                "static analysis"
+            ],
             "support": {
-                "source": "https://github.com/symplify/easy-coding-standard/tree/11.1.24"
+                "issues": "https://github.com/easy-coding-standard/easy-coding-standard/issues",
+                "source": "https://github.com/easy-coding-standard/easy-coding-standard/tree/11.5.0"
             },
             "funding": [
                 {
@@ -60,7 +63,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-23T15:01:12+00:00"
+            "time": "2023-06-21T06:26:15+00:00"
         }
     ],
     "aliases": [],
@@ -70,5 +73,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

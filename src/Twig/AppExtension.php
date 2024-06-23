@@ -40,19 +40,19 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
         ];
     }
 
-//    public function processMarkdown($value)
-//    {
-//        return $this->container
-//            ->get(MarkdownHelper::class)
-//            ->parse($value);
-//    }
+    //    public function processMarkdown($value)
+    //    {
+    //        return $this->container
+    //            ->get(MarkdownHelper::class)
+    //            ->parse($value);
+    //    }
 
-//    public function getUploadedAssetPath(string $path): string
-//    {
-//        return $this->container
-//            ->get(UploaderHelper::class)
-//            ->getPublicPath($path);
-//    }
+    //    public function getUploadedAssetPath(string $path): string
+    //    {
+    //        return $this->container
+    //            ->get(UploaderHelper::class)
+    //            ->getPublicPath($path);
+    //    }
 
     public function getEncoreEntryCssSource(string $entryName): string
     {
