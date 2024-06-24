@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b42ed0a4cad67ae27df12e768a7c3ae",
+    "content-hash": "255f58a3ff392d454d6fe10b7c2c2a28",
     "packages": [
         {
             "name": "brick/math",
@@ -7207,16 +7207,16 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.27.0",
+            "version": "v1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "511a08c03c1960e08a883f4cffcacd219b758354"
+                "reference": "64647a7c30b2283f5d49b874d84a18fc22054b7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/511a08c03c1960e08a883f4cffcacd219b758354",
-                "reference": "511a08c03c1960e08a883f4cffcacd219b758354",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/64647a7c30b2283f5d49b874d84a18fc22054b7a",
+                "reference": "64647a7c30b2283f5d49b874d84a18fc22054b7a",
                 "shasum": ""
             },
             "require": {
@@ -7227,9 +7227,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.27-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -7268,7 +7265,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.27.0"
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.30.0"
             },
             "funding": [
                 {
@@ -7284,7 +7281,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2024-05-31T15:07:36+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
@@ -8891,16 +8888,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.4.15",
+            "version": "v5.4.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "571334ce9f687e3e6af72db4d3b2a9431e4fd9ed"
+                "reference": "142877285aa974a6f7685e292ab5ba9aae86b143"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/571334ce9f687e3e6af72db4d3b2a9431e4fd9ed",
-                "reference": "571334ce9f687e3e6af72db4d3b2a9431e4fd9ed",
+                "url": "https://api.github.com/repos/symfony/string/zipball/142877285aa974a6f7685e292ab5ba9aae86b143",
+                "reference": "142877285aa974a6f7685e292ab5ba9aae86b143",
                 "shasum": ""
             },
             "require": {
@@ -8957,7 +8954,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v5.4.15"
+                "source": "https://github.com/symfony/string/tree/v5.4.40"
             },
             "funding": [
                 {
@@ -8973,7 +8970,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-05T15:16:54+00:00"
+            "time": "2024-05-31T14:33:22+00:00"
         },
         {
             "name": "symfony/translation",
@@ -10153,33 +10150,28 @@
         },
         {
             "name": "twig/string-extra",
-            "version": "v3.4.0",
+            "version": "v3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/string-extra.git",
-                "reference": "03608ae2e9c270a961e8cf1b75751e8635ad3e3c"
+                "reference": "cd76ed8ae081bcd4fddf549e92e20c5df76c358a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/string-extra/zipball/03608ae2e9c270a961e8cf1b75751e8635ad3e3c",
-                "reference": "03608ae2e9c270a961e8cf1b75751e8635ad3e3c",
+                "url": "https://api.github.com/repos/twigphp/string-extra/zipball/cd76ed8ae081bcd4fddf549e92e20c5df76c358a",
+                "reference": "cd76ed8ae081bcd4fddf549e92e20c5df76c358a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
-                "symfony/string": "^5.0|^6.0",
+                "symfony/string": "^5.4|^6.4|^7.0",
                 "symfony/translation-contracts": "^1.1|^2|^3",
-                "twig/twig": "^2.7|^3.0"
+                "twig/twig": "^3.0"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "^4.4.9|^5.0.9|^6.0"
+                "symfony/phpunit-bridge": "^6.4|^7.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Twig\\Extra\\String\\": ""
@@ -10209,7 +10201,7 @@
                 "unicode"
             ],
             "support": {
-                "source": "https://github.com/twigphp/string-extra/tree/v3.4.0"
+                "source": "https://github.com/twigphp/string-extra/tree/v3.10.0"
             },
             "funding": [
                 {
@@ -10221,7 +10213,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T10:02:25+00:00"
+            "time": "2024-05-11T07:35:57+00:00"
         },
         {
             "name": "twig/twig",
