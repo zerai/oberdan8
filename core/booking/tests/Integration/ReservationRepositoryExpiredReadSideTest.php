@@ -7,6 +7,9 @@ use App\Factory\ReservationFactory;
 use App\Factory\ReservationSaleDetailFactory;
 use Booking\Adapter\Persistance\ReservationRepository;
 use Booking\Application\Domain\Model\Reservation;
+use DateTimeImmutable;
+use DateTimeZone;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -15,7 +18,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     private $entityManager;
 
@@ -44,13 +47,13 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     {
         $format = 'Y-m-d H:i:s';
 
-        $confirmed_8dayAgo = (new \DateTimeImmutable("today"))->modify('- 8days');
+        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
 
         // EXPIRED IN THE MORNING
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -58,7 +61,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -76,13 +79,13 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     {
         $format = 'Y-m-d H:i:s';
 
-        $confirmed_15dayAgo = (new \DateTimeImmutable("today"))->modify('- 15days');
+        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
 
         // EXPIRED IN THE MORNING
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             )->withExtensionTime(),
         ]);
 
@@ -90,7 +93,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             )->withExtensionTime(),
         ]);
 
@@ -108,15 +111,15 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     {
         $format = 'Y-m-d H:i:s';
 
-        $confirmed_8dayAgo = (new \DateTimeImmutable("today"))->modify('- 8days');
+        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
 
-        $confirmed_15dayAgo = (new \DateTimeImmutable("today"))->modify('- 15days');
+        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
 
         // EXPIRED 7 DAYS AGO IN THE MORNING
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -124,7 +127,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -132,7 +135,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -140,7 +143,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -166,13 +169,13 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     {
         $format = 'Y-m-d H:i:s';
 
-        $confirmed_8dayAgo = (new \DateTimeImmutable("today"))->modify('- 8days');
+        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
 
         // EXPIRED 7 DAYS AGO IN THE MORNING
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -180,7 +183,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -205,13 +208,13 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     {
         $format = 'Y-m-d H:i:s';
 
-        $confirmed_15dayAgo = (new \DateTimeImmutable("today"))->modify('- 15days');
+        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
 
         // EXPIRED 14 DAYS AGO IN THE MORNING
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             )->withExtensionTime(),
         ]);
 
@@ -219,7 +222,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             )->withExtensionTime(),
         ]);
 
@@ -246,15 +249,15 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     {
         $format = 'Y-m-d H:i:s';
 
-        $confirmed_8dayAgo = (new \DateTimeImmutable("today"))->modify('- 8days');
+        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
 
-        $confirmed_15dayAgo = (new \DateTimeImmutable("today"))->modify('- 15days');
+        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
 
         // EXPIRED 7 DAYS AGO IN THE MORNING
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -262,7 +265,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             ),
         ]);
 
@@ -270,7 +273,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
             )->withExtensionTime(),
         ]);
 
@@ -278,7 +281,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         ReservationFactory::createOne([
             'saleDetail' => ReservationSaleDetailFactory::new([
             ])->withConfirmationDate(
-                \DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new \DateTimeZone('Europe/Rome'))
+                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
             )->withExtensionTime(),
         ]);
 

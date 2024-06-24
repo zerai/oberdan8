@@ -5,11 +5,12 @@ namespace Booking\Tests\Unit\Adapter\DoctrineType;
 
 use Booking\Adapter\Persistance\DoctrineType\ReservationStatusType;
 use Booking\Application\Domain\Model\ReservationStatus;
-use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\MySqlPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
+use Generator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,7 +29,7 @@ class ReservationStatusTypeTest extends TestCase
         $this->platform = new MySqlPlatform();
         try {
             $this->type = Type::getType('reservation_status_test');
-        } catch (DBALException $e) {
+        } catch (Exception $e) {
         }
     }
 
@@ -68,7 +69,7 @@ class ReservationStatusTypeTest extends TestCase
         self::assertTrue($originalValue->equals($convertedPHPValue));
     }
 
-    public function validValueForDbToPhpConversionProvider(): \Generator
+    public function validValueForDbToPhpConversionProvider(): Generator
     {
         return [
             yield 'new arrival' => ['NewArrival'],

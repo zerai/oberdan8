@@ -10,6 +10,9 @@ use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
+use DateTimeImmutable;
+use DateTimeZone;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -18,7 +21,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 class ReservationRepositoryReadSideTest extends KernelTestCase
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     private $entityManager;
 
@@ -68,10 +71,10 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
     /** @test */
     public function shouldGetAllReservationWithStatusConfirmedOrderedByOldestDate(): void
     {
-        $todayDate = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-        $twoDayAgoDate = (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))
+        $todayDate = new DateTimeImmutable("now", new DateTimeZone('Europe/Rome'));
+        $twoDayAgoDate = (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))
             ->modify('- 2 days');
-        $threeDayAgoDate = (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))
+        $threeDayAgoDate = (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))
             ->modify('- 3 days');
 
         ReservationFactory::new()
@@ -113,7 +116,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
             ->setCity('foo')
             ->setClasse('prima')
             ->setRegistrationDate(
-                new \DateTimeImmutable("now")
+                new DateTimeImmutable("now")
             )
             ->setSaleDetail(
                 $itemDetail
