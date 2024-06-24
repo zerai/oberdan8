@@ -4,6 +4,7 @@ namespace Booking\Adapter\Persistance;
 
 use Booking\Application\Domain\UseCase\ExportDataRetrieverInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 
 class ExportDataRetriever implements ExportDataRetrieverInterface
 {
@@ -34,7 +35,7 @@ class ExportDataRetriever implements ExportDataRetrieverInterface
             $stmt = $conn->prepare($sql);
             $resultSet = $stmt->executeQuery();
             return $resultSet->fetchAllAssociative();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw $exception;
         }
     }

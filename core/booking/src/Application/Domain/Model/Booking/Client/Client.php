@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Booking\Application\Domain\Model\Booking\Client;
 
+use InvalidArgumentException;
+
 final class Client
 {
     private ClientId $id;
@@ -167,31 +169,31 @@ final class Client
     public static function fromArray(array $data): self
     {
         if (! isset($data['id']) || ! \is_string($data['id'])) {
-            throw new \InvalidArgumentException('Error on "id", string expected');
+            throw new InvalidArgumentException('Error on "id", string expected');
         }
 
         if (! isset($data['firstName']) || ! \is_string($data['firstName'])) {
-            throw new \InvalidArgumentException('Error on "firstName", string expected');
+            throw new InvalidArgumentException('Error on "firstName", string expected');
         }
 
         if (! isset($data['lastName']) || ! \is_string($data['lastName'])) {
-            throw new \InvalidArgumentException('Error on "lastName", string expected');
+            throw new InvalidArgumentException('Error on "lastName", string expected');
         }
 
         if (! isset($data['email']) || ! \is_string($data['email'])) {
-            throw new \InvalidArgumentException('Error on "email", string expected');
+            throw new InvalidArgumentException('Error on "email", string expected');
         }
 
         if (! isset($data['phone']) || ! \is_string($data['phone'])) {
-            throw new \InvalidArgumentException('Error on "phone", string expected');
+            throw new InvalidArgumentException('Error on "phone", string expected');
         }
 
         if (isset($data['classe']) && ! \is_string($data['classe'])) {
-            throw new \InvalidArgumentException('Error on "classe", string expected');
+            throw new InvalidArgumentException('Error on "classe", string expected');
         }
 
         if (! isset($data['city']) || ! \is_string($data['city'])) {
-            throw new \InvalidArgumentException('Error on "city": string expected');
+            throw new InvalidArgumentException('Error on "city": string expected');
         }
 
         return new self(

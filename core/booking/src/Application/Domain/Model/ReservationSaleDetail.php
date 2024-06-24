@@ -6,6 +6,7 @@ namespace Booking\Application\Domain\Model;
 use Booking\Application\Domain\Model\ConfirmationStatus\ConfirmationStatus;
 use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
 use DateTimeImmutable;
+use DateTimeZone;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
@@ -21,7 +22,7 @@ class ReservationSaleDetail
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class=UuidGenerator::class)*/
-    private \Ramsey\Uuid\UuidInterface $id;
+    private UuidInterface $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -124,7 +125,7 @@ class ReservationSaleDetail
     {
         if ($status->name() === 'Confirmed') {
             $newConfirmationStatus = ConfirmationStatus::create(
-                new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
+                new DateTimeImmutable("now", new DateTimeZone('Europe/Rome'))
             );
 
             $this->setConfirmationStatus($newConfirmationStatus);
@@ -169,7 +170,7 @@ class ReservationSaleDetail
 
     /**
      * @internal
-     * @param \DateTimeImmutable|null $pvtConfirmedAt
+     * @param DateTimeImmutable|null $pvtConfirmedAt
      * @return $this
      */
     public function setPvtConfirmedAt(?DateTimeImmutable $pvtConfirmedAt): self

@@ -5,7 +5,6 @@ namespace Booking\Adapter\Web\Admin;
 use Booking\Adapter\Persistance\ReservationRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,7 +16,7 @@ class BackofficeReservationStatsController extends AbstractController
     /**
      * @Route("/reservation-status-overview", name="backoffice_stats_reservation_overview", methods={"GET"})
      */
-    public function index(Request $request, ReservationRepository $repository): Response
+    public function index(ReservationRepository $repository): Response
     {
         $confirmedStatus = $repository->countWithStatusConfirmed();
 

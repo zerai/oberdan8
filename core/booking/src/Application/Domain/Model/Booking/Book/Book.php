@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Booking\Application\Domain\Model\Booking\Book;
 
+use InvalidArgumentException;
+
 final class Book
 {
     private Isbn $isbn;
@@ -85,19 +87,19 @@ final class Book
     public static function fromArray(array $data): self
     {
         if (! isset($data['isbn']) || ! \is_string($data['isbn'])) {
-            throw new \InvalidArgumentException('Error on "isbn", string expected');
+            throw new InvalidArgumentException('Error on "isbn", string expected');
         }
 
         if (! isset($data['title']) || ! \is_string($data['title'])) {
-            throw new \InvalidArgumentException('Error on "title", string expected');
+            throw new InvalidArgumentException('Error on "title", string expected');
         }
 
         if (! isset($data['author']) || ! \is_string($data['author'])) {
-            throw new \InvalidArgumentException('Error on "author", string expected');
+            throw new InvalidArgumentException('Error on "author", string expected');
         }
 
         if (! isset($data['volume']) || ! \is_string($data['volume'])) {
-            throw new \InvalidArgumentException('Error on "volume", string expected');
+            throw new InvalidArgumentException('Error on "volume", string expected');
         }
 
         return new self(

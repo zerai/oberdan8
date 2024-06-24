@@ -3,6 +3,9 @@
 namespace Booking\Application\Domain\Model\ConfirmationStatus;
 
 use DateTimeImmutable;
+use DateTimeZone;
+use InvalidArgumentException;
+use UnexpectedValueException;
 
 final class ConfirmationStatus
 {
@@ -37,7 +40,7 @@ final class ConfirmationStatus
     public function isExpired(): bool
     {
         //$today = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-        $today = new \DateTimeImmutable("today", new \DateTimeZone('Europe/Rome'));
+        $today = new DateTimeImmutable("today", new DateTimeZone('Europe/Rome'));
 
         $expirationDays = $this->extensionTime()->value() ? self::DEFAULT_EXPIRATION_TIME + self::EXTENDED_EXPIRATION_TIME : self::DEFAULT_EXPIRATION_TIME;
 
@@ -102,21 +105,21 @@ final class ConfirmationStatus
 
     public static function fromArray(array $data): self
     {
-        if (! isset($data['confirmedAt']) || ! DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', (string) $data['confirmedAt'], new \DateTimeZone('Europe/Rome'))
+        if (! isset($data['confirmedAt']) || ! DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', (string) $data['confirmedAt'], new DateTimeZone('Europe/Rome'))
         ) {
-            throw new \InvalidArgumentException('Error on "confirmedAt", datetime string expected');
+            throw new InvalidArgumentException('Error on "confirmedAt", datetime string expected');
         }
 
         if (! isset($data['extensionTime']) || ! \is_bool($data['extensionTime'])) {
-            throw new \InvalidArgumentException('Error on "extensionTime", bool expected');
+            throw new InvalidArgumentException('Error on "extensionTime", bool expected');
         }
 
         return new self(
             (function () use ($data) {
-                $_x = DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', (string) $data['confirmedAt'], new \DateTimeZone('Europe/Rome'));
+                $_x = DateTimeImmutable::createFromFormat('Y-m-d\TH:i:s.uP', (string) $data['confirmedAt'], new DateTimeZone('Europe/Rome'));
 
                 if (false === $_x) {
-                    throw new \UnexpectedValueException('Expected a date time string');
+                    throw new UnexpectedValueException('Expected a date time string');
                 }
 
                 return $_x;

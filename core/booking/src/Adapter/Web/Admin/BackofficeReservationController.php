@@ -14,14 +14,17 @@ use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
-
+use DateTimeImmutable;
+use DateTimeZone;
 use Knp\Component\Pager\PaginatorInterface;
+
 use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Throwable;
 
 /**
  * @Route("/admin/prenotazioni")
@@ -85,7 +88,7 @@ class BackofficeReservationController extends AbstractController
                 //Todo remove other info
                 //->setOtherInformation($formData->otherInfo)
                 ->setRegistrationDate(
-                    new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
+                    new DateTimeImmutable("now", new DateTimeZone('Europe/Rome'))
                 );
 
             // add saleDetail to reservation
@@ -113,7 +116,7 @@ class BackofficeReservationController extends AbstractController
 
             try {
                 $repository->save($reservation);
-            } catch (\Throwable $exception) {
+            } catch (Throwable $exception) {
                 throw $exception;
                 //throw new \RuntimeException('Errore nel salvataggio dei dati');
             }

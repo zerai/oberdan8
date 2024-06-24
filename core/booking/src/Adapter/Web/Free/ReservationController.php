@@ -11,10 +11,13 @@ use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
+use DateTimeImmutable;
+use DateTimeZone;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Throwable;
 
 /**
  * @Route("/reservation", name="app_reservation", methods={"GET","POST"})
@@ -46,7 +49,7 @@ class ReservationController extends AbstractController
                 ->setClasse($formData->classe)
                 ->setOtherInformation($formData->otherInfo)
                 ->setRegistrationDate(
-                    new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'))
+                    new DateTimeImmutable("now", new DateTimeZone('Europe/Rome'))
                 );
 
             // add saleDetail to reservation
@@ -68,7 +71,7 @@ class ReservationController extends AbstractController
 
             try {
                 $repository->save($reservation);
-            } catch (\Throwable $exception) {
+            } catch (Throwable $exception) {
                 throw $exception;
                 //throw new \RuntimeException('Errore nel salvataggio dei dati');
             }

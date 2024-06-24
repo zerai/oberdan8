@@ -3,7 +3,6 @@
 namespace Booking\Adapter\Web\Free;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ReservationResultsController extends AbstractController
 {
-    public function __invoke(Request $request): Response
+    public function __invoke(): Response
     {
         return $this->render('@booking/reservation-results-page.html.twig', [
         ]);

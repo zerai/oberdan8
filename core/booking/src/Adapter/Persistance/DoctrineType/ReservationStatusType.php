@@ -7,6 +7,7 @@ use Booking\Application\Domain\Model\ReservationStatus;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\StringType;
+use InvalidArgumentException;
 
 class ReservationStatusType extends StringType
 {
@@ -24,7 +25,7 @@ class ReservationStatusType extends StringType
 
         try {
             $reservationStatus = ReservationStatus::fromName($value);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 
