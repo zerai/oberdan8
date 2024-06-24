@@ -13,7 +13,8 @@ set('default_stage', 'stage-oberdan');
 set('application', 'stage.oberdan8.it');
 
 // Project repository
-set('repository', 'git@github.com:zerai/oberdan8.git');
+//set('repository', 'git@github.com:zerai/oberdan8.git');
+set('repository', 'https://github.com/zerai/oberdan8.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true); 
@@ -49,7 +50,7 @@ set('application_path_prod_librai', 'public_html');
 
 host('stage-librai')
     // host settings
-    ->hostname('8viadeilibrai.it')
+    ->hostname('stage.8viadeilibrai.it')
     ->stage('stage-librai')
     ->set('deploy_path','~/{{application_path_stage_librai}}')
     ->set('http_user', 'oberdani')
@@ -59,7 +60,7 @@ host('stage-librai')
     // ssh settings
     ->user('iglkzrno')
     ->port(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai')
+    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai2')
     ->set('forwardAgent', true)
     ->set('git_tty', false)
     ->set('ssh_multiplexing', false)
@@ -82,7 +83,7 @@ host('production')
     // ssh settings
     ->user('iglkzrno')
     ->port(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai')
+    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai2')
     ->set('forwardAgent', true)
     ->set('git_tty', false)
     ->set('ssh_multiplexing', false)
@@ -152,8 +153,8 @@ task('deploy:build:assets', function (): void {
         run('docker-compose run encore yarn install');
         run('docker-compose run encore yarn encore production');
     }else{
-        run('docker-compose -f docker-compose.mac.yml run encore yarn install');
-        run('docker-compose -f docker-compose.mac.yml run encore yarn encore production');
+        run('docker-compose  run encore yarn install');
+        run('docker-compose  run encore yarn encore production');
     }
     //run('sudo chown -R zero:zero  public/build/');
 })->local();
