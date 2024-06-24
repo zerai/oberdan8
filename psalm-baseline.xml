@@ -208,7 +208,7 @@
       <code><![CDATA[$this->books[]]]></code>
     </MixedArrayAssignment>
     <MixedInferredReturnType>
-      <code><![CDATA[?\DateTimeImmutable]]></code>
+      <code><![CDATA[?DateTimeImmutable]]></code>
       <code><![CDATA[Collection]]></code>
     </MixedInferredReturnType>
     <MixedMethodCall>
