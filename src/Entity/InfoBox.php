@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\InfoBoxRepository;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
 
@@ -25,7 +26,7 @@ class InfoBox
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class=UuidGenerator::class)*/
-    private \Ramsey\Uuid\UuidInterface $id;
+    private UuidInterface $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -101,7 +102,7 @@ class InfoBox
     public function setBoxType(string $boxType): self
     {
         if (! \in_array($boxType, self::INFO_BOX_TYPES)) {
-            throw new \InvalidArgumentException('Invalid Message box type');
+            throw new InvalidArgumentException('Invalid Message box type');
         }
 
         $this->boxType = $boxType;
