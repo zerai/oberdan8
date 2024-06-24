@@ -252,7 +252,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         self::assertResponseIsSuccessful();
 
         /** @var ReservationRepository $reservationRepository */
-        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistance\ReservationRepository');
+        $reservationRepository = static::$kernel->getContainer()->get(ReservationRepository::class);
 
         $reservationFromDb = $reservationRepository->withId($reservation->getId());
 

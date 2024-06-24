@@ -7,6 +7,8 @@ use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -14,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 class ReservationRepositoryTest extends KernelTestCase
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     private $entityManager;
 
@@ -116,7 +118,7 @@ class ReservationRepositoryTest extends KernelTestCase
             ->setCity('foo')
             ->setClasse('prima')
             ->setRegistrationDate(
-                new \DateTimeImmutable("now")
+                new DateTimeImmutable("now")
             )
             ->setSaleDetail(
                 $itemDetail

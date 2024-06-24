@@ -3,6 +3,7 @@
 namespace Booking\Application\Domain\Model;
 
 use Booking\Adapter\Persistance\ReservationRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,7 +22,7 @@ class Reservation
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class=UuidGenerator::class)*/
-    private \Ramsey\Uuid\UuidInterface $id;
+    private UuidInterface $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -188,12 +189,12 @@ class Reservation
         return $this;
     }
 
-    public function getRegistrationDate(): ?\DateTimeImmutable
+    public function getRegistrationDate(): ?DateTimeImmutable
     {
         return $this->registrationDate;
     }
 
-    public function setRegistrationDate(\DateTimeImmutable $registrationDate): self
+    public function setRegistrationDate(DateTimeImmutable $registrationDate): self
     {
         $this->registrationDate = $registrationDate;
 

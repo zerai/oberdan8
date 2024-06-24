@@ -6,6 +6,7 @@ namespace Booking\Application\Domain\Model\Booking;
 
 use Booking\Application\Domain\Model\Booking\Book\Book;
 use Booking\Application\Domain\Model\Booking\Client\Client;
+use InvalidArgumentException;
 
 /**
  * null
@@ -81,15 +82,15 @@ final class RegularReservation
     public static function fromArray(array $data): self
     {
         if (! isset($data['id']) || ! \is_string($data['id'])) {
-            throw new \InvalidArgumentException('Error on "id", string expected');
+            throw new InvalidArgumentException('Error on "id", string expected');
         }
 
         if (! isset($data['client']) || ! \is_array($data['client'])) {
-            throw new \InvalidArgumentException('Error on "client", array expected');
+            throw new InvalidArgumentException('Error on "client", array expected');
         }
 
         if (! isset($data['books']) || ! \is_array($data['books'])) {
-            throw new \InvalidArgumentException('Error on "books": array expected');
+            throw new InvalidArgumentException('Error on "books": array expected');
         }
 
         return new self(

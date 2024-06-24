@@ -2,6 +2,8 @@
 
 namespace Booking\Application\Domain\UseCase;
 
-class CouldNotExportDataException extends \Exception
+use Exception;
+
+class CouldNotExportDataException extends Exception
 {
 }

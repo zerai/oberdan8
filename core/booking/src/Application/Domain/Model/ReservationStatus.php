@@ -2,6 +2,8 @@
 
 namespace Booking\Application\Domain\Model;
 
+use InvalidArgumentException;
+
 final class ReservationStatus
 {
     public const NewArrival = 0;
@@ -89,13 +91,13 @@ final class ReservationStatus
             }
         }
 
-        throw new \InvalidArgumentException('Unknown enum name given');
+        throw new InvalidArgumentException('Unknown enum name given');
     }
 
     public static function fromValue(int $value): self
     {
         if (! isset(self::Options[$value])) {
-            throw new \InvalidArgumentException('Unknown enum value given');
+            throw new InvalidArgumentException('Unknown enum value given');
         }
 
         return new self(self::Options[$value], $value);

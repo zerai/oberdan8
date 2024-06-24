@@ -5,6 +5,8 @@ namespace App\Factory;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
+use DateTimeImmutable;
+use DateTimeZone;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 
@@ -45,7 +47,7 @@ final class ReservationFactory extends ModelFactory
             'phone' => self::faker()->phoneNumber(),
             'city' => self::faker()->city(),
             'classe' => 'Prima',
-            'registrationDate' => new \DateTimeImmutable('now', new \DateTimeZone('Europe/Rome')),
+            'registrationDate' => new DateTimeImmutable('now', new DateTimeZone('Europe/Rome')),
             //'registrationDate' => self::faker()->dateTime('now', 'UTC'),
             'saleDetail' => $defaultSaleDetail,
         ];

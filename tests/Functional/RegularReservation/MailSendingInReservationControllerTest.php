@@ -4,6 +4,7 @@ namespace App\Tests\Functional\RegularReservation;
 
 use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 class MailSendingInReservationControllerTest extends WebTestCase
 {
@@ -17,7 +18,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
         $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $client->request(
-            'POST',
+            Request::METHOD_POST,
             '/reservation',
             [
                 'reservation' => [
@@ -64,7 +65,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
         $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $client->request(
-            'POST',
+            Request::METHOD_POST,
             '/reservation',
             [
                 'reservation' => [
@@ -120,7 +121,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
         $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $client->request(
-            'POST',
+            Request::METHOD_POST,
             '/reservation',
             [
                 'reservation' => [

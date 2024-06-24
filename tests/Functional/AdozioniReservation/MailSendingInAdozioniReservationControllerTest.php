@@ -4,6 +4,7 @@ namespace App\Tests\Functional\AdozioniReservation;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Request;
 
 class MailSendingInAdozioniReservationControllerTest extends WebTestCase
 {
@@ -37,7 +38,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
         $pdfFile = new UploadedFile(__DIR__ . '/RMPC00500D_3A-NT-LI01-UNDEF.pdf', 'RMPC00500D_3A-NT-LI01-UNDEF.pdf', 'application/pdf', null, true);
 
         $client->request(
-            'POST',
+            Request::METHOD_POST,
             '/reservation/adozioni',
             [
                 'adozioni_reservation' => [
@@ -80,7 +81,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
         $pdfFile = new UploadedFile(__DIR__ . '/RMPC00500D_3A-NT-LI01-UNDEF.pdf', 'RMPC00500D_3A-NT-LI01-UNDEF.pdf', 'application/pdf', null, true);
 
         $client->request(
-            'POST',
+            Request::METHOD_POST,
             '/reservation/adozioni',
             [
                 'adozioni_reservation' => [
@@ -132,7 +133,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
         $pdfFile = new UploadedFile(__DIR__ . '/RMPC00500D_3A-NT-LI01-UNDEF.pdf', 'RMPC00500D_3A-NT-LI01-UNDEF.pdf', 'application/pdf', null, true);
 
         $client->request(
-            'POST',
+            Request::METHOD_POST,
             '/reservation/adozioni',
             [
                 'adozioni_reservation' => [

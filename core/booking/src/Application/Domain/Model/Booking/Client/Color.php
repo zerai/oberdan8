@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Booking\Application\Domain\Model\Booking\Client;
 
+use InvalidArgumentException;
+
 /**
  * null
  * @codeCoverageIgnore
@@ -72,13 +74,13 @@ final class Color
             }
         }
 
-        throw new \InvalidArgumentException('Unknown enum name given');
+        throw new InvalidArgumentException('Unknown enum name given');
     }
 
     public static function fromValue(int $value): self
     {
         if (! isset(self::Options[$value])) {
-            throw new \InvalidArgumentException('Unknown enum value given');
+            throw new InvalidArgumentException('Unknown enum value given');
         }
 
         return new self(self::Options[$value], $value);

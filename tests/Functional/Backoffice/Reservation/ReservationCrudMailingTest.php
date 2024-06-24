@@ -56,7 +56,7 @@ class ReservationCrudMailingTest extends SecurityWebtestCase
         $reservation = ReservationFactory::createOne()->object();
 
         /** @var ReservationRepository $reservationRepository */
-        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistance\ReservationRepository');
+        $reservationRepository = static::$kernel->getContainer()->get(ReservationRepository::class);
 
         $reservation->setEmail('');
         $reservationRepository->save($reservation);

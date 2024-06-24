@@ -4,11 +4,13 @@ namespace Booking\Adapter\Persistance;
 
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
+use RuntimeException;
 
 /**
  * @method Reservation|null find($id, $lockMode = null, $lockVersion = null)
@@ -40,7 +42,7 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
         if (null === $reservation = $this->findOneBy([
             'id' => $reservationId,
         ])) {
-            throw new \RuntimeException();
+            throw new RuntimeException();
         }
 
         return $reservation;
@@ -163,12 +165,12 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ;
         }
 
-        $todayMinus7 = (new \DateTimeImmutable("today"))->modify('- 7days'); //dd($todayMinus7);
+        $todayMinus7 = (new DateTimeImmutable("today"))->modify('- 7days'); //dd($todayMinus7);
         $qb->andWhere('s.pvtConfirmedAt < :todayMinus7 AND s.pvtExtensionTime = false')
             //->setParameter('todayMinus7', $todayMinus7->format('Y-m-d'));
             ->setParameter('todayMinus7', $todayMinus7, Types::DATETIME_IMMUTABLE);
 
-        $todayMinus14 = (new \DateTimeImmutable("today"))->modify('- 14days'); //dd($todayPlus7);
+        $todayMinus14 = (new DateTimeImmutable("today"))->modify('- 14days'); //dd($todayPlus7);
         $qb->orWhere('s.pvtConfirmedAt < :todayMinus14 AND s.pvtExtensionTime = true')
             ->setParameter('todayMinus14', $todayMinus14, Types::DATETIME_IMMUTABLE);
 

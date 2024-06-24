@@ -4,6 +4,8 @@ namespace App\Factory;
 
 use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
+use DateTimeImmutable;
+use DateTimeZone;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 
@@ -71,7 +73,7 @@ final class ReservationSaleDetailFactory extends ModelFactory
         return $this->addState([
             'status' => $this->withReservationStatus('Confirmed'),
             'pvtExtensionTime' => false,
-            'pvtConfirmedAt' => (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify('- 1 days'),
+            'pvtConfirmedAt' => (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))->modify('- 1 days'),
         ]);
     }
 
@@ -80,7 +82,7 @@ final class ReservationSaleDetailFactory extends ModelFactory
         return $this->addState([
             'status' => $this->withReservationStatus('Confirmed'),
             'pvtExtensionTime' => false,
-            'pvtConfirmedAt' => (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify('- 2 days'),
+            'pvtConfirmedAt' => (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))->modify('- 2 days'),
         ]);
     }
 
@@ -89,7 +91,7 @@ final class ReservationSaleDetailFactory extends ModelFactory
         return $this->addState([
             'status' => $this->withReservationStatus('Confirmed'),
             'pvtExtensionTime' => false,
-            'pvtConfirmedAt' => (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify('- 7 days'),
+            'pvtConfirmedAt' => (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))->modify('- 7 days'),
         ]);
     }
 
@@ -98,7 +100,7 @@ final class ReservationSaleDetailFactory extends ModelFactory
         return $this->addState([
             'status' => $this->withReservationStatus('Confirmed'),
             'pvtExtensionTime' => false,
-            'pvtConfirmedAt' => (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify('- 10days'),
+            'pvtConfirmedAt' => (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))->modify('- 10days'),
         ]);
     }
 
@@ -107,7 +109,7 @@ final class ReservationSaleDetailFactory extends ModelFactory
         return $this->addState([
             'status' => $this->withReservationStatus('Confirmed'),
             'pvtExtensionTime' => false,
-            'pvtConfirmedAt' => (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify('- 14 days'),
+            'pvtConfirmedAt' => (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))->modify('- 14 days'),
         ]);
     }
 
@@ -116,11 +118,11 @@ final class ReservationSaleDetailFactory extends ModelFactory
         return $this->addState([
             'status' => $this->withReservationStatus('Confirmed'),
             'pvtExtensionTime' => false,
-            'pvtConfirmedAt' => (new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome')))->modify('- 16 days'),
+            'pvtConfirmedAt' => (new DateTimeImmutable("now", new DateTimeZone('Europe/Rome')))->modify('- 16 days'),
         ]);
     }
 
-    public function withConfirmationDate(\DateTimeImmutable $confirmationDate): self
+    public function withConfirmationDate(DateTimeImmutable $confirmationDate): self
     {
         return $this->addState([
             'status' => $this->withReservationStatus('Confirmed'),

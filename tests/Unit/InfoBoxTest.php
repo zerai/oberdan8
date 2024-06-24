@@ -4,6 +4,7 @@
 namespace App\Tests\Unit;
 
 use App\Entity\InfoBox;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class InfoBoxTest extends TestCase
@@ -52,7 +53,7 @@ class InfoBoxTest extends TestCase
      */
     public function shouldRejectInvalidBoxType(string $boxType): void
     {
-        self::expectException(\InvalidArgumentException::class);
+        self::expectException(InvalidArgumentException::class);
 
         $sut = new InfoBox();
 
