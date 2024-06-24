@@ -123,6 +123,26 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
-        }
+        },
+        "cs": "./vendor/bin/ecs",
+        "cs:fix": "./vendor/bin/ecs --fix",
+        "rc": "./vendor/bin/rector --dry-run",
+        "rc:fix": "./vendor/bin/rector",
+        "sa": "./vendor/bin/psalm",
+        "te": "./bin/phpunit --testsuite=e2e --testdox",
+        "tf": "./bin/phpunit --testsuite=functional --testdox",
+        "ti": "./bin/phpunit --testsuite=integration --testdox",
+        "tu": "./bin/phpunit --testsuite=unit --testdox"
+    },
+    "scripts-descriptions": {
+        "cs": "Check php coding style",
+        "cs:fix": "Fix php coding style",
+        "rc": "Check rector roules",
+        "rc:fix": "Fix rector issues",
+        "sa": "Check static analysis (psalm)",
+        "te": "Run End 2 End testsuite",
+        "tf": "Run functional testsuite",
+        "ti": "Run integration testsuite",
+        "tu": "Run unit testsuite"
     }
 }
