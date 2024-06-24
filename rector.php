@@ -6,12 +6,13 @@ use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\Config\RectorConfig;
 //use Rector\Core\ValueObject\PhpVersion;
 //use Rector\Core\ValueObject\PhpVersion;
-use Rector\Core\ValueObject\PhpVersion;
+//use Rector\Core\ValueObject\PhpVersion;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Set\SymfonySetList;
+use Rector\ValueObject\PhpVersion;
 
 /**
  * La configurazione rimane volutamente incompiuta, Rector viene usato solo manualmente in locale
