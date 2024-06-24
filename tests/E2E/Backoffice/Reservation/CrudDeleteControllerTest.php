@@ -88,7 +88,7 @@ class CrudDeleteControllerTest extends PantherTestCase
         $kernel->boot();
 
         /** @var BackofficeUserRepository $backofficeUserRepository */
-        $backofficeUserRepository = static::$kernel->getContainer()->get('App\Repository\BackofficeUserRepository');
+        $backofficeUserRepository = static::$kernel->getContainer()->get(BackofficeUserRepository::class);
 
         $admin = $backofficeUserRepository->findOneBy([
             'email' => 'admin@example.com',

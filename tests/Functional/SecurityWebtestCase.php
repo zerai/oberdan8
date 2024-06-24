@@ -3,6 +3,7 @@
 namespace App\Tests\Functional;
 
 use App\Entity\BackofficeUser;
+use App\Repository\BackofficeUserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
@@ -20,7 +21,7 @@ class SecurityWebtestCase extends WebTestCase
 
     protected function logInAsAdmin(): void
     {
-        $backofficeUserRepository = $this->client->getContainer()->get('App\Repository\BackofficeUserRepository');
+        $backofficeUserRepository = $this->client->getContainer()->get(BackofficeUserRepository::class);
 
         $admin = $backofficeUserRepository->findOneBy([
             'email' => 'admin@example.com',

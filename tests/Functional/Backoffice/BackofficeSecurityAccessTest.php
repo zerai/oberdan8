@@ -4,6 +4,7 @@
 namespace App\Tests\Functional\Backoffice;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 class BackofficeSecurityAccessTest extends WebTestCase
 {
@@ -24,7 +25,7 @@ class BackofficeSecurityAccessTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request('GET', $url);
+        $client->request(Request::METHOD_GET, $url);
 
         self::assertTrue(
             $client->getResponse()->isRedirect('/admin/login')

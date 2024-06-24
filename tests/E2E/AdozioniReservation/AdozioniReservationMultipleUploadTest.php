@@ -48,9 +48,9 @@ class AdozioniReservationMultipleUploadTest extends PantherTestCase
         $form['adozioni_reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // UPLOADED 3 FILE
-        $form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
-        $form['adozioni_reservation[adozioni2]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
-        $form['adozioni_reservation[adozioni3]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
+        $form['adozioni_reservation[adozioni]']->upload(__DIR__ . '/FileFixtures/' . self::PDF_FILE_1);
+        $form['adozioni_reservation[adozioni2]']->upload(__DIR__ . '/FileFixtures/' . self::PDF_FILE_1);
+        $form['adozioni_reservation[adozioni3]']->upload(__DIR__ . '/FileFixtures/' . self::PDF_FILE_1);
 
         $form['adozioni_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['adozioni_reservation[privacyConfirmed]']->setValue(true);
@@ -75,8 +75,8 @@ class AdozioniReservationMultipleUploadTest extends PantherTestCase
         $form['adozioni_reservation[classe]']->setValue(ReservationStaticFixture::CLASSE);
 
         // UPLOADED 2 FILE
-        $form['adozioni_reservation[adozioni]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
-        $form['adozioni_reservation[adozioni2]']->upload(\dirname(__FILE__) . '/FileFixtures/' . self::PDF_FILE_1);
+        $form['adozioni_reservation[adozioni]']->upload(__DIR__ . '/FileFixtures/' . self::PDF_FILE_1);
+        $form['adozioni_reservation[adozioni2]']->upload(__DIR__ . '/FileFixtures/' . self::PDF_FILE_1);
 
         $form['adozioni_reservation[otherInfo]'] = ReservationStaticFixture::NOTES;
         $form['adozioni_reservation[privacyConfirmed]']->setValue(true);

@@ -3,6 +3,7 @@
 namespace App\Tests\Functional;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeControllerTest extends WebTestCase
 {
@@ -10,7 +11,7 @@ class HomeControllerTest extends WebTestCase
     public function homepageShouldBeAccessibile(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request(Request::METHOD_GET, '/');
 
         self::assertResponseIsSuccessful();
         self::assertPageTitleSame('Oberdan - banco 8 - prenotazioni', $message = 'Unexpected title in homepage');
@@ -23,7 +24,7 @@ class HomeControllerTest extends WebTestCase
     public function shouldContainALinkToReservationForm(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request(Request::METHOD_GET, '/');
         self::assertResponseIsSuccessful();
 
         $link = $crawler->selectLink('Compila il modulo')->link();
@@ -36,7 +37,7 @@ class HomeControllerTest extends WebTestCase
     public function shouldContainALinkToAdozioniReservationForm(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request(Request::METHOD_GET, '/');
         self::assertResponseIsSuccessful();
 
         $link = $crawler->selectLink('Carica il file delle adozioni')->link();
