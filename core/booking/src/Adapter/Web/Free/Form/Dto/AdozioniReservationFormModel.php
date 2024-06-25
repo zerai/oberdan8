@@ -20,6 +20,8 @@ class AdozioniReservationFormModel
      */
     public string $classe;
 
+    public string $coupondCode;
+
     /**
      * @Assert\NotBlank (message="Seleziona un file da caricare.")
      * @Assert\File(

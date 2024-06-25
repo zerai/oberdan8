@@ -23,6 +23,8 @@ class AdozioniReservationFormTest extends TypeTestCase
                 'city' => 'firenze',
             ],
 
+            'coupondCode' => 'ABCDEF',
+
             'otherInfo' => 'irrelevant notes',
             'privacyConfirmed' => true,
         ];
@@ -39,7 +41,7 @@ class AdozioniReservationFormTest extends TypeTestCase
         $client->setPhone('123456');
         $client->setCity('firenze');
         $expected->person = $client;
-
+        $expected->coupondCode = 'ABCDEF';
         $expected->otherInfo = 'irrelevant notes';
         $expected->privacyConfirmed = true;
 
