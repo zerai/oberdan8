@@ -56,6 +56,11 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/BookRepository.php
 
 		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 2
+			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
+
+		-
 			message: "#^Parameter \\#1 \\$name of static method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationStatus\\:\\:fromName\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
@@ -88,6 +93,11 @@ parameters:
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 8
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Casting to int something that's already int\\<0, max\\>\\.$#"
+			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
@@ -271,6 +281,11 @@ parameters:
 			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
 
 		-
+			message: "#^Strict comparison using \\!\\=\\= between Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile and null will always evaluate to true\\.$#"
+			count: 3
+			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
+
+		-
 			message: "#^Property Booking\\\\Adapter\\\\Web\\\\Free\\\\Form\\\\Dto\\\\ReservationFormModel\\:\\:\\$books type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Free/Form/Dto/ReservationFormModel.php
@@ -352,6 +367,11 @@ parameters:
 
 		-
 			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
+
+		-
+			message: "#^Only booleans are allowed in a negated boolean, DateTimeImmutable\\|false given\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
 
@@ -471,7 +491,17 @@ parameters:
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
@@ -501,12 +531,22 @@ parameters:
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
+
+		-
 			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryReadSideTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
@@ -776,12 +816,33 @@ parameters:
 			path: src/Entity/BackofficeUser.php
 
 		-
+			message: """
+				#^Return type of method App\\\\Entity\\\\BackofficeUser\\:\\:getRoles\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\:
+				since Symfony 4\\.3, to be removed in 5\\.0\\. Use strings as roles instead\\.$#
+			"""
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message: "#^Call to function in_array\\(\\) requires parameter \\#3 to be set\\.$#"
+			count: 1
+			path: src/Entity/InfoBox.php
+
+		-
 			message: "#^Property App\\\\Entity\\\\InfoBox\\:\\:\\$id is never written, only read\\.$#"
 			count: 1
 			path: src/Entity/InfoBox.php
 
 		-
 			message: "#^Generator expects value type Symfony\\\\Component\\\\HttpKernel\\\\Bundle\\\\BundleInterface, object given\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: """
+				#^Parameter \\$routes of method App\\\\Kernel\\:\\:configureRoutes\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Routing\\\\RouteCollectionBuilder\\:
+				since Symfony 5\\.1, use RoutingConfigurator instead$#
+			"""
 			count: 1
 			path: src/Kernel.php
 
@@ -836,6 +897,11 @@ parameters:
 			path: src/Security/LoginFormBackofficeAuthenticator.php
 
 		-
+			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
 			message: "#^Cannot call method getCssFiles\\(\\) on mixed\\.$#"
 			count: 1
 			path: src/Twig/AppExtension.php
@@ -846,9 +912,29 @@ parameters:
 			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
+
+		-
 			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationMultipleUploadTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
 			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationTest\\:\\:\\$client has no type specified\\.$#"
@@ -866,6 +952,16 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
 			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
@@ -876,6 +972,16 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
+
+		-
 			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
@@ -884,6 +990,16 @@ parameters:
 			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\ReservationCrudControllerTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/RegularReservation/ReservationControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/RegularReservation/ReservationControllerTest.php
 
 		-
 			message: "#^Property App\\\\Tests\\\\E2E\\\\RegularReservation\\\\ReservationControllerTest\\:\\:\\$client has no type specified\\.$#"
@@ -929,6 +1045,11 @@ parameters:
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
 			count: 2
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudMailingTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 1
+			path: tests/Functional/Backoffice/Reservation/ReservationCrudTest.php
 
 		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
@@ -986,7 +1107,16 @@ parameters:
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/Functional/SecurityWebtestCase.php
+
+		-
 			message: "#^Property App\\\\Tests\\\\Functional\\\\SecurityWebtestCase\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/Functional/SecurityWebtestCase.php
 
+		-
+			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
+			count: 2
+			path: tests/WalkingSkeletonTest.php
