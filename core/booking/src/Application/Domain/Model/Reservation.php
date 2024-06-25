@@ -241,8 +241,10 @@ class Reservation
     /**
      * @param string $coupondCode
      */
-    public function setCoupondCode(string $coupondCode): void
+    public function setCoupondCode(string $coupondCode): self
     {
         $this->coupondCode = $coupondCode;
+
+        return $this;
     }
 }
