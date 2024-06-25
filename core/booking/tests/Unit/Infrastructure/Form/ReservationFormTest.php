@@ -28,6 +28,7 @@ class ReservationFormTest extends TypeTestCase
             'classe' => 'prima',
 
             'otherInfo' => 'irrelevant notes',
+            'coupondCode' => 'ABCDEF',
             'privacyConfirmed' => true,
         ];
 
@@ -47,6 +48,7 @@ class ReservationFormTest extends TypeTestCase
         $expected->books = [];
 
         $expected->otherInfo = 'irrelevant notes';
+        $expected->coupondCode = 'ABCDEF';
         $expected->privacyConfirmed = true;
 
         // ...populate $object properties with the data stored in $formData
@@ -83,6 +85,7 @@ class ReservationFormTest extends TypeTestCase
             ],
 
             'otherInfo' => 'irrelevant notes',
+            'coupondCode' => 'ABCDEF',
             'privacyConfirmed' => true,
         ];
 
@@ -110,6 +113,7 @@ class ReservationFormTest extends TypeTestCase
         ];
 
         $expected->otherInfo = 'irrelevant notes';
+        $expected->coupondCode = 'ABCDEF';
         $expected->privacyConfirmed = true;
 
         // ...populate $object properties with the data stored in $formData
