@@ -1,7 +1,52 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$path of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:attachFromPath\\(\\) expects string, string\\|false given\\.$#"
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has parameter \\$filesData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has parameter \\$filesData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has parameter \\$systemData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyNewReservationToBackoffice\\(\\) has parameter \\$bookData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyNewReservationToBackoffice\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyNewReservationToBackoffice\\(\\) has parameter \\$systemData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyReservationConfirmationEmailToClient\\(\\) has parameter \\$bookData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\MailDriven\\\\BookingMailer\\:\\:notifyReservationConfirmationEmailToClient\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
 
@@ -16,6 +61,26 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
 
 		-
+			message: "#^Parameter \\#1 \\$name of static method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationStatus\\:\\:fromName\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of static method Doctrine\\\\DBAL\\\\Types\\\\ConversionException\\:\\:conversionFailed\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ExportDataRetriever\\:\\:getAllCustomerForNewsletter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ExportDataRetriever.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
 			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
@@ -26,12 +91,37 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
-			message: "#^Casting to int\\<0, max\\> something that's already int\\<0, max\\>\\.$#"
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 8
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Casting to int something that's already int\\<0, max\\>\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
 			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllConfirmedOrderByOldest\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllConfirmedOrderByOldest\\(\\) should return array but returns mixed\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllNewArrivalOrderByNewest\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllNewArrivalOrderByNewest\\(\\) should return array but returns mixed\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
@@ -56,7 +146,17 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php
 
 		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:getWithSearchQueryBuilder\\(\\)\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getCity\\(\\) on mixed\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
@@ -66,7 +166,27 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
+			message: "#^Cannot call method getEmail\\(\\) on mixed\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getFirstName\\(\\) on mixed\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
 			message: "#^Cannot call method getGeneralNotes\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getLastName\\(\\) on mixed\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
+			message: "#^Cannot call method getPhone\\(\\) on mixed\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
@@ -111,6 +231,11 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
+			message: "#^Parameter \\#1 \\$classe of method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:setClasse\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
 			message: "#^Parameter \\#1 \\$email of method Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Dto\\\\ClientDto\\:\\:setEmail\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
@@ -126,12 +251,17 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
+			message: "#^Parameter \\#1 \\$name of static method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationStatus\\:\\:fromName\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
 			message: "#^Parameter \\#1 \\$phone of method Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Dto\\\\ClientDto\\:\\:setPhone\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
-			message: "#^Property Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Model\\\\BackofficeReservationFormModel\\:\\:\\$books has no typehint specified\\.$#"
+			message: "#^Property Booking\\\\Adapter\\\\Web\\\\Admin\\\\Form\\\\Model\\\\BackofficeReservationFormModel\\:\\:\\$books has no type specified\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/Form/Model/BackofficeReservationFormModel.php
 
@@ -141,12 +271,42 @@ parameters:
 			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
 
 		-
+			message: "#^Method Booking\\\\Adapter\\\\Web\\\\Free\\\\AdozioniReservationController\\:\\:mapPersonDataToReservationConfirmationEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Web\\\\Free\\\\AdozioniReservationController\\:\\:sendEmailToBackoffice\\(\\) has parameter \\$mailAttachments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
+
+		-
 			message: "#^Strict comparison using \\!\\=\\= between Symfony\\\\Component\\\\HttpFoundation\\\\File\\\\UploadedFile and null will always evaluate to true\\.$#"
 			count: 3
 			path: core/booking/src/Adapter/Web/Free/AdozioniReservationController.php
 
 		-
+			message: "#^Property Booking\\\\Adapter\\\\Web\\\\Free\\\\Form\\\\Dto\\\\ReservationFormModel\\:\\:\\$books type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Free/Form/Dto/ReservationFormModel.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Web\\\\Free\\\\ReservationController\\:\\:mapBookDataToReservationConfirmationEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Free/ReservationController.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Web\\\\Free\\\\ReservationController\\:\\:mapPersonDataToReservationConfirmationEmail\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Free/ReservationController.php
+
+		-
 			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$author \\(string\\) does not accept string\\|null\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Book.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$id is never written, only read\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Book.php
 
@@ -156,7 +316,7 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Book.php
 
 		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$reservation has no typehint specified\\.$#"
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\:\\:\\$reservation has no type specified\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Book.php
 
@@ -166,7 +326,47 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Book.php
 
 		-
-			message: "#^Anonymous function should have native return typehint \"DateTimeImmutable\"\\.$#"
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\Book\\\\Book\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Booking/Book/Book.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\Book\\\\Book\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Booking/Book/Book.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\Client\\\\Client\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Booking/Client/Client.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\Client\\\\Client\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Booking/Client/Client.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\RegularReservation\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Booking/RegularReservation.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\RegularReservation\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Booking/RegularReservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\RegularReservation\\:\\:\\$books type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Booking/RegularReservation.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
 
@@ -176,14 +376,99 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
 
 		-
+			message: "#^Doctrine\\\\Common\\\\Collections\\\\ArrayCollection\\<\\*NEVER\\*, \\*NEVER\\*\\> does not accept Booking\\\\Application\\\\Domain\\\\Model\\\\Book\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
 			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:getBooks\\(\\) return type with generic interface Doctrine\\\\Common\\\\Collections\\\\Collection does not specify its types\\: TKey, T$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Reservation.php
 
 		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$registrationDate has no typehint specified\\.$#"
+			message: "#^Negated boolean expression is always true\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$id is never written, only read\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\:\\:\\$registrationDate has no type specified\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/Reservation.php
+
+		-
+			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\:\\:\\$id is never written, only read\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/Model/ReservationSaleDetail.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\UseCase\\\\ExportDataRetrieverInterface\\:\\:getAllCustomerForNewsletter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/UseCase/ExportDataRetrieverInterface.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\Domain\\\\UseCase\\\\ExportEncoderInterface\\:\\:convertData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/Domain/UseCase/ExportEncoderInterface.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has parameter \\$filesData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyAdozioniReservationConfirmationToClient\\:\\:notifyAdozioniReservationConfirmationEmailToClient\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyAdozioniReservationConfirmationToClient.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyNewAdozioniReservationToBackoffice\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has parameter \\$filesData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyNewAdozioniReservationToBackoffice.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyNewAdozioniReservationToBackoffice\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyNewAdozioniReservationToBackoffice.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyNewAdozioniReservationToBackoffice\\:\\:notifyNewAdozioniReservationToBackoffice\\(\\) has parameter \\$systemData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyNewAdozioniReservationToBackoffice.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyNewReservationToBackoffice\\:\\:notifyNewReservationToBackoffice\\(\\) has parameter \\$bookData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyNewReservationToBackoffice.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyNewReservationToBackoffice\\:\\:notifyNewReservationToBackoffice\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyNewReservationToBackoffice.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyNewReservationToBackoffice\\:\\:notifyNewReservationToBackoffice\\(\\) has parameter \\$systemData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyNewReservationToBackoffice.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyReservationConfirmationToClient\\:\\:notifyReservationConfirmationEmailToClient\\(\\) has parameter \\$bookData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyReservationConfirmationToClient.php
+
+		-
+			message: "#^Method Booking\\\\Application\\\\NotifyReservationConfirmationToClient\\:\\:notifyReservationConfirmationEmailToClient\\(\\) has parameter \\$personData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Application/NotifyReservationConfirmationToClient.php
+
+		-
+			message: "#^Method Booking\\\\Infrastructure\\\\Exporter\\\\CsvEncoder\\:\\:convertData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Exporter/CsvEncoder.php
 
 		-
 			message: "#^Parameter \\#2 \\$filename of method Symfony\\\\Component\\\\HttpFoundation\\\\ResponseHeaderBag\\:\\:makeDisposition\\(\\) expects string, string\\|null given\\.$#"
@@ -206,7 +491,17 @@ parameters:
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
@@ -216,12 +511,27 @@ parameters:
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, mixed given\\.$#"
+			count: 3
+			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
+
+		-
 			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryExpiredReadSideTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
+
+		-
+			message: "#^Method Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryReadSideTest\\:\\:createEntityWithChild\\(\\) is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
@@ -236,12 +546,17 @@ parameters:
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
 		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ReservationRepositoryTest.php
+
+		-
 			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
 		-
-			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryTest\\:\\:\\$repository has no typehint specified\\.$#"
+			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryTest\\:\\:\\$repository has no type specified\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
@@ -266,9 +581,139 @@ parameters:
 			path: core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$other of method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationStatus\\:\\:equals\\(\\) expects Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationStatus\\|null, mixed given\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:IMAGE_FILE_NAME_1 is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:IMAGE_FILE_NAME_2 is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:OTHER_INFO is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:PDF_FILE_NAME_1 is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:PDF_FILE_NAME_2 is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:RESERVATION_CONFIRMATION_EMAIL_SUBJECT is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Method Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:getPersonData\\(\\) is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Method Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:getPersonData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Property Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:\\$bookingMailer is never read, only written\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToClientTest\\:\\:IMAGE_FILE_NAME_1 is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToClientTest\\:\\:IMAGE_FILE_NAME_2 is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToClientTest.php
+
+		-
+			message: "#^Method Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToClientTest\\:\\:getPersonData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewReservationEmailToBackofficeTest\\:\\:RESERVATION_CONFIRMATION_EMAIL_SUBJECT is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewReservationEmailToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewReservationEmailToBackofficeTest\\:\\:RESERVATION_THANKS_EMAIL_SUBJECT is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewReservationEmailToBackofficeTest.php
+
+		-
+			message: "#^Method Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewReservationEmailToBackofficeTest\\:\\:getPersonData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewReservationEmailToBackofficeTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingReservationConfirmationMailToClientTest\\:\\:RESERVATION_THANKS_EMAIL_SUBJECT is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingReservationConfirmationMailToClientTest.php
+
+		-
+			message: "#^Method Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingReservationConfirmationMailToClientTest\\:\\:getPersonData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingReservationConfirmationMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:CITY is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:CLASSE is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:CONTACT_EMAIL is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:FIRST_NAME is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:LAST_NAME is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:OTHER_INFO is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:PHONE is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
+
+		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingThanksMailToClientTest\\:\\:RESERVATION_CONFIRMATION_EMAIL_SUBJECT is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingThanksMailToClientTest.php
 
 		-
 			message: "#^Cannot call method extensionTime\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
@@ -316,12 +761,22 @@ parameters:
 			path: src/Controller/BackofficeMyAccountController.php
 
 		-
-			message: "#^Method App\\\\Controller\\\\BackofficeSecurityController\\:\\:logout\\(\\) should return Symfony\\\\Component\\\\HttpFoundation\\\\Response but return statement is missing\\.$#"
+			message: "#^Parameter \\#2 \\$plainPassword of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects string, mixed given\\.$#"
 			count: 1
-			path: src/Controller/BackofficeSecurityController.php
+			path: src/Controller/BackofficeMyAccountController.php
+
+		-
+			message: "#^Parameter \\#2 \\$plainPassword of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects string, mixed given\\.$#"
+			count: 2
+			path: src/Controller/BackofficeUserController.php
 
 		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$addresses of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:to\\(\\) expects string\\|Symfony\\\\Component\\\\Mime\\\\Address, string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/RegistrationController.php
+
+		-
+			message: "#^Parameter \\#2 \\$plainPassword of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: src/Controller/RegistrationController.php
 
@@ -336,21 +791,35 @@ parameters:
 			path: src/DataFixtures/LibraiStage/ReservationFixturesExpired.php
 
 		-
-			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$email has no typehint specified\\.$#"
+			message: "#^Method App\\\\Entity\\\\BackofficeUser\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Entity/BackofficeUser.php
 
 		-
-			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$id has no typehint specified\\.$#"
+			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$email has no type specified\\.$#"
 			count: 1
 			path: src/Entity/BackofficeUser.php
 
 		-
-			message:
-				"""
-					#^Return type of method App\\\\Entity\\\\BackofficeUser\\:\\:getRoles\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\:
-					since Symfony 4\\.3, to be removed in 5\\.0\\. Use strings as roles instead\\.$#
-				"""
+			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$id has no type specified\\.$#"
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$id is never written, only read\\.$#"
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$roles type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Entity/BackofficeUser.php
+
+		-
+			message: """
+				#^Return type of method App\\\\Entity\\\\BackofficeUser\\:\\:getRoles\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\:
+				since Symfony 4\\.3, to be removed in 5\\.0\\. Use strings as roles instead\\.$#
+			"""
 			count: 1
 			path: src/Entity/BackofficeUser.php
 
@@ -360,11 +829,20 @@ parameters:
 			path: src/Entity/InfoBox.php
 
 		-
-			message:
-				"""
-					#^Parameter \\$routes of method App\\\\Kernel\\:\\:configureRoutes\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Routing\\\\RouteCollectionBuilder\\:
-					since Symfony 5\\.1, use RoutingConfigurator instead$#
-				"""
+			message: "#^Property App\\\\Entity\\\\InfoBox\\:\\:\\$id is never written, only read\\.$#"
+			count: 1
+			path: src/Entity/InfoBox.php
+
+		-
+			message: "#^Generator expects value type Symfony\\\\Component\\\\HttpKernel\\\\Bundle\\\\BundleInterface, object given\\.$#"
+			count: 1
+			path: src/Kernel.php
+
+		-
+			message: """
+				#^Parameter \\$routes of method App\\\\Kernel\\:\\:configureRoutes\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Routing\\\\RouteCollectionBuilder\\:
+				since Symfony 5\\.1, use RoutingConfigurator instead$#
+			"""
 			count: 1
 			path: src/Kernel.php
 
@@ -375,6 +853,11 @@ parameters:
 
 		-
 			message: "#^Class App\\\\Repository\\\\InfoBoxRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: src/Repository/InfoBoxRepository.php
+
+		-
+			message: "#^Method App\\\\Repository\\\\InfoBoxRepository\\:\\:findDefaultInfoBox\\(\\) should return App\\\\Entity\\\\InfoBox\\|null but returns mixed\\.$#"
 			count: 1
 			path: src/Repository/InfoBoxRepository.php
 
@@ -394,17 +877,67 @@ parameters:
 			path: src/Security/EmailVerifier.php
 
 		-
+			message: "#^Cannot access offset 'csrf_token' on mixed\\.$#"
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
+			message: "#^Cannot access offset 'email' on mixed\\.$#"
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
+			message: "#^Cannot access offset 'password' on mixed\\.$#"
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 3
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
 			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
 			count: 1
 			path: src/Security/LoginFormBackofficeAuthenticator.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationMultipleUploadTest\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Cannot call method getCssFiles\\(\\) on mixed\\.$#"
+			count: 1
+			path: src/Twig/AppExtension.php
+
+		-
+			message: "#^Constant App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationMultipleUploadTest\\:\\:JPEG_FILE_1 is unused\\.$#"
 			count: 1
 			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationTest\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationMultipleUploadTest\\:\\:\\$client has no type specified\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
@@ -414,14 +947,39 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
+			message: "#^Constant App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\CrudDeleteControllerTest\\:\\:REDIRECT_AFTER_SUBMIT is unused\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
 			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\CrudDeleteControllerTest\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\CrudDeleteControllerTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
 		-
 			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
@@ -429,12 +987,22 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\ReservationCrudControllerTest\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\ReservationCrudControllerTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\E2E\\\\RegularReservation\\\\ReservationControllerTest\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/RegularReservation/ReservationControllerTest.php
+
+		-
+			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
+			count: 1
+			path: tests/E2E/RegularReservation/ReservationControllerTest.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\E2E\\\\RegularReservation\\\\ReservationControllerTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/RegularReservation/ReservationControllerTest.php
 
@@ -446,6 +1014,11 @@ parameters:
 		-
 			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
 			count: 3
+			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Constant App\\\\Tests\\\\Functional\\\\AdozioniReservation\\\\MailSendingInAdozioniReservationControllerTest\\:\\:NOTES is unused\\.$#"
+			count: 1
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
@@ -499,6 +1072,11 @@ parameters:
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
 
 		-
+			message: "#^Constant App\\\\Tests\\\\Functional\\\\Backoffice\\\\Reservation\\\\ReservationCrudUpdateTest\\:\\:REDIRECT_AFTER_SUBMIT is unused\\.$#"
+			count: 1
+			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
+
+		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/UserCrudTest.php
@@ -529,7 +1107,12 @@ parameters:
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\Functional\\\\SecurityWebtestCase\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			count: 1
+			path: tests/Functional/SecurityWebtestCase.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Functional\\\\SecurityWebtestCase\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/Functional/SecurityWebtestCase.php
 
