@@ -123,6 +123,7 @@ class ReservationRepositoryTest extends KernelTestCase
             ->setSaleDetail(
                 $itemDetail
             )
+            ->setCoupondCode('ABCDEF')
         ;
 
         return $item;

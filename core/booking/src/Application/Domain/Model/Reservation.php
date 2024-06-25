@@ -75,6 +75,11 @@ class Reservation
     private string $otherInformation = '';
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $coupondCode = '';
+
+    /**
      * @ORM\OneToOne(targetEntity=ReservationSaleDetail::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -223,5 +228,21 @@ class Reservation
         $this->saleDetail = $saleDetail;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCoupondCode(): string
+    {
+        return $this->coupondCode;
+    }
+
+    /**
+     * @param string $coupondCode
+     */
+    public function setCoupondCode(string $coupondCode): void
+    {
+        $this->coupondCode = $coupondCode;
     }
 }
