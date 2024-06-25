@@ -48,6 +48,7 @@ class ReservationController extends AbstractController
                 ->setCity($formData->person->getCity())
                 ->setClasse($formData->classe)
                 ->setOtherInformation($formData->otherInfo)
+                ->setCoupondCode($formData->coupondCode)
                 ->setRegistrationDate(
                     new DateTimeImmutable("now", new DateTimeZone('Europe/Rome'))
                 );
@@ -118,7 +119,8 @@ class ReservationController extends AbstractController
             $formData->person->getEmail(),
             $this->mapPersonDataToReservationConfirmationEmail($formData),
             $this->mapBookDataToReservationConfirmationEmail($formData),
-            $formData->otherInfo
+            $formData->otherInfo,
+            //$formData->coupondCode
         );
     }
 
@@ -133,7 +135,8 @@ class ReservationController extends AbstractController
             $this->mapPersonDataToReservationConfirmationEmail($formData),
             $this->mapBookDataToReservationConfirmationEmail($formData),
             [],
-            $formData->otherInfo
+            $formData->otherInfo,
+            $formData->coupondCode
         );
     }
 }
