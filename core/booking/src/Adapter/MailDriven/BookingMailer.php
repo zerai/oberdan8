@@ -67,7 +67,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
         return $email;
     }
 
-    public function notifyNewReservationToBackoffice(array $personData, array $bookData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
+    public function notifyNewReservationToBackoffice(array $personData, array $bookData, array $systemData = [], string $otherInfo = '', string $coupondCode = ''): TemplatedEmail
     {
         $replyTo = new Address((string) $personData['contact_email'], sprintf('%s %s', (string) $personData['lastName'], (string) $personData['firstName']));
         $email = (new TemplatedEmail())
@@ -88,6 +88,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'city' => $personData['city'],
                 'classe' => $personData['classe'],
                 'otherInfo' => $otherInfo,
+                'coupondCode' => $coupondCode,
                 'bookList' => $bookData,
             ])
         ;
