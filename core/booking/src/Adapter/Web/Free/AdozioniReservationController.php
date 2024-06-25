@@ -98,6 +98,7 @@ class AdozioniReservationController extends AbstractController
                 ->setPhone($formData->person->getPhone())
                 ->setCity($formData->person->getCity())
                 ->setClasse($formData->classe)
+                ->setCoupondCode($formData->coupondCode)
                 ->setOtherInformation($formData->otherInfo)
                 ->setRegistrationDate(
                     new DateTimeImmutable("now", new DateTimeZone('Europe/Rome'))
@@ -155,7 +156,8 @@ class AdozioniReservationController extends AbstractController
             $formData->person->getEmail(),
             $this->mapPersonDataToReservationConfirmationEmail($formData),
             [$adozioniFile->getClientOriginalName()],
-            $formData->otherInfo
+            $formData->otherInfo,
+            $formData->coupondCode
         );
     }
 
@@ -172,7 +174,8 @@ class AdozioniReservationController extends AbstractController
             //[$adozioniFile->getClientOriginalName()],
             $mailAttachments,
             [],
-            $formData->otherInfo
+            $formData->otherInfo,
+            $formData->coupondCode
         );
     }
 }
