@@ -120,7 +120,7 @@ class ReservationController extends AbstractController
             $this->mapPersonDataToReservationConfirmationEmail($formData),
             $this->mapBookDataToReservationConfirmationEmail($formData),
             $formData->otherInfo,
-            //$formData->coupondCode
+            $formData->coupondCode
         );
     }
 

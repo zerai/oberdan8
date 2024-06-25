@@ -6,5 +6,5 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 interface NotifyReservationConfirmationToClient extends ApplicationPort
 {
-    public function notifyReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData, string $otherInfo = ''): TemplatedEmail;
+    public function notifyReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData, string $otherInfo = '', string $coupondCode = ''): TemplatedEmail;
 }
