@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -49,6 +50,12 @@ class ReservationType extends AbstractType
 
             ->add('otherInfo', TextareaType::class, [
                 'label' => 'Altre informazioni',
+                'required' => false,
+                'empty_data' => '',
+            ])
+
+            ->add('coupondCode', TextType::class, [
+                'label' => 'Codice sconto',
                 'required' => false,
                 'empty_data' => '',
             ])

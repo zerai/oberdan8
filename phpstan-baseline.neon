@@ -1103,7 +1103,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
-			count: 8
+			count: 10
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
@@ -1120,4 +1120,3 @@ parameters:
 			message: "#^Dynamic call to static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertResponseIsSuccessful\\(\\)\\.$#"
 			count: 2
 			path: tests/WalkingSkeletonTest.php
-

@@ -40,7 +40,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
         $this->backofficeEmailRetriever = $backofficeEmailRetriever;
     }
 
-    public function notifyReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData, string $otherInfo = ''): TemplatedEmail
+    public function notifyReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData, string $otherInfo = '', string $coupondCode = ''): TemplatedEmail
     {
         $replyTo = new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name());
 
@@ -58,6 +58,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'city' => $personData['city'],
                 'classe' => $personData['classe'],
                 'otherInfo' => $otherInfo,
+                'coupondCode' => $coupondCode,
                 'bookList' => $bookData,
             ])
         ;
@@ -67,7 +68,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
         return $email;
     }
 
-    public function notifyNewReservationToBackoffice(array $personData, array $bookData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
+    public function notifyNewReservationToBackoffice(array $personData, array $bookData, array $systemData = [], string $otherInfo = '', string $coupondCode = ''): TemplatedEmail
     {
         $replyTo = new Address((string) $personData['contact_email'], sprintf('%s %s', (string) $personData['lastName'], (string) $personData['firstName']));
         $email = (new TemplatedEmail())
@@ -88,6 +89,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'city' => $personData['city'],
                 'classe' => $personData['classe'],
                 'otherInfo' => $otherInfo,
+                'coupondCode' => $coupondCode,
                 'bookList' => $bookData,
             ])
         ;

@@ -44,6 +44,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    "coupondCode" => ReservationStaticFixture::COUPOND_CODE,
                     "privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -91,6 +92,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    "coupondCode" => ReservationStaticFixture::COUPOND_CODE,
                     "privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -109,6 +111,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
         self::assertEmailTextBodyContains($email, ReservationStaticFixture::FIRST_NAME);
         self::assertEmailTextBodyContains($email, ReservationStaticFixture::EMAIL);
         self::assertEmailTextBodyContains($email, ReservationStaticFixture::PHONE);
+        self::assertEmailTextBodyContains($email, ReservationStaticFixture::COUPOND_CODE);
         // TODO image attach
         //self::assertEmailAttachmentCount($email, 0);
     }
@@ -147,6 +150,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
                             "volume" => ReservationStaticFixture::BOOK_TWO_VOLUME,
                         ],                    ],
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
+                    "coupondCode" => ReservationStaticFixture::COUPOND_CODE,
                     "privacyConfirmed" => "1",
                     "submit" => "",
                     "_token" => $csrfToken->getValue(),
@@ -165,6 +169,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
         self::assertEmailTextBodyContains($email, ReservationStaticFixture::FIRST_NAME);
         self::assertEmailTextBodyContains($email, ReservationStaticFixture::EMAIL);
         self::assertEmailTextBodyContains($email, ReservationStaticFixture::PHONE);
+        self::assertEmailTextBodyContains($email, ReservationStaticFixture::COUPOND_CODE);
         self::assertEmailAttachmentCount($email, 0);
     }
 }

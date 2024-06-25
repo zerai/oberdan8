@@ -30,6 +30,8 @@ class ReservationFormModel
 
     public string $otherInfo;
 
+    public string $coupondCode;
+
     /**
      * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")
      */

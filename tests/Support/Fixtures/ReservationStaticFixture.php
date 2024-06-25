@@ -20,6 +20,8 @@ class ReservationStaticFixture
 
     public const NOTES = 'Avrei una certa urgenza di ricevere una vostra risposta';
 
+    public const COUPOND_CODE = 'ABCDEF';
+
     public const BOOK_ONE_ISBN = '1-56619-909-3';
 
     public const BOOK_ONE_TITLE = 'Matematica.blu';
