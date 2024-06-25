@@ -99,7 +99,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
         return $email;
     }
 
-    public function notifyAdozioniReservationConfirmationEmailToClient(string $recipient, array $personData, array $filesData = [], string $otherInfo = ''): TemplatedEmail
+    public function notifyAdozioniReservationConfirmationEmailToClient(string $recipient, array $personData, array $filesData = [], string $otherInfo = '', string $coupondCode = ''): TemplatedEmail
     {
         $replyTo = new Address($this->backofficeEmailRetriever->address(), $this->backofficeEmailRetriever->name());
 
@@ -116,6 +116,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'phone' => $personData['phone'],
                 'city' => $personData['city'],
                 'classe' => $personData['classe'],
+                'coupondCode' => $coupondCode,
                 'otherInfo' => $otherInfo,
                 'fileList' => $filesData,
             ])
@@ -126,7 +127,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
         return $email;
     }
 
-    public function notifyNewAdozioniReservationToBackoffice(array $personData, array $filesData, array $systemData = [], string $otherInfo = ''): TemplatedEmail
+    public function notifyNewAdozioniReservationToBackoffice(array $personData, array $filesData, array $systemData = [], string $otherInfo = '', string $coupondCode = ''): TemplatedEmail
     {
         $replyTo = new Address((string) $personData['contact_email'], sprintf('%s %s', (string) $personData['lastName'], (string) $personData['firstName']));
         $email = (new TemplatedEmail())
@@ -146,6 +147,7 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
                 'phone' => $personData['phone'],
                 'city' => $personData['city'],
                 'classe' => $personData['classe'],
+                'coupondCode' => $coupondCode,
                 'otherInfo' => $otherInfo,
                 'fileList' => $filesData,
             ])
