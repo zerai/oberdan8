@@ -10,13 +10,13 @@ parameters:
         - core/booking/src/
         - core/booking/tests/
 
-    checkMissingIterableValueType: false
+    #checkMissingIterableValueType: false
 
     inferPrivatePropertyTypeFromConstructor: true
 
     bootstrapFiles:
         - vendor/bin/.phpunit/phpunit/vendor/autoload.php
-    excludes_analyse:
+    excludePaths:
         - tests/bootstrap.php
         - src/Factory
 
