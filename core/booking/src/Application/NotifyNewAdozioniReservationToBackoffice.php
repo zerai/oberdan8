@@ -6,5 +6,5 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 interface NotifyNewAdozioniReservationToBackoffice extends ApplicationPort
 {
-    public function notifyNewAdozioniReservationToBackoffice(array $personData, array $filesData, array $systemData = [], string $otherInfo = ''): TemplatedEmail;
+    public function notifyNewAdozioniReservationToBackoffice(array $personData, array $filesData, array $systemData = [], string $otherInfo = '', string $coupondCode = ''): TemplatedEmail;
 }

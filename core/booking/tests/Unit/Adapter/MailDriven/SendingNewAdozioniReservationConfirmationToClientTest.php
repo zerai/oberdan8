@@ -36,6 +36,8 @@ class SendingNewAdozioniReservationConfirmationToClientTest extends TestCase
 
     private const CLASSE = 'irrelevant';
 
+    private const COUPOND_CODE = 'irrelevant';
+
     private const OTHER_INFO = 'irrelevant';
 
     private const PDF_FILE_NAME_1 = 'pdf-filename-1.pdf';
@@ -78,7 +80,8 @@ class SendingNewAdozioniReservationConfirmationToClientTest extends TestCase
             'example@example.com',
             $this->getPersonData(),
             $fileList,
-            self::OTHER_INFO
+            self::OTHER_INFO,
+            self::COUPOND_CODE
         );
 
         self::assertSame(self::RESERVATION_CONFIRMATION_EMAIL_SUBJECT, $sendedEmail->getSubject());

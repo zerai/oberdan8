@@ -22,6 +22,8 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
 
     private const CLASSE = 'prima';
 
+    private const COUPOND_CODE = 'ABCDEF';
+
     private const NOTES = 'Avrei una certa urgenza di ricevere una vostra risposta';
 
     private const PDF_FILE_1 = 'RMPC00500D_3A-NT-LI01-UNDEF.pdf';
@@ -50,6 +52,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                         "city" => self::CITY,
                     ],
                     'classe' => self::CLASSE,
+                    'coupondCode' => self::COUPOND_CODE,
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
@@ -93,6 +96,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                         "city" => self::CITY,
                     ],
                     'classe' => self::CLASSE,
+                    'coupondCode' => self::COUPOND_CODE,
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
@@ -117,6 +121,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
         self::assertEmailTextBodyContains($email, self::FIRST_NAME);
         self::assertEmailTextBodyContains($email, self::EMAIL);
         self::assertEmailTextBodyContains($email, self::PHONE);
+        self::assertEmailTextBodyContains($email, self::COUPOND_CODE);
         // TODO image attach
         //self::assertEmailAttachmentCount($email, 0);
     }
@@ -145,6 +150,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                         "city" => self::CITY,
                     ],
                     'classe' => self::CLASSE,
+                    'coupondCode' => self::COUPOND_CODE,
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
@@ -169,6 +175,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
         self::assertEmailTextBodyContains($email, self::FIRST_NAME);
         self::assertEmailTextBodyContains($email, self::EMAIL);
         self::assertEmailTextBodyContains($email, self::PHONE);
+        self::assertEmailTextBodyContains($email, self::COUPOND_CODE);
         self::assertEmailAttachmentCount($email, 1);
     }
 
