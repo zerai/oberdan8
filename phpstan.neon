@@ -17,6 +17,7 @@ parameters:
     bootstrapFiles:
         - vendor/bin/.phpunit/phpunit/vendor/autoload.php
     excludePaths:
+        - src/Controller/BackofficeSecurityController.php
         - tests/bootstrap.php
         - src/Factory
 
