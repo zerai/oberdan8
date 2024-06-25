@@ -586,6 +586,11 @@ parameters:
 			path: core/booking/tests/Unit/Adapter/DoctrineType/ReservationStatusTypeTest.php
 
 		-
+			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:COUPOND_CODE is unused\\.$#"
+			count: 1
+			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
+
+		-
 			message: "#^Constant Booking\\\\Tests\\\\Unit\\\\Adapter\\\\MailDriven\\\\SendingNewAdozioniReservationConfirmationToBackofficeTest\\:\\:IMAGE_FILE_NAME_1 is unused\\.$#"
 			count: 1
 			path: core/booking/tests/Unit/Adapter/MailDriven/SendingNewAdozioniReservationConfirmationToBackofficeTest.php
