@@ -11,10 +11,10 @@ jobs:
     with:
       triggering-sha: "${{ github.sha }}"
 
-#  acceptance-stage-workflow:
-#    name: Acceptance Stage
+  acceptance-stage-workflow:
+    name: Acceptance Stage
 #    needs:
 #      - commit-stage-workflow
-#    uses: zerai/oberdan8/.github/workflows/acceptance-stage.yaml@main
-#    with:
-#      triggering-sha: "${{ github.sha }}"
+    uses: zerai/oberdan8/.github/workflows/acceptance-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
