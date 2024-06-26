@@ -1,0 +1,20 @@
+name: CD/CI
+
+on:
+  push:
+
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage
+    uses: zerai/oberdan8/.github/workflows/commit-stage.yml@main
+    secrets: inherit
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+#  acceptance-stage-workflow:
+#    name: Acceptance Stage
+#    needs:
+#      - commit-stage-workflow
+#    uses: zerai/oberdan8/.github/workflows/acceptance-stage.yaml@main
+#    with:
+#      triggering-sha: "${{ github.sha }}"
