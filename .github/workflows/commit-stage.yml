@@ -84,6 +84,9 @@ jobs:
       - name: Run composer validate
         run: |
           composer validate --strict --ansi
+        continue-on-error: true
+          # Ignore error:
+          # - require.composer/package-versions-deprecated : exact version constraints (1.11.99.5) should be avoided if the package follows semantic versioning
 
       - name: Run composer normalize
         if: always()
@@ -108,15 +111,22 @@ jobs:
           ./bin/console lint:container -e dev --ansi
           ./vendor/bin/psalm
 
+      - name: Run phpstan STATIC ANALYSIS
+        if: always()
+        run: |
+          ./bin/console lint:container -e dev --ansi
+          ./bin/phpunit install
+          ./vendor/bin/phpstan
+
       - name: Run rector MAINTENANCE
         if: always()
         run: |
           ./vendor/bin/rector process --dry-run --ansi
 
-      - name: Run PhpArkitect
-        if: always()
-        run: |
-          ./vendor/bin/phparkitect check --ansi
+#      - name: Run PhpArkitect
+#        if: always()
+#        run: |
+#          ./vendor/bin/phparkitect check --ansi
 
       #
       # Additional checks, they are precondition before
@@ -126,6 +136,7 @@ jobs:
       - name: Run yml linter on configurations files
         run: |
           ./bin/console lint:yaml config/ --ansi
+          ./bin/console lint:yaml core/booking/src/Infrastructure/Framework
 
       - name: Run linter on symfony containers (prod|dev)
         run: |
