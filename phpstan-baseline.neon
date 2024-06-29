@@ -156,6 +156,14 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
+			message: """
+				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
+				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
+			"""
+			count: 5
+			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
+
+		-
 			message: "#^Cannot call method getCity\\(\\) on mixed\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
@@ -491,17 +499,7 @@ parameters:
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
 
 		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
-
-		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
-
-		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
@@ -531,22 +529,12 @@ parameters:
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
 		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
-
-		-
 			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryReadSideTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryTest.php
-
-		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
@@ -736,17 +724,46 @@ parameters:
 			path: core/booking/tests/Unit/Infrastructure/Form/ReservationFormTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$description of method Symfony\\\\Component\\\\Console\\\\Command\\\\Command\\:\\:setDescription\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Command/DefaultAdminCreateCommand.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\Command\\\\DefaultAdminCreateCommand\\:\\:__construct\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/Command/DefaultAdminCreateCommand.php
+
+		-
 			message: "#^Call to an undefined method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:createQuery\\(\\)\\.$#"
 			count: 1
 			path: src/Controller/BackofficeInfoBoxController.php
 
 		-
-			message: "#^Cannot call method getEmail\\(\\) on object\\|null\\.$#"
+			message: """
+				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
+				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
+			"""
+			count: 3
+			path: src/Controller/BackofficeInfoBoxController.php
+
+		-
+			message: """
+				#^Call to deprecated method getUsername\\(\\) of interface Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:
+				since Symfony 5\\.3, use getUserIdentifier\\(\\) instead$#
+			"""
+			count: 2
+			path: src/Controller/BackofficeMailManagerController.php
+
+		-
+			message: "#^Cannot call method getEmail\\(\\) on Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeMyAccountController.php
 
 		-
-			message: "#^Cannot call method getUsername\\(\\) on object\\|null\\.$#"
+			message: "#^Cannot call method getUsername\\(\\) on Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null\\.$#"
 			count: 1
 			path: src/Controller/BackofficeMyAccountController.php
 
@@ -771,9 +788,49 @@ parameters:
 			path: src/Controller/BackofficeMyAccountController.php
 
 		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\Controller\\\\BackofficeMyAccountController\\:\\:changePassword\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/Controller/BackofficeMyAccountController.php
+
+		-
+			message: """
+				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
+				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
+			"""
+			count: 3
+			path: src/Controller/BackofficeUserController.php
+
+		-
 			message: "#^Parameter \\#2 \\$plainPassword of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects string, mixed given\\.$#"
 			count: 2
 			path: src/Controller/BackofficeUserController.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\Controller\\\\BackofficeUserController\\:\\:edit\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/Controller/BackofficeUserController.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\Controller\\\\BackofficeUserController\\:\\:new\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/Controller/BackofficeUserController.php
+
+		-
+			message: """
+				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
+				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
+			"""
+			count: 1
+			path: src/Controller/RegistrationController.php
 
 		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$addresses of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:to\\(\\) expects string\\|Symfony\\\\Component\\\\Mime\\\\Address, string\\|null given\\.$#"
@@ -786,14 +843,62 @@ parameters:
 			path: src/Controller/RegistrationController.php
 
 		-
-			message: "#^Parameter \\#2 \\$user of method App\\\\Security\\\\EmailVerifier\\:\\:handleEmailConfirmation\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, object\\|null given\\.$#"
+			message: "#^Parameter \\#2 \\$user of method App\\\\Security\\\\EmailVerifier\\:\\:handleEmailConfirmation\\(\\) expects Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface, Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\|null given\\.$#"
 			count: 1
 			path: src/Controller/RegistrationController.php
+
+		-
+			message: """
+				#^Parameter \\$guardHandler of method App\\\\Controller\\\\RegistrationController\\:\\:register\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\GuardAuthenticatorHandler\\:
+				since Symfony 5\\.3, use the new authenticator system instead$#
+			"""
+			count: 1
+			path: src/Controller/RegistrationController.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\Controller\\\\RegistrationController\\:\\:register\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/Controller/RegistrationController.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\DataFixtures\\\\Dev\\\\BackofficeAdminUserFixtures\\:\\:__construct\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/DataFixtures/Dev/BackofficeAdminUserFixtures.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\DataFixtures\\\\LibraiStage\\\\BackofficeAdminUserFixtures\\:\\:__construct\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/DataFixtures/LibraiStage/BackofficeAdminUserFixtures.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\DataFixtures\\\\LibraiStage\\\\BackofficeRegularUserFixtures\\:\\:__construct\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/DataFixtures/LibraiStage/BackofficeRegularUserFixtures.php
 
 		-
 			message: "#^Parameter \\#1 \\$confirmationDate of method App\\\\Factory\\\\ReservationSaleDetailFactory\\:\\:withConfirmationDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
 			count: 4
 			path: src/DataFixtures/LibraiStage/ReservationFixturesExpired.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\DataFixtures\\\\Test\\\\BackofficeAdminUserFixtures\\:\\:__construct\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
+			count: 1
+			path: src/DataFixtures/Test/BackofficeAdminUserFixtures.php
 
 		-
 			message: "#^Method App\\\\Entity\\\\BackofficeUser\\:\\:setRoles\\(\\) has parameter \\$roles with no value type specified in iterable type array\\.$#"
@@ -817,14 +922,6 @@ parameters:
 
 		-
 			message: "#^Property App\\\\Entity\\\\BackofficeUser\\:\\:\\$roles type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Entity/BackofficeUser.php
-
-		-
-			message: """
-				#^Return type of method App\\\\Entity\\\\BackofficeUser\\:\\:getRoles\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\:
-				since Symfony 4\\.3, to be removed in 5\\.0\\. Use strings as roles instead\\.$#
-			"""
 			count: 1
 			path: src/Entity/BackofficeUser.php
 
@@ -902,7 +999,28 @@ parameters:
 			path: src/Security/LoginFormBackofficeAuthenticator.php
 
 		-
+			message: """
+				#^Class App\\\\Security\\\\LoginFormBackofficeAuthenticator extends deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Authenticator\\\\AbstractFormLoginAuthenticator\\:
+				since Symfony 5\\.3, use the new authenticator system instead$#
+			"""
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
+			message: "#^Method App\\\\Security\\\\LoginFormBackofficeAuthenticator\\:\\:onAuthenticationSuccess\\(\\) has parameter \\$providerKey with no type specified\\.$#"
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
 			message: "#^Only booleans are allowed in an if condition, string\\|null given\\.$#"
+			count: 1
+			path: src/Security/LoginFormBackofficeAuthenticator.php
+
+		-
+			message: """
+				#^Parameter \\$passwordEncoder of method App\\\\Security\\\\LoginFormBackofficeAuthenticator\\:\\:__construct\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
+				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
+			"""
 			count: 1
 			path: src/Security/LoginFormBackofficeAuthenticator.php
 
@@ -917,11 +1035,6 @@ parameters:
 			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
 
 		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
-			count: 1
-			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
-
-		-
 			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
 			count: 1
 			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
@@ -930,11 +1043,6 @@ parameters:
 			message: "#^Property App\\\\Tests\\\\E2E\\\\AdozioniReservation\\\\AdozioniReservationMultipleUploadTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/AdozioniReservation/AdozioniReservationMultipleUploadTest.php
-
-		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
-			count: 1
-			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
 			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
@@ -957,17 +1065,15 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			message: """
+				#^Instantiation of deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken\\:
+				since Symfony 5\\.3, use the new authenticator system instead$#
+			"""
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
 			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
-			count: 1
-			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
-
-		-
-			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
@@ -977,7 +1083,10 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			message: """
+				#^Instantiation of deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken\\:
+				since Symfony 5\\.3, use the new authenticator system instead$#
+			"""
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
@@ -987,19 +1096,9 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$roles of class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken constructor expects array\\<string\\>, array\\<string\\|Symfony\\\\Component\\\\Security\\\\Core\\\\Role\\\\Role\\> given\\.$#"
-			count: 1
-			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
-
-		-
 			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\ReservationCrudControllerTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
-
-		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
-			count: 1
-			path: tests/E2E/RegularReservation/ReservationControllerTest.php
 
 		-
 			message: "#^Missing call to parent\\:\\:tearDown\\(\\) method\\.$#"
@@ -1012,11 +1111,6 @@ parameters:
 			path: tests/E2E/RegularReservation/ReservationControllerTest.php
 
 		-
-			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
-			count: 3
-			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
-
-		-
 			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
 			count: 3
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
@@ -1027,17 +1121,17 @@ parameters:
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 1
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 2
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 10
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
@@ -1087,32 +1181,30 @@ parameters:
 			path: tests/Functional/Backoffice/UserCrudTest.php
 
 		-
-			message: "#^Cannot call method get\\(\\) on Symfony\\\\Component\\\\DependencyInjection\\\\ContainerInterface\\|null\\.$#"
-			count: 3
-			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
-
-		-
 			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
 			count: 3
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 1
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailHeaderSame\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 2
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\WebTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 10
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
 
 		-
-			message: "#^Missing call to parent\\:\\:setUp\\(\\) method\\.$#"
+			message: """
+				#^Instantiation of deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken\\:
+				since Symfony 5\\.3, use the new authenticator system instead$#
+			"""
 			count: 1
 			path: tests/Functional/SecurityWebtestCase.php
 
