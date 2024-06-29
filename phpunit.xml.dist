@@ -50,10 +50,12 @@
 
     <!-- For PHPUnit version >= 7.5 remove the listener and use <extensions>  -->
 
+
   </listeners>
 
   <!-- Run `composer require symfony/panther` before enabling this extension -->
   <extensions>
     <extension class="Symfony\Component\Panther\ServerExtension"/>
+<!--    <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />-->
   </extensions>
 </phpunit>
