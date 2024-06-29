@@ -16,7 +16,7 @@ class DefaultAdminCreateCommand extends Command
 {
     protected static $defaultName = 'app:default-admin:create';
 
-    protected static string $defaultDescription = 'Create a default admin user \'admin@example.com\' ';
+    protected static $defaultDescription = 'Create a default admin user \'admin@example.com\' ';
 
     private UserPasswordEncoderInterface $passwordEncoder;
 
