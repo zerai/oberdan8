@@ -50,16 +50,14 @@
 
   <listeners>
     <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
-
-    <!-- For PHPUnit version >= 7.5 remove the listener and use <extensions>  -->
-
-
   </listeners>
 
   <!-- Run `composer require symfony/panther` before enabling this extension -->
   <extensions>
     <extension class="Symfony\Component\Panther\ServerExtension"/>
 <!--    <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />-->
+    <!-- For PHPUnit version >= 7.5 remove the listener and use <extensions>  -->
+    <extension class="Symfony\Component\Panther\ServerExtension" />
   </extensions>
 
 </phpunit>
