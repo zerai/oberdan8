@@ -52,6 +52,13 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
+    <DeprecatedMethod>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+    </DeprecatedMethod>
     <MissingPropertyType>
       <code><![CDATA[$formData->books]]></code>
     </MissingPropertyType>
@@ -331,7 +338,21 @@
       <code><![CDATA[TestCase]]></code>
     </MissingDependency>
   </file>
+  <file src="src/Command/DefaultAdminCreateCommand.php">
+    <DeprecatedInterface>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+    </DeprecatedInterface>
+    <MixedArgument>
+      <code><![CDATA[self::$defaultDescription]]></code>
+    </MixedArgument>
+  </file>
   <file src="src/Controller/BackofficeInfoBoxController.php">
+    <DeprecatedMethod>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+    </DeprecatedMethod>
     <MixedMethodCall>
       <code><![CDATA[execute]]></code>
     </MixedMethodCall>
@@ -339,20 +360,25 @@
       <code><![CDATA[createQuery]]></code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="src/Controller/BackofficeMailManagerController.php">
+    <DeprecatedMethod>
+      <code><![CDATA[getUsername]]></code>
+      <code><![CDATA[getUsername]]></code>
+    </DeprecatedMethod>
+  </file>
   <file src="src/Controller/BackofficeMyAccountController.php">
+    <DeprecatedInterface>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+    </DeprecatedInterface>
+    <DeprecatedMethod>
+      <code><![CDATA[getUsername]]></code>
+    </DeprecatedMethod>
     <MixedArgument>
       <code><![CDATA[$newPassword]]></code>
     </MixedArgument>
     <MixedAssignment>
       <code><![CDATA[$newPassword]]></code>
     </MixedAssignment>
-    <MixedMethodCall>
-      <code><![CDATA[getEmail]]></code>
-      <code><![CDATA[getUsername]]></code>
-    </MixedMethodCall>
-    <MixedOperand>
-      <code><![CDATA[$this->getUser()->getEmail()]]></code>
-    </MixedOperand>
     <PossiblyNullArgument>
       <code><![CDATA[$backofficeUser]]></code>
     </PossiblyNullArgument>
@@ -361,6 +387,9 @@
       <code><![CDATA[getUsername]]></code>
       <code><![CDATA[setPassword]]></code>
     </PossiblyNullReference>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[getEmail]]></code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Controller/BackofficeSecurityController.php">
     <InvalidReturnType>
@@ -368,6 +397,15 @@
     </InvalidReturnType>
   </file>
   <file src="src/Controller/BackofficeUserController.php">
+    <DeprecatedInterface>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+    </DeprecatedInterface>
+    <DeprecatedMethod>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+      <code><![CDATA[getDoctrine]]></code>
+    </DeprecatedMethod>
     <InvalidOperand>
       <code><![CDATA[$backofficeUser->getId()]]></code>
     </InvalidOperand>
@@ -380,9 +418,15 @@
     </PossiblyNullOperand>
   </file>
   <file src="src/Controller/RegistrationController.php">
-    <ArgumentTypeCoercion>
-      <code><![CDATA[$this->getUser()]]></code>
-    </ArgumentTypeCoercion>
+    <DeprecatedClass>
+      <code><![CDATA[GuardAuthenticatorHandler]]></code>
+    </DeprecatedClass>
+    <DeprecatedInterface>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+    </DeprecatedInterface>
+    <DeprecatedMethod>
+      <code><![CDATA[getDoctrine]]></code>
+    </DeprecatedMethod>
     <MixedArgument>
       <code><![CDATA[$form->get('plainPassword')->getData()]]></code>
     </MixedArgument>
@@ -466,6 +510,19 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Security/LoginFormBackofficeAuthenticator.php">
+    <DeprecatedClass>
+      <code><![CDATA[AbstractFormLoginAuthenticator]]></code>
+    </DeprecatedClass>
+    <DeprecatedInterface>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+      <code><![CDATA[UserPasswordEncoderInterface]]></code>
+    </DeprecatedInterface>
+    <MissingParamType>
+      <code><![CDATA[$providerKey]]></code>
+    </MissingParamType>
+    <MixedArgument>
+      <code><![CDATA[$providerKey]]></code>
+    </MixedArgument>
     <MixedArrayAccess>
       <code><![CDATA[$credentials['csrf_token']]]></code>
       <code><![CDATA[$credentials['email']]]></code>

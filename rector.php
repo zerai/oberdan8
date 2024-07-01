@@ -36,7 +36,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->autoloadPaths([__DIR__ . '/vendor/bin/.phpunit/phpunit/vendor/autoload.php']);
     $rectorConfig->importNames();
     //$rectorConfig->importShortClasses();
-    $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/srcApp_KernelDevDebugContainer.xml');
+    $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
 
     $rectorConfig->phpVersion(PhpVersion::PHP_74);
 
@@ -59,7 +59,7 @@ return static function (RectorConfig $rectorConfig): void {
         /**
          * SYMFONY
          */
-        SymfonySetList::SYMFONY_44,
+        SymfonySetList::SYMFONY_54,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
         //SymfonySetList::SYMFONY_STRICT,
