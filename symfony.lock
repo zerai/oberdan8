@@ -167,9 +167,6 @@
     "monolog/monolog": {
         "version": "1.26.1"
     },
-    "nette/php-generator": {
-        "version": "v3.5.4"
-    },
     "nette/schema": {
         "version": "v1.2.2"
     },
@@ -199,12 +196,6 @@
     },
     "php-webdriver/webdriver": {
         "version": "1.11.1"
-    },
-    "phunkie/phunkie": {
-        "version": "0.11.2"
-    },
-    "prolic/fpp": {
-        "version": "dev-master"
     },
     "psr/cache": {
         "version": "1.0.1"
