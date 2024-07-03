@@ -7,7 +7,7 @@ use Booking\Adapter\Persistance\DoctrineType\ReservationStatusType;
 use Booking\Application\Domain\Model\ReservationStatus;
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Platforms\MySqlPlatform;
+use Doctrine\DBAL\Platforms\MySQLPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Generator;
@@ -21,12 +21,12 @@ class ReservationStatusTypeTest extends TestCase
     /** @var Type|null */
     private $type;
 
-    /** @var AbstractPlatform|null */
+    /** @var AbstractPlatform|MySQLPlatform|null */
     private $platform;
 
     public function setUp(): void
     {
-        $this->platform = new MySqlPlatform();
+        $this->platform = new MySQLPlatform();
         try {
             $this->type = Type::getType('reservation_status_test');
         } catch (Exception $e) {
