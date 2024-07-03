@@ -66,11 +66,6 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
 
 		-
-			message: "#^Parameter \\#1 \\$value of static method Doctrine\\\\DBAL\\\\Types\\\\ConversionException\\:\\:conversionFailed\\(\\) expects string, mixed given\\.$#"
-			count: 2
-			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
-
-		-
 			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ExportDataRetriever\\:\\:getAllCustomerForNewsletter\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ExportDataRetriever.php
@@ -88,11 +83,6 @@ parameters:
 		-
 			message: "#^Cannot call method isExpired\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
-
-		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 8
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
