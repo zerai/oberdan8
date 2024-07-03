@@ -45,7 +45,7 @@ class ReservationStatusType extends StringType
         throw ConversionException::conversionFailed($value, static::NAME);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return self::NAME;
     }
