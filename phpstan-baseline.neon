@@ -936,19 +936,6 @@ parameters:
 			path: src/Entity/InfoBox.php
 
 		-
-			message: "#^Generator expects value type Symfony\\\\Component\\\\HttpKernel\\\\Bundle\\\\BundleInterface, object given\\.$#"
-			count: 1
-			path: src/Kernel.php
-
-		-
-			message: """
-				#^Parameter \\$routes of method App\\\\Kernel\\:\\:configureRoutes\\(\\) has typehint with deprecated class Symfony\\\\Component\\\\Routing\\\\RouteCollectionBuilder\\:
-				since Symfony 5\\.1, use RoutingConfigurator instead$#
-			"""
-			count: 1
-			path: src/Kernel.php
-
-		-
 			message: "#^Class App\\\\Repository\\\\BackofficeUserRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: src/Repository/BackofficeUserRepository.php
