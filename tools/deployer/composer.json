@@ -1,8 +1,7 @@
 {
     "require-dev": {
         "php": ">=7.4 || 8.0",
-        "deployer/deployer": "^7.4",
-        "deployer/recipes": "^6.2"
+        "deployer/deployer": "^7.4"
     },
     "config": {
         "preferred-install": {
