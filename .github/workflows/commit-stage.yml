@@ -25,6 +25,7 @@ jobs:
       matrix:
         php:
           - '7.4'
+          - '8.0'
       fail-fast: false
     steps:
       - name: Checkout on SHA-${{ inputs.triggering-sha }}
@@ -157,7 +158,7 @@ jobs:
       matrix:
         php:
           - '7.4'
-          #- '8.0'
+          - '8.0'
           #- '8.1'
       fail-fast: true
     steps:
