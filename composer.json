@@ -83,9 +83,6 @@
             "symfony/flex": true,
             "symfony/runtime": true
         },
-        "platform": {
-            "php": "7.4"
-        },
         "preferred-install": {
             "*": "dist"
         },
