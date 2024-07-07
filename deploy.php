@@ -4,8 +4,8 @@ namespace Deployer;
 use Deployer\Host\Localhost;
 use Deployer\Task\Context;
 
-require 'recipe/common.php';
-require 'recipe/symfony4.php';
+//require 'recipe/common.php';
+require 'recipe/symfony.php';
 
 set('default_stage', 'stage-oberdan');
 
@@ -36,6 +36,7 @@ add('writable_dirs', [
 // Application path
 set('application_path_stage', 'stage.oberdan8.it');
 
+
 set('application_path_prod', 'prenota.oberdan8.it');
 
 
@@ -50,16 +51,21 @@ set('application_path_prod_librai', 'public_html');
 
 host('stage-librai')
     // host settings
-    ->hostname('stage.8viadeilibrai.it')
-    ->stage('stage-librai')
+    ->setHostname('stage.8viadeilibrai.it')
+    ->set('stage', 'stage-librai')
+    ->setLabels([
+        'env' => 'stage-librai',
+    ])
+    /** ?? usare label */
+    //->stage('stage-librai')
     ->set('deploy_path','~/{{application_path_stage_librai}}')
     ->set('http_user', 'oberdani')
     ->set('writable_use_sudo', false)
     ->set('writable_mode', 'chmod')
 
     // ssh settings
-    ->user('iglkzrno')
-    ->port(3508)
+    ->setRemoteUser('iglkzrno')
+    ->setPort(3508)
     ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai2')
     ->set('forwardAgent', true)
     ->set('git_tty', false)
@@ -67,35 +73,41 @@ host('stage-librai')
 
     // git & composer settings
     ->set('branch', 'main')
-    ->set('composer_options', '{{composer_action}} --prefer-dist --no-progress --no-interaction --optimize-autoloader')
+    ->set('composer_options', ' --prefer-dist --no-progress --no-interaction --optimize-autoloader')
+    ->set('keep_releases', 2)
 
 ;
 
 host('production')
     // host settings
-    ->hostname('8viadeilibrai.it')
-    ->stage('production')
+    ->setHostname('8viadeilibrai.it')
+    ->set('stage', 'production')
+    ->setLabels([
+        'env' => 'production',
+    ])
+    //->stage('production')
     ->set('deploy_path','~/{{application_path_prod_librai}}')
     ->set('http_user', 'iglkzrno')
     ->set('writable_use_sudo', false)
     ->set('writable_mode', 'chmod')
 
     // ssh settings
-    ->user('iglkzrno')
-    ->port(3508)
+    ->setRemoteUser('iglkzrno')
+    ->setPort(3508)
     ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai2')
     ->set('forwardAgent', true)
     ->set('git_tty', false)
     ->set('ssh_multiplexing', false)
 
     // git & composer settings
-    //->set('branch', 'main')
+    ->set('branch', 'main')
     //->set('tag', '0.1.0')
     //->set('tag', '0.1.1')
     //->set('tag', '0.1.2')
     //->set('tag', '0.1.4')
-    ->set('tag', '0.1.5')
-    ->set('composer_options', '{{composer_action}} --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
+    //->set('tag', '0.1.5')
+    ->set('composer_options', ' --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
+    ->set('keep_releases', 3)
 
 ;
 
@@ -147,28 +159,30 @@ before('deploy:symlink', 'database:migrate');
 
 // Build yarn locally
 task('deploy:build:assets', function (): void {
-    //run('yarn install');
-    //run('yarn encore production');
+    info('Build UI assets Locally');
     if (PHP_OS === 'Linux'){
-        run('docker-compose run encore yarn install');
-        run('docker-compose run encore yarn encore production');
+        runLocally('docker-compose run encore yarn install');
+        runLocally('docker-compose run encore yarn encore production');
     }else{
-        run('docker-compose  run encore yarn install');
-        run('docker-compose  run encore yarn encore production');
+        runLocally('docker-compose run encore yarn install');
+        runLocally('docker-compose run encore yarn encore production');
     }
-    //run('sudo chown -R zero:zero  public/build/');
-})->local();
+    info('UI assets builded.');
+});
 
 before('deploy:symlink', 'deploy:build:assets');
 
 
 // Upload assets
 task('upload:assets', function (): void {
-
+    info('Start upload UI assets');
     upload(__DIR__.'/public/build/', '{{release_path}}/public/build');
+    info('UI assets uploaded.');
 
-    // comando manuale
-    // scp -P 3508 -r -C -i var/Oberdan/id_rsa_zerai_dev_machine public/build/ oberdani@oberdan8.it:~/stage.oberdan8.it/releases/{--- numero release ---}/public/build
+    /**
+     * comando manuale
+     * scp -P 3508 -r -C -i var/Oberdan/id_rsa_zerai_dev_machine public/build/ oberdani@oberdan8.it:~/stage.oberdan8.it/releases/{--- numero release ---}/public/build
+    */
 });
 
 after('deploy:build:assets', 'upload:assets');
@@ -177,19 +191,33 @@ after('deploy:build:assets', 'upload:assets');
 
 desc('Maintenance on');
 task('maintenance:on', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:soft on');
+    run('{{bin/console}} corley:maintenance:soft on');
 });
 
 desc('Maintenance off');
 task('maintenance:off', function () {
-    run('{{bin/php}} {{bin/console}} corley:maintenance:soft off');
+    run('{{bin/console}} corley:maintenance:soft off');
 });
 
 
 desc('Load stage fixtures');
 task('stage:fixtures:load', function () {
-    run('{{bin/php}} {{bin/console}} doctrine:fixtures:load --group=stage --no-interaction');
-})->onStage('stage-librai');
+    if ('production' === get('labels')['env']){
+        writeln(' labels.env:' . get('labels')['env']);
+        info('Setup production env vars in file .env.local.php');
+        runLocally('cp -f .env.itroom.production .env.prod');
+        info('Generated env.dev with staging configuration data');
+
+        info('Run composer symfony:dump-env prod');
+        $cmdResult = runLocally('composer symfony:dump-env prod', ['tty' => true]);
+        echo $cmdResult;
+        info('No fixture for production environment.');
+    }elseif ('stage-librai' === get('labels')['env']){
+        info('Load fixture for stage-librai environment.');
+        run('{{bin/php}} {{bin/console}} doctrine:fixtures:load --group=stage --no-interaction');
+        info('Fixture loaded');
+    }
+});
 after('deploy', 'stage:fixtures:load');
 
 
