@@ -13,7 +13,6 @@ set('default_stage', 'stage-oberdan');
 set('application', 'stage.oberdan8.it');
 
 // Project repository
-//set('repository', 'git@github.com:zerai/oberdan8.git');
 set('repository', 'https://github.com/zerai/oberdan8.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
@@ -66,9 +65,8 @@ host('stage-librai')
     // ssh settings
     ->setRemoteUser('iglkzrno')
     ->setPort(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai2')
-    ->set('forwardAgent', true)
-    ->set('git_tty', false)
+    //->set('forwardAgent', true)
+    //->set('git_tty', false)
     ->set('ssh_multiplexing', false)
 
     // git & composer settings
@@ -85,7 +83,6 @@ host('production')
     ->setLabels([
         'env' => 'production',
     ])
-    //->stage('production')
     ->set('deploy_path','~/{{application_path_prod_librai}}')
     ->set('http_user', 'iglkzrno')
     ->set('writable_use_sudo', false)
@@ -94,18 +91,13 @@ host('production')
     // ssh settings
     ->setRemoteUser('iglkzrno')
     ->setPort(3508)
-    ->set('identityFile', '~/.ssh/id_rsa_oberdan_librai2')
-    ->set('forwardAgent', true)
-    ->set('git_tty', false)
+    ->set('identityFile', '~/.ssh/id_rsa_oberdan_prenotazioni_deployer_local')
+    //->set('forwardAgent', true)
+    //->set('git_tty', false)
     ->set('ssh_multiplexing', false)
 
     // git & composer settings
     ->set('branch', 'main')
-    //->set('tag', '0.1.0')
-    //->set('tag', '0.1.1')
-    //->set('tag', '0.1.2')
-    //->set('tag', '0.1.4')
-    //->set('tag', '0.1.5')
     ->set('composer_options', ' --prefer-dist --no-dev --no-progress --no-interaction --optimize-autoloader')
     ->set('keep_releases', 3)
 
