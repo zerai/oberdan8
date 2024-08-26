@@ -44,7 +44,6 @@ class ExportCustomerTest extends TestCase
             ->willReturn([
                 1 => [
                     'foo' => 'bar',
-
                 ],
             ])
         ;
