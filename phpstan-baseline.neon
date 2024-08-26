@@ -499,7 +499,7 @@ parameters:
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$value of function count expects array\\|Countable, mixed given\\.$#"
 			count: 3
 			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
