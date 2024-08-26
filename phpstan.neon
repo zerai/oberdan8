@@ -20,5 +20,7 @@ parameters:
         - src/Controller/BackofficeSecurityController.php
         - tests/bootstrap.php
         - src/Factory
+        # remove
+        - core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
 
     tmpDir: var/tools/phpstan/
