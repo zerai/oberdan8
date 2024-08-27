@@ -68,6 +68,7 @@ class ReservationSaleDetailTest extends TestCase
             yield 'Sale' => ['Sale'],
             yield 'PickedUp' => ['PickedUp'],
             yield 'Blacklist' => ['Blacklist'],
+            yield 'Shipped' => ['Shipped'],
         ];
     }
 }

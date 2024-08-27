@@ -22,6 +22,8 @@ final class ReservationStatus
 
     public const Blacklist = 7;
 
+    public const Shipped = 8;
+
     public const Options = [
         'NewArrival',
         'InProgress',
@@ -31,6 +33,7 @@ final class ReservationStatus
         'Sale',
         'PickedUp',
         'Blacklist',
+        'Shipped',
     ];
 
     private string $name;
@@ -75,6 +78,11 @@ final class ReservationStatus
     public static function Blacklist(): self
     {
         return new self('Blacklist', 7);
+    }
+
+    public static function Shipped(): self
+    {
+        return new self('Shipped', 8);
     }
 
     private function __construct(string $name, int $value)
