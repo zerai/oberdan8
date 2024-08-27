@@ -4,6 +4,12 @@ namespace Deployer;
 use Deployer\Host\Localhost;
 use Deployer\Task\Context;
 
+/**
+ * Refactoring migrate configuration
+ * to new standard
+ * 
+ */
+
 //require 'recipe/common.php';
 require 'recipe/symfony.php';
 
