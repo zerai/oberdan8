@@ -318,4 +318,19 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
 
         return (int) $query->getSingleScalarResult();
     }
+
+    public function countWithStatusShipped(): int
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        $qb->select($qb->expr()->count('r.id'))
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('s.status = :val')
+            ->setParameter('val', 'Shipped')
+        ;
+
+        $query = $qb->getQuery();
+
+        return (int) $query->getSingleScalarResult();
+    }
 }

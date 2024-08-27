@@ -344,6 +344,30 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         self::assertEquals(10, $count);
     }
 
+    /** @test */
+    public function shouldCountReservationWithShippedStatus(): void
+    {
+        ReservationFactory::createMany(10, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Shipped(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::NewArrival(),
+            ]),
+        ]);
+        ReservationFactory::createMany(15, [
+            'saleDetail' => ReservationSaleDetailFactory::new([
+                'status' => ReservationStatus::Pending(),
+            ]),
+        ]);
+
+        $count = $this->repository->countWithStatusShipped();
+
+        self::assertEquals(10, $count);
+    }
+
     protected function tearDown(): void
     {
         parent::tearDown();

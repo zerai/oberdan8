@@ -34,6 +34,8 @@ class BackofficeReservationStatsController extends AbstractController
 
         $expiredStatus = $repository->countWithStatusConfirmedAndExpired();
 
+        $shippedStatus = $repository->countWithStatusShipped();
+
         return $this->render('backoffice/reservation/_badge_status_navbar.html.twig', [
             'status_confirmed' => $confirmedStatus,
             'status_newarrival' => $newArrivalStatus,
@@ -43,6 +45,7 @@ class BackofficeReservationStatsController extends AbstractController
             'status_sale' => $saleStatus,
             'status_pickedup' => $pickedUpStatus,
             'status_expired' => $expiredStatus,
+            'status_shipped' => $shippedStatus,
         ]);
     }
 }

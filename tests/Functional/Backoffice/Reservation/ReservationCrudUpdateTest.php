@@ -268,6 +268,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
      *          ["Sale", "Vendita"]
      *          ["PickedUp", "Ritirato"]
      *          ["Blacklist", "Blacklist"]
+     *          ["Shipped", "Spedito"]
      */
     public function shouldEditTheReservationStatusForAReservation(string $newStatus, string $expectedStatusInPage): void
     {
