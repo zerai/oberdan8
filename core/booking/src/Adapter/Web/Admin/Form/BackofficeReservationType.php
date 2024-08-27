@@ -84,6 +84,7 @@ class BackofficeReservationType extends AbstractType
                     'Vendita' => 'Sale',
                     'Ritirato' => 'PickedUp',
                     'Blacklist' => 'Blacklist',
+                    'Spedito' => 'Shipped',
                 ],
             ]);
         }
