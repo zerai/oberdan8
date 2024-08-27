@@ -115,6 +115,13 @@ final class ReservationFactory extends ModelFactory
         ]);
     }
 
+    public function withShippedStatus(): self
+    {
+        return $this->addState([
+            'saleDetail' => $this->createReservationDetailWithStatus('Shipped'),
+        ]);
+    }
+
     private function createReservationDetailWithStatus(string $status = 'NewArrival'): ReservationSaleDetail
     {
         $defaultSaleDetail = new ReservationSaleDetail();
