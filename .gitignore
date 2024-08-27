@@ -6,6 +6,9 @@
 /public/adozioni/
 /public/uploads
 /workflow
+.github/workflows/commit-stage.yml.backup
+auth.json.dist
+migrations/Version20240625071722.php.dist
 
 ###> symfony/framework-bundle ###
 /.env.local
