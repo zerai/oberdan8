@@ -73,4 +73,12 @@
         </div>
     </a>
 
+    {# status shipped #}
+    <a href="{{ path('backoffice_reservation_index', {'status': 'Shipped'}) }}">
+        <div class="d-inline p-2 bg-expired text-dark rounded-circle" data-toggle="tooltip" data-placement="top" title="Spediti">
+            <span class="badge badge-light">
+                {{ status_shipped|default('N/D') }}
+            </span>
+        </div>
+    </a>
 </div>
