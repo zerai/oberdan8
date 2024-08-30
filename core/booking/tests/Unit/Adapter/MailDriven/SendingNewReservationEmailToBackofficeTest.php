@@ -65,7 +65,7 @@ class SendingNewReservationEmailToBackofficeTest extends TestCase
 
         $sendedEmail = $this->bookingMailer->notifyNewReservationToBackoffice($this->getPersonData(), [], [], self::OTHER_INFO);
 
-        $expectedSubject = sprintf('Nuova Prenotazione da %s %s', $this->getPersonData()['lastName'], $this->getPersonData()['firstName']);
+        $expectedSubject = \sprintf('Nuova Prenotazione da %s %s', $this->getPersonData()['lastName'], $this->getPersonData()['firstName']);
         self::assertEquals($expectedSubject, $sendedEmail->getSubject());
 
         $recipientAddress = $sendedEmail->getTo();

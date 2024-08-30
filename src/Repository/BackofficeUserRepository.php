@@ -28,7 +28,7 @@ class BackofficeUserRepository extends ServiceEntityRepository implements Passwo
     public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
     {
         if (! $user instanceof BackofficeUser) {
-            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported.', \get_class($user)));
+            throw new UnsupportedUserException(\sprintf('Instances of "%s" are not supported.', \get_class($user)));
         }
 
         $user->setPassword($newEncodedPassword);

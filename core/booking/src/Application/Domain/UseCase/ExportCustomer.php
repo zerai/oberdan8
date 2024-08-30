@@ -38,6 +38,6 @@ class ExportCustomer implements ExportCustomerInterface
      */
     private function generateFilename(): string
     {
-        return sprintf('ExportCustomers_%s.csv', Uuid::uuid4()->toString());
+        return \sprintf('ExportCustomers_%s.csv', Uuid::uuid4()->toString());
     }
 }

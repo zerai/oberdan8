@@ -96,7 +96,7 @@ class SendingNewAdozioniReservationConfirmationToBackofficeTest extends TestCase
             self::COUPOND_CODE
         );
 
-        $expectedSubject = sprintf('Nuova Prenotazione da %s %s', $this->getPersonData()['lastName'], $this->getPersonData()['firstName']);
+        $expectedSubject = \sprintf('Nuova Prenotazione da %s %s', $this->getPersonData()['lastName'], $this->getPersonData()['firstName']);
         self::assertEquals($expectedSubject, $sendedEmail->getSubject());
 
         $recipientAddress = $sendedEmail->getTo();

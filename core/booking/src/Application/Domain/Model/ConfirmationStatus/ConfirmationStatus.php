@@ -68,7 +68,7 @@ final class ConfirmationStatus
 
         $newDate = $expirationDate->modify(
             //"+ ${expirationDays} days"
-            sprintf("+ %s days", (string) $expirationDays)
+            \sprintf("+ %s days", (string) $expirationDays)
         );
 
         /**
