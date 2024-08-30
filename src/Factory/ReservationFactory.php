@@ -31,7 +31,9 @@ final class ReservationFactory extends ModelFactory
     {
         parent::__construct();
 
-        // TODO inject services if required (https://github.com/zenstruck/foundry#factories-as-services)
+        /**
+         * TODO inject services if required (https://github.com/zenstruck/foundry#factories-as-services)
+         */
     }
 
     protected function getDefaults(): array
@@ -40,7 +42,9 @@ final class ReservationFactory extends ModelFactory
         $defaultSaleDetail->setStatus(ReservationStatus::NewArrival());
 
         return [
-            // TODO add your default values here (https://github.com/zenstruck/foundry#model-factories)
+            /**
+             * TODO add your default values here (https://github.com/zenstruck/foundry#model-factories)
+             */
             'firstName' => self::faker()->firstName(),
             'lastName' => self::faker()->lastName(),
             'email' => self::faker()->unique()->email(),
@@ -48,7 +52,6 @@ final class ReservationFactory extends ModelFactory
             'city' => self::faker()->city(),
             'classe' => 'Prima',
             'registrationDate' => new DateTimeImmutable('now', new DateTimeZone('Europe/Rome')),
-            //'registrationDate' => self::faker()->dateTime('now', 'UTC'),
             'coupondCode' => '',
             'saleDetail' => $defaultSaleDetail,
         ];

@@ -369,15 +369,6 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ;
         }
 
-        //        $todayMinus7 = (new DateTimeImmutable("today"))->modify('- 7days'); //dd($todayMinus7);
-        //        $qb->andWhere('s.pvtConfirmedAt < :todayMinus7 AND s.pvtExtensionTime = false')
-        //            //->setParameter('todayMinus7', $todayMinus7->format('Y-m-d'));
-        //            ->setParameter('todayMinus7', $todayMinus7, Types::DATETIME_IMMUTABLE);
-        //
-        //        $todayMinus14 = (new DateTimeImmutable("today"))->modify('- 14days'); //dd($todayPlus7);
-        //        $qb->orWhere('s.pvtConfirmedAt < :todayMinus14 AND s.pvtExtensionTime = true')
-        //            ->setParameter('todayMinus14', $todayMinus14, Types::DATETIME_IMMUTABLE);
-
-        return $qb->orderBy('r.registrationDate', 'Desc');
+        return $qb->orderBy('r.registrationDate', 'Asc');
     }
 }

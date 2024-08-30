@@ -21,14 +21,16 @@ class BackofficeCouponCodeReservationController extends AbstractController
      */
     public function index(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
-        $q = $request->query->get('q');
+        $searchTerms = $request->query->get('q');
+        $pageNumber = $request->query->getInt('page', 1);
+        $limitResults = 50;
 
-        $queryBuilder = $repository->findWithQueryBuilderAllWithCouponCodeOrderByNewest($q);
+        $queryBuilder = $repository->findWithQueryBuilderAllWithCouponCodeOrderByNewest($searchTerms);
 
         $pagination = $paginator->paginate(
-            $queryBuilder->getQuery(), //$query, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            50 /*limit per page*/
+            $queryBuilder->getQuery(),
+            $pageNumber,
+            $limitResults
         );
 
         return $this->render('backoffice/reservation/with_coupon/index.html.twig', [
