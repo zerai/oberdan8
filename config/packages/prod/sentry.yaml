@@ -1,6 +1,5 @@
 # https://docs.sentry.io/platforms/php/guides/symfony/config/
 
-
 sentry:
     options:
         release: "0.5.1"
