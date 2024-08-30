@@ -116,6 +116,16 @@ parameters:
 			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
 
 		-
+			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllWithCouponCodeOrderByNewest\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
+			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllWithCouponCodeOrderByNewest\\(\\) should return array but returns mixed\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+
+		-
 			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationSaleDetailRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
 			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php
@@ -134,6 +144,11 @@ parameters:
 			message: "#^Cannot call method isExpired\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
 			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php
+
+		-
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findWithQueryBuilderAllWithCouponCodeOrderByNewest\\(\\)\\.$#"
+			count: 1
+			path: core/booking/src/Adapter/Web/Admin/BackofficeCouponCodeReservationController.php
 
 		-
 			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
@@ -491,26 +506,6 @@ parameters:
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
 			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$confirmationDate of method App\\\\Factory\\\\ReservationSaleDetailFactory\\:\\:withConfirmationDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
-			count: 16
-			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$value of function count expects array\\|Countable, mixed given\\.$#"
-			count: 3
-			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
-
-		-
-			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryExpiredReadSideTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
-
-		-
-			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
-			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
 		-
@@ -860,6 +855,11 @@ parameters:
 			"""
 			count: 1
 			path: src/DataFixtures/Dev/BackofficeAdminUserFixtures.php
+
+		-
+			message: "#^Dynamic call to static method App\\\\Factory\\\\ReservationFactory\\:\\:createOne\\(\\)\\.$#"
+			count: 5
+			path: src/DataFixtures/Dev/ReservationFixtures.php
 
 		-
 			message: """
