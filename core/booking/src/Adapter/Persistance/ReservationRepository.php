@@ -333,4 +333,42 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
 
         return (int) $query->getSingleScalarResult();
     }
+
+    /**
+     * @retrun array<array-key, Reservation>
+     */
+    public function findAllWithCouponCodeOrderByNewest(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('r.coupondCode != :val')
+            ->setParameter('val', '')
+            ->orderBy('r.registrationDate', 'ASC')
+            ->setMaxResults(1000)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @param string|null $term
+     * @return QueryBuilder
+     */
+    public function findWithQueryBuilderAllWithCouponCodeOrderByNewest(?string $term): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->addSelect('s')
+            ->andWhere('r.coupondCode != :val')
+            ->setParameter('val', '')
+        ;
+
+        if (\is_string($term)) {
+            $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }
+
+        return $qb->orderBy('r.registrationDate', 'Asc');
+    }
 }

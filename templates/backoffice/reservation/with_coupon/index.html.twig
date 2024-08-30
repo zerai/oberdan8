@@ -1,0 +1,103 @@
+{% extends 'backoffice/default-layout.html.twig' %}
+
+{% import "backoffice/reservation/macros.twig" as macro %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('reservation_confirmed_page') }}
+{% endblock %}
+
+
+{% block title %}
+    Prenotazioni con codice sconto
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content_title %}
+    Prenotazioni con codice sconto
+{% endblock %}
+
+
+{% block content_toolbar %}
+{% endblock %}
+
+{% block content_body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Search form -->
+            <form name="backoffice_reservation_search">
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="q"
+                           class="form-control"
+                           value="{{ app.request.query.get('q') }}"
+                           placeholder="Cerca tra le prenotazioni con codice sconto..."
+                    >
+                    <div class="input-group-append">
+                        <button type="submit"
+                                name="backoffice_reservation_search_submit"
+                                class="btn btn-outline-secondary">
+                            <span class="fa fa-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <h4>Totale: {{ pagination.totalItemCount }}</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+
+                        <th {% if pagination.isSorted('r.LastName') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'Nominativo', 'r.LastName') }}
+                        </th>
+
+                        <th {% if pagination.isSorted('s.coupondCode') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'C. sconto', 's.coupondCode') }}
+                        </th>
+
+                        <th {% if pagination.isSorted('r.registrationDate') %} class="sorted"{% endif %} >
+                            {{ knp_pagination_sortable(pagination, 'Data', 'r.registrationDate') }}
+                        </th>
+
+                        <th>Stato</th>
+
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for reservation in pagination %}
+                    <tr >
+                        <td>{{ reservation.id|u.truncate(5) }}</td>
+                        <td>{{ reservation.lastName }} {{ reservation.firstName }}</td>
+                        <td>{{ reservation.coupondCode }}</td>
+                        <td>{{ reservation.registrationDate|date("d/m/Y") }}</td>
+                        <td class="{{ reservation.saleDetail.status }}">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-dark" href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-sm btn-outline-dark" href="{{ path('backoffice_reservation_edit', {'id': reservation.id}) }}"><i class="fa fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="10" class="text-center">
+                            Nessun risultato trovato, non ci sono prenotazioni con codice sconto.
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {# display table navigation class="navigation" #}
+    <div class="row justify-content-center">
+        <div class="col-6">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
