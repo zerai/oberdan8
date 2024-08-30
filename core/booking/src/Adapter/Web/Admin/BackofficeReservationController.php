@@ -37,23 +37,19 @@ class BackofficeReservationController extends AbstractController
     public function index(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $q = $request->query->get('q');
-
         $status = $request->query->get('status');
+        $pageNumber = $request->query->getInt('page', 1);
+        $limitResults = 15;
 
         $queryBuilder = $repository->getWithSearchQueryBuilder($q, $status);
 
-        //$searchedReservation = $queryBuilder->getQuery()->getResult();
-
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(), //$query, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            15 /*limit per page*/
+            $pageNumber,
+            $limitResults,
         );
 
         return $this->render('backoffice/reservation/index.html.twig', [
-            //'backoffice_reservations' => $repository->findAll(),
-            //'backoffice_reservations' => $repository->findAllForBackoffice(),
-            //'backoffice_reservations' => $searchedReservation,
             'pagination' => $pagination,
         ]);
     }
@@ -301,20 +297,25 @@ class BackofficeReservationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="backoffice_reservation_send_tanks_mail", methods={"POST"})
+     * Rimuovere dopo il deploy (i test passano anche senza...)
+     * durante l'update viene usato $bookingMailer->notifyReservationThanksEmailToClient()
+     * questo metodo è inutile
      */
-    public function sendThanksMail(Request $request, Reservation $reservation): Response
-    {
-        if ($this->isCsrfTokenValid('send_tanks_mail' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
-            $this->getDoctrine()->getManager();
-
-            $this->addFlash('success', 'E\' stata inviata la mail di ringraziamento .');
-        } else {
-            $this->addFlash('danger', 'La mail di ringraziamento non è stata inviata.');
-        }
-
-        return $this->redirectToRoute('backoffice_reservation_index');
-    }
+    //    /**
+    //     * @Route("/{id}", name="backoffice_reservation_send_tanks_mail", methods={"POST"})
+    //     */
+    //    public function sendThanksMail(Request $request, Reservation $reservation): Response
+    //    {
+    //        if ($this->isCsrfTokenValid('send_tanks_mail' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
+    //            $this->getDoctrine()->getManager();
+    //
+    //            $this->addFlash('success', 'E\' stata inviata la mail di ringraziamento .');
+    //        } else {
+    //            $this->addFlash('danger', 'La mail di ringraziamento non è stata inviata.');
+    //        }
+    //
+    //        return $this->redirectToRoute('backoffice_reservation_index');
+    //    }
 
     /**
      * @Route("/{id}/add-extension-time", name="backoffice_reservation_add_extension_time", methods={"POST"})

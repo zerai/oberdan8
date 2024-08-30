@@ -150,7 +150,7 @@ parameters:
 				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
 				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
 			"""
-			count: 5
+			count: 4
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
