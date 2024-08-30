@@ -22,5 +22,6 @@ parameters:
         - src/Factory
         # remove
         - core/booking/tests/Integration/ReservationRepositoryExpiredReadSideTest.php
+        - core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
     tmpDir: var/tools/phpstan/

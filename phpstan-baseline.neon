@@ -496,26 +496,6 @@ parameters:
 		-
 			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
 			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
-
-		-
-			message: "#^Method Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryReadSideTest\\:\\:createEntityWithChild\\(\\) is unused\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, mixed given\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
-
-		-
-			message: "#^Property Booking\\\\Tests\\\\Integration\\\\ReservationRepositoryReadSideTest\\:\\:\\$entityManager \\(Doctrine\\\\ORM\\\\EntityManager\\) does not accept null\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
-
-		-
-			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
-			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
 		-
