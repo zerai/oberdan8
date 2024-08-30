@@ -4,6 +4,9 @@ namespace App\DataFixtures\Dev;
 
 use App\Factory\BookFactory;
 use App\Factory\ReservationFactory;
+use App\Factory\ReservationSaleDetailFactory;
+use DateTimeImmutable;
+use DateTimeZone;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -17,6 +20,10 @@ class ReservationFixtures extends Fixture implements FixtureGroupInterface
         ]);
 
         $reservations = ReservationFactory::createMany(50, [
+            'books' => BookFactory::new()->many(1, 8),
+        ]);
+
+        $expiredReservations = ReservationFactory::createMany(50, [
             'books' => BookFactory::new()->many(1, 8),
         ]);
 
@@ -46,6 +53,25 @@ class ReservationFixtures extends Fixture implements FixtureGroupInterface
         $reservationWithCouponCode = ReservationFactory::new()->withCouponCode('Super coupon 2024')->createOne([
 
             'books' => BookFactory::new()->many(5),
+        ]);
+
+        $format = 'Y-m-d H:i:s';
+
+        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
+        // EXPIRED IN THE MORNING
+        ReservationFactory::createOne([
+            'saleDetail' => ReservationSaleDetailFactory::new([
+            ])->withConfirmationDate(
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
+            ),
+        ]);
+
+        // EXPIRED IN THE AFTERNOON
+        ReservationFactory::createOne([
+            'saleDetail' => ReservationSaleDetailFactory::new([
+            ])->withConfirmationDate(
+                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
+            ),
         ]);
     }
 
