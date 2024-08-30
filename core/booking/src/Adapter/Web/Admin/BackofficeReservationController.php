@@ -16,6 +16,7 @@ use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
 use DateTimeImmutable;
 use DateTimeZone;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 use Psr\Log\LoggerInterface;
@@ -158,7 +159,7 @@ class BackofficeReservationController extends AbstractController
     /**
      * @Route("/{id}/edit", name="backoffice_reservation_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Reservation $reservation, BookingMailer $bookingMailer): Response
+    public function edit(Request $request, Reservation $reservation, BookingMailer $bookingMailer, EntityManagerInterface $entityManager): Response
     {
         $formModel = $this->mapReservationToFormModel($reservation);
 
@@ -169,26 +170,19 @@ class BackofficeReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //update reservation lastname
+            /**
+             * add try/catch block
+             */
             $reservation->setLastName($form->get('person')->getData()->getLastName());
-
-            //update reservation lastname
             $reservation->setFirstName($form->get('person')->getData()->getFirstName());
-
-            //update reservation email
             $reservation->setEmail($form->get('person')->getData()->getEmail());
-
-            //update reservation phone
             $reservation->setPhone($form->get('person')->getData()->getPhone());
-
-            //update reservation city
             $reservation->setCity($form->get('person')->getData()->getCity());
-
-            //update reservation classe
             $reservation->setClasse($form->get('classe')->getData());
 
-            // update books
-
+            /**
+             * update books
+             */
             /** @var BookDto $formBook */
             foreach ($form->get('books')->getData() as $formBook) {
                 $book = new Book();
@@ -200,29 +194,26 @@ class BackofficeReservationController extends AbstractController
                 $reservation->addBook($book);
             }
 
-            //
-            // Aggiorna lo ReservationStatus solo se differente da quello attuale
-            // altrimenti il ConfirmedStatus viene ricalcolato
-            //
+            /**
+             * Aggiorna lo ReservationStatus solo se differente da quello attuale
+             * altrimenti il ConfirmedStatus viene ricalcolato
+             */
             if ($reservation->getSaleDetail()->getStatus()->name() !== $form->get('status')->getData()) {
-                //update status
                 $reservation->getSaleDetail()->setStatus(
                     ReservationStatus::fromName($form->get('status')->getData())
                 );
             }
-
-            //update reservation packageId
             $reservation->getSaleDetail()->setReservationPackageId($form->get('packageId')->getData());
-
-            // update notes
             $reservation->getSaleDetail()->setGeneralNotes($form->get('generalNotes')->getData());
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
 
             if ($reservation->getSaleDetail()->getStatus()->name() === 'PickedUp') {
                 if ($reservation->getEmail() !== null && $reservation->getEmail() !== '') {
+                    /**
+                     * Send in async with retry
+                     */
                     $bookingMailer->notifyReservationThanksEmailToClient($reservation->getEmail(), $reservation->getId()->toString());
                     $this->addFlash('info', 'La mail di ringraziamento è stata inviata all\' utente.');
                 } else {
@@ -246,10 +237,9 @@ class BackofficeReservationController extends AbstractController
     /**
      * @Route("/{id}", name="backoffice_reservation_delete", methods={"POST"})
      */
-    public function delete(Request $request, Reservation $reservation): Response
+    public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($reservation);
             $entityManager->flush();
 
@@ -262,7 +252,7 @@ class BackofficeReservationController extends AbstractController
     /**
      * @Route("/{id}/delete-book/{book_id}", name="backoffice_reservation_delete_book", methods={"POST"})
      */
-    public function deleteBookFromReservation(Request $request, Reservation $reservation, BookRepository $bookRepository, LoggerInterface $logger): Response
+    public function deleteBookFromReservation(Request $request, Reservation $reservation, BookRepository $bookRepository, LoggerInterface $logger, EntityManagerInterface $entityManager): Response
     {
         $bookId = $request->request->get('book_id');
 
@@ -280,7 +270,6 @@ class BackofficeReservationController extends AbstractController
             if ($book !== null) {
                 $reservation->removeBook($book);
 
-                $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($reservation);
                 $entityManager->flush();
 
@@ -320,7 +309,7 @@ class BackofficeReservationController extends AbstractController
     /**
      * @Route("/{id}/add-extension-time", name="backoffice_reservation_add_extension_time", methods={"POST"})
      */
-    public function addExtensionTimeToConfirmation(Request $request, Reservation $reservation): Response
+    public function addExtensionTimeToConfirmation(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('add-extension-time' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
             //Todo before check if status is Confirmed and confirmationStatus not null
@@ -328,7 +317,6 @@ class BackofficeReservationController extends AbstractController
 
             $reservation->getSaleDetail()->setConfirmationStatus($newConfirmationStatusWithExtensionTime);
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
 
