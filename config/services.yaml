@@ -5,7 +5,8 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     #mailer.global.sender: 'prenotazioni@8viadeilibrai.it'
-    mailer.global.sender: 'info@oberdan8.it'
+    #mailer.global.sender: 'info@oberdan8.it'
+    mailer.global.sender: 'info@8viadeilibrai.it'
     mailer.global.sender.as: 'Oberdan 8'
 
     booking.mailer.backoffice.retriever.address: 'info@oberdan8.it'
