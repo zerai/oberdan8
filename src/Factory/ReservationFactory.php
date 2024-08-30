@@ -49,6 +49,7 @@ final class ReservationFactory extends ModelFactory
             'classe' => 'Prima',
             'registrationDate' => new DateTimeImmutable('now', new DateTimeZone('Europe/Rome')),
             //'registrationDate' => self::faker()->dateTime('now', 'UTC'),
+            'coupondCode' => '',
             'saleDetail' => $defaultSaleDetail,
         ];
     }
@@ -64,6 +65,13 @@ final class ReservationFactory extends ModelFactory
     protected static function getClass(): string
     {
         return Reservation::class;
+    }
+
+    public function withCouponCode(string $couponCode): self
+    {
+        return $this->addState([
+            'coupondCode' => $couponCode,
+        ]);
     }
 
     public function withConfirmedStatus(): self
