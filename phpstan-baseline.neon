@@ -824,6 +824,11 @@ parameters:
 			path: src/DataFixtures/Dev/ReservationFixtures.php
 
 		-
+			message: "#^Parameter \\#1 \\$confirmationDate of method App\\\\Factory\\\\ReservationSaleDetailFactory\\:\\:withConfirmationDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
+			count: 2
+			path: src/DataFixtures/Dev/ReservationFixtures.php
+
+		-
 			message: """
 				#^Parameter \\$passwordEncoder of method App\\\\DataFixtures\\\\LibraiStage\\\\BackofficeAdminUserFixtures\\:\\:__construct\\(\\) has typehint with deprecated interface Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:
 				since Symfony 5\\.3, use \\{@link UserPasswordHasherInterface\\} instead$#
