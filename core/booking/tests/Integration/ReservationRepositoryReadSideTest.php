@@ -371,9 +371,9 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
     /** @test */
     public function shouldGetAllReservationWithCouponCode(): void
     {
-        ReservationFactory::new()->withCouponCode()->create();
-        ReservationFactory::new()->withCouponCode()->create();
-        ReservationFactory::new()->withCouponCode()->create();
+        ReservationFactory::new()->withCouponCode('foo')->create();
+        ReservationFactory::new()->withCouponCode('bar')->create();
+        ReservationFactory::new()->withCouponCode('foo bar')->create();
 
         $reservation = $this->repository->findAllWithCouponCodeOrderByNewest();
 
