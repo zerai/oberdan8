@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\InfoBox;
 use App\Form\InfoBoxType;
 use App\Repository\InfoBoxRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +30,7 @@ class BackofficeInfoBoxController extends AbstractController
     /**
      * @Route("/new", name="backoffice_info_box_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $infoBox = new InfoBox();
         $form = $this->createForm(InfoBoxType::class, $infoBox);
@@ -37,8 +38,6 @@ class BackofficeInfoBoxController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $infoBox->setDefaultBox(true);
-
-            $entityManager = $this->getDoctrine()->getManager();
 
             //delete all info-box
 
@@ -63,17 +62,22 @@ class BackofficeInfoBoxController extends AbstractController
     /**
      * @Route("/{id}/edit", name="backoffice_info_box_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, InfoBox $infoBox): Response
+    public function edit(Request $request, InfoBox $infoBox, EntityManagerInterface $entityManager): Response
     {
+        /**
+         * TODO: add func. test
+         */
         $form = $this->createForm(InfoBoxType::class, $infoBox);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            /**
+             * TODO: add try/catch block
+             */
+            $entityManager->flush();
 
             $this->addFlash('success', 'Info box modificato.');
 
-            //return $this->redirectToRoute('backoffice_info_box_index');
             return $this->redirectToRoute('backoffice_info_box_manager');
         }
 
@@ -86,17 +90,21 @@ class BackofficeInfoBoxController extends AbstractController
     /**
      * @Route("/{id}", name="backoffice_info_box_delete", methods={"POST"})
      */
-    public function delete(Request $request, InfoBox $infoBox): Response
+    public function delete(Request $request, InfoBox $infoBox, EntityManagerInterface $entityManager): Response
     {
+        /**
+         * TODO: add func test
+         */
         if ($this->isCsrfTokenValid('delete' . (string) $infoBox->getId(), (string) $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            /**
+             * TODO: add try/catch block
+             */
             $entityManager->remove($infoBox);
             $entityManager->flush();
         }
 
         $this->addFlash('success', 'Info box eliminato.');
 
-        //return $this->redirectToRoute('backoffice_info_box_index');
         return $this->redirectToRoute('backoffice_info_box_manager');
     }
 }
