@@ -368,6 +368,18 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         self::assertEquals(10, $count);
     }
 
+    /** @test */
+    public function shouldGetAllReservationWithCouponCode(): void
+    {
+        ReservationFactory::new()->withCouponCode()->create();
+        ReservationFactory::new()->withCouponCode()->create();
+        ReservationFactory::new()->withCouponCode()->create();
+
+        $reservation = $this->repository->findAllWithCouponCodeOrderByNewest();
+
+        self::assertEquals(3, \count($reservation));
+    }
+
     protected function tearDown(): void
     {
         parent::tearDown();

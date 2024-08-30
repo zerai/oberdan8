@@ -333,4 +333,20 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
 
         return (int) $query->getSingleScalarResult();
     }
+
+    /**
+     * @retrun array<array-key, Reservation>
+     */
+    public function findAllWithCouponCodeOrderByNewest(): array
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->andWhere('r.coupondCode != :val')
+            ->setParameter('val', '')
+            ->orderBy('r.registrationDate', 'ASC')
+            ->setMaxResults(1000)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
