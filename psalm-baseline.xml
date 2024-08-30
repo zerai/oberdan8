@@ -1,35 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
-  <file src="core/booking/src/Adapter/Persistance/BookRepository.php">
-    <MissingTemplateParam>
-      <code><![CDATA[BookRepository]]></code>
-    </MissingTemplateParam>
-  </file>
   <file src="core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php">
     <MixedArgument>
-      <code><![CDATA[$value]]></code>
-      <code><![CDATA[$value]]></code>
       <code><![CDATA[$value]]></code>
       <code><![CDATA[static::NAME]]></code>
       <code><![CDATA[static::NAME]]></code>
     </MixedArgument>
-  </file>
-  <file src="core/booking/src/Adapter/Persistance/ReservationRepository.php">
-    <MissingTemplateParam>
-      <code><![CDATA[ReservationRepository]]></code>
-    </MissingTemplateParam>
-    <PossiblyNullReference>
-      <code><![CDATA[getConfirmationStatus]]></code>
-      <code><![CDATA[isExpired]]></code>
-    </PossiblyNullReference>
-    <RedundantCast>
-      <code><![CDATA[(int) \count($expired)]]></code>
-    </RedundantCast>
-  </file>
-  <file src="core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php">
-    <MissingTemplateParam>
-      <code><![CDATA[ReservationSaleDetailRepository]]></code>
-    </MissingTemplateParam>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php">
     <MixedAssignment>
@@ -49,6 +25,17 @@
     <UndefinedInterfaceMethod>
       <code><![CDATA[findWithQueryBuilderAllConfirmedOrderByOldest]]></code>
       <code><![CDATA[findWithQueryBuilderAllConfirmedOrderByOldest]]></code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Admin/BackofficeCouponCodeReservationController.php">
+    <MixedAssignment>
+      <code><![CDATA[$queryBuilder]]></code>
+    </MixedAssignment>
+    <MixedMethodCall>
+      <code><![CDATA[getQuery]]></code>
+    </MixedMethodCall>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[findWithQueryBuilderAllWithCouponCodeOrderByNewest]]></code>
     </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
@@ -473,26 +460,6 @@
     <MissingTemplateParam>
       <code><![CDATA[RegistrationFormType]]></code>
     </MissingTemplateParam>
-  </file>
-  <file src="src/Repository/BackofficeUserRepository.php">
-    <MissingTemplateParam>
-      <code><![CDATA[BackofficeUserRepository]]></code>
-    </MissingTemplateParam>
-  </file>
-  <file src="src/Repository/InfoBoxRepository.php">
-    <MissingTemplateParam>
-      <code><![CDATA[InfoBoxRepository]]></code>
-    </MissingTemplateParam>
-    <MixedInferredReturnType>
-      <code><![CDATA[?InfoBox]]></code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement>
-      <code><![CDATA[$this->createQueryBuilder('i')
-            ->andWhere('i.defaultBox = :value')
-            ->setParameter('value', $isDefaultBox)
-            ->getQuery()
-            ->getOneOrNullResult()]]></code>
-    </MixedReturnStatement>
   </file>
   <file src="src/Security/EmailVerifier.php">
     <MixedArgument>
