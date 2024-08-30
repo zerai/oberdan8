@@ -504,7 +504,7 @@ parameters:
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$value of function count expects array\\|Countable, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$var of function count expects array\\|Countable, mixed given\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryReadSideTest.php
 
