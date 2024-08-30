@@ -349,4 +349,35 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ->getResult()
         ;
     }
+
+    /**
+     * @param string|null $term
+     * @return QueryBuilder
+     */
+    public function findWithQueryBuilderAllWithCouponCodeOrderByNewest(?string $term): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('r')
+            ->leftJoin('r.saleDetail', 's')
+            ->addSelect('s')
+            ->andWhere('r.coupondCode != :val')
+            ->setParameter('val', '')
+        ;
+
+        if (\is_string($term)) {
+            $qb->andWhere('r.firstName LIKE :term OR r.LastName LIKE :term OR r.city LIKE :term OR s.GeneralNotes LIKE :term OR s.ReservationPackageId LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }
+
+        //        $todayMinus7 = (new DateTimeImmutable("today"))->modify('- 7days'); //dd($todayMinus7);
+        //        $qb->andWhere('s.pvtConfirmedAt < :todayMinus7 AND s.pvtExtensionTime = false')
+        //            //->setParameter('todayMinus7', $todayMinus7->format('Y-m-d'));
+        //            ->setParameter('todayMinus7', $todayMinus7, Types::DATETIME_IMMUTABLE);
+        //
+        //        $todayMinus14 = (new DateTimeImmutable("today"))->modify('- 14days'); //dd($todayPlus7);
+        //        $qb->orWhere('s.pvtConfirmedAt < :todayMinus14 AND s.pvtExtensionTime = true')
+        //            ->setParameter('todayMinus14', $todayMinus14, Types::DATETIME_IMMUTABLE);
+
+        return $qb->orderBy('r.registrationDate', 'Desc');
+    }
 }
