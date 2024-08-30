@@ -18,9 +18,7 @@ class BackofficeExportCustomerController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('backoffice/export/index.html.twig', [
-            //'status_confirmed' => $confirmedStatus,
-        ]);
+        return $this->render('backoffice/export/index.html.twig', []);
     }
 
     /**
