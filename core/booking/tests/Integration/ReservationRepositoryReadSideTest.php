@@ -375,7 +375,9 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ReservationFactory::new()->withCouponCode('bar')->create();
         ReservationFactory::new()->withCouponCode('foo bar')->create();
 
-        $reservation = $this->repository->findAllWithCouponCodeOrderByNewest();
+        $reservationQueryBuilder = $this->repository->findWithQueryBuilderAllWithCouponCodeOrderByNewest('');
+
+        $reservation = $reservationQueryBuilder->getQuery()->getResult();
 
         self::assertEquals(3, \count($reservation));
     }
