@@ -48,7 +48,6 @@
             <errorLevel type="suppress">
                 <file name="src/Repository/InfoBoxRepository.php"/>
                 <file name="src/Repository/BackofficeUserRepository.php"/>
-                <file name="core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php"/>
                 <file name="core/booking/src/Adapter/Persistance/ReservationRepository.php"/>
                 <file name="core/booking/src/Adapter/Persistance/BookRepository.php"/>
             </errorLevel>
