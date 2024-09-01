@@ -69,12 +69,11 @@ class ConfirmedReservationSearchTest extends SecurityWebtestCase
     /** @test */
     public function searchByPackageIdShouldReturnOneRecord(): void
     {
-        //TODO remove tempName (mettere colonna packageId in table)
         $packageId = '555';
-        $tempName = 'target-result';
+        $lastname = 'target-result';
 
         ReservationFactory::new([
-            'LastName' => $tempName,
+            'LastName' => $lastname,
         ])
             ->withConfirmedStatus()
             ->create(
@@ -102,30 +101,29 @@ class ConfirmedReservationSearchTest extends SecurityWebtestCase
         );
 
         self::assertResponseIsSuccessful();
-        self::assertStringContainsString($tempName, $this->client->getResponse()->getContent(), "Search by packageId expect one result");
+        self::assertStringContainsString($lastname, $this->client->getResponse()->getContent(), "Search by packageId expect one result");
     }
 
     /** @test */
     public function searchByPackageIdShouldReturnTwoRecord(): void
     {
-        //TODO remove tempName (mettere colonna packageId in table)
-        $packageId = '501';
-        $tempName = 'target-result';
+        $firstPackageId = '501';
+        $firstLastname = 'target-result';
         $secondPackageId = '502';
-        $secondTempName = 'second-target-result';
+        $secondLastname = 'second-target-result';
 
         ReservationFactory::new([
-            'LastName' => $tempName,
+            'LastName' => $firstLastname,
         ])
             ->withConfirmedStatus()
             ->create(
                 [
-                    'SaleDetail' => ReservationSaleDetailFactory::new()->withConfirmed1DayAgo()->withPackageId($packageId),
+                    'SaleDetail' => ReservationSaleDetailFactory::new()->withConfirmed1DayAgo()->withPackageId($firstPackageId),
                 ]
             );
 
         ReservationFactory::new([
-            'LastName' => $secondTempName,
+            'LastName' => $secondLastname,
         ])
             ->withConfirmedStatus()
             ->create(
@@ -153,7 +151,7 @@ class ConfirmedReservationSearchTest extends SecurityWebtestCase
         );
 
         self::assertResponseIsSuccessful();
-        self::assertStringContainsString($tempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
-        self::assertStringContainsString($secondTempName, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
+        self::assertStringContainsString($firstLastname, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
+        self::assertStringContainsString($secondLastname, $this->client->getResponse()->getContent(), "Search by packageId expect two result");
     }
 }
