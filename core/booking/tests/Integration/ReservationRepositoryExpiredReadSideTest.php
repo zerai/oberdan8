@@ -43,7 +43,7 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     }
 
     /** @test */
-    public function shouldCountReservationEpiredAfter7days(): void
+    public function shouldCountReservationExpiredAfter7days(): void
     {
         $format = 'Y-m-d H:i:s';
 
