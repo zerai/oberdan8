@@ -730,14 +730,6 @@ parameters:
 			path: src/Controller/BackofficeMyAccountController.php
 
 		-
-			message: """
-				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
-				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
-			"""
-			count: 3
-			path: src/Controller/BackofficeUserController.php
-
-		-
 			message: "#^Parameter \\#2 \\$plainPassword of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects string, mixed given\\.$#"
 			count: 2
 			path: src/Controller/BackofficeUserController.php
@@ -1105,11 +1097,6 @@ parameters:
 			message: "#^Constant App\\\\Tests\\\\Functional\\\\Backoffice\\\\Reservation\\\\ReservationCrudUpdateTest\\:\\:REDIRECT_AFTER_SUBMIT is unused\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: tests/Functional/Backoffice/UserCrudTest.php
 
 		-
 			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"

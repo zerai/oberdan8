@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BackofficeUser;
 use App\Form\BackofficeUserType;
 use App\Repository\BackofficeUserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +30,7 @@ class BackofficeUserController extends AbstractController
     /**
      * @Route("/new", name="backoffice_user_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager): Response
     {
         $backofficeUser = new BackofficeUser();
         $form = $this->createForm(BackofficeUserType::class, $backofficeUser);
@@ -45,7 +46,6 @@ class BackofficeUserController extends AbstractController
             );
             $backofficeUser->setRoles(['ROLE_ADMIN']);
             $backofficeUser->setIsVerified(true);
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($backofficeUser);
             $entityManager->flush();
 
@@ -71,7 +71,7 @@ class BackofficeUserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="backoffice_user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, BackofficeUser $backofficeUser): Response
+    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, BackofficeUser $backofficeUser, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(BackofficeUserType::class, $backofficeUser);
         $form->handleRequest($request);
@@ -84,7 +84,7 @@ class BackofficeUserController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager->flush();
 
             return $this->redirectToRoute('backoffice_user_index');
         }
@@ -98,10 +98,9 @@ class BackofficeUserController extends AbstractController
     /**
      * @Route("/{id}", name="backoffice_user_delete", methods={"POST"})
      */
-    public function delete(Request $request, BackofficeUser $backofficeUser): Response
+    public function delete(Request $request, BackofficeUser $backofficeUser, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $backofficeUser->getId(), (string) $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($backofficeUser);
             $entityManager->flush();
         }
