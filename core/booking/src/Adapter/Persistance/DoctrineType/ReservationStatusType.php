@@ -13,6 +13,12 @@ class ReservationStatusType extends StringType
 {
     public const NAME = 'reservation_status';
 
+    /**
+     * @param mixed $value
+     * @param AbstractPlatform $platform
+     * @return ReservationStatus|null
+     * @throws ConversionException
+     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {
@@ -32,6 +38,12 @@ class ReservationStatusType extends StringType
         return $reservationStatus;
     }
 
+    /**
+     * @param null|mixed $value
+     * @param AbstractPlatform $platform
+     * @return mixed|string|null
+     * @throws ConversionException
+     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (empty($value)) {

@@ -6,11 +6,13 @@
       <code><![CDATA[static::NAME]]></code>
       <code><![CDATA[static::NAME]]></code>
     </MixedArgument>
+    <RiskyTruthyFalsyComparison>
+      <code><![CDATA[empty($value)]]></code>
+    </RiskyTruthyFalsyComparison>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeConfirmedReservationController.php">
     <MixedAssignment>
       <code><![CDATA[$confirmedReservation]]></code>
-      <code><![CDATA[$queryBuilder]]></code>
       <code><![CDATA[$queryBuilder]]></code>
     </MixedAssignment>
     <MixedMethodCall>
@@ -39,13 +41,6 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
-    <DeprecatedMethod>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-    </DeprecatedMethod>
     <MissingPropertyType>
       <code><![CDATA[$formData->books]]></code>
     </MissingPropertyType>
@@ -333,19 +328,6 @@
     <MixedArgument>
       <code><![CDATA[self::$defaultDescription]]></code>
     </MixedArgument>
-  </file>
-  <file src="src/Controller/BackofficeInfoBoxController.php">
-    <DeprecatedMethod>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-    </DeprecatedMethod>
-    <MixedMethodCall>
-      <code><![CDATA[execute]]></code>
-    </MixedMethodCall>
-    <UndefinedInterfaceMethod>
-      <code><![CDATA[createQuery]]></code>
-    </UndefinedInterfaceMethod>
   </file>
   <file src="src/Controller/BackofficeMailManagerController.php">
     <DeprecatedMethod>
