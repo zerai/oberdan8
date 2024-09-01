@@ -20,7 +20,6 @@ class UserCrudTest extends SecurityWebtestCase
     /** @test */
     public function shouldBeAbleToCreateAUser(): void
     {
-        //self::markTestSkipped('Fail on CI, not in local. investigate');
         $this->logInAsAdmin();
 
         $this->client->request('GET', '/admin/user/new');

@@ -45,7 +45,7 @@ class BackofficeReservationController extends AbstractController
         $queryBuilder = $repository->getWithSearchQueryBuilder($q, $status);
 
         $pagination = $paginator->paginate(
-            $queryBuilder->getQuery(), //$query, /* query NOT result */
+            $queryBuilder->getQuery(),
             $pageNumber,
             $limitResults,
         );

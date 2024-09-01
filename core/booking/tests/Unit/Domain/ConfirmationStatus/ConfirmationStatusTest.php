@@ -33,8 +33,6 @@ class ConfirmationStatusTest extends TestCase
     {
         $aDate = new DateTimeImmutable("now", new DateTimeZone('Europe/Rome'));
 
-        //dd($date->format('Y-m-d\TH:i:s.uP'));
-
         $sut = ConfirmationStatus::create(
             $aDate
         );
@@ -104,9 +102,6 @@ class ConfirmationStatusTest extends TestCase
      */
     public function shouldNotBeExpired_whenUnder14Days_andExtensionTimeIsActive(DateTimeImmutable $aDate): void
     {
-        //$date = new \DateTimeImmutable("now", new \DateTimeZone('Europe/Rome'));
-        //$aDate = $date->modify("- 8 days");
-
         $sut = ConfirmationStatus::create(
             $aDate
         );

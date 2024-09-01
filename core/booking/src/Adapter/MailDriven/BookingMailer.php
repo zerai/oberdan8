@@ -156,7 +156,6 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
         //file stuff
         /** @var File $file */
         foreach ($filesData as $file) {
-            //dd($file);
             $email->attachFromPath($file->getRealPath());
         }
 
