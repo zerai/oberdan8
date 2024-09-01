@@ -751,14 +751,6 @@ parameters:
 			path: src/Controller/BackofficeUserController.php
 
 		-
-			message: """
-				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
-				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
-			"""
-			count: 1
-			path: src/Controller/RegistrationController.php
-
-		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$addresses of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:to\\(\\) expects string\\|Symfony\\\\Component\\\\Mime\\\\Address, string\\|null given\\.$#"
 			count: 1
 			path: src/Controller/RegistrationController.php

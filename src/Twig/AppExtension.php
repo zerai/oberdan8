@@ -68,7 +68,7 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
         return $source;
     }
 
-    public static function getSubscribedServices()
+    public static function getSubscribedServices(): array
     {
         return [
             //MarkdownHelper::class,
