@@ -48,8 +48,8 @@
             <errorLevel type="suppress">
                 <file name="src/Repository/InfoBoxRepository.php"/>
                 <file name="src/Repository/BackofficeUserRepository.php"/>
-                <file name="core/booking/src/Adapter/Persistance/ReservationRepository.php"/>
-                <file name="core/booking/src/Adapter/Persistance/BookRepository.php"/>
+                <file name="core/booking/src/Adapter/Persistence/ReservationRepository.php"/>
+                <file name="core/booking/src/Adapter/Persistence/BookRepository.php"/>
             </errorLevel>
         </LessSpecificImplementedReturnType>
     </issueHandlers>

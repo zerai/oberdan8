@@ -3,7 +3,7 @@
 namespace Booking\Adapter\Web\Admin;
 
 use Booking\Adapter\MailDriven\BookingMailer;
-use Booking\Adapter\Persistance\BookRepository;
+use Booking\Adapter\Persistence\BookRepository;
 use Booking\Adapter\Web\Admin\Form\BackofficeReservationType;
 use Booking\Adapter\Web\Admin\Form\Dto\ClientDto;
 use Booking\Adapter\Web\Admin\Form\Model\BackofficeReservationFormModel;

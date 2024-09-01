@@ -5,7 +5,7 @@ namespace Booking\Tests\Integration;
 
 use App\Factory\ReservationFactory;
 use App\Factory\ReservationSaleDetailFactory;
-use Booking\Adapter\Persistance\ReservationRepository;
+use Booking\Adapter\Persistence\ReservationRepository;
 use Booking\Application\Domain\Model\Book;
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationSaleDetail;
@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
-/** @covers \Booking\Adapter\Persistance\ReservationRepository */
+/** @covers \Booking\Adapter\Persistence\ReservationRepository */
 class ReservationRepositoryReadSideTest extends KernelTestCase
 {
     /**

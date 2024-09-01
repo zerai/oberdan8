@@ -2,7 +2,7 @@
 
 namespace Booking\Application\Domain\Model;
 
-use Booking\Adapter\Persistance\BookRepository;
+use Booking\Adapter\Persistence\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;

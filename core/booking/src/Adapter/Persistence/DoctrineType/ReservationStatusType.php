@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 
-namespace Booking\Adapter\Persistance\DoctrineType;
+namespace Booking\Adapter\Persistence\DoctrineType;
 
 use Booking\Application\Domain\Model\ReservationStatus;
 use Doctrine\DBAL\Platforms\AbstractPlatform;

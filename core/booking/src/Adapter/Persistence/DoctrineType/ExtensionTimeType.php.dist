@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Booking\Adapter\Persistance\DoctrineType;
+namespace Booking\Adapter\Persistence\DoctrineType;
 
 use Doctrine\DBAL\Types\BooleanType;
 

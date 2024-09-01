@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
-  <file src="core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php">
+  <file src="core/booking/src/Adapter/Persistence/DoctrineType/ReservationStatusType.php">
     <MixedArgument>
       <code><![CDATA[$value]]></code>
       <code><![CDATA[static::NAME]]></code>

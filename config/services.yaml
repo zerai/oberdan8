@@ -98,10 +98,10 @@ services:
     # please note that last definitions always *replace* previous ones
 
     Booking\Application\Domain\Model\ReservationRepositoryInterface:
-        class: Booking\Adapter\Persistance\ReservationRepository
+        class: Booking\Adapter\Persistence\ReservationRepository
 
     # TODO added for test purpose  remove...
-    Booking\Adapter\Persistance\ReservationRepository:
+    Booking\Adapter\Persistence\ReservationRepository:
         public: true
 
 

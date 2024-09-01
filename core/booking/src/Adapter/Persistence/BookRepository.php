@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Booking\Adapter\Persistance;
+namespace Booking\Adapter\Persistence;
 
 use Booking\Application\Domain\Model\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

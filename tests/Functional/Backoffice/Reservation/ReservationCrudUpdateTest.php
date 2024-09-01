@@ -8,7 +8,7 @@ use App\Factory\ReservationFactory;
 use App\Factory\ReservationSaleDetailFactory;
 use App\Tests\Functional\SecurityWebtestCase;
 use App\Tests\Support\Fixtures\ReservationStaticFixture;
-use Booking\Adapter\Persistance\ReservationRepository;
+use Booking\Adapter\Persistence\ReservationRepository;
 use Booking\Application\Domain\Model\Reservation;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -231,7 +231,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         ])->object();
 
         // /** @var ReservationRepository $reservationRepository */
-        //        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistance\ReservationRepository');
+        //        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistence\ReservationRepository');
         //        $reservationFromDb = $reservationRepository->withId($reservation->getId());
         //        self::assertEquals($reservation->getSaleDetail()->getConfirmationStatus()->confirmedAt(), $reservationFromDb->getSaleDetail()->getConfirmationStatus()->confirmedAt());
 
