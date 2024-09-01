@@ -3,14 +3,14 @@
 namespace Booking\Tests\Integration;
 
 use App\Factory\ReservationFactory;
-use Booking\Adapter\Persistance\ExportDataRetriever;
+use Booking\Adapter\Persistence\ExportDataRetriever;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
 /**
- * @covers \Booking\Adapter\Persistance\ExportDataRetriever
+ * @covers \Booking\Adapter\Persistence\ExportDataRetriever
  */
 class ExportDataRetrieverTest extends KernelTestCase
 {

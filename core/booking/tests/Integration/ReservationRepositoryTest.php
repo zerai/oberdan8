@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-/** @covers \Booking\Adapter\Persistance\ReservationRepository */
+/** @covers \Booking\Adapter\Persistence\ReservationRepository */
 class ReservationRepositoryTest extends KernelTestCase
 {
     /**

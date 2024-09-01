@@ -2,7 +2,7 @@
 
 namespace Booking\Application\Domain\Model;
 
-use Booking\Adapter\Persistance\ReservationRepository;
+use Booking\Adapter\Persistence\ReservationRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

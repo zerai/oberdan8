@@ -51,74 +51,69 @@ parameters:
 			path: core/booking/src/Adapter/MailDriven/BookingMailer.php
 
 		-
-			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\BookRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			message: "#^Class Booking\\\\Adapter\\\\Persistence\\\\BookRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/BookRepository.php
+			path: core/booking/src/Adapter/Persistence/BookRepository.php
 
 		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 2
-			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
+			path: core/booking/src/Adapter/Persistence/DoctrineType/ReservationStatusType.php
 
 		-
 			message: "#^Parameter \\#1 \\$name of static method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationStatus\\:\\:fromName\\(\\) expects string, mixed given\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/DoctrineType/ReservationStatusType.php
+			path: core/booking/src/Adapter/Persistence/DoctrineType/ReservationStatusType.php
 
 		-
-			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ExportDataRetriever\\:\\:getAllCustomerForNewsletter\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Booking\\\\Adapter\\\\Persistence\\\\ExportDataRetriever\\:\\:getAllCustomerForNewsletter\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ExportDataRetriever.php
+			path: core/booking/src/Adapter/Persistence/ExportDataRetriever.php
 
 		-
 			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
 			message: "#^Cannot call method getConfirmationStatus\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationSaleDetail\\|null\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
 			message: "#^Cannot call method isExpired\\(\\) on Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\|null\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
 			message: "#^Casting to int something that's already int\\<0, max\\>\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
-			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
+			message: "#^Class Booking\\\\Adapter\\\\Persistence\\\\ReservationRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
-			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllConfirmedOrderByOldest\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Booking\\\\Adapter\\\\Persistence\\\\ReservationRepository\\:\\:findAllConfirmedOrderByOldest\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
-			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllConfirmedOrderByOldest\\(\\) should return array but returns mixed\\.$#"
+			message: "#^Method Booking\\\\Adapter\\\\Persistence\\\\ReservationRepository\\:\\:findAllConfirmedOrderByOldest\\(\\) should return array but returns mixed\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
-			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllNewArrivalOrderByNewest\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Booking\\\\Adapter\\\\Persistence\\\\ReservationRepository\\:\\:findAllNewArrivalOrderByNewest\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
-			message: "#^Method Booking\\\\Adapter\\\\Persistance\\\\ReservationRepository\\:\\:findAllNewArrivalOrderByNewest\\(\\) should return array but returns mixed\\.$#"
+			message: "#^Method Booking\\\\Adapter\\\\Persistence\\\\ReservationRepository\\:\\:findAllNewArrivalOrderByNewest\\(\\) should return array but returns mixed\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationRepository.php
-
-		-
-			message: "#^Class Booking\\\\Adapter\\\\Persistance\\\\ReservationSaleDetailRepository extends generic class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository but does not specify its types\\: T$#"
-			count: 1
-			path: core/booking/src/Adapter/Persistance/ReservationSaleDetailRepository.php
+			path: core/booking/src/Adapter/Persistence/ReservationRepository.php
 
 		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:findWithQueryBuilderAllConfirmedOrderByOldest\\(\\)\\.$#"
@@ -148,14 +143,6 @@ parameters:
 		-
 			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\ReservationRepositoryInterface\\:\\:getWithSearchQueryBuilder\\(\\)\\.$#"
 			count: 1
-			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
-
-		-
-			message: """
-				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
-				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
-			"""
-			count: 5
 			path: core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php
 
 		-
@@ -484,7 +471,7 @@ parameters:
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
 
 		-
-			message: "#^Cannot call method getAllCustomerForNewsletter\\(\\) on Booking\\\\Adapter\\\\Persistance\\\\ExportDataRetriever\\|null\\.$#"
+			message: "#^Cannot call method getAllCustomerForNewsletter\\(\\) on Booking\\\\Adapter\\\\Persistence\\\\ExportDataRetriever\\|null\\.$#"
 			count: 2
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
 
@@ -697,19 +684,6 @@ parameters:
 			path: src/Command/DefaultAdminCreateCommand.php
 
 		-
-			message: "#^Call to an undefined method Doctrine\\\\Persistence\\\\ObjectManager\\:\\:createQuery\\(\\)\\.$#"
-			count: 1
-			path: src/Controller/BackofficeInfoBoxController.php
-
-		-
-			message: """
-				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
-				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
-			"""
-			count: 3
-			path: src/Controller/BackofficeInfoBoxController.php
-
-		-
 			message: """
 				#^Call to deprecated method getUsername\\(\\) of interface Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:
 				since Symfony 5\\.3, use getUserIdentifier\\(\\) instead$#
@@ -756,14 +730,6 @@ parameters:
 			path: src/Controller/BackofficeMyAccountController.php
 
 		-
-			message: """
-				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
-				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
-			"""
-			count: 3
-			path: src/Controller/BackofficeUserController.php
-
-		-
 			message: "#^Parameter \\#2 \\$plainPassword of method Symfony\\\\Component\\\\Security\\\\Core\\\\Encoder\\\\UserPasswordEncoderInterface\\:\\:encodePassword\\(\\) expects string, mixed given\\.$#"
 			count: 2
 			path: src/Controller/BackofficeUserController.php
@@ -783,14 +749,6 @@ parameters:
 			"""
 			count: 1
 			path: src/Controller/BackofficeUserController.php
-
-		-
-			message: """
-				#^Call to deprecated method getDoctrine\\(\\) of class Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:
-				since Symfony 5\\.4, inject an instance of ManagerRegistry in your controller instead$#
-			"""
-			count: 1
-			path: src/Controller/RegistrationController.php
 
 		-
 			message: "#^Parameter \\#1 \\.\\.\\.\\$addresses of method Symfony\\\\Component\\\\Mime\\\\Email\\:\\:to\\(\\) expects string\\|Symfony\\\\Component\\\\Mime\\\\Address, string\\|null given\\.$#"
@@ -834,6 +792,11 @@ parameters:
 		-
 			message: "#^Dynamic call to static method App\\\\Factory\\\\ReservationFactory\\:\\:createOne\\(\\)\\.$#"
 			count: 5
+			path: src/DataFixtures/Dev/ReservationFixtures.php
+
+		-
+			message: "#^Parameter \\#1 \\$confirmationDate of method App\\\\Factory\\\\ReservationSaleDetailFactory\\:\\:withConfirmationDate\\(\\) expects DateTimeImmutable, DateTimeImmutable\\|false given\\.$#"
+			count: 2
 			path: src/DataFixtures/Dev/ReservationFixtures.php
 
 		-
@@ -1126,11 +1089,6 @@ parameters:
 			message: "#^Constant App\\\\Tests\\\\Functional\\\\Backoffice\\\\Reservation\\\\ReservationCrudUpdateTest\\:\\:REDIRECT_AFTER_SUBMIT is unused\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: tests/Functional/Backoffice/UserCrudTest.php
 
 		-
 			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"

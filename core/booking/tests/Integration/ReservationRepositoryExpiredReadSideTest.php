@@ -5,7 +5,7 @@ namespace Booking\Tests\Integration;
 
 use App\Factory\ReservationFactory;
 use App\Factory\ReservationSaleDetailFactory;
-use Booking\Adapter\Persistance\ReservationRepository;
+use Booking\Adapter\Persistence\ReservationRepository;
 use Booking\Application\Domain\Model\Reservation;
 use DateTimeImmutable;
 use DateTimeZone;
@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
-/** @covers \Booking\Adapter\Persistance\ReservationRepository */
+/** @covers \Booking\Adapter\Persistence\ReservationRepository */
 class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
 {
     /**
@@ -43,27 +43,10 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     }
 
     /** @test */
-    public function shouldCountReservationEpiredAfter7days(): void
+    public function shouldCountReservationExpiredAfter7days(): void
     {
-        $format = 'Y-m-d H:i:s';
-
-        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
-
-        // EXPIRED IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
-
-        // EXPIRED IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(7);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(7);
 
         // NOISE: CONFIRMED BUT NOT EXPIRED
         ReservationFactory::createOne([
@@ -77,25 +60,8 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     /** @test */
     public function shouldCountReservationExpiredAfter14days(): void
     {
-        $format = 'Y-m-d H:i:s';
-
-        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
-
-        // EXPIRED IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            )->withExtensionTime(),
-        ]);
-
-        // EXPIRED IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            )->withExtensionTime(),
-        ]);
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(14);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(14);
 
         // NOISE DATA, CONFIRMED BUT NOT EXPIRED
         $noise = ReservationFactory::createOne([
@@ -109,43 +75,11 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     /** @test */
     public function shouldCountReservationExpiredAfter7daysAndExpiredAfter14Days(): void
     {
-        $format = 'Y-m-d H:i:s';
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(7);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(7);
 
-        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
-
-        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
-
-        // EXPIRED 7 DAYS AGO IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
-
-        // EXPIRED 7 DAYS AGO IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
-
-        // EXPIRED 14 DAYS AGO IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
-
-        // EXPIRED 14 DAYS AGO IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(14);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(14);
 
         // NOISE DATA, CONFIRMED BUT NOT EXPIRED
         ReservationFactory::createMany(1, [
@@ -167,25 +101,8 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     /** @test */
     public function shouldGetReservationExpiredAfter7days(): void
     {
-        $format = 'Y-m-d H:i:s';
-
-        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
-
-        // EXPIRED 7 DAYS AGO IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
-
-        // EXPIRED 7 DAYS AGO IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(7);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(7);
 
         // NOISE: CONFIRMED BUT NOT EXPIRED
         ReservationFactory::createOne([
@@ -206,25 +123,8 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     /** @test */
     public function shouldGetReservationExpiredAfter14days(): void
     {
-        $format = 'Y-m-d H:i:s';
-
-        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
-
-        // EXPIRED 14 DAYS AGO IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            )->withExtensionTime(),
-        ]);
-
-        // EXPIRED 14 DAYS AGO IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            )->withExtensionTime(),
-        ]);
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(14);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(14);
 
         // NOISE DATA, CONFIRMED BUT NOT EXPIRED
         ReservationFactory::createOne([
@@ -247,43 +147,11 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
     /** @test */
     public function shouldGetReservationExpiredAfter7daysAndExpiredAfter14Days(): void
     {
-        $format = 'Y-m-d H:i:s';
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(7);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(7);
 
-        $confirmed_8dayAgo = (new DateTimeImmutable("today"))->modify('- 8days');
-
-        $confirmed_15dayAgo = (new DateTimeImmutable("today"))->modify('- 15days');
-
-        // EXPIRED 7 DAYS AGO IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
-
-        // EXPIRED 7 DAYS AGO IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_8dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            ),
-        ]);
-
-        // EXPIRED 14 DAYS AGO IN THE MORNING
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
-            )->withExtensionTime(),
-        ]);
-
-        // EXPIRED 14 DAYS AGO IN THE AFTERNOON
-        ReservationFactory::createOne([
-            'saleDetail' => ReservationSaleDetailFactory::new([
-            ])->withConfirmationDate(
-                DateTimeImmutable::createFromFormat($format, $confirmed_15dayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
-            )->withExtensionTime(),
-        ]);
+        self::createReservationExpiredInTheMorningOfSomeDayAgo(14);
+        self::createReservationExpiredInTheAfternoonOfSomeDayAgo(14);
 
         // NOISE DATA, CONFIRMED BUT NOT EXPIRED
         ReservationFactory::createMany(1, [
@@ -301,6 +169,42 @@ class ReservationRepositoryExpiredReadSideTest extends KernelTestCase
         self::assertEquals(6, \count($this->repository->findAll()));
 
         self::assertEquals(4, \count($reservations->getQuery()->getResult()));
+    }
+
+    private function createReservationExpiredInTheMorningOfSomeDayAgo(int $dayAgo): void
+    {
+        $format = 'Y-m-d H:i:s';
+
+        $dayAgo = $dayAgo + 1;
+
+        $dayAgoAsString = \sprintf('- %ddays', $dayAgo);
+
+        $confirmed_atDayAgo = (new DateTimeImmutable("today"))->modify($dayAgoAsString);
+
+        ReservationFactory::createOne([
+            'saleDetail' => ReservationSaleDetailFactory::new([
+            ])->withConfirmationDate(
+                DateTimeImmutable::createFromFormat($format, $confirmed_atDayAgo->format('Y-m-d') . ' 08:15:00', new DateTimeZone('Europe/Rome'))
+            ),
+        ]);
+    }
+
+    public function createReservationExpiredInTheAfternoonOfSomeDayAgo(int $dayAgo): void
+    {
+        $format = 'Y-m-d H:i:s';
+
+        $dayAgo = $dayAgo + 1;
+
+        $dayAgoAsString = \sprintf('- %ddays', $dayAgo);
+
+        $confirmed_atDayAgo = (new DateTimeImmutable("today"))->modify($dayAgoAsString);
+
+        ReservationFactory::createOne([
+            'saleDetail' => ReservationSaleDetailFactory::new([
+            ])->withConfirmationDate(
+                DateTimeImmutable::createFromFormat($format, $confirmed_atDayAgo->format('Y-m-d') . ' 18:15:00', new DateTimeZone('Europe/Rome'))
+            ),
+        ]);
     }
 
     protected function tearDown(): void

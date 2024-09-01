@@ -3,7 +3,7 @@
 
 namespace Booking\Tests\Unit\Adapter\DoctrineType;
 
-use Booking\Adapter\Persistance\DoctrineType\ReservationStatusType;
+use Booking\Adapter\Persistence\DoctrineType\ReservationStatusType;
 use Booking\Application\Domain\Model\ReservationStatus;
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
@@ -14,7 +14,7 @@ use Generator;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Booking\Adapter\Persistance\DoctrineType\ReservationStatusType
+ * @covers \Booking\Adapter\Persistence\DoctrineType\ReservationStatusType
  */
 class ReservationStatusTypeTest extends TestCase
 {

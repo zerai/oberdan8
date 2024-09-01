@@ -22,13 +22,15 @@ class BackofficeConfirmedReservationController extends AbstractController
     public function index(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $q = $request->query->get('q');
+        $pageNumber = $request->query->getInt('page', 1);
+        $limitResult = 50;
 
         $queryBuilder = $repository->findWithQueryBuilderAllConfirmedOrderByOldest($q);
 
         $pagination = $paginator->paginate(
-            $queryBuilder->getQuery(), //$query, /* query NOT result */
-            $request->query->getInt('page', 1), /*page number*/
-            50 /*limit per page*/
+            $queryBuilder->getQuery(),
+            $pageNumber,
+            $limitResult,
         );
 
         return $this->render('backoffice/reservation/confirmed/index.html.twig', [
@@ -41,15 +43,19 @@ class BackofficeConfirmedReservationController extends AbstractController
      */
     public function expired(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
+        /**
+         * TODO: add func. tests
+         */
         $q = $request->query->get('q');
+        $pageNumber = $request->query->getInt('page', 1);
+        $limitResult = 50;
 
-        // trova tutti i confermati
-        $queryBuilder = $repository->findWithQueryBuilderAllConfirmedOrderByOldest($q);
+        $confirmedReservation = $repository->findWithQueryBuilderAllConfirmedOrderByOldest($q)->getQuery()->getResult();
 
-        $confirmedReservation = $queryBuilder->getQuery()->getResult();
-
-        // Filtra se scaduti
-
+        /**
+         * Filtra i confermati e ricava gli scaduti
+         * TODO: usare array filter or inline function
+         */
         $expiredReservation = [];
         /** @var Reservation $reservation */
         foreach ($confirmedReservation as $reservation) {
@@ -58,12 +64,10 @@ class BackofficeConfirmedReservationController extends AbstractController
             }
         }
 
-        //passa array al paginator
-
         $pagination = $paginator->paginate(
             $expiredReservation,
-            $request->query->getInt('page', 1), /*page number*/
-            50 /*limit per page*/
+            $pageNumber,
+            $limitResult,
         );
 
         return $this->render('backoffice/reservation/expired/index.html.twig', [

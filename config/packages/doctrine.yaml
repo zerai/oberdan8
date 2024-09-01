@@ -14,7 +14,7 @@ doctrine:
             collate: utf8mb4_unicode_ci
 
         types:
-            reservation_status: Booking\Adapter\Persistance\DoctrineType\ReservationStatusType
+            reservation_status: Booking\Adapter\Persistence\DoctrineType\ReservationStatusType
 
     orm:
         auto_generate_proxy_classes: true

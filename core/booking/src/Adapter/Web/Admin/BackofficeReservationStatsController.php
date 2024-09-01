@@ -2,7 +2,7 @@
 
 namespace Booking\Adapter\Web\Admin;
 
-use Booking\Adapter\Persistance\ReservationRepository;
+use Booking\Adapter\Persistence\ReservationRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

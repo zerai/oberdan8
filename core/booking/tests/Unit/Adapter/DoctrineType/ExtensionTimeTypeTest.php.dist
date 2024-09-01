@@ -2,7 +2,7 @@
 
 namespace Booking\Tests\Unit\Adapter\DoctrineType;
 
-use Booking\Adapter\Persistance\DoctrineType\ExtensionTimeType;
+use Booking\Adapter\Persistence\DoctrineType\ExtensionTimeType;
 use Booking\Application\Domain\Model\ConfirmationStatus\ExtensionTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
@@ -11,7 +11,7 @@ use Doctrine\DBAL\Types\Type;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Booking\Adapter\Persistance\DoctrineType\ExtensionTimeType
+ * @covers \Booking\Adapter\Persistence\DoctrineType\ExtensionTimeType
  */
 class ExtensionTimeTypeTest extends TestCase
 {

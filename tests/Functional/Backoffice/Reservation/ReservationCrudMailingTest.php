@@ -5,7 +5,7 @@ namespace App\Tests\Functional\Backoffice\Reservation;
 
 use App\Factory\ReservationFactory;
 use App\Tests\Functional\SecurityWebtestCase;
-use Booking\Adapter\Persistance\ReservationRepository;
+use Booking\Adapter\Persistence\ReservationRepository;
 use Booking\Application\Domain\Model\Reservation;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;

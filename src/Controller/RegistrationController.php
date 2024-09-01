@@ -6,6 +6,7 @@ use App\Entity\BackofficeUser;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormBackofficeAuthenticator;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/admin/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormBackofficeAuthenticator $authenticator): ?Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormBackofficeAuthenticator $authenticator, EntityManagerInterface $entityManager): ?Response
     {
         $user = new BackofficeUser();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -43,7 +44,6 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 

@@ -1,12 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Booking\Adapter\Persistance;
+namespace Booking\Adapter\Persistence;
 
 use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Ramsey\Uuid\UuidInterface;
@@ -165,12 +167,11 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
             ;
         }
 
-        $todayMinus7 = (new DateTimeImmutable("today"))->modify('- 7days'); //dd($todayMinus7);
+        $todayMinus7 = (new DateTimeImmutable("today"))->modify('- 7days');
         $qb->andWhere('s.pvtConfirmedAt < :todayMinus7 AND s.pvtExtensionTime = false')
-            //->setParameter('todayMinus7', $todayMinus7->format('Y-m-d'));
             ->setParameter('todayMinus7', $todayMinus7, Types::DATETIME_IMMUTABLE);
 
-        $todayMinus14 = (new DateTimeImmutable("today"))->modify('- 14days'); //dd($todayPlus7);
+        $todayMinus14 = (new DateTimeImmutable("today"))->modify('- 14days');
         $qb->orWhere('s.pvtConfirmedAt < :todayMinus14 AND s.pvtExtensionTime = true')
             ->setParameter('todayMinus14', $todayMinus14, Types::DATETIME_IMMUTABLE);
 
@@ -195,10 +196,14 @@ class ReservationRepository extends ServiceEntityRepository implements Reservati
         return (int) \count($expired);
     }
 
-    //
-    //  Stats query
-    //
-
+    /**
+     *      Section about reservation stats
+     */
+    /**
+     * @return int
+     * @throws NoResultException
+     * @throws NonUniqueResultException
+     */
     public function countWithStatusNewArrival(): int
     {
         $qb = $this->createQueryBuilder('r');
