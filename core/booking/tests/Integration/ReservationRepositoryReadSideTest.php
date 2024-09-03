@@ -148,7 +148,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Confirmed(),
+                'status' => ReservationStatus::confirmed(),
             ]),
         ]);
         ReservationFactory::createMany(15, [
@@ -178,7 +178,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Confirmed(),
+                'status' => ReservationStatus::confirmed(),
             ]),
         ]);
         ReservationFactory::createMany(15, [
@@ -215,7 +215,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
 
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Confirmed(),
+                'status' => ReservationStatus::confirmed(),
             ]),
         ]);
 
@@ -325,7 +325,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
     {
         ReservationFactory::createMany(10, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Confirmed(),
+                'status' => ReservationStatus::confirmed(),
             ]),
         ]);
         ReservationFactory::createMany(15, [

@@ -26,7 +26,7 @@ class ReservationSaleDetailTest extends TestCase
     {
         $sut = new ReservationSaleDetail();
 
-        $sut->setStatus(ReservationStatus::Confirmed());
+        $sut->setStatus(ReservationStatus::confirmed());
 
         self::assertNotNull($sut->getConfirmationStatus());
     }
@@ -36,7 +36,7 @@ class ReservationSaleDetailTest extends TestCase
     {
         $sut = new ReservationSaleDetail();
 
-        $sut->setStatus(ReservationStatus::Confirmed());
+        $sut->setStatus(ReservationStatus::confirmed());
 
         self::assertFalse($sut->getConfirmationStatus()->extensionTime()->value());
     }
@@ -49,7 +49,7 @@ class ReservationSaleDetailTest extends TestCase
     {
         $sut = new ReservationSaleDetail();
 
-        $sut->setStatus(ReservationStatus::Confirmed());
+        $sut->setStatus(ReservationStatus::confirmed());
 
         //assign new reservation status
 

@@ -60,7 +60,7 @@ final class ReservationStatus
         return new self('Rejected', 3);
     }
 
-    public static function Confirmed(): self
+    public static function confirmed(): self
     {
         return new self('Confirmed', 4);
     }
