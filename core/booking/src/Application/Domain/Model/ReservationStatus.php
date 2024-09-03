@@ -80,7 +80,7 @@ final class ReservationStatus
         return new self('Blacklist', 7);
     }
 
-    public static function Shipped(): self
+    public static function shipped(): self
     {
         return new self('Shipped', 8);
     }
