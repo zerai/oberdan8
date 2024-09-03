@@ -40,6 +40,12 @@
       <code><![CDATA[findWithQueryBuilderAllWithCouponCodeOrderByNewest]]></code>
     </UndefinedInterfaceMethod>
   </file>
+  <file src="core/booking/src/Adapter/Web/Admin/BackofficeMailManagerController.php">
+    <DeprecatedMethod>
+      <code><![CDATA[getUsername]]></code>
+      <code><![CDATA[getUsername]]></code>
+    </DeprecatedMethod>
+  </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
     <MissingPropertyType>
       <code><![CDATA[$formData->books]]></code>
@@ -329,12 +335,6 @@
       <code><![CDATA[self::$defaultDescription]]></code>
     </MixedArgument>
   </file>
-  <file src="src/Controller/BackofficeMailManagerController.php">
-    <DeprecatedMethod>
-      <code><![CDATA[getUsername]]></code>
-      <code><![CDATA[getUsername]]></code>
-    </DeprecatedMethod>
-  </file>
   <file src="src/Controller/BackofficeMyAccountController.php">
     <DeprecatedInterface>
       <code><![CDATA[UserPasswordEncoderInterface]]></code>
@@ -370,11 +370,6 @@
       <code><![CDATA[UserPasswordEncoderInterface]]></code>
       <code><![CDATA[UserPasswordEncoderInterface]]></code>
     </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-      <code><![CDATA[getDoctrine]]></code>
-    </DeprecatedMethod>
     <InvalidOperand>
       <code><![CDATA[$backofficeUser->getId()]]></code>
     </InvalidOperand>
@@ -393,9 +388,6 @@
     <DeprecatedInterface>
       <code><![CDATA[UserPasswordEncoderInterface]]></code>
     </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code><![CDATA[getDoctrine]]></code>
-    </DeprecatedMethod>
     <MixedArgument>
       <code><![CDATA[$form->get('plainPassword')->getData()]]></code>
     </MixedArgument>
