@@ -55,7 +55,7 @@ final class ReservationStatus
         return new self('Pending', 2);
     }
 
-    public static function Rejected(): self
+    public static function rejected(): self
     {
         return new self('Rejected', 3);
     }
