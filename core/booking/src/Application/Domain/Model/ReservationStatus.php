@@ -40,47 +40,47 @@ final class ReservationStatus
 
     private int $value;
 
-    public static function NewArrival(): self
+    public static function newArrival(): self
     {
         return new self('NewArrival', 0);
     }
 
-    public static function InProgress(): self
+    public static function inProgress(): self
     {
         return new self('InProgress', 1);
     }
 
-    public static function Pending(): self
+    public static function pending(): self
     {
         return new self('Pending', 2);
     }
 
-    public static function Rejected(): self
+    public static function rejected(): self
     {
         return new self('Rejected', 3);
     }
 
-    public static function Confirmed(): self
+    public static function confirmed(): self
     {
         return new self('Confirmed', 4);
     }
 
-    public static function Sale(): self
+    public static function sale(): self
     {
         return new self('Sale', 5);
     }
 
-    public static function PickedUp(): self
+    public static function pickedUp(): self
     {
         return new self('PickedUp', 6);
     }
 
-    public static function Blacklist(): self
+    public static function blacklist(): self
     {
         return new self('Blacklist', 7);
     }
 
-    public static function Shipped(): self
+    public static function shipped(): self
     {
         return new self('Shipped', 8);
     }

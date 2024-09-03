@@ -37,7 +37,7 @@ final class ReservationSaleDetailFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://github.com/zenstruck/foundry#model-factories)
-            'Status' => ReservationStatus::NewArrival(),
+            'Status' => ReservationStatus::newArrival(),
             'ReservationPackageId' => self::faker()->numberBetween(100, 200),
             'GeneralNotes ' => self::faker()->text(),
         ];

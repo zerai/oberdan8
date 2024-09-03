@@ -108,7 +108,7 @@ class ReservationRepositoryTest extends KernelTestCase
     private function createEntity(): Reservation
     {
         $itemDetail = new ReservationSaleDetail();
-        $itemDetail->setStatus(ReservationStatus::NewArrival());
+        $itemDetail->setStatus(ReservationStatus::newArrival());
 
         $item = new Reservation();
         $item->setFirstName('foo')

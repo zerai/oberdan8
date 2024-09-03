@@ -55,7 +55,7 @@ class ReservationController extends AbstractController
 
             // add saleDetail to reservation
             $saleDetail = new ReservationSaleDetail();
-            $saleDetail->setStatus(ReservationStatus::NewArrival());
+            $saleDetail->setStatus(ReservationStatus::newArrival());
             $reservation->setSaleDetail($saleDetail);
 
             // add book to reservation
