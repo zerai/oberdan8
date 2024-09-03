@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Controller;
+namespace Booking\Adapter\Web\Admin;
 
 use Booking\Adapter\MailDriven\BookingMailer;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
