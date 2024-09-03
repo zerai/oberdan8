@@ -153,7 +153,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -183,7 +183,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -197,7 +197,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
     {
         ReservationFactory::createMany(10, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -239,7 +239,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -263,7 +263,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -287,7 +287,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -311,7 +311,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -335,7 +335,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 
@@ -359,7 +359,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
         ]);
         ReservationFactory::createMany(15, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Pending(),
+                'status' => ReservationStatus::pending(),
             ]),
         ]);
 

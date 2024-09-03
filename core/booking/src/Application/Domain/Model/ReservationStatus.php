@@ -50,7 +50,7 @@ final class ReservationStatus
         return new self('InProgress', 1);
     }
 
-    public static function Pending(): self
+    public static function pending(): self
     {
         return new self('Pending', 2);
     }
