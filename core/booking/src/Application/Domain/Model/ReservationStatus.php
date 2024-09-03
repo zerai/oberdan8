@@ -70,7 +70,7 @@ final class ReservationStatus
         return new self('Sale', 5);
     }
 
-    public static function PickedUp(): self
+    public static function pickedUp(): self
     {
         return new self('PickedUp', 6);
     }
