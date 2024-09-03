@@ -39,7 +39,7 @@ final class ReservationFactory extends ModelFactory
     protected function getDefaults(): array
     {
         $defaultSaleDetail = new ReservationSaleDetail();
-        $defaultSaleDetail->setStatus(ReservationStatus::NewArrival());
+        $defaultSaleDetail->setStatus(ReservationStatus::newArrival());
 
         return [
             /**

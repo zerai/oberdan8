@@ -40,7 +40,7 @@ final class ReservationStatus
 
     private int $value;
 
-    public static function NewArrival(): self
+    public static function newArrival(): self
     {
         return new self('NewArrival', 0);
     }
