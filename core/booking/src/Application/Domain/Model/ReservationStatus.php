@@ -65,7 +65,7 @@ final class ReservationStatus
         return new self('Confirmed', 4);
     }
 
-    public static function Sale(): self
+    public static function sale(): self
     {
         return new self('Sale', 5);
     }
