@@ -45,7 +45,7 @@ final class ReservationStatus
         return new self('NewArrival', 0);
     }
 
-    public static function InProgress(): self
+    public static function inProgress(): self
     {
         return new self('InProgress', 1);
     }
