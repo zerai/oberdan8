@@ -75,7 +75,7 @@ final class ReservationStatus
         return new self('PickedUp', 6);
     }
 
-    public static function Blacklist(): self
+    public static function blacklist(): self
     {
         return new self('Blacklist', 7);
     }

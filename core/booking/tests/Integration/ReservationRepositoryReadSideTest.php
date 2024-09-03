@@ -301,7 +301,7 @@ class ReservationRepositoryReadSideTest extends KernelTestCase
     {
         ReservationFactory::createMany(10, [
             'saleDetail' => ReservationSaleDetailFactory::new([
-                'status' => ReservationStatus::Blacklist(),
+                'status' => ReservationStatus::blacklist(),
             ]),
         ]);
         ReservationFactory::createMany(15, [
