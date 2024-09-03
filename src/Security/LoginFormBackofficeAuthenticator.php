@@ -5,6 +5,7 @@ namespace App\Security;
 use App\Repository\BackofficeUserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -39,13 +40,17 @@ class LoginFormBackofficeAuthenticator extends AbstractFormLoginAuthenticator
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public function supports(Request $request)
+    public function supports(Request $request): bool
     {
         return $request->attributes->get('_route') === 'backoffice_login'
             && $request->isMethod('POST');
     }
 
-    public function getCredentials(Request $request)
+    /**
+     * @param Request $request
+     * @return array<string, mixed>
+     */
+    public function getCredentials(Request $request): array
     {
         return [
             'email' => $request->request->get('email'),
@@ -54,7 +59,7 @@ class LoginFormBackofficeAuthenticator extends AbstractFormLoginAuthenticator
         ];
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider)
+    public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
     {
         $token = new CsrfToken('authenticate', (string) $credentials['csrf_token']);
         if (! $this->csrfTokenManager->isTokenValid($token)) {
@@ -66,12 +71,12 @@ class LoginFormBackofficeAuthenticator extends AbstractFormLoginAuthenticator
         ]);
     }
 
-    public function checkCredentials($credentials, UserInterface $user)
+    public function checkCredentials($credentials, UserInterface $user): bool
     {
         return $this->passwordEncoder->isPasswordValid($user, (string) $credentials['password']);
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): ?Response
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
