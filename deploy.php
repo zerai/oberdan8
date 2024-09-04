@@ -201,15 +201,18 @@ task('maintenance:off', function () {
 desc('Load stage fixtures');
 task('stage:fixtures:load', function () {
     if ('production' === get('labels')['env']){
-        writeln(' labels.env:' . get('labels')['env']);
-        info('Setup production env vars in file .env.local.php');
-        runLocally('cp -f .env.itroom.production .env.prod');
-        info('Generated env.dev with staging configuration data');
-
-        info('Run composer symfony:dump-env prod');
-        $cmdResult = runLocally('composer symfony:dump-env prod', ['tty' => true]);
-        echo $cmdResult;
-        info('No fixture for production environment.');
+        /**
+         * Deny fixture on production
+         */
+//        writeln(' labels.env:' . get('labels')['env']);
+//        info('Setup production env vars in file .env.local.php');
+//        runLocally('cp -f .env.itroom.production .env.prod');
+//        info('Generated env.dev with staging configuration data');
+//
+//        info('Run composer symfony:dump-env prod');
+//        $cmdResult = runLocally('composer symfony:dump-env prod', ['tty' => true]);
+//        echo $cmdResult;
+//        info('No fixture for production environment.');
     }elseif ('stage-librai' === get('labels')['env']){
         info('Load fixture for stage-librai environment.');
         run('{{bin/php}} {{bin/console}} doctrine:fixtures:load --group=stage --no-interaction');
