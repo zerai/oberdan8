@@ -108,7 +108,7 @@
                             <td>{{ reservation.saleDetail.reservationPackageId}}</td>
                         {% endif %}
 
-                        <td>{{ reservation.registrationDate|date("d/m/Y") }}</td>
+                        <td>{{ reservation.registrationDate|date("d/m/Y H:i") }}</td>
                         <td>{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
                         <td>
                             <a class="btn btn-sm btn-outline-dark" href="{{ path('backoffice_reservation_show', {'id': reservation.id}) }}"><i class="fa fa-eye"></i></a>
