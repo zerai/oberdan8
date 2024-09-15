@@ -108,7 +108,7 @@
                             {% endif %}
                         {% endif %}
 
-                        <td>{{ reservation.registrationDate|date("d/m/Y") }}</td>
+                        <td>{{ reservation.registrationDate|date("d/m/Y H:i") }}</td>
                         <td class="{{ reservation.saleDetail.status }}">{{ macro.renderReservationStatus(reservation.saleDetail.status) }}</td>
                         <td>{{ reservation.saleDetail.confirmationStatus.confirmedAt|date("d/m/Y") }}</td>
                         <td>{{ reservation.saleDetail.confirmationStatus.isExpired ? '<p class="text-danger">Si</p>' : '<p class="text-success">No</p>' }}</td>
