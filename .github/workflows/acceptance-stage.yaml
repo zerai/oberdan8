@@ -19,7 +19,7 @@ env:
 jobs:
   acceptance-checks:
     name: Acceptance checks
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mysql:
@@ -109,7 +109,7 @@ jobs:
 
   integration-test:
     name: Integration tests (PHP-${{ matrix.php }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mysql:
@@ -203,7 +203,7 @@ jobs:
 
   functional-test:
     name: Functional tests (PHP-${{ matrix.php }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mysql:
@@ -330,7 +330,7 @@ jobs:
 
   e2e-test:
     name: E2e tests (PHP-${{ matrix.php }})
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mysql:

@@ -3,6 +3,10 @@ name: CD/CI
 on:
   push:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   commit-stage-workflow:
     name: Commit Stage
