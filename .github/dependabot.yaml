@@ -3,44 +3,72 @@
 version: 2
 
 updates:
-  - commit-message:
-      include: "scope"
-      prefix: "composer"
+  - package-ecosystem: "composer"
+    target-branch: "main"
     directory: "/"
-    labels:
-      - "dependency"
-    open-pull-requests-limit: 5
-    package-ecosystem: "composer"
+    versioning-strategy: "increase-if-necessary"
+    open-pull-requests-limit: 15
     schedule:
       interval: "weekly"
-    versioning-strategy: "increase"
+      day: "sunday"
+      time: "01:00"
+      timezone: "Europe/Rome"
+    assignees:
+      - "zerai"
+    commit-message:
+      include: "scope"
+      prefix: "composer"
+    labels:
+      - "dependency"
+    groups:
+      symfony_dev:
+        applies-to: "version-updates"
+        dependency-type: "development"
+        patterns:
+          - "symfony/stopwatch"
+          - "symfony/browser-kit"
+          - "symfony/debug-bundle"
+          - "symfony/css-selector"
+          - "symfony/phpunit-bridge"
+          - "symfony/web-profiler-bundle"
+        update-types:
+          - "patch"
+      symfony_prod:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "symfony/*"
+        update-types:
+          #- "minor"
+          - "patch"
+      doctrine:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "doctrine/*"
+        update-types:
+          #- "minor"
+          - "patch"
+      twig-extra:
+        applies-to: "version-updates"
+        dependency-type: "production"
+        patterns:
+          - "twig/extra-bundle"
+          - "twig/*-extra"
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
-      - dependency-name: "symfony/css-selector"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/framework-bundle"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/dotenv"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/form"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/google-mailer"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/mailer"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/proxy-manager-bridge"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/property-info"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/yaml"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/validator"
-        versions: ["5.x", "6.x"]
-#      - dependency-name: "symfony/phpunit-bridge"
-#        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/browser-kit"
-        versions: ["5.x", "6.x"]
-      - dependency-name: "symfony/web-profiler"
-        versions: ["5.x", "6.x"]
+      - dependency-name: "symfony/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+      - dependency-name: "doctrine/*"
+        update-types: ["version-update:semver-major", "version-update:semver-minor" ]
+      - dependency-name: "ecotone/*"
+        update-types: [ "version-update:semver-major" ]
+      - dependency-name: "knpuniversity/oauth2-client-bundle"
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      - dependency-name: "twig/*-extra"
+        update-types: ["version-update:semver-major"]
 
 
 
