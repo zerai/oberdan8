@@ -9,8 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/admin/user")
@@ -30,16 +30,15 @@ class BackofficeUserController extends AbstractController
     /**
      * @Route("/new", name="backoffice_user_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         $backofficeUser = new BackofficeUser();
         $form = $this->createForm(BackofficeUserType::class, $backofficeUser);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
             $backofficeUser->setPassword(
-                $passwordEncoder->encodePassword(
+                $passwordHasher->hashPassword(
                     $backofficeUser,
                     $form->get('plainPassword')->getData()
                 )
@@ -71,15 +70,14 @@ class BackofficeUserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="backoffice_user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, BackofficeUser $backofficeUser, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, UserPasswordHasherInterface $passwordHasher, BackofficeUser $backofficeUser, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(BackofficeUserType::class, $backofficeUser);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
             $backofficeUser->setPassword(
-                $passwordEncoder->encodePassword(
+                $passwordHasher->hashPassword(
                     $backofficeUser,
                     $form->get('plainPassword')->getData()
                 )

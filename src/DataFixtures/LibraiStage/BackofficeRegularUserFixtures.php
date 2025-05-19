@@ -6,15 +6,15 @@ use App\Entity\BackofficeUser;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class BackofficeRegularUserFixtures extends Fixture implements FixtureGroupInterface
 {
-    private UserPasswordEncoderInterface $passwordEncoder;
+    private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordHasher = $passwordHasher;
     }
 
     public function load(ObjectManager $manager): void
@@ -23,7 +23,7 @@ class BackofficeRegularUserFixtures extends Fixture implements FixtureGroupInter
         $user->setActive(true);
         $user->setEmail('demo@example.com');
         $user->setPassword(
-            $this->passwordEncoder->encodePassword($user, 'demo')
+            $this->passwordHasher->hashPassword($user, 'demo')
         );
 
         $manager->persist($user);
@@ -32,7 +32,7 @@ class BackofficeRegularUserFixtures extends Fixture implements FixtureGroupInter
         $user->setActive(true);
         $user->setEmail('demo2@example.com');
         $user->setPassword(
-            $this->passwordEncoder->encodePassword($user, 'demo')
+            $this->passwordHasher->hashPassword($user, 'demo')
         );
 
         $manager->persist($user);

@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class DefaultAdminCreateCommand extends Command
 {
@@ -18,17 +18,17 @@ class DefaultAdminCreateCommand extends Command
 
     protected static $defaultDescription = 'Create a default admin user \'admin@example.com\' ';
 
-    private UserPasswordEncoderInterface $passwordEncoder;
+    private UserPasswordHasherInterface $passwordHasher;
 
     private BackofficeUserRepository $backofficeUserRepository;
 
     /**
      * DefaultAdminCreateCommand constructor.
      */
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder, BackofficeUserRepository $backofficeUserRepository)
+    public function __construct(UserPasswordHasherInterface $passwordHasher, BackofficeUserRepository $backofficeUserRepository)
     {
         parent::__construct();
-        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordHasher = $passwordHasher;
         $this->backofficeUserRepository = $backofficeUserRepository;
     }
 
@@ -59,7 +59,7 @@ class DefaultAdminCreateCommand extends Command
         $admin->setEmail('admin@example.com');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword(
-            $this->passwordEncoder->encodePassword($admin, 'demo')
+            $this->passwordHasher->hashPassword($admin, 'demo')
         );
 
         $this->backofficeUserRepository->save($admin);

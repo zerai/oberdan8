@@ -2,22 +2,24 @@
 
 namespace App\Security;
 
+use App\Entity\BackofficeUser;
 use App\Repository\BackofficeUserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Csrf\CsrfToken;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
+use Symfony\Component\Security\Core\Exception\UserNotFoundException;
+use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\RememberMeBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
+use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class LoginFormBackofficeAuthenticator extends AbstractFormLoginAuthenticator
+class LoginFormBackofficeAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
@@ -25,68 +27,59 @@ class LoginFormBackofficeAuthenticator extends AbstractFormLoginAuthenticator
 
     private RouterInterface $router;
 
-    private CsrfTokenManagerInterface $csrfTokenManager;
-
-    private UserPasswordEncoderInterface $passwordEncoder;
+    private EntityManagerInterface $entityManager;
 
     /**
      * LoginFormBackofficeAuthenticator constructor.
      */
-    public function __construct(BackofficeUserRepository $backofficeUserRepository, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(BackofficeUserRepository $backofficeUserRepository, RouterInterface $router, EntityManagerInterface $entityManager)
     {
         $this->backofficeUserRepository = $backofficeUserRepository;
         $this->router = $router;
-        $this->csrfTokenManager = $csrfTokenManager;
-        $this->passwordEncoder = $passwordEncoder;
+        $this->entityManager = $entityManager;
     }
 
-    public function supports(Request $request): bool
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        return $request->attributes->get('_route') === 'backoffice_login'
-            && $request->isMethod('POST');
-    }
-
-    /**
-     * @param Request $request
-     * @return array<string, mixed>
-     */
-    public function getCredentials(Request $request): array
-    {
-        return [
-            'email' => $request->request->get('email'),
-            'password' => $request->request->get('password'),
-            'csrf_token' => $request->request->get('_csrf_token'),
-        ];
-    }
-
-    public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
-    {
-        $token = new CsrfToken('authenticate', (string) $credentials['csrf_token']);
-        if (! $this->csrfTokenManager->isTokenValid($token)) {
-            throw new InvalidCsrfTokenException();
-        }
-
-        return $this->backofficeUserRepository->findOneBy([
-            'email' => (string) $credentials['email'],
-        ]);
-    }
-
-    public function checkCredentials($credentials, UserInterface $user): bool
-    {
-        return $this->passwordEncoder->isPasswordValid($user, (string) $credentials['password']);
-    }
-
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): ?Response
-    {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
 
         return new RedirectResponse($this->router->generate('backoffice_dashboard'));
     }
 
-    protected function getLoginUrl()
+    protected function getLoginUrl(Request $request): string
     {
         return $this->router->generate('backoffice_login');
+    }
+
+    public function authenticate(Request $request): Passport
+    {
+        // TODO: Implement authenticate() method.
+        $email = $request->request->get('email');
+        $password = $request->request->get('password');
+
+        return new Passport(
+            new UserBadge($email, function ($userIdentifier) {
+                // optionally pass a callback to load the User manually
+                $user = $this->entityManager
+                    ->getRepository(BackofficeUser::class)
+                    ->findOneBy([
+                        'email' => $userIdentifier,
+                    ]);
+                if (! $user) {
+                    throw new UserNotFoundException();
+                }
+                return $user;
+            }),
+            new PasswordCredentials($password),
+            [
+                new CsrfTokenBadge(
+                    'authenticate',
+                    $request->request->get('_csrf_token')
+                ),
+                (new RememberMeBadge())->enable(),
+            ]
+        );
     }
 }
