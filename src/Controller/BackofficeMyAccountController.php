@@ -8,8 +8,8 @@ use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class BackofficeMyAccountController extends AbstractController
 {
@@ -32,7 +32,7 @@ class BackofficeMyAccountController extends AbstractController
     /**
      * @Route("/admin/my-account/change-password", name="backoffice_my_account_change_password", methods={"GET","POST"})
      */
-    public function changePassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, BackofficeUserRepository $backofficeUserRepository): Response
+    public function changePassword(Request $request, UserPasswordHasherInterface $passwordHasher, BackofficeUserRepository $backofficeUserRepository): Response
     {
         $user = $this->getUser();
         $form = $this->createForm(BackofficeUserChangePasswordType::class, $user);
@@ -46,7 +46,7 @@ class BackofficeMyAccountController extends AbstractController
             ]);
 
             $backofficeUser->setPassword(
-                $passwordEncoder->encodePassword(
+                $passwordHasher->hashPassword(
                     $backofficeUser,
                     $newPassword
                 )

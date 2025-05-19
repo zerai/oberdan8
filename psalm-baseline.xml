@@ -388,6 +388,9 @@
     <DeprecatedInterface>
       <code><![CDATA[UserPasswordEncoderInterface]]></code>
     </DeprecatedInterface>
+    <InvalidArgument>
+      <code><![CDATA[$authenticator]]></code>
+    </InvalidArgument>
     <MixedArgument>
       <code><![CDATA[$form->get('plainPassword')->getData()]]></code>
     </MixedArgument>
@@ -451,26 +454,24 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/Security/LoginFormBackofficeAuthenticator.php">
-    <DeprecatedClass>
-      <code><![CDATA[AbstractFormLoginAuthenticator]]></code>
-    </DeprecatedClass>
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$email]]></code>
+      <code><![CDATA[$password]]></code>
+      <code><![CDATA[$request->request->get('_csrf_token')]]></code>
+    </ArgumentTypeCoercion>
     <DeprecatedInterface>
       <code><![CDATA[UserPasswordEncoderInterface]]></code>
       <code><![CDATA[UserPasswordEncoderInterface]]></code>
     </DeprecatedInterface>
-    <MissingParamType>
-      <code><![CDATA[$providerKey]]></code>
-    </MissingParamType>
-    <MixedArgument>
-      <code><![CDATA[$providerKey]]></code>
-    </MixedArgument>
-    <MixedArrayAccess>
-      <code><![CDATA[$credentials['csrf_token']]]></code>
-      <code><![CDATA[$credentials['email']]]></code>
-      <code><![CDATA[$credentials['password']]]></code>
-    </MixedArrayAccess>
+    <MissingClosureParamType>
+      <code><![CDATA[$userIdentifier]]></code>
+    </MissingClosureParamType>
+    <PossiblyNullArgument>
+      <code><![CDATA[$email]]></code>
+      <code><![CDATA[$password]]></code>
+    </PossiblyNullArgument>
     <RiskyTruthyFalsyComparison>
-      <code><![CDATA[$targetPath = $this->getTargetPath($request->getSession(), $providerKey)]]></code>
+      <code><![CDATA[$targetPath = $this->getTargetPath($request->getSession(), $firewallName)]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Twig/AppExtension.php">
