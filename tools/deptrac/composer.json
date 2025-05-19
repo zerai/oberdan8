@@ -1,11 +1,11 @@
 {
-    "require-dev": {
-        "qossmic/deptrac": "*"
-    },
     "config": {
         "preferred-install": {
             "*": "dist"
         },
         "sort-packages": true
+    },
+    "require-dev": {
+        "deptrac/deptrac": "^0.24.0"
     }
 }
