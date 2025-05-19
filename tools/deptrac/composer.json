@@ -1,6 +1,6 @@
 {
     "require-dev": {
-        "qossmic/deptrac-shim": "^0.13.0"
+        "qossmic/deptrac": "*"
     },
     "config": {
         "preferred-install": {
