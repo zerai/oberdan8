@@ -71,7 +71,7 @@ when@prod:
     sentry:
         dsn: '%env(SENTRY_DSN)%'
         options:
-            release: "0.5.5"
+            release: "0.5.6"
 
 #        If you are using Monolog, you also need this additional configuration to log the errors correctly:
 #        https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration
