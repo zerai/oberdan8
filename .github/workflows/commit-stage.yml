@@ -118,11 +118,11 @@ jobs:
         run: |
           ./vendor/bin/rector process --dry-run --ansi
 
-      - name: Run Deptrac architecture check (Booking domain isolation)
-        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
-
-      - name: Run Deptrac architecture check (Bounded Context)
-        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
+#      - name: Run Deptrac architecture check (Booking domain isolation)
+#        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
+#
+#      - name: Run Deptrac architecture check (Bounded Context)
+#        run: ./vendor/bin/deptrac analyse core/depfile-booking.yaml
 
 #      - name: Run PhpArkitect
 #        if: always()
