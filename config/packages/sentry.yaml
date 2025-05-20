@@ -72,10 +72,16 @@ when@prod:
         dsn: '%env(SENTRY_DSN)%'
         options:
             release: "0.5.6"
+        # this hooks into critical paths of the framework (and vendors) to perform
+        # automatic instrumentation (there might be some performance penalty)
+        # https://docs.sentry.io/platforms/php/guides/symfony/performance/instrumentation/automatic-instrumentation/
+        tracing:
+            enabled: false
 
 #        If you are using Monolog, you also need this additional configuration to log the errors correctly:
 #        https://docs.sentry.io/platforms/php/guides/symfony/#monolog-integration
 #        register_error_listener: false
+#        register_error_handler: false
 
 #    monolog:
 #        handlers:
@@ -83,6 +89,7 @@ when@prod:
 #                type: sentry
 #                level: !php/const Monolog\Logger::ERROR
 #                hub_id: Sentry\State\HubInterface
+
 
 #    If you are using MonologBundle prior to v3.7, you need to configure the handler as a service instead:
 
@@ -98,4 +105,7 @@ when@prod:
 #                $hub: '@Sentry\State\HubInterface'
 #                $level: !php/const Monolog\Logger::ERROR
 #                $bubble: false
+
+#                fill_extra_context: true # Enables sending monolog context to Sentry
+#                process_psr_3_messages: false # Disables the resolution of PSR-3 placeholders
 
