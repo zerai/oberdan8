@@ -35,7 +35,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '7.4'
+          #- '7.4'
           - '8.0'
           - '8.1'
       fail-fast: true
@@ -126,7 +126,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '7.4'
+          #- '7.4'
           - '8.0'
           - '8.1'
       fail-fast: true
@@ -221,7 +221,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '7.4'
+          #- '7.4'
           - '8.0'
           - '8.1'
         node:
@@ -349,7 +349,7 @@ jobs:
     strategy:
       matrix:
         php:
-          - '7.4'
+          #- '7.4'
           - '8.0'
           - '8.1'
         node:
