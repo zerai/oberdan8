@@ -40,7 +40,7 @@ return static function (RectorConfig $rectorConfig): void {
     //$rectorConfig->importShortClasses();
     $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
 
-    $rectorConfig->phpVersion(PhpVersion::PHP_74);
+    $rectorConfig->phpVersion(PhpVersion::PHP_80);
 
 
     // register a single rule
