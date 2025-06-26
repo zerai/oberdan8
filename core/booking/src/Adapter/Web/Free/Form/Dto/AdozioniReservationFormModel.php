@@ -10,53 +10,26 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class AdozioniReservationFormModel
 {
-    /**
-     * @Assert\Valid
-     */
+    #[Assert\Valid]
     public ClientDto $person;
 
-    /**
-     * @Assert\NotNull(message="Seleziona un' opzione.")
-     */
+    #[Assert\NotNull(message: "Seleziona un' opzione.")]
     public string $classe;
 
     public string $coupondCode;
 
-    /**
-     * @Assert\NotBlank (message="Seleziona un file da caricare.")
-     * @Assert\File(
-     *     maxSize = "5M",
-     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg"},
-     *     mimeTypesMessage = "Il file selezionato non è un PDF o un JPEG."
-     * )
-     *
-     */
+    #[Assert\NotBlank(message: 'Seleziona un file da caricare.')]
+    #[Assert\File(maxSize: '5M', mimeTypes: ['application/pdf', 'application/x-pdf', 'image/jpeg'], mimeTypesMessage: 'Il file selezionato non è un PDF o un JPEG.')]
     public string $adozioni;
 
-    /**
-     * @Assert\File(
-     *     maxSize = "5M",
-     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg"},
-     *     mimeTypesMessage = "Il file selezionato non è un PDF o un JPEG."
-     * )
-     *
-     */
+    #[Assert\File(maxSize: '5M', mimeTypes: ['application/pdf', 'application/x-pdf', 'image/jpeg'], mimeTypesMessage: 'Il file selezionato non è un PDF o un JPEG.')]
     public string $adozioni2;
 
-    /**
-     * @Assert\File(
-     *     maxSize = "5M",
-     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/jpeg"},
-     *     mimeTypesMessage = "Il file selezionato non è un PDF o un JPEG."
-     * )
-     *
-     */
+    #[Assert\File(maxSize: '5M', mimeTypes: ['application/pdf', 'application/x-pdf', 'image/jpeg'], mimeTypesMessage: 'Il file selezionato non è un PDF o un JPEG.')]
     public string $adozioni3;
 
     public string $otherInfo;
 
-    /**
-     * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")
-     */
+    #[Assert\IsTrue(message: 'Acconsenti al trattamento dei tuoi dati personali se desideri continuare.')]
     public bool $privacyConfirmed;
 }

@@ -2,7 +2,6 @@
 
 namespace Booking\Adapter\Web\Admin;
 
-use Booking\Application\Domain\Model\Reservation;
 use Booking\Application\Domain\Model\ReservationRepositoryInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -11,14 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/coupon/prenotazioni")
- */
+#[Route(path: '/admin/coupon/prenotazioni')]
 class BackofficeCouponCodeReservationController extends AbstractController
 {
-    /**
-     * @Route("/", name="backoffice_reservation_coupon_index", methods={"GET"})
-     */
+    #[Route(path: '/', name: 'backoffice_reservation_coupon_index', methods: ['GET'])]
     public function index(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $searchTerms = $request->query->get('q');

@@ -8,9 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BackofficeDashboardController extends AbstractController
 {
-    /**
-     * @Route("/admin/dashboard", name="backoffice_dashboard")
-     */
+    #[Route(path: '/admin/dashboard', name: 'backoffice_dashboard')]
     public function index(): Response
     {
         return $this->render('backoffice/dashboard/index.html.twig', []);

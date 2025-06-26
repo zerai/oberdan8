@@ -8,14 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/stats")
- */
+#[Route(path: '/admin/stats')]
 class BackofficeReservationStatsController extends AbstractController
 {
-    /**
-     * @Route("/reservation-status-overview", name="backoffice_stats_reservation_overview", methods={"GET"})
-     */
+    #[Route(path: '/reservation-status-overview', name: 'backoffice_stats_reservation_overview', methods: ['GET'])]
     public function index(ReservationRepository $repository): Response
     {
         $confirmedStatus = $repository->countWithStatusConfirmed();
