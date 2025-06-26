@@ -105,7 +105,7 @@ jobs:
         run: ./bin/console doctrine:schema:validate -e test --ansi
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
-        continue-on-error: true
+        continue-on-error: false
 
 
   integration-test:
@@ -194,6 +194,12 @@ jobs:
         run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+
+      - name: Run database schema validate
+        run: ./bin/console doctrine:schema:validate -e test --ansi
+        env:
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+        continue-on-error: false
 
       - name: Run integration test suite
         run: bin/phpunit --testsuite=integration
@@ -323,6 +329,12 @@ jobs:
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
+      - name: Run database schema validate
+        run: ./bin/console doctrine:schema:validate -e test --ansi
+        env:
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+        continue-on-error: false
+
       - name: Run functional test suite
         run: bin/phpunit --testsuite=functional
         env:
@@ -450,6 +462,12 @@ jobs:
         run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+
+      - name: Run database schema validate
+        run: ./bin/console doctrine:schema:validate -e test --ansi
+        env:
+          DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
+        continue-on-error: false
 
       - name: Run e2e test suite
         run: bin/phpunit --testsuite=e2e
