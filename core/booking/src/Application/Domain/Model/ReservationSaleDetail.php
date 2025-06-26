@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\UuidInterface;
 
-#[ORM\Entity(repositoryClass: ReservationSeleDetailRepository::class)]
+## #[ORM\Entity(repositoryClass: ReservationSeleDetailRepository::class)]
+#[ORM\Entity()]
 class ReservationSaleDetail
 {
     #[ORM\Id]
