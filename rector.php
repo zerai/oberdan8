@@ -30,7 +30,9 @@ use Rector\ValueObject\PhpVersion;
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__ . '/src',
+        __DIR__ . '/tests',
         __DIR__ . '/core/booking/src',
+        __DIR__ . '/core/booking/tests',
     ]);
 
     $rectorConfig->autoloadPaths([__DIR__ . '/vendor/bin/.phpunit/phpunit/vendor/autoload.php']);
