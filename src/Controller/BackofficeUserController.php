@@ -12,14 +12,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/user")
- */
+#[Route(path: '/admin/user')]
 class BackofficeUserController extends AbstractController
 {
-    /**
-     * @Route("/", name="backoffice_user_index", methods={"GET"})
-     */
+    #[Route(path: '/', name: 'backoffice_user_index', methods: ['GET'])]
     public function index(BackofficeUserRepository $backofficeUserRepository): Response
     {
         return $this->render('backoffice/user/index.html.twig', [
@@ -27,9 +23,7 @@ class BackofficeUserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="backoffice_user_new", methods={"GET","POST"})
-     */
+    #[Route(path: '/new', name: 'backoffice_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         $backofficeUser = new BackofficeUser();
@@ -57,9 +51,7 @@ class BackofficeUserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="backoffice_user_show", methods={"GET"})
-     */
+    #[Route(path: '/{id}', name: 'backoffice_user_show', methods: ['GET'])]
     public function show(BackofficeUser $backofficeUser): Response
     {
         return $this->render('backoffice/user/show.html.twig', [
@@ -67,9 +59,7 @@ class BackofficeUserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="backoffice_user_edit", methods={"GET","POST"})
-     */
+    #[Route(path: '/{id}/edit', name: 'backoffice_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, UserPasswordHasherInterface $passwordHasher, BackofficeUser $backofficeUser, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(BackofficeUserType::class, $backofficeUser);
@@ -93,9 +83,7 @@ class BackofficeUserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="backoffice_user_delete", methods={"POST"})
-     */
+    #[Route(path: '/{id}', name: 'backoffice_user_delete', methods: ['POST'])]
     public function delete(Request $request, BackofficeUser $backofficeUser, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $backofficeUser->getId(), (string) $request->request->get('_token'))) {

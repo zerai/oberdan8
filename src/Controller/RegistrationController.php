@@ -24,9 +24,7 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    /**
-     * @Route("/admin/register", name="app_register")
-     */
+    #[Route(path: '/admin/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): ?Response
     {
         $user = new BackofficeUser();
@@ -63,9 +61,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("admin//verify/email", name="app_verify_email")
-     */
+    #[Route(path: 'admin//verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
