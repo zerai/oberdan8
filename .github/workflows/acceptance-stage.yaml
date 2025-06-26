@@ -97,7 +97,7 @@ jobs:
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
-        run: ./bin/console doctrine:schema:update -e test --force --ansi
+        run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
@@ -191,7 +191,7 @@ jobs:
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
-        run: ./bin/console doctrine:schema:update -e test --force --ansi
+        run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
@@ -319,7 +319,7 @@ jobs:
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
-        run: ./bin/console doctrine:schema:update -e test --force --ansi
+        run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
@@ -447,7 +447,7 @@ jobs:
 
       - name: Run database schema update
         if: ${{ github.ref_name != 'main' }}
-        run: ./bin/console doctrine:schema:update -e test --force --ansi
+        run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
         env:
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
 
