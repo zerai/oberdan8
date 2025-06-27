@@ -4,14 +4,10 @@ namespace Booking\Application\Domain\UseCase;
 
 class ExportedFile implements ExportedFileWrapperInterface
 {
-    private string $name;
-
-    private string $content;
-
-    public function __construct(string $name, string $content)
-    {
-        $this->name = $name;
-        $this->content = $content;
+    public function __construct(
+        private string $name,
+        private string $content
+    ) {
     }
 
     public function name(): string

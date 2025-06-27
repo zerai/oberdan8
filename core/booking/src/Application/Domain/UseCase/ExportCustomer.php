@@ -6,14 +6,10 @@ use Ramsey\Uuid\Uuid;
 
 class ExportCustomer implements ExportCustomerInterface
 {
-    private ExportDataRetrieverInterface $datasource;
-
-    private ExportEncoderInterface $encoder;
-
-    public function __construct(ExportDataRetrieverInterface $datasource, ExportEncoderInterface $encoder)
-    {
-        $this->datasource = $datasource;
-        $this->encoder = $encoder;
+    public function __construct(
+        private ExportDataRetrieverInterface $datasource,
+        private ExportEncoderInterface $encoder
+    ) {
     }
 
     /**
