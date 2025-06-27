@@ -354,11 +354,6 @@ parameters:
 			path: core/booking/src/Application/Domain/Model/Booking/RegularReservation.php
 
 		-
-			message: "#^Property Booking\\\\Application\\\\Domain\\\\Model\\\\Booking\\\\RegularReservation\\:\\:\\$books type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: core/booking/src/Application/Domain/Model/Booking/RegularReservation.php
-
-		-
 			message: "#^Method Booking\\\\Application\\\\Domain\\\\Model\\\\ConfirmationStatus\\\\ConfirmationStatus\\:\\:fromArray\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: core/booking/src/Application/Domain/Model/ConfirmationStatus/ConfirmationStatus.php
