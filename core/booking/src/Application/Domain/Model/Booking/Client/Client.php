@@ -8,36 +8,15 @@ use InvalidArgumentException;
 
 final class Client
 {
-    private ClientId $id;
-
-    private FirstName $firstName;
-
-    private LastName $lastName;
-
-    private Email $email;
-
-    private Phone $phone;
-
-    private ?Classe $classe;
-
-    private string $city;
-
     public function __construct(
-        ClientId $id,
-        FirstName $firstName,
-        LastName $lastName,
-        Email $email,
-        Phone $phone,
-        ?Classe $classe,
-        string $city = ''
+        private ClientId $id,
+        private FirstName $firstName,
+        private LastName $lastName,
+        private Email $email,
+        private Phone $phone,
+        private ?Classe $classe,
+        private string $city = ''
     ) {
-        $this->id = $id;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->classe = $classe;
-        $this->city = $city;
     }
 
     public function id(): ClientId

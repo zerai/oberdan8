@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Booking\Application\Domain\Model\Booking\Client;
 
 use InvalidArgumentException;
+use Stringable;
 
 /**
  * null
  * @codeCoverageIgnore
  */
-final class Classe
+final class Classe implements Stringable
 {
     public const Varia = 0;
 
@@ -25,10 +26,6 @@ final class Classe
     public const Quinta = 5;
 
     public const Options = ['Varia', 'Prima', 'Seconda', 'Terza', 'Quarta', 'Quinta'];
-
-    private string $name;
-
-    private int $value;
 
     public static function Varia(): self
     {
@@ -60,10 +57,10 @@ final class Classe
         return new self('Quinta', 5);
     }
 
-    private function __construct(string $name, int $value)
-    {
-        $this->name = $name;
-        $this->value = $value;
+    private function __construct(
+        private string $name,
+        private int $value
+    ) {
     }
 
     public static function fromName(string $name): self

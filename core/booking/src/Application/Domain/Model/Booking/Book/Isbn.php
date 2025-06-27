@@ -10,11 +10,9 @@ namespace Booking\Application\Domain\Model\Booking\Book;
  */
 final class Isbn
 {
-    private string $value;
-
-    public function __construct(string $value)
-    {
-        $this->value = $value;
+    public function __construct(
+        private string $value
+    ) {
     }
 
     public function value(): string

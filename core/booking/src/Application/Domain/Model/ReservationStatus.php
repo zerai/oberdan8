@@ -3,8 +3,9 @@
 namespace Booking\Application\Domain\Model;
 
 use InvalidArgumentException;
+use Stringable;
 
-final class ReservationStatus
+final class ReservationStatus implements Stringable
 {
     public const NewArrival = 0;
 
@@ -35,10 +36,6 @@ final class ReservationStatus
         'Blacklist',
         'Shipped',
     ];
-
-    private string $name;
-
-    private int $value;
 
     public static function newArrival(): self
     {
@@ -85,10 +82,10 @@ final class ReservationStatus
         return new self('Shipped', 8);
     }
 
-    private function __construct(string $name, int $value)
-    {
-        $this->name = $name;
-        $this->value = $value;
+    private function __construct(
+        private string $name,
+        private int $value
+    ) {
     }
 
     public static function fromName(string $name): self

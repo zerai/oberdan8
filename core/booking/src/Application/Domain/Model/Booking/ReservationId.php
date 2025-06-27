@@ -6,18 +6,17 @@ namespace Booking\Application\Domain\Model\Booking;
 
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Stringable;
 
 /**
  * null
  * @codeCoverageIgnore
  */
-final class ReservationId
+final class ReservationId implements Stringable
 {
-    private UuidInterface $uuid;
-
-    private function __construct(UuidInterface $uuid)
-    {
-        $this->uuid = $uuid;
+    private function __construct(
+        private UuidInterface $uuid
+    ) {
     }
 
     public static function generate(): self
