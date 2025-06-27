@@ -4,14 +4,10 @@ namespace Booking\Infrastructure;
 
 final class BookingEmailSender
 {
-    private string $address;
-
-    private string $name;
-
-    public function __construct(string $address, string $name)
-    {
-        $this->address = $address;
-        $this->name = $name;
+    public function __construct(
+        private string $address,
+        private string $name
+    ) {
     }
 
     public static function fromData(string $address, string $name): self
