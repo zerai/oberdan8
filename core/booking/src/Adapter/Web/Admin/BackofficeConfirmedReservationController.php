@@ -11,14 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/prenotazioni/confermate")
- */
+#[Route(path: '/admin/prenotazioni/confermate')]
 class BackofficeConfirmedReservationController extends AbstractController
 {
-    /**
-     * @Route("/", name="backoffice_reservation_confirmed_index", methods={"GET"})
-     */
+    #[Route(path: '/', name: 'backoffice_reservation_confirmed_index', methods: ['GET'])]
     public function index(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $q = $request->query->get('q');
@@ -38,9 +34,7 @@ class BackofficeConfirmedReservationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/scadute", name="backoffice_reservation_expired_index", methods={"GET"})
-     */
+    #[Route(path: '/scadute', name: 'backoffice_reservation_expired_index', methods: ['GET'])]
     public function expired(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
         /**

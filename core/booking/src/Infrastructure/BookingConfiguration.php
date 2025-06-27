@@ -5,14 +5,6 @@ namespace Booking\Infrastructure;
 
 class BookingConfiguration
 {
-    private string $mailerSender;
-
-    private string $mailerSenderAs;
-
-    private string $backofficeRetriever;
-
-    private string $backofficeRetrieverAs;
-
     /**
      * BookingConfiguration constructor.
      * @param string $mailerSender
@@ -20,12 +12,12 @@ class BookingConfiguration
      * @param string $backofficeRetriever
      * @param string $backofficeRetrieverAs
      */
-    public function __construct(string $mailerSender, string $mailerSenderAs, string $backofficeRetriever, string $backofficeRetrieverAs)
-    {
-        $this->mailerSender = $mailerSender;
-        $this->mailerSenderAs = $mailerSenderAs;
-        $this->backofficeRetriever = $backofficeRetriever;
-        $this->backofficeRetrieverAs = $backofficeRetrieverAs;
+    public function __construct(
+        private string $mailerSender,
+        private string $mailerSenderAs,
+        private string $backofficeRetriever,
+        private string $backofficeRetrieverAs
+    ) {
     }
 
     public function emailSender(): BookingEmailSender

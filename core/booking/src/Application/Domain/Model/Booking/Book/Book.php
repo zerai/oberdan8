@@ -8,20 +8,12 @@ use InvalidArgumentException;
 
 final class Book
 {
-    private Isbn $isbn;
-
-    private Title $title;
-
-    private Author $author;
-
-    private Volume $volume;
-
-    public function __construct(Isbn $isbn, Title $title, Author $author, Volume $volume)
-    {
-        $this->isbn = $isbn;
-        $this->title = $title;
-        $this->author = $author;
-        $this->volume = $volume;
+    public function __construct(
+        private Isbn $isbn,
+        private Title $title,
+        private Author $author,
+        private Volume $volume
+    ) {
     }
 
     public function isbn(): Isbn

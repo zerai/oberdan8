@@ -28,7 +28,7 @@ doctrine:
                 alias: App
             Booking:
                 is_bundle: false
-                type: annotation
+                #type: annotation
                 dir: '%kernel.project_dir%/core/booking/src/Application/Domain/Model'
                 prefix: 'Booking\Application\Domain\Model'
                 alias: Booking

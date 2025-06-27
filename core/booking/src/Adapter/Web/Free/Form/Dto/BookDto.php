@@ -10,17 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class BookDto
 {
-    /**
-     * @Assert\Isbn(
-     *     type = "null",
-     * )
-     */
+    #[Assert\Isbn(type: 'null')]
     public string $isbn;
 
     /**
      * Assert\NotNull(message="Il campo titolo è obbligatorio")
-     * @Assert\NotBlank(message="Inserisci il titolo")
      */
+    #[Assert\NotBlank(message: 'Inserisci il titolo')]
     public string $title;
 
     public string $author = '';

@@ -21,23 +21,17 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
 
     private const RESERVATION_THANKS_EMAIL_SUBJECT = 'Oberdan 8 Ti ringraziamo per averci scelto';
 
-    private MailerInterface $mailer;
-
-    private BookingEmailSender $sender;
-
-    private BackofficeEmailRetriever $backofficeEmailRetriever;
-
     /**
      * BookingMailer constructor.
      * @param MailerInterface $mailer
      * @param BookingEmailSender $sender
      * @param BackofficeEmailRetriever $backofficeEmailRetriever
      */
-    public function __construct(MailerInterface $mailer, BookingEmailSender $sender, BackofficeEmailRetriever $backofficeEmailRetriever)
-    {
-        $this->mailer = $mailer;
-        $this->sender = $sender;
-        $this->backofficeEmailRetriever = $backofficeEmailRetriever;
+    public function __construct(
+        private MailerInterface $mailer,
+        private BookingEmailSender $sender,
+        private BackofficeEmailRetriever $backofficeEmailRetriever
+    ) {
     }
 
     public function notifyReservationConfirmationEmailToClient(string $recipient, array $personData, array $bookData, string $otherInfo = '', string $coupondCode = ''): TemplatedEmail

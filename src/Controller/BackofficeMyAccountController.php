@@ -13,9 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BackofficeMyAccountController extends AbstractController
 {
-    /**
-     * @Route("/admin/my-account", name="backoffice_my_account")
-     */
+    #[Route(path: '/admin/my-account', name: 'backoffice_my_account')]
     public function index(LoggerInterface $logger): Response
     {
         $logger->debug('Checking account page for ' . $this->getUser()->getEmail());
@@ -29,9 +27,7 @@ class BackofficeMyAccountController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/my-account/change-password", name="backoffice_my_account_change_password", methods={"GET","POST"})
-     */
+    #[Route(path: '/admin/my-account/change-password', name: 'backoffice_my_account_change_password', methods: ['GET', 'POST'])]
     public function changePassword(Request $request, UserPasswordHasherInterface $passwordHasher, BackofficeUserRepository $backofficeUserRepository): Response
     {
         $user = $this->getUser();

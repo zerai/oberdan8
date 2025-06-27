@@ -4,11 +4,9 @@ namespace Booking\Application\Domain\Model\ConfirmationStatus;
 
 final class ExtensionTime
 {
-    private bool $value;
-
-    public function __construct(bool $value)
-    {
-        $this->value = $value;
+    public function __construct(
+        private bool $value
+    ) {
     }
 
     public static function true(): self

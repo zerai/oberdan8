@@ -29,7 +29,7 @@ class ReservationStatusTypeTest extends TestCase
         $this->platform = new MySQLPlatform();
         try {
             $this->type = Type::getType('reservation_status_test');
-        } catch (Exception $e) {
+        } catch (Exception) {
         }
     }
 

@@ -19,14 +19,10 @@ final class ConfirmationStatus
      */
     private const EXTENDED_EXPIRATION_TIME = 7;
 
-    private DateTimeImmutable $confirmedAt;
-
-    private ExtensionTime $extensionTime;
-
-    public function __construct(DateTimeImmutable $confirmedAt, ExtensionTime $extensionTime)
-    {
-        $this->confirmedAt = $confirmedAt;
-        $this->extensionTime = $extensionTime;
+    public function __construct(
+        private DateTimeImmutable $confirmedAt,
+        private ExtensionTime $extensionTime
+    ) {
     }
 
     public static function create(DateTimeImmutable $confirmedAt): self

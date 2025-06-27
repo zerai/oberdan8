@@ -8,11 +8,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AdozioniUploader implements AdozioniUploaderInterface
 {
-    private string $adozioniUploadsDirectory;
-
-    public function __construct(string $adozioniUploadsDirectory)
-    {
-        $this->adozioniUploadsDirectory = $adozioniUploadsDirectory;
+    public function __construct(
+        private string $adozioniUploadsDirectory
+    ) {
     }
 
     public function uploadAdozioniFile(UploadedFile $uploadedAdozioniFile): string

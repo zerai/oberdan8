@@ -9,22 +9,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @Route("/admin/mailer")
- */
+#[Route(path: '/admin/mailer')]
 class BackofficeMailManagerController extends AbstractController
 {
-    /**
-     * @Route("/", name="backoffice_mailer_manager_index", methods={"GET"})
-     */
+    #[Route(path: '/', name: 'backoffice_mailer_manager_index', methods: ['GET'])]
     public function index(ReservationRepositoryInterface $repository): Response
     {
         return $this->render('backoffice/mail-manager/index.html.twig', []);
     }
 
-    /**
-     * @Route("/send-example/thanks-mail", name="backoffice_mailer_manager_example_send_tanks_mail", methods={"GET"})
-     */
+    #[Route(path: '/send-example/thanks-mail', name: 'backoffice_mailer_manager_example_send_tanks_mail', methods: ['GET'])]
     public function sendThanksMailTemplate(UserInterface $user, BookingMailer $bookingMailer): Response
     {
         $bookingMailer->notifyReservationThanksEmailToClient($user->getUsername(), '');

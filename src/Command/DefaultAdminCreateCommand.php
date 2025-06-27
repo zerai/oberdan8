@@ -18,18 +18,14 @@ class DefaultAdminCreateCommand extends Command
 
     protected static $defaultDescription = 'Create a default admin user \'admin@example.com\' ';
 
-    private UserPasswordHasherInterface $passwordHasher;
-
-    private BackofficeUserRepository $backofficeUserRepository;
-
     /**
      * DefaultAdminCreateCommand constructor.
      */
-    public function __construct(UserPasswordHasherInterface $passwordHasher, BackofficeUserRepository $backofficeUserRepository)
-    {
+    public function __construct(
+        private UserPasswordHasherInterface $passwordHasher,
+        private BackofficeUserRepository $backofficeUserRepository
+    ) {
         parent::__construct();
-        $this->passwordHasher = $passwordHasher;
-        $this->backofficeUserRepository = $backofficeUserRepository;
     }
 
     protected function configure(): void

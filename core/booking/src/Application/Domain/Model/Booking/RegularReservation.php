@@ -14,21 +14,14 @@ use InvalidArgumentException;
  */
 final class RegularReservation
 {
-    private ReservationId $id;
-
-    private Client $client;
-
-    /** @return list<Book> */
-    private array $books;
-
     /**
      * @param list<Book> $books
      */
-    public function __construct(ReservationId $id, Client $client, array $books)
-    {
-        $this->id = $id;
-        $this->client = $client;
-        $this->books = $books;
+    public function __construct(
+        private ReservationId $id,
+        private Client $client,
+        private array $books
+    ) {
     }
 
     public function id(): ReservationId

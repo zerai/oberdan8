@@ -31,7 +31,7 @@ class ReservationStatusType extends StringType
 
         try {
             $reservationStatus = ReservationStatus::fromName($value);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
             throw ConversionException::conversionFailed($value, static::NAME);
         }
 

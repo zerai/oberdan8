@@ -31,6 +31,8 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__ . '/src',
         __DIR__ . '/core/booking/src',
+        __DIR__ . '/tests',
+        __DIR__ . '/core/booking/tests',
     ]);
 
     $rectorConfig->autoloadPaths([__DIR__ . '/vendor/bin/.phpunit/phpunit/vendor/autoload.php']);
@@ -38,7 +40,7 @@ return static function (RectorConfig $rectorConfig): void {
     //$rectorConfig->importShortClasses();
     $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
 
-    $rectorConfig->phpVersion(PhpVersion::PHP_74);
+    $rectorConfig->phpVersion(PhpVersion::PHP_80);
 
 
     // register a single rule
@@ -54,7 +56,11 @@ return static function (RectorConfig $rectorConfig): void {
         /**
          * PHP
          */
-        LevelSetList::UP_TO_PHP_74,
+        LevelSetList::UP_TO_PHP_80,
+
+        \Rector\Doctrine\Set\DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        \Rector\Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
+        \Rector\Symfony\Set\SensiolabsSetList::ANNOTATIONS_TO_ATTRIBUTES,
 
         /**
          * SYMFONY
@@ -68,15 +74,15 @@ return static function (RectorConfig $rectorConfig): void {
          * DOCTRINE
          */
         //DoctrineSetList::DOCTRINE_25,
-        DoctrineSetList::DOCTRINE_COMMON_20,
-        DoctrineSetList::DOCTRINE_DBAL_211,
-        DoctrineSetList::DOCTRINE_ORM_29,
+        //DoctrineSetList::DOCTRINE_COMMON_20,
+        //DoctrineSetList::DOCTRINE_DBAL_211,
+        //DoctrineSetList::DOCTRINE_ORM_29,
         //DoctrineSetList::DOCTRINE_CODE_QUALITY,
 
         /**
          * PHPUNIT
          */
-        //PHPUnitSetList::PHPUNIT_91,
+        //PHPUnitSetList::PHPUNIT_90, // PHPUNIT_91,
         //PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         //PHPUnitSetList::PHPUNIT_EXCEPTION,
         //PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,

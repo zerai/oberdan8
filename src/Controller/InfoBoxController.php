@@ -9,9 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InfoBoxController extends AbstractController
 {
-    /**
-     * @Route("/info-box", name="info_box_show", methods={"GET"})
-     */
+    #[Route(path: '/info-box', name: 'info_box_show', methods: ['GET'])]
     public function __invoke(InfoBoxRepository $infoBoxRepository): Response
     {
         return $this->render('info-box/_index.html.twig', [

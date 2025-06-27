@@ -10,20 +10,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class BackofficeReservationFormModel
 {
-    /**
-     * @Assert\Valid
-     */
+    #[Assert\Valid]
     public ClientDto $person;
 
     public string $classe = '';
 
-    /**
-     * @Assert\Valid
-     * Assert\Count(
-     *      min = 1,
-     *      minMessage = "Inserire almeno un libro.",
-     * )
-     */
+    #[Assert\Valid] // Assert\Count(
     public $books;
 
     public string $generalNotes;
