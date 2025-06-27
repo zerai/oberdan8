@@ -23,20 +23,14 @@ class LoginFormBackofficeAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    private BackofficeUserRepository $backofficeUserRepository;
-
-    private RouterInterface $router;
-
-    private EntityManagerInterface $entityManager;
-
     /**
      * LoginFormBackofficeAuthenticator constructor.
      */
-    public function __construct(BackofficeUserRepository $backofficeUserRepository, RouterInterface $router, EntityManagerInterface $entityManager)
-    {
-        $this->backofficeUserRepository = $backofficeUserRepository;
-        $this->router = $router;
-        $this->entityManager = $entityManager;
+    public function __construct(
+        private BackofficeUserRepository $backofficeUserRepository,
+        private RouterInterface $router,
+        private EntityManagerInterface $entityManager
+    ) {
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
