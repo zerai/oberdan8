@@ -105,32 +105,22 @@ class ClientDto
         $this->classe = $classe;
     }
 
-    /**
-     * @Assert\NotBlank(message="Inserisci il tuo nome")
-     * @Assert\Length(min=3, minMessage="La lughezza minima per il nome è 3 caratteri!")
-     */
+    #[Assert\NotBlank(message: 'Inserisci il tuo nome')]
+    #[Assert\Length(min: 3, minMessage: 'La lughezza minima per il nome è 3 caratteri!')]
     public string $firstName;
 
-    /**
-     * @Assert\NotBlank(message="Inserisci il tuo cognome")
-     * @Assert\Length(min=3, minMessage="La lughezza minima per il cognome è 3 caratteri!!")
-     */
+    #[Assert\NotBlank(message: 'Inserisci il tuo cognome')]
+    #[Assert\Length(min: 3, minMessage: 'La lughezza minima per il cognome è 3 caratteri!!')]
     public string $lastName;
 
-    /**
-     * @Assert\NotBlank(message="Inserisci la tua email")
-     * @Assert\Email()
-     */
+    #[Assert\NotBlank(message: 'Inserisci la tua email')]
+    #[Assert\Email]
     public string $email;
 
-    /**
-     * @Assert\NotBlank(message="Inserisci il tuo recapito telefonico")
-     */
+    #[Assert\NotBlank(message: 'Inserisci il tuo recapito telefonico')]
     public string $phone;
 
-    /**
-     * @Assert\NotBlank(message="Inserisci una città")
-     */
+    #[Assert\NotBlank(message: 'Inserisci una città')]
     public string $city;
 
     public string $classe = '';

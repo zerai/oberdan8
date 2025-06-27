@@ -9,9 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class BackofficeSecurityController extends AbstractController
 {
-    /**
-     * @Route("/admin/login", name="backoffice_login")
-     */
+    #[Route(path: '/admin/login', name: 'backoffice_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {
@@ -30,9 +28,7 @@ class BackofficeSecurityController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/logout", name="backoffice_logout")
-     */
+    #[Route(path: '/admin/logout', name: 'backoffice_logout')]
     public function logout(): Response
     {
     }

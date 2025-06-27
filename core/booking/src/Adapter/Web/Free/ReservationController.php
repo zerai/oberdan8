@@ -19,9 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Throwable;
 
-/**
- * @Route("/reservation", name="app_reservation", methods={"GET","POST"})
- */
+#[Route(path: '/reservation', name: 'app_reservation', methods: ['GET', 'POST'])]
 class ReservationController extends AbstractController
 {
     public function __invoke(Request $request, BookingMailer $bookingMailer, ReservationRepositoryInterface $repository): Response

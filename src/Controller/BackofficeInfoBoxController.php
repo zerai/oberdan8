@@ -11,15 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin/info-box")
- */
+#[Route(path: '/admin/info-box')]
 class BackofficeInfoBoxController extends AbstractController
 {
-    /**
-     * @Route("/manager", name="backoffice_info_box_manager", methods={"GET"})
-     * @Route("/", name="backoffice_info_box_index", methods={"GET"})
-     */
+    #[Route(path: '/manager', name: 'backoffice_info_box_manager', methods: ['GET'])]
+    #[Route(path: '/', name: 'backoffice_info_box_index', methods: ['GET'])]
     public function manager(InfoBoxRepository $infoBoxRepository): Response
     {
         return $this->render('backoffice/info-box/manager.html.twig', [
@@ -27,9 +23,7 @@ class BackofficeInfoBoxController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="backoffice_info_box_new", methods={"GET","POST"})
-     */
+    #[Route(path: '/new', name: 'backoffice_info_box_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $infoBox = new InfoBox();
@@ -59,9 +53,7 @@ class BackofficeInfoBoxController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="backoffice_info_box_edit", methods={"GET","POST"})
-     */
+    #[Route(path: '/{id}/edit', name: 'backoffice_info_box_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, InfoBox $infoBox, EntityManagerInterface $entityManager): Response
     {
         /**
@@ -87,9 +79,7 @@ class BackofficeInfoBoxController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="backoffice_info_box_delete", methods={"POST"})
-     */
+    #[Route(path: '/{id}', name: 'backoffice_info_box_delete', methods: ['POST'])]
     public function delete(Request $request, InfoBox $infoBox, EntityManagerInterface $entityManager): Response
     {
         /**

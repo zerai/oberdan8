@@ -20,9 +20,7 @@ class ClientDto
     //     */
     public string $lastName;
 
-    /**
-     * @Assert\Email()
-     */
+    #[Assert\Email]
     public string $email;
 
     public string $phone;

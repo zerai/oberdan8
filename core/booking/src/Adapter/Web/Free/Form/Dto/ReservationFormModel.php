@@ -9,31 +9,20 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class ReservationFormModel
 {
-    /**
-     * @Assert\Valid
-     */
+    #[Assert\Valid]
     public ClientDto $person;
 
-    /**
-     * @Assert\NotNull(message="Seleziona un' opzione.")
-     */
+    #[Assert\NotNull(message: "Seleziona un' opzione.")]
     public string $classe;
 
-    /**
-     * @Assert\Valid
-     * @Assert\Count(
-     *      min = 1,
-     *      minMessage = "Inserire almeno un libro.",
-     * )
-     */
+    #[Assert\Valid]
+    #[Assert\Count(min: 1, minMessage: 'Inserire almeno un libro.')]
     public array $books;
 
     public string $otherInfo;
 
     public string $coupondCode;
 
-    /**
-     * @Assert\IsTrue(message="Acconsenti al trattamento dei tuoi dati personali se desideri continuare.")
-     */
+    #[Assert\IsTrue(message: 'Acconsenti al trattamento dei tuoi dati personali se desideri continuare.')]
     public bool $privacyConfirmed;
 }

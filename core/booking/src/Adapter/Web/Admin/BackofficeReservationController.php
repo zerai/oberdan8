@@ -27,14 +27,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Throwable;
 
-/**
- * @Route("/admin/prenotazioni")
- */
+#[Route(path: '/admin/prenotazioni')]
 class BackofficeReservationController extends AbstractController
 {
-    /**
-     * @Route("/", name="backoffice_reservation_index", methods={"GET"})
-     */
+    #[Route(path: '/', name: 'backoffice_reservation_index', methods: ['GET'])]
     public function index(ReservationRepositoryInterface $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $q = $request->query->get('q');
@@ -55,9 +51,7 @@ class BackofficeReservationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="backoffice_reservation_new", methods={"GET","POST"})
-     */
+    #[Route(path: '/new', name: 'backoffice_reservation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ReservationRepositoryInterface $repository): Response
     {
         $reservationFormModel = new BackofficeReservationFormModel();
@@ -126,9 +120,7 @@ class BackofficeReservationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="backoffice_reservation_show", methods={"GET"})
-     */
+    #[Route(path: '/{id}', name: 'backoffice_reservation_show', methods: ['GET'])]
     public function show(Reservation $reservation): Response
     {
         return $this->render('backoffice/reservation/show.html.twig', [
@@ -156,9 +148,7 @@ class BackofficeReservationController extends AbstractController
         return $formModel;
     }
 
-    /**
-     * @Route("/{id}/edit", name="backoffice_reservation_edit", methods={"GET","POST"})
-     */
+    #[Route(path: '/{id}/edit', name: 'backoffice_reservation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Reservation $reservation, BookingMailer $bookingMailer, EntityManagerInterface $entityManager): Response
     {
         $formModel = $this->mapReservationToFormModel($reservation);
@@ -234,9 +224,7 @@ class BackofficeReservationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="backoffice_reservation_delete", methods={"POST"})
-     */
+    #[Route(path: '/{id}', name: 'backoffice_reservation_delete', methods: ['POST'])]
     public function delete(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
@@ -249,9 +237,7 @@ class BackofficeReservationController extends AbstractController
         return $this->redirectToRoute('backoffice_reservation_index');
     }
 
-    /**
-     * @Route("/{id}/delete-book/{book_id}", name="backoffice_reservation_delete_book", methods={"POST"})
-     */
+    #[Route(path: '/{id}/delete-book/{book_id}', name: 'backoffice_reservation_delete_book', methods: ['POST'])]
     public function deleteBookFromReservation(Request $request, Reservation $reservation, BookRepository $bookRepository, LoggerInterface $logger, EntityManagerInterface $entityManager): Response
     {
         $bookId = $request->request->get('book_id');
@@ -285,11 +271,6 @@ class BackofficeReservationController extends AbstractController
         ]);
     }
 
-    /**
-     * Rimuovere dopo il deploy (i test passano anche senza...)
-     * durante l'update viene usato $bookingMailer->notifyReservationThanksEmailToClient()
-     * questo metodo è inutile
-     */
     //    /**
     //     * @Route("/{id}", name="backoffice_reservation_send_tanks_mail", methods={"POST"})
     //     */
@@ -305,10 +286,7 @@ class BackofficeReservationController extends AbstractController
     //
     //        return $this->redirectToRoute('backoffice_reservation_index');
     //    }
-
-    /**
-     * @Route("/{id}/add-extension-time", name="backoffice_reservation_add_extension_time", methods={"POST"})
-     */
+    #[Route(path: '/{id}/add-extension-time', name: 'backoffice_reservation_add_extension_time', methods: ['POST'])]
     public function addExtensionTimeToConfirmation(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('add-extension-time' . $reservation->getId()->toString(), (string) $request->request->get('_token'))) {
