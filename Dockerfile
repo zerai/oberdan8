@@ -1,4 +1,5 @@
-ARG PHP_VERSION=8.1-fpm-alpine3.22
+#ARG PHP_VERSION=8.1-fpm-alpine3.22
+ARG PHP_VERSION=8.0-fpm-alpine
 
 FROM php:${PHP_VERSION} AS php_builder
 
