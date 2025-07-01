@@ -43,7 +43,7 @@ class CrudDeleteControllerTest extends PantherTestCase
     public function shouldDeleteAReservation(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $this->client->request('GET', '/');
 
@@ -103,7 +103,7 @@ class CrudDeleteControllerTest extends PantherTestCase
                 'active' => true,
                 'password' => 'xxx',
                 'roles' => ['ROLE_ADMIN'],
-            ])->object();
+            ])->_real();
         }
 
         /** @var Session $session */

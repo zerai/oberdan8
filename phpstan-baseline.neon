@@ -469,6 +469,14 @@ parameters:
 			path: core/booking/src/Infrastructure/Exporter/ExportDataHttpResponseFactory.php
 
 		-
+			message: """
+				#^Call to deprecated method withAttributes\\(\\) of class Zenstruck\\\\Foundry\\\\Factory\\:
+				use with\\(\\) instead$#
+			"""
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
+
+		-
 			message: "#^Cannot call method close\\(\\) on Doctrine\\\\ORM\\\\EntityManager\\|null\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
@@ -869,7 +877,12 @@ parameters:
 			path: tests/E2E/AdozioniReservation/AdozioniReservationTest.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:_real\\(\\)\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Call to deprecated function Zenstruck\\\\Foundry\\\\factory\\(\\)\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
@@ -895,6 +908,11 @@ parameters:
 			message: "#^Property App\\\\Tests\\\\E2E\\\\Backoffice\\\\Reservation\\\\CrudDeleteControllerTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
+
+		-
+			message: "#^Call to deprecated function Zenstruck\\\\Foundry\\\\factory\\(\\)\\.$#"
+			count: 1
+			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
 		-
 			message: """
@@ -955,7 +973,7 @@ parameters:
 			path: tests/Functional/Backoffice/InfoBoxCrudTest.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:_real\\(\\)\\.$#"
 			count: 2
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudMailingTest.php
 
@@ -970,7 +988,7 @@ parameters:
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudTest.php
 
 		-
-			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:object\\(\\)\\.$#"
+			message: "#^Call to an undefined method Booking\\\\Application\\\\Domain\\\\Model\\\\Reservation\\|Zenstruck\\\\Foundry\\\\Proxy\\:\\:_real\\(\\)\\.$#"
 			count: 10
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
 
@@ -1008,6 +1026,11 @@ parameters:
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 10
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
+
+		-
+			message: "#^Call to deprecated function Zenstruck\\\\Foundry\\\\factory\\(\\)\\.$#"
+			count: 1
+			path: tests/Functional/SecurityWebtestCase.php
 
 		-
 			message: """
