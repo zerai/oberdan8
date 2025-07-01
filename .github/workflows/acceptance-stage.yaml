@@ -36,7 +36,7 @@ jobs:
       matrix:
         php:
           #- '7.4'
-          - '8.0'
+          #- '8.0'
           - '8.1'
       fail-fast: true
     steps:
@@ -127,7 +127,7 @@ jobs:
       matrix:
         php:
           #- '7.4'
-          - '8.0'
+          #- '8.0'
           - '8.1'
       fail-fast: true
     steps:
@@ -228,7 +228,7 @@ jobs:
       matrix:
         php:
           #- '7.4'
-          - '8.0'
+          #- '8.0'
           - '8.1'
         node:
           - '16.x'
@@ -362,7 +362,7 @@ jobs:
       matrix:
         php:
           #- '7.4'
-          - '8.0'
+          #- '8.0'
           - '8.1'
         node:
           - '16.x'
