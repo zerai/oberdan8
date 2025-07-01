@@ -23,7 +23,8 @@ class BackofficeMailManagerController extends AbstractController
     {
         $bookingMailer->notifyReservationThanksEmailToClient($user->getUsername(), '');
 
-        $this->addFlash('success', 'Email template inviato all\'indirizzo: ' . $user->getUsername());
+        //$this->addFlash('success', 'Email template inviato all\'indirizzo: ' . $user->getUsername());
+        $this->addFlash('success', 'Email template inviato all\'indirizzo: ' . $user->getUserIdentifier());
 
         return $this->redirectToRoute('backoffice_mailer_manager_index');
     }
