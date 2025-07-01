@@ -259,7 +259,7 @@ class ReservationCrudControllerTest extends PantherTestCase
                 'active' => true,
                 'password' => 'xxx',
                 'roles' => ['ROLE_ADMIN'],
-            ])->object();
+            ])->_real();
         }
 
         /** @var Session $session */

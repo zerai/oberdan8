@@ -30,7 +30,10 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationLastName(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        # TODO: remove deprecated code
+        //$reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
+
 
         $lastName = ReservationStaticFixture::LAST_NAME;
 
@@ -62,7 +65,9 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationFirstName(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        # TODO: remove deprecated code
+        //$reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $firstName = ReservationStaticFixture::FIRST_NAME;
 
@@ -94,7 +99,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationEmail(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $email = ReservationStaticFixture::EMAIL;
 
@@ -126,7 +131,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationPhone(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $phone = ReservationStaticFixture::PHONE;
 
@@ -158,7 +163,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationCity(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $city = ReservationStaticFixture::CITY;
 
@@ -190,7 +195,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationClasse(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $classe = 'terza';
 
@@ -228,7 +233,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
         $reservation = ReservationFactory::createOne([
             'books' => BookFactory::new()->many(5),
             'saleDetail' => ReservationSaleDetailFactory::new()->withConfirmed1DayAgo()->create(),
-        ])->object();
+        ])->_real();
 
         // /** @var ReservationRepository $reservationRepository */
         //        $reservationRepository = static::$kernel->getContainer()->get('Booking\Adapter\Persistence\ReservationRepository');
@@ -273,7 +278,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationStatusForAReservation(string $newStatus, string $expectedStatusInPage): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $this->logInAsAdmin();
 
@@ -299,7 +304,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationNotesForAReservation(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $this->logInAsAdmin();
 
@@ -329,7 +334,7 @@ class ReservationCrudUpdateTest extends SecurityWebtestCase
     public function shouldEditTheReservationPackageIdForAReservation(): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $this->logInAsAdmin();
 

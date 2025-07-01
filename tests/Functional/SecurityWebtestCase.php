@@ -30,13 +30,23 @@ class SecurityWebtestCase extends WebTestCase
         if (null === $admin) {
             // find a persisted object for the given attributes, if not found, create with the attributes
             $factory = factory(BackofficeUser::class);
+
+            #TODO: remove deprecated code
+            //            $admin = $factory->findOrCreate([
+            //                //  'id' => 100,
+            //                'email' => 'admin@example.com',
+            //                'active' => true,
+            //                'password' => 'xxx',
+            //                'roles' => ['ROLE_ADMIN'],
+            //            ])->object();
+
             $admin = $factory->findOrCreate([
                 //  'id' => 100,
                 'email' => 'admin@example.com',
                 'active' => true,
                 'password' => 'xxx',
                 'roles' => ['ROLE_ADMIN'],
-            ])->object();
+            ])->_real();
         }
 
         $session = $this->client->getContainer()->get('session');

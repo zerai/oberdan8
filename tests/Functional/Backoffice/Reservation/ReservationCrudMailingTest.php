@@ -25,7 +25,7 @@ class ReservationCrudMailingTest extends SecurityWebtestCase
     public function shouldSendThanksMailWhenMovedToStatusPikedUp(string $pickedUpStatus = 'PickedUp'): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         $this->logInAsAdmin();
 
@@ -53,7 +53,7 @@ class ReservationCrudMailingTest extends SecurityWebtestCase
     public function shouldNotSendThanksMailWhenMovedToStatusPikedUp(string $pickedUpStatus = 'PickedUp'): void
     {
         /** @var Reservation $reservation */
-        $reservation = ReservationFactory::createOne()->object();
+        $reservation = ReservationFactory::createOne()->_real();
 
         /** @var ReservationRepository $reservationRepository */
         $reservationRepository = static::$kernel->getContainer()->get(ReservationRepository::class);
