@@ -12,6 +12,7 @@ use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Set\SymfonySetList;
+use Rector\Symfony\Symfony64\Rector\Class_\ChangeRouteAttributeFromAnnotationSubnamespaceRector;
 use Rector\ValueObject\PhpVersion;
 
 /**
@@ -42,7 +43,15 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->phpVersion(PhpVersion::PHP_80);
 
+    $rectorConfig->skip([
 
+        ChangeRouteAttributeFromAnnotationSubnamespaceRector::class,
+//        LiteralGetToRequestClassConstantRector::class => [
+//            __DIR__ . '/tests',
+//            __DIR__ . '/context/catalog/tests',
+//            __DIR__ . '/context/bffWeb/tests',
+//        ],
+    ]);
     // register a single rule
     $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
 
@@ -65,7 +74,7 @@ return static function (RectorConfig $rectorConfig): void {
         /**
          * SYMFONY
          */
-        SymfonySetList::SYMFONY_54,
+        SymfonySetList::SYMFONY_64,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
         //SymfonySetList::SYMFONY_STRICT,
