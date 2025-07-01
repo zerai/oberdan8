@@ -19,27 +19,19 @@ class SecurityWebtestCase extends WebTestCase
         $this->client = static::createClient();
     }
 
-    protected function logInAsAdmin(): void
+    public function newLogInAsAdmin(): void
     {
+        //$client = static::createClient();
         $backofficeUserRepository = $this->client->getContainer()->get(BackofficeUserRepository::class);
 
+        // retrieve the test user
         $admin = $backofficeUserRepository->findOneBy([
             'email' => 'admin@example.com',
         ]);
 
-        if (null === $admin) {
+                if (null === $admin) {
             // find a persisted object for the given attributes, if not found, create with the attributes
             $factory = factory(BackofficeUser::class);
-
-            #TODO: remove deprecated code
-            //            $admin = $factory->findOrCreate([
-            //                //  'id' => 100,
-            //                'email' => 'admin@example.com',
-            //                'active' => true,
-            //                'password' => 'xxx',
-            //                'roles' => ['ROLE_ADMIN'],
-            //            ])->object();
-
             $admin = $factory->findOrCreate([
                 //  'id' => 100,
                 'email' => 'admin@example.com',
@@ -49,24 +41,63 @@ class SecurityWebtestCase extends WebTestCase
             ])->_real();
         }
 
-        $session = $this->client->getContainer()->get('session');
 
-        $firewallName = 'secure_area';
-        // if you don't define multiple connected firewalls, the context defaults to the firewall name
-        // See https://symfony.com/doc/current/reference/configuration/security.html#firewall-context
-        $firewallContext = 'secured_area';
+        $this->client->followRedirects(true);
+        // simulate $testUser being logged in
+        $this->client->loginUser($admin, 'secure_area');
 
-        // you may need to use a different token class depending on your application.
-        // for example, when using Guard authentication you must instantiate PostAuthenticationGuardToken
 
-        //$token = new UsernamePasswordToken('admin@example.com', null, $firewallName, ['ROLE_ADMIN']);
 
-        $token = new PostAuthenticationGuardToken($admin, 'app_user_provider', $admin->getRoles());
-
-        $session->set('_security_' . $firewallContext, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
+    }
+    protected function logInAsAdmin(): void
+    {
+        $this->newLogInAsAdmin();
+//        $backofficeUserRepository = $this->client->getContainer()->get(BackofficeUserRepository::class);
+//
+//        $admin = $backofficeUserRepository->findOneBy([
+//            'email' => 'admin@example.com',
+//        ]);
+//
+//        if (null === $admin) {
+//            // find a persisted object for the given attributes, if not found, create with the attributes
+//            $factory = factory(BackofficeUser::class);
+//
+//            #TODO: remove deprecated code
+//            //            $admin = $factory->findOrCreate([
+//            //                //  'id' => 100,
+//            //                'email' => 'admin@example.com',
+//            //                'active' => true,
+//            //                'password' => 'xxx',
+//            //                'roles' => ['ROLE_ADMIN'],
+//            //            ])->object();
+//
+//            $admin = $factory->findOrCreate([
+//                //  'id' => 100,
+//                'email' => 'admin@example.com',
+//                'active' => true,
+//                'password' => 'xxx',
+//                'roles' => ['ROLE_ADMIN'],
+//            ])->_real();
+//        }
+//
+//        $session = $this->client->getContainer()->get('session');
+//
+//        $firewallName = 'secure_area';
+//        // if you don't define multiple connected firewalls, the context defaults to the firewall name
+//        // See https://symfony.com/doc/current/reference/configuration/security.html#firewall-context
+//        $firewallContext = 'secured_area';
+//
+//        // you may need to use a different token class depending on your application.
+//        // for example, when using Guard authentication you must instantiate PostAuthenticationGuardToken
+//
+//        //$token = new UsernamePasswordToken('admin@example.com', null, $firewallName, ['ROLE_ADMIN']);
+//
+//        $token = new PostAuthenticationGuardToken($admin, 'app_user_provider', $admin->getRoles());
+//
+//        $session->set('_security_' . $firewallContext, serialize($token));
+//        $session->save();
+//
+//        $cookie = new Cookie($session->getName(), $session->getId());
+//        $this->client->getCookieJar()->set($cookie);
     }
 }
