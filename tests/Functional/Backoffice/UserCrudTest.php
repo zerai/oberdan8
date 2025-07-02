@@ -14,6 +14,8 @@ class UserCrudTest extends SecurityWebtestCase
 
         $this->client->request('GET', '/admin/user/');
 
+        self::assertStringContainsString('Gestione utenti', $this->client->getResponse()->getContent());
+
         self::assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
@@ -26,7 +28,10 @@ class UserCrudTest extends SecurityWebtestCase
 
         self::assertResponseIsSuccessful();
 
+        self::assertStringContainsString('Crea utente', $this->client->getResponse()->getContent());
+
         $this->client->followRedirects(true);
+
 
         $crawler = $this->client->submitForm('Salva', [
             'backoffice_user[email]' => 'anewuser@example.com',
