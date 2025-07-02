@@ -7,3 +7,9 @@ admin_home:
   defaults:
     route: 'backoffice_dashboard'
     permanent: true
+
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
