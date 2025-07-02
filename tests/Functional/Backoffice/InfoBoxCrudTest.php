@@ -30,7 +30,7 @@ class InfoBoxCrudTest extends SecurityWebtestCase
 
         $this->client->followRedirects(true);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('_info_box_token');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('_info_box_token');
 
         $crawler = $this->client->submitForm('Salva', [
             'info_box[title]' => 'irrelevant title',
