@@ -1,0 +1,15 @@
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
+
+controllers_public:
+    resource: ../../core/booking/src/Adapter/Web/Free/
+    type: annotation
+
+controllers_admin:
+    resource: ../../core/booking/src/Adapter/Web/Admin/
+    type: annotation

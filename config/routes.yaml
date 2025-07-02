@@ -13,3 +13,15 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+controllers_public:
+    resource:
+        path: ../core/booking/src/Adapter/Web/Free/
+        namespace: Booking\Adapter\Web\Free
+    type: attribute
+
+controllers_admin:
+    resource:
+        path: ../core/booking/src/Adapter/Web/Admin/
+        namespace: Booking\Adapter\Web\Admin
+    type: attribute
