@@ -25,8 +25,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithFullData(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -57,7 +58,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -70,8 +71,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithoutLastName(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -102,7 +104,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -115,8 +117,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithoutFirstName(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -147,7 +150,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -160,8 +163,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithoutEmail(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -192,7 +196,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -205,8 +209,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithoutPhone(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -237,7 +242,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -250,8 +255,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithoutCity(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -282,7 +288,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -296,8 +302,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     {
         //self::markTestIncomplete();
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -329,7 +336,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -342,8 +349,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithoutGeneralNotes(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -374,7 +382,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "",
                     "packageId" => ReservationStaticFixture::PACKAGE_ID,
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -387,8 +395,9 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
     public function canSendFormWithoutPackageId(): void
     {
         $this->logInAsAdmin();
+        $this->client->followRedirects(false);
 
-        $csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $this->client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $this->client->request(
             'POST',
@@ -419,7 +428,7 @@ class ReservationCrudCreateTest extends SecurityWebtestCase
                     "generalNotes" => "Vorrei sapere di che anno è la vostra edizione.",
                     "packageId" => "",
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],

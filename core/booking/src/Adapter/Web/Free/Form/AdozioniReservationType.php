@@ -82,6 +82,7 @@ class AdozioniReservationType extends AbstractType
         $resolver->setDefaults([
             // Configure your form options here
             'data_class' => AdozioniReservationFormModel::class,
+            'csrf_protection' => false,
         ]);
     }
 }

@@ -33,7 +33,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
+        //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
 
         $this->prepareFileFixture(self::PDF_FILE_1);
 
@@ -56,7 +56,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             // UPLOADED FILES
@@ -77,7 +77,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
+        //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
 
         $this->prepareFileFixture(self::PDF_FILE_1);
 
@@ -100,7 +100,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             // UPLOADED FILES
@@ -131,7 +131,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
+        //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
 
         $this->prepareFileFixture(self::PDF_FILE_1);
 
@@ -154,7 +154,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                     "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             // UPLOADED FILES
