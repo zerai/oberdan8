@@ -136,11 +136,8 @@ parameters:
 			path: core/booking/src/Adapter/Web/Admin/BackofficeCouponCodeReservationController.php
 
 		-
-			message: """
-				#^Call to deprecated method getUsername\\(\\) of interface Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:
-				since Symfony 5\\.3, use getUserIdentifier\\(\\) instead$#
-			"""
-			count: 2
+			message: "#^Call to an undefined method Symfony\\\\Component\\\\Security\\\\Core\\\\User\\\\UserInterface\\:\\:getUsername\\(\\)\\.$#"
+			count: 1
 			path: core/booking/src/Adapter/Web/Admin/BackofficeMailManagerController.php
 
 		-
@@ -464,9 +461,19 @@ parameters:
 			path: core/booking/src/Infrastructure/Exporter/CsvEncoder.php
 
 		-
+			message: "#^Casting to string something that's already string\\.$#"
+			count: 1
+			path: core/booking/src/Infrastructure/Exporter/ExportDataHttpResponseFactory.php
+
+		-
 			message: "#^Parameter \\#2 \\$filename of method Symfony\\\\Component\\\\HttpFoundation\\\\ResponseHeaderBag\\:\\:makeDisposition\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: core/booking/src/Infrastructure/Exporter/ExportDataHttpResponseFactory.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getManager\\(\\)\\.$#"
+			count: 1
+			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
 
 		-
 			message: """
@@ -487,12 +494,7 @@ parameters:
 			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
 
 		-
-			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
-			count: 1
-			path: core/booking/tests/Integration/ExportDataRetrieverTest.php
-
-		-
-			message: "#^Cannot call method getManager\\(\\) on object\\|null\\.$#"
+			message: "#^Call to an undefined method object\\:\\:getManager\\(\\)\\.$#"
 			count: 1
 			path: core/booking/tests/Integration/ReservationRepositoryTest.php
 
@@ -682,6 +684,14 @@ parameters:
 			path: core/booking/tests/Unit/Infrastructure/Form/ReservationFormTest.php
 
 		-
+			message: """
+				#^Access to deprecated static property \\$defaultDescription of class App\\\\Command\\\\DefaultAdminCreateCommand\\:
+				since Symfony 6\\.1, use the AsCommand attribute instead$#
+			"""
+			count: 1
+			path: src/Command/DefaultAdminCreateCommand.php
+
+		-
 			message: "#^Parameter \\#1 \\$description of method Symfony\\\\Component\\\\Console\\\\Command\\\\Command\\:\\:setDescription\\(\\) expects string, string\\|null given\\.$#"
 			count: 1
 			path: src/Command/DefaultAdminCreateCommand.php
@@ -817,6 +827,14 @@ parameters:
 			path: src/Security/EmailVerifier.php
 
 		-
+			message: """
+				#^Call to deprecated method validateEmailConfirmation\\(\\) of interface SymfonyCasts\\\\Bundle\\\\VerifyEmail\\\\VerifyEmailHelperInterface\\:
+				since v1\\.17\\.0, use validateEmailConfirmationFromRequest instead\\.$#
+			"""
+			count: 1
+			path: src/Security/EmailVerifier.php
+
+		-
 			message: "#^Only booleans are allowed in a negated boolean, App\\\\Entity\\\\BackofficeUser\\|null given\\.$#"
 			count: 1
 			path: src/Security/LoginFormBackofficeAuthenticator.php
@@ -892,10 +910,7 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
 		-
-			message: """
-				#^Instantiation of deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken\\:
-				since Symfony 5\\.3, use the new authenticator system instead$#
-			"""
+			message: "#^Instantiated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken not found\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/CrudDeleteControllerTest.php
 
@@ -915,10 +930,7 @@ parameters:
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
 		-
-			message: """
-				#^Instantiation of deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken\\:
-				since Symfony 5\\.3, use the new authenticator system instead$#
-			"""
+			message: "#^Instantiated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken not found\\.$#"
 			count: 1
 			path: tests/E2E/Backoffice/Reservation/ReservationCrudControllerTest.php
 
@@ -941,11 +953,6 @@ parameters:
 			message: "#^Property App\\\\Tests\\\\E2E\\\\RegularReservation\\\\ReservationControllerTest\\:\\:\\$client has no type specified\\.$#"
 			count: 1
 			path: tests/E2E/RegularReservation/ReservationControllerTest.php
-
-		-
-			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
-			count: 3
-			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
 			message: "#^Constant App\\\\Tests\\\\Functional\\\\AdozioniReservation\\\\MailSendingInAdozioniReservationControllerTest\\:\\:NOTES is unused\\.$#"
@@ -1008,11 +1015,6 @@ parameters:
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
 
 		-
-			message: "#^Cannot call method getToken\\(\\) on object\\|null\\.$#"
-			count: 3
-			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 1
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
@@ -1029,14 +1031,6 @@ parameters:
 
 		-
 			message: "#^Call to deprecated function Zenstruck\\\\Foundry\\\\factory\\(\\)\\.$#"
-			count: 1
-			path: tests/Functional/SecurityWebtestCase.php
-
-		-
-			message: """
-				#^Instantiation of deprecated class Symfony\\\\Component\\\\Security\\\\Guard\\\\Token\\\\PostAuthenticationGuardToken\\:
-				since Symfony 5\\.3, use the new authenticator system instead$#
-			"""
 			count: 1
 			path: tests/Functional/SecurityWebtestCase.php
 
