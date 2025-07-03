@@ -5,8 +5,6 @@ namespace App\Tests\Functional;
 use App\Entity\BackofficeUser;
 use App\Repository\BackofficeUserRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use function Zenstruck\Foundry\factory;
 
 class SecurityWebtestCase extends WebTestCase
