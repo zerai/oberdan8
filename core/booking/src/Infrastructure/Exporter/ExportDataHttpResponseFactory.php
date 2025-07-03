@@ -13,7 +13,7 @@ class ExportDataHttpResponseFactory
         $response = new Response($file->content(), $status);
 
         $response->headers->set('Content-Type', 'application/vnd.ms-excel');
-        $contentDisposition = (string) $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $file->name());
+        $contentDisposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $file->name());
         $response->headers->set('Content-Disposition', $contentDisposition);
 
         $response->setMaxAge($maxage);

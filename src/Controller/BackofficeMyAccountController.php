@@ -38,7 +38,7 @@ class BackofficeMyAccountController extends AbstractController
             $newPassword = $form->get('plainPassword')->getData();
 
             $backofficeUser = $backofficeUserRepository->findOneBy([
-                'email' => $user->getUsername(),
+                'email' => $user->getUserIdentifier(),
             ]);
 
             $backofficeUser->setPassword(

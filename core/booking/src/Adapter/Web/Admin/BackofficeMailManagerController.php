@@ -21,7 +21,7 @@ class BackofficeMailManagerController extends AbstractController
     #[Route(path: '/send-example/thanks-mail', name: 'backoffice_mailer_manager_example_send_tanks_mail', methods: ['GET'])]
     public function sendThanksMailTemplate(UserInterface $user, BookingMailer $bookingMailer): Response
     {
-        $bookingMailer->notifyReservationThanksEmailToClient($user->getUsername(), '');
+        $bookingMailer->notifyReservationThanksEmailToClient($user->getUserIdentifier(), '');
 
         //$this->addFlash('success', 'Email template inviato all\'indirizzo: ' . $user->getUsername());
         $this->addFlash('success', 'Email template inviato all\'indirizzo: ' . $user->getUserIdentifier());
