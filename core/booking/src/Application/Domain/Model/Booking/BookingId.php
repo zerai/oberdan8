@@ -15,7 +15,7 @@ use Stringable;
 final class BookingId implements Stringable
 {
     private function __construct(
-        private UuidInterface $uuid
+        private readonly UuidInterface $uuid
     ) {
     }
 

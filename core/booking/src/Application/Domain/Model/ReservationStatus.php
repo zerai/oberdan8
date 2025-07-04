@@ -83,8 +83,8 @@ final class ReservationStatus implements Stringable
     }
 
     private function __construct(
-        private string $name,
-        private int $value
+        private readonly string $name,
+        private readonly int $value
     ) {
     }
 

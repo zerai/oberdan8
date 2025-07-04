@@ -18,8 +18,8 @@ final class RegularReservation
      * @param list<Book> $books
      */
     public function __construct(
-        private ReservationId $id,
-        private Client $client,
+        private readonly ReservationId $id,
+        private readonly Client $client,
         private array $books
     ) {
     }

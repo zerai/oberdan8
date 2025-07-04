@@ -7,8 +7,8 @@ use Ramsey\Uuid\Uuid;
 class ExportCustomer implements ExportCustomerInterface
 {
     public function __construct(
-        private ExportDataRetrieverInterface $datasource,
-        private ExportEncoderInterface $encoder
+        private readonly ExportDataRetrieverInterface $datasource,
+        private readonly ExportEncoderInterface $encoder
     ) {
     }
 

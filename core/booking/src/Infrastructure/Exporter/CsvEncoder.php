@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class CsvEncoder implements ExportEncoderInterface
 {
-    private SerializerInterface $serializer;
+    private readonly SerializerInterface $serializer;
 
     public function __construct(SerializerInterface $serializer = null)
     {

@@ -14,8 +14,8 @@ use Twig\TwigFunction;
 class AppExtension extends AbstractExtension implements ServiceSubscriberInterface
 {
     public function __construct(
-        private ContainerInterface $container,
-        private string $publicDir
+        private readonly ContainerInterface $container,
+        private readonly string $publicDir
     ) {
     }
 
@@ -23,7 +23,7 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
     {
         return [
             //new TwigFunction('uploaded_asset', [$this, 'getUploadedAssetPath']),
-            new TwigFunction('encore_entry_css_source', [$this, 'getEncoreEntryCssSource']),
+            new TwigFunction('encore_entry_css_source', $this->getEncoreEntryCssSource(...)),
         ];
     }
 

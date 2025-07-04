@@ -9,10 +9,10 @@ use InvalidArgumentException;
 final class Book
 {
     public function __construct(
-        private Isbn $isbn,
-        private Title $title,
-        private Author $author,
-        private Volume $volume
+        private readonly Isbn $isbn,
+        private readonly Title $title,
+        private readonly Author $author,
+        private readonly Volume $volume
     ) {
     }
 

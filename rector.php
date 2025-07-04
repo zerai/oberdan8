@@ -41,7 +41,7 @@ return static function (RectorConfig $rectorConfig): void {
     //$rectorConfig->importShortClasses();
     $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
 
-    $rectorConfig->phpVersion(PhpVersion::PHP_80);
+    $rectorConfig->phpVersion(PhpVersion::PHP_81);
 
     $rectorConfig->skip([
 
@@ -65,7 +65,7 @@ return static function (RectorConfig $rectorConfig): void {
         /**
          * PHP
          */
-        LevelSetList::UP_TO_PHP_80,
+        LevelSetList::UP_TO_PHP_81,
 
         \Rector\Doctrine\Set\DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
         \Rector\Symfony\Set\SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
