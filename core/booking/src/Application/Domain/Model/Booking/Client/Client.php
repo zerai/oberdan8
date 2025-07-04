@@ -9,13 +9,13 @@ use InvalidArgumentException;
 final class Client
 {
     public function __construct(
-        private ClientId $id,
-        private FirstName $firstName,
-        private LastName $lastName,
-        private Email $email,
-        private Phone $phone,
-        private ?Classe $classe,
-        private string $city = ''
+        private readonly ClientId $id,
+        private readonly FirstName $firstName,
+        private readonly LastName $lastName,
+        private readonly Email $email,
+        private readonly Phone $phone,
+        private readonly ?Classe $classe,
+        private readonly string $city = ''
     ) {
     }
 

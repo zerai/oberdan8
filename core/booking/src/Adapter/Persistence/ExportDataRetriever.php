@@ -9,7 +9,7 @@ use Exception;
 class ExportDataRetriever implements ExportDataRetrieverInterface
 {
     public function __construct(
-        private EntityManagerInterface $entityManager
+        private readonly EntityManagerInterface $entityManager
     ) {
     }
 

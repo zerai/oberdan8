@@ -5,7 +5,7 @@ namespace Booking\Application\Domain\Model\ConfirmationStatus;
 final class ExtensionTime
 {
     public function __construct(
-        private bool $value
+        private readonly bool $value
     ) {
     }
 

@@ -20,8 +20,8 @@ final class ConfirmationStatus
     private const EXTENDED_EXPIRATION_TIME = 7;
 
     public function __construct(
-        private DateTimeImmutable $confirmedAt,
-        private ExtensionTime $extensionTime
+        private readonly DateTimeImmutable $confirmedAt,
+        private readonly ExtensionTime $extensionTime
     ) {
     }
 

@@ -5,8 +5,8 @@ namespace Booking\Infrastructure;
 final class BookingEmailSender
 {
     public function __construct(
-        private string $address,
-        private string $name
+        private readonly string $address,
+        private readonly string $name
     ) {
     }
 

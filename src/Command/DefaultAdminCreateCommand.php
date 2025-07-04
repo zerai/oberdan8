@@ -22,8 +22,8 @@ class DefaultAdminCreateCommand extends Command
      * DefaultAdminCreateCommand constructor.
      */
     public function __construct(
-        private UserPasswordHasherInterface $passwordHasher,
-        private BackofficeUserRepository $backofficeUserRepository
+        private readonly UserPasswordHasherInterface $passwordHasher,
+        private readonly BackofficeUserRepository $backofficeUserRepository
     ) {
         parent::__construct();
     }

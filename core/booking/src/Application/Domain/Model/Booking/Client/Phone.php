@@ -11,7 +11,7 @@ namespace Booking\Application\Domain\Model\Booking\Client;
 final class Phone
 {
     public function __construct(
-        private string $value
+        private readonly string $value
     ) {
     }
 

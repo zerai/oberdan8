@@ -5,8 +5,8 @@ namespace Booking\Application\Domain\UseCase;
 class ExportedFile implements ExportedFileWrapperInterface
 {
     public function __construct(
-        private string $name,
-        private string $content
+        private readonly string $name,
+        private readonly string $content
     ) {
     }
 

@@ -28,9 +28,9 @@ class BookingMailer implements NotifyReservationConfirmationToClient, NotifyNewR
      * @param BackofficeEmailRetriever $backofficeEmailRetriever
      */
     public function __construct(
-        private MailerInterface $mailer,
-        private BookingEmailSender $sender,
-        private BackofficeEmailRetriever $backofficeEmailRetriever
+        private readonly MailerInterface $mailer,
+        private readonly BookingEmailSender $sender,
+        private readonly BackofficeEmailRetriever $backofficeEmailRetriever
     ) {
     }
 

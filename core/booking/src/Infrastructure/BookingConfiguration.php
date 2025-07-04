@@ -13,10 +13,10 @@ class BookingConfiguration
      * @param string $backofficeRetrieverAs
      */
     public function __construct(
-        private string $mailerSender,
-        private string $mailerSenderAs,
-        private string $backofficeRetriever,
-        private string $backofficeRetrieverAs
+        private readonly string $mailerSender,
+        private readonly string $mailerSenderAs,
+        private readonly string $backofficeRetriever,
+        private readonly string $backofficeRetrieverAs
     ) {
     }
 
