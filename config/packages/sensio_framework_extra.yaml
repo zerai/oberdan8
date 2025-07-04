@@ -1,9 +1,0 @@
-sensio_framework_extra:
-    router:
-        annotations: false
-
-    # needed for sentry monitoring
-    # see https://docs.sentry.io/platforms/php/guides/symfony/
-    # see https://github.com/sensiolabs/SensioFrameworkExtraBundle/pull/710
-    #psr_message:
-        #enabled: false

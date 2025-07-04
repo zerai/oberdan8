@@ -105,6 +105,7 @@ class BackofficeReservationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => BackofficeReservationFormModel::class,
+            'csrf_protection' => false,
             'csrf_token_id' => 'reservation',
             'include_reservation_status' => false,
             'include_packageId' => false,

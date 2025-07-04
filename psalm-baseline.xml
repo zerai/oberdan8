@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="core/booking/src/Adapter/Persistence/DoctrineType/ReservationStatusType.php">
     <MixedArgument>
       <code><![CDATA[$value]]></code>
@@ -39,12 +39,6 @@
     <UndefinedInterfaceMethod>
       <code><![CDATA[findWithQueryBuilderAllWithCouponCodeOrderByNewest]]></code>
     </UndefinedInterfaceMethod>
-  </file>
-  <file src="core/booking/src/Adapter/Web/Admin/BackofficeMailManagerController.php">
-    <DeprecatedMethod>
-      <code><![CDATA[getUsername]]></code>
-      <code><![CDATA[getUsername]]></code>
-    </DeprecatedMethod>
   </file>
   <file src="core/booking/src/Adapter/Web/Admin/BackofficeReservationController.php">
     <MissingPropertyType>
@@ -174,25 +168,11 @@
   </file>
   <file src="core/booking/src/Application/Domain/Model/Booking/RegularReservation.php">
     <ArgumentTypeCoercion>
-      <code><![CDATA[$this->books]]></code>
-      <code><![CDATA[$this->books]]></code>
       <code><![CDATA[array_map(fn ($e) => Book::fromArray($e), $data['books'])]]></code>
     </ArgumentTypeCoercion>
-    <LessSpecificReturnStatement>
-      <code><![CDATA[$this->books]]></code>
-    </LessSpecificReturnStatement>
     <MixedArgument>
       <code><![CDATA[$e]]></code>
     </MixedArgument>
-    <MixedAssignment>
-      <code><![CDATA[$v]]></code>
-    </MixedAssignment>
-    <MixedMethodCall>
-      <code><![CDATA[equals]]></code>
-    </MixedMethodCall>
-    <MoreSpecificReturnType>
-      <code><![CDATA[list<Book>]]></code>
-    </MoreSpecificReturnType>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Reservation.php">
     <MissingPropertyType>
@@ -327,21 +307,11 @@
     </MissingDependency>
   </file>
   <file src="src/Command/DefaultAdminCreateCommand.php">
-    <DeprecatedInterface>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-    </DeprecatedInterface>
     <MixedArgument>
       <code><![CDATA[self::$defaultDescription]]></code>
     </MixedArgument>
   </file>
   <file src="src/Controller/BackofficeMyAccountController.php">
-    <DeprecatedInterface>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-    </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code><![CDATA[getUsername]]></code>
-    </DeprecatedMethod>
     <MixedArgument>
       <code><![CDATA[$newPassword]]></code>
     </MixedArgument>
@@ -353,7 +323,7 @@
     </PossiblyNullArgument>
     <PossiblyNullReference>
       <code><![CDATA[getEmail]]></code>
-      <code><![CDATA[getUsername]]></code>
+      <code><![CDATA[getUserIdentifier]]></code>
       <code><![CDATA[setPassword]]></code>
     </PossiblyNullReference>
     <UndefinedInterfaceMethod>
@@ -366,10 +336,6 @@
     </InvalidReturnType>
   </file>
   <file src="src/Controller/BackofficeUserController.php">
-    <DeprecatedInterface>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-    </DeprecatedInterface>
     <InvalidOperand>
       <code><![CDATA[$backofficeUser->getId()]]></code>
     </InvalidOperand>
@@ -382,15 +348,6 @@
     </PossiblyNullOperand>
   </file>
   <file src="src/Controller/RegistrationController.php">
-    <DeprecatedClass>
-      <code><![CDATA[GuardAuthenticatorHandler]]></code>
-    </DeprecatedClass>
-    <DeprecatedInterface>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-    </DeprecatedInterface>
-    <InvalidArgument>
-      <code><![CDATA[$authenticator]]></code>
-    </InvalidArgument>
     <MixedArgument>
       <code><![CDATA[$form->get('plainPassword')->getData()]]></code>
     </MixedArgument>
@@ -439,10 +396,12 @@
     </MissingTemplateParam>
   </file>
   <file src="src/Security/EmailVerifier.php">
+    <DeprecatedMethod>
+      <code><![CDATA[validateEmailConfirmation]]></code>
+    </DeprecatedMethod>
     <MixedArgument>
       <code><![CDATA[$user->getEmail()]]></code>
       <code><![CDATA[$user->getEmail()]]></code>
-      <code><![CDATA[$user->getId()]]></code>
       <code><![CDATA[$user->getId()]]></code>
     </MixedArgument>
     <UndefinedInterfaceMethod>
@@ -459,10 +418,6 @@
       <code><![CDATA[$password]]></code>
       <code><![CDATA[$request->request->get('_csrf_token')]]></code>
     </ArgumentTypeCoercion>
-    <DeprecatedInterface>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-      <code><![CDATA[UserPasswordEncoderInterface]]></code>
-    </DeprecatedInterface>
     <MissingClosureParamType>
       <code><![CDATA[$userIdentifier]]></code>
     </MissingClosureParamType>

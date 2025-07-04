@@ -15,7 +15,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $client->request(
             Request::METHOD_POST,
@@ -47,7 +47,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
                     "coupondCode" => ReservationStaticFixture::COUPOND_CODE,
                     "privacyConfirmed" => "1",
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -63,7 +63,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $client->request(
             Request::METHOD_POST,
@@ -95,7 +95,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
                     "coupondCode" => ReservationStaticFixture::COUPOND_CODE,
                     "privacyConfirmed" => "1",
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],
@@ -121,7 +121,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
+        //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $client->request(
             Request::METHOD_POST,
@@ -153,7 +153,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
                     "coupondCode" => ReservationStaticFixture::COUPOND_CODE,
                     "privacyConfirmed" => "1",
                     "submit" => "",
-                    "_token" => $csrfToken->getValue(),
+                    //"_token" => $csrfToken->getValue(),
                 ],
             ],
             [],

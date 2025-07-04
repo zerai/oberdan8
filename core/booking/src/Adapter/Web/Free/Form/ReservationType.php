@@ -79,6 +79,7 @@ class ReservationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ReservationFormModel::class,
+            'csrf_protection' => false,
             'csrf_token_id' => 'reservation',
         ]);
     }
