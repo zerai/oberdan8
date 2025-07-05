@@ -14,18 +14,39 @@ use Booking\Application\Domain\Model\ReservationStatus;
 use DateTimeImmutable;
 use DateTimeZone;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Annotation\Route;
 use Throwable;
 
 #[Route(path: '/reservation', name: 'app_reservation', methods: ['GET', 'POST'])]
 class ReservationController extends AbstractController
 {
+    public function __construct(
+        private readonly RateLimiterFactory $reservationFormsLimiter,
+    ) {
+    }
+
     public function __invoke(Request $request, BookingMailer $bookingMailer, ReservationRepositoryInterface $repository): Response
     {
         // original call
         $form = $this->createForm(ReservationType::class);
+
+        try {
+            if ('POST' === $request->getMethod()) {
+                $this->verifyRateLimiterThrottling($request);
+            }
+        } catch (TooManyRequestsHttpException) {
+            $errorMessage = 'Hai superato il numero massimo di invii consentiti. Riprova tra 10 minuti';
+            $form->addError(new FormError($errorMessage));
+            return $this->render('@booking/reservation-page.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+
 
         $form->handleRequest($request);
 
@@ -136,5 +157,18 @@ class ReservationController extends AbstractController
             $formData->otherInfo,
             $formData->coupondCode
         );
+    }
+
+    private function verifyRateLimiterThrottling(Request $request): void
+    {
+        // create a limiter based on a unique identifier of the client
+        // (e.g. the client's IP address, a username/email, an API key, etc.)
+        $limiter = $this->reservationFormsLimiter->create($request->getClientIp());
+        if (false === $limiter->consume(1)->isAccepted()) {
+            throw new TooManyRequestsHttpException();
+        }
+
+        // to reset the counter
+        //$limiter->reset();
     }
 }

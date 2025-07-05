@@ -26,6 +26,8 @@ class AdozioniReservationTest extends PantherTestCase
         $this->client = static::createPantherClient([
             'browser' => static::FIREFOX,
         ]);
+
+        $this->resetReservationFormsRateLimiter();
     }
 
     public function tearDown(): void
@@ -150,5 +152,16 @@ class AdozioniReservationTest extends PantherTestCase
         $this->client->submit($form);
 
         self::assertSelectorIsVisible('.form-error-message');
+    }
+
+    private function resetReservationFormsRateLimiter()
+    {
+        $kernel = static::createKernel();
+
+        $kernel->boot();
+
+        $limiter = static::$kernel->getContainer()->get('limiter.reservation_forms');
+        $formRateLimiter = $limiter->create('127.0.0.1');
+        $formRateLimiter->reset();
     }
 }

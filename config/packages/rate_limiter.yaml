@@ -2,6 +2,21 @@ framework:
   rate_limiter:
     reservation_forms:
       # use 'sliding_window' if you prefer that policy
-      policy: 'fixed_window'
+      #policy: 'fixed_window'
+      #limit: 4
+      #interval: '60 minutes'
+      policy: 'sliding_window'
       limit: 3
-      interval: '60 minutes'
+      interval: '10 minutes'
+
+when@test:
+  framework:
+    rate_limiter:
+      reservation_forms:
+        # use 'sliding_window' if you prefer that policy
+        #policy: 'fixed_window'
+        #limit: 4
+        #interval: '60 minutes'
+        policy: 'sliding_window'
+        limit: '%env(int:RESERVATION_FORM_LIMITER)%'
+        interval: '10 minutes'

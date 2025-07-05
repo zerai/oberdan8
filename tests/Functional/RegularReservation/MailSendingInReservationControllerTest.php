@@ -15,6 +15,12 @@ class MailSendingInReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        $limiter = $client->getContainer()->get('limiter.reservation_forms');
+
+        $formRateLimiter = $limiter->create('127.0.0.1');
+
+        $formRateLimiter->reset();
+
         //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
         $client->request(
@@ -62,6 +68,13 @@ class MailSendingInReservationControllerTest extends WebTestCase
     public function afterFormSubmit_shouldSendAReservationConfirmationEmailToClient(): void
     {
         $client = static::createClient();
+
+        $limiter = $client->getContainer()->get('limiter.reservation_forms');
+
+        $formRateLimiter = $limiter->create('127.0.0.1');
+
+        $formRateLimiter->reset();
+
 
         //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 
@@ -120,6 +133,13 @@ class MailSendingInReservationControllerTest extends WebTestCase
     public function afterFormSubmit_shouldSendANewReservationEmailToBackoffice(): void
     {
         $client = static::createClient();
+
+        $limiter = $client->getContainer()->get('limiter.reservation_forms');
+
+        $formRateLimiter = $limiter->create('127.0.0.1');
+
+        $formRateLimiter->reset();
+
 
         //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('reservation');
 

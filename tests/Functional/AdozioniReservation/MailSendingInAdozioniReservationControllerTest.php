@@ -33,6 +33,13 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        $limiter = $client->getContainer()->get('limiter.reservation_forms');
+
+        $formRateLimiter = $limiter->create('127.0.0.1');
+
+        $formRateLimiter->reset();
+
+
         //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
 
         $this->prepareFileFixture(self::PDF_FILE_1);
@@ -76,6 +83,13 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     public function afterFormSubmit_shouldSendAReservationConfirmationEmailToClient(): void
     {
         $client = static::createClient();
+
+        $limiter = $client->getContainer()->get('limiter.reservation_forms');
+
+        $formRateLimiter = $limiter->create('127.0.0.1');
+
+        $formRateLimiter->reset();
+
 
         //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
 
@@ -130,6 +144,13 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     public function afterFormSubmit_shouldSendANewReservationEmailToBackoffice(): void
     {
         $client = static::createClient();
+
+        $limiter = $client->getContainer()->get('limiter.reservation_forms');
+
+        $formRateLimiter = $limiter->create('127.0.0.1');
+
+        $formRateLimiter->reset();
+
 
         //$csrfToken = $client->getContainer()->get('security.csrf.token_manager')->getToken('adozioni_reservation');
 
