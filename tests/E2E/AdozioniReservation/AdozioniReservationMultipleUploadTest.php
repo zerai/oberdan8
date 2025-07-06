@@ -26,7 +26,6 @@ class AdozioniReservationMultipleUploadTest extends PantherTestCase
         $this->client = static::createPantherClient([
             'browser' => static::FIREFOX,
         ]);
-        $this->resetReservationFormsRateLimiter();
     }
 
     public function tearDown(): void
@@ -85,16 +84,5 @@ class AdozioniReservationMultipleUploadTest extends PantherTestCase
         $this->client->submit($form);
 
         self::assertSame(self::$baseUri . self::REDIRECT_AFTER_SUBMIT, $this->client->getCurrentURL());
-    }
-
-    private function resetReservationFormsRateLimiter()
-    {
-        $kernel = static::createKernel();
-
-        $kernel->boot();
-
-        $limiter = static::$kernel->getContainer()->get('limiter.reservation_forms');
-        $formRateLimiter = $limiter->create('127.0.0.1');
-        $formRateLimiter->reset();
     }
 }
