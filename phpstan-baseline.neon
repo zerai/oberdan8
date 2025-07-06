@@ -1005,6 +1005,36 @@ parameters:
 			path: tests/Functional/Backoffice/Reservation/ReservationCrudUpdateTest.php
 
 		-
+			message: "#^Cannot call method getResponse\\(\\) on Symfony\\\\Bundle\\\\FrameworkBundle\\\\KernelBrowser\\|null\\.$#"
+			count: 4
+			path: tests/Functional/FormRateLimiter/AdozioniReservationRateLimiterTest.php
+
+		-
+			message: "#^Cannot call method request\\(\\) on Symfony\\\\Bundle\\\\FrameworkBundle\\\\KernelBrowser\\|null\\.$#"
+			count: 8
+			path: tests/Functional/FormRateLimiter/AdozioniReservationRateLimiterTest.php
+
+		-
+			message: "#^Casting to int something that's already int\\.$#"
+			count: 2
+			path: tests/Functional/FormRateLimiter/AdozioniReservationRateLimiterTest.php
+
+		-
+			message: "#^Cannot call method getResponse\\(\\) on Symfony\\\\Bundle\\\\FrameworkBundle\\\\KernelBrowser\\|null\\.$#"
+			count: 4
+			path: tests/Functional/FormRateLimiter/RegularReservationRateLimiterTest.php
+
+		-
+			message: "#^Cannot call method request\\(\\) on Symfony\\\\Bundle\\\\FrameworkBundle\\\\KernelBrowser\\|null\\.$#"
+			count: 8
+			path: tests/Functional/FormRateLimiter/RegularReservationRateLimiterTest.php
+
+		-
+			message: "#^Casting to int something that's already int\\.$#"
+			count: 2
+			path: tests/Functional/FormRateLimiter/RegularReservationRateLimiterTest.php
+
+		-
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailAttachmentCount\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 1
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php

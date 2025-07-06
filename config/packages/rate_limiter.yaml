@@ -1,0 +1,16 @@
+framework:
+  rate_limiter:
+    reservation_forms:
+      # use 'fixed_window' if you prefer that policy
+      policy: 'sliding_window'
+      limit: 3
+      interval: '10 minutes'
+
+when@test:
+  framework:
+    rate_limiter:
+      reservation_forms:
+        # use 'fixed_window' if you prefer that policy
+        policy: 'sliding_window'
+        limit: '%env(int:RESERVATION_FORM_LIMITER)%'
+        interval: '10 minutes'

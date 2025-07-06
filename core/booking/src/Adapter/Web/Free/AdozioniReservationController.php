@@ -13,20 +13,41 @@ use Booking\Infrastructure\Uploader\AdozioniUploaderInterface;
 use DateTimeImmutable;
 use DateTimeZone;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Routing\Annotation\Route;
 use Throwable;
 
 #[Route(path: '/reservation/adozioni', name: 'reservation_adozioni', methods: ['GET', 'POST'])]
 class AdozioniReservationController extends AbstractController
 {
+    public function __construct(
+        private readonly RateLimiterFactory $reservationFormsLimiter,
+    ) {
+    }
+
     public function __invoke(Request $request, AdozioniUploaderInterface $uploader, BookingMailer $bookingMailer, ReservationRepositoryInterface $repository): Response
     {
         $form = $this->createForm(AdozioniReservationType::class);
+
+        try {
+            if ('POST' === $request->getMethod()) {
+                $this->verifyRateLimiterThrottling($request);
+            }
+        } catch (TooManyRequestsHttpException) {
+            $errorMessage = 'Hai superato il numero massimo di invii consentiti. Riprova tra 10 minuti';
+            $form->addError(new FormError($errorMessage));
+            return $this->render('@booking/reservation-adozioni-page.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+
 
         $form->handleRequest($request);
 
@@ -175,5 +196,18 @@ class AdozioniReservationController extends AbstractController
             $formData->otherInfo,
             $formData->coupondCode
         );
+    }
+
+    private function verifyRateLimiterThrottling(Request $request): void
+    {
+        // create a limiter based on a unique identifier of the client
+        // (e.g. the client's IP address, a username/email, an API key, etc.)
+        $limiter = $this->reservationFormsLimiter->create($request->getClientIp());
+        if (false === $limiter->consume(1)->isAccepted()) {
+            throw new TooManyRequestsHttpException();
+        }
+
+        // to reset the counter
+        //$limiter->reset();
     }
 }
