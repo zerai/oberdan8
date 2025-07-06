@@ -19,6 +19,12 @@ class ReservationFormModel
     #[Assert\Count(min: 1, minMessage: 'Inserire almeno un libro.')]
     public array $books;
 
+    #[Assert\Regex(
+        #pattern: '/[A-Za-z ]/',
+        pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        message: 'Il campo altre informazioni non può contenere simboli',
+        match: false,
+    )]
     public string $otherInfo;
 
     public string $coupondCode;

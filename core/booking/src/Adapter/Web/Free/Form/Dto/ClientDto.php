@@ -107,10 +107,32 @@ class ClientDto
 
     #[Assert\NotBlank(message: 'Inserisci il tuo nome')]
     #[Assert\Length(min: 3, minMessage: 'La lughezza minima per il nome è 3 caratteri!')]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        message: 'Il nome non può contenere numeri',
+        match: false,
+    )]
+    #[Assert\Regex(
+        #pattern: '/[a-z]/',
+        pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        message: 'Il nome non può contenere simboli',
+        match: false,
+    )]
     public string $firstName;
 
     #[Assert\NotBlank(message: 'Inserisci il tuo cognome')]
     #[Assert\Length(min: 3, minMessage: 'La lughezza minima per il cognome è 3 caratteri!!')]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        message: 'Il cognome non può contenere numeri',
+        match: false,
+    )]
+    #[Assert\Regex(
+        #pattern: '/[A-Za-z]/',
+        pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        message: 'Il cognome non può contenere simboli',
+        match: false,
+    )]
     public string $lastName;
 
     #[Assert\NotBlank(message: 'Inserisci la tua email')]

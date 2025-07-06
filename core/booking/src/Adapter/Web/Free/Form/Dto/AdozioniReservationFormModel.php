@@ -28,6 +28,12 @@ class AdozioniReservationFormModel
     #[Assert\File(maxSize: '5M', mimeTypes: ['application/pdf', 'application/x-pdf', 'image/jpeg'], mimeTypesMessage: 'Il file selezionato non è un PDF o un JPEG.')]
     public string $adozioni3;
 
+    #[Assert\Regex(
+        #pattern: '/[A-Za-z ]/',
+        pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        message: 'Il campo altre informazioni non può contenere simboli',
+        match: false,
+    )]
     public string $otherInfo;
 
     #[Assert\IsTrue(message: 'Acconsenti al trattamento dei tuoi dati personali se desideri continuare.')]
