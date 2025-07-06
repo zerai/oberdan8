@@ -5,6 +5,7 @@ namespace App\Tests\Functional\RegularReservation;
 use App\Tests\Support\Fixtures\ReservationStaticFixture;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 
 class MailSendingInReservationControllerTest extends WebTestCase
 {
@@ -15,6 +16,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        /** @var RateLimiterFactory $limiter */
         $limiter = $client->getContainer()->get('limiter.reservation_forms');
 
         $formRateLimiter = $limiter->create('127.0.0.1');
@@ -69,6 +71,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        /** @var RateLimiterFactory $limiter */
         $limiter = $client->getContainer()->get('limiter.reservation_forms');
 
         $formRateLimiter = $limiter->create('127.0.0.1');
@@ -134,6 +137,7 @@ class MailSendingInReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        /** @var RateLimiterFactory $limiter */
         $limiter = $client->getContainer()->get('limiter.reservation_forms');
 
         $formRateLimiter = $limiter->create('127.0.0.1');

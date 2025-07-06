@@ -5,6 +5,7 @@ namespace App\Tests\Functional\AdozioniReservation;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\RateLimiter\RateLimiterFactory;
 
 class MailSendingInAdozioniReservationControllerTest extends WebTestCase
 {
@@ -33,6 +34,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        /** @var RateLimiterFactory $limiter */
         $limiter = $client->getContainer()->get('limiter.reservation_forms');
 
         $formRateLimiter = $limiter->create('127.0.0.1');
@@ -84,6 +86,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        /** @var RateLimiterFactory $limiter */
         $limiter = $client->getContainer()->get('limiter.reservation_forms');
 
         $formRateLimiter = $limiter->create('127.0.0.1');
@@ -145,6 +148,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
+        /** @var RateLimiterFactory $limiter */
         $limiter = $client->getContainer()->get('limiter.reservation_forms');
 
         $formRateLimiter = $limiter->create('127.0.0.1');
