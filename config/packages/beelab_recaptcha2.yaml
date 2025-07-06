@@ -4,6 +4,5 @@ beelab_recaptcha2:
     request_method: curl_post
 
 when@test:
-
     beelab_recaptcha2:
         enabled: false

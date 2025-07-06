@@ -3,7 +3,6 @@
 namespace Booking\Adapter\Web\Free\Form;
 
 use Beelab\Recaptcha2Bundle\Form\Type\RecaptchaSubmitType;
-use Beelab\Recaptcha2Bundle\Form\Type\RecaptchaType;
 use Beelab\Recaptcha2Bundle\Validator\Constraints\Recaptcha2;
 use Booking\Adapter\Web\Free\Form\Dto\ReservationFormModel;
 use Symfony\Component\Form\AbstractType;
@@ -68,18 +67,11 @@ class ReservationType extends AbstractType
                 'required' => true,
             ])
 
-//            ->add('captcha', RecaptchaType::class, [
-//                // You can use RecaptchaSubmitType
-//                // "groups" option is not mandatory
-//                //'constraints' => new Recaptcha2(['groups' => ['create']]),
-//            ])
-            // For Invisible Recaptcha
-
+            // Invisible Recaptcha
             ->add('captcha', RecaptchaSubmitType::class, [
                 'constraints' => new Recaptcha2([
                     'groups' => ['RegularReservation', 'AdozioniReservation'],
                 ]),
-                //'label' => 'Save'
             ])
 
             ->add(
