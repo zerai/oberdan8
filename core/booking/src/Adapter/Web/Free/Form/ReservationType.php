@@ -2,6 +2,8 @@
 
 namespace Booking\Adapter\Web\Free\Form;
 
+use Beelab\Recaptcha2Bundle\Form\Type\RecaptchaSubmitType;
+use Beelab\Recaptcha2Bundle\Validator\Constraints\Recaptcha2;
 use Booking\Adapter\Web\Free\Form\Dto\ReservationFormModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -63,6 +65,13 @@ class ReservationType extends AbstractType
             ->add('privacyConfirmed', CheckboxType::class, [
                 'label' => 'Acconsento al trattamento dei dati secondo la normativa sulla privacy',
                 'required' => true,
+            ])
+
+            // Invisible Recaptcha
+            ->add('captcha', RecaptchaSubmitType::class, [
+                'constraints' => new Recaptcha2([
+                    'groups' => ['RegularReservation', 'AdozioniReservation'],
+                ]),
             ])
 
             ->add(

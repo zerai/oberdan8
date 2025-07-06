@@ -14,6 +14,7 @@ parameters:
     booking.mailer.backoffice.retriever.name: 'Gestione prenotazioni'
 
     booking.adozioni_directory: '%kernel.project_dir%/public/uploads/reservation'
+    #google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 services:
     # default configuration for services in *this* file
