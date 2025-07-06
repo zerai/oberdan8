@@ -40,7 +40,7 @@ class ReservationController extends AbstractController
                 $this->verifyRateLimiterThrottling($request);
             }
         } catch (TooManyRequestsHttpException) {
-            $errorMessage = 'Hai superato il numero massimo di invii consentiti. Riprova tra 10 minuti';
+            $errorMessage = 'Hai superato il numero massimo di invii consentiti (3). Riprova tra 60 minuti';
             $form->addError(new FormError($errorMessage));
             return $this->render('@booking/reservation-page.html.twig', [
                 'form' => $form->createView(),

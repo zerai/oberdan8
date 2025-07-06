@@ -4,7 +4,8 @@ framework:
       # use 'fixed_window' if you prefer that policy
       policy: 'sliding_window'
       limit: 3
-      interval: '10 minutes'
+      interval: '60 minutes'
+      cache_pool: 'cache.rate_limiter'
 
 when@test:
   framework:
