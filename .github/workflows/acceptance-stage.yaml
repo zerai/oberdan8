@@ -610,6 +610,7 @@ jobs:
           PANTHER_APP_ENV: test
           DATABASE_URL: mysql://test:test@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/symfony?serverVersion=mariadb-10.3.29
           SYMFONY_DEPRECATIONS_HELPER: disabled
+          RESERVATION_FORM_LIMITER: 200
 
   e2e-test-backend:
     name: E2e tests secured area(PHP-${{ matrix.php }})
