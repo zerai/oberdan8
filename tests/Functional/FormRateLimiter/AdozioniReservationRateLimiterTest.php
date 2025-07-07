@@ -40,7 +40,7 @@ class AdozioniReservationRateLimiterTest extends WebTestCase
 
         self::assertEquals(200, (int) $this->client->getResponse()->getStatusCode());
         self::assertStringNotContainsString(
-            'Hai superato il numero massimo di invii consentiti (3). Riprova tra 60 minuti',
+            'Hai superato il numero massimo di invii consentiti. Riprova tra 60 minuti',
             (string) $this->client->getResponse()->getContent(),
             'test error message'
         );
@@ -55,7 +55,7 @@ class AdozioniReservationRateLimiterTest extends WebTestCase
 
         self::assertEquals(200, (int) $this->client->getResponse()->getStatusCode());
         self::assertStringContainsString(
-            'Hai superato il numero massimo di invii consentiti (3). Riprova tra 60 minuti',
+            'Hai superato il numero massimo di invii consentiti. Riprova tra 60 minuti',
             (string) $this->client->getResponse()->getContent(),
             'test error message'
         );
