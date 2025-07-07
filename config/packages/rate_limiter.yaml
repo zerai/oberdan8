@@ -3,7 +3,9 @@ framework:
     reservation_forms:
       # use 'fixed_window' if you prefer that policy
       policy: 'sliding_window'
-      limit: 3
+      # N.B. mantenere il valore in sync con il file
+      # .env.test
+      limit: 10
       interval: '60 minutes'
       cache_pool: 'cache.rate_limiter'
 

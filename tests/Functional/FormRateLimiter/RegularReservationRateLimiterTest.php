@@ -37,6 +37,13 @@ class RegularReservationRateLimiterTest extends WebTestCase
         $this->client->request(Request::METHOD_GET, '/reservation');
         $this->client->request(Request::METHOD_GET, '/reservation');
         $this->client->request(Request::METHOD_GET, '/reservation');
+        $this->client->request(Request::METHOD_GET, '/reservation');
+        $this->client->request(Request::METHOD_GET, '/reservation');
+        $this->client->request(Request::METHOD_GET, '/reservation');
+        $this->client->request(Request::METHOD_GET, '/reservation');
+        $this->client->request(Request::METHOD_GET, '/reservation');
+        $this->client->request(Request::METHOD_GET, '/reservation');
+        $this->client->request(Request::METHOD_GET, '/reservation');
 
         self::assertEquals(200, (int) $this->client->getResponse()->getStatusCode());
         self::assertStringNotContainsString(
@@ -48,6 +55,13 @@ class RegularReservationRateLimiterTest extends WebTestCase
 
     public function test_throttlingIsActiveOnRegularReservationFormOnPostRequest(): void
     {
+        $this->client->request(Request::METHOD_POST, '/reservation');
+        $this->client->request(Request::METHOD_POST, '/reservation');
+        $this->client->request(Request::METHOD_POST, '/reservation');
+        $this->client->request(Request::METHOD_POST, '/reservation');
+        $this->client->request(Request::METHOD_POST, '/reservation');
+        $this->client->request(Request::METHOD_POST, '/reservation');
+        $this->client->request(Request::METHOD_POST, '/reservation');
         $this->client->request(Request::METHOD_POST, '/reservation');
         $this->client->request(Request::METHOD_POST, '/reservation');
         $this->client->request(Request::METHOD_POST, '/reservation');
