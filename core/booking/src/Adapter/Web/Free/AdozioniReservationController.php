@@ -12,6 +12,7 @@ use Booking\Application\Domain\Model\ReservationStatus;
 use Booking\Infrastructure\Uploader\AdozioniUploaderInterface;
 use DateTimeImmutable;
 use DateTimeZone;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -29,6 +30,7 @@ class AdozioniReservationController extends AbstractController
 {
     public function __construct(
         private readonly RateLimiterFactory $reservationFormsLimiter,
+        private readonly LoggerInterface $logger
     ) {
     }
 
@@ -43,6 +45,9 @@ class AdozioniReservationController extends AbstractController
         } catch (TooManyRequestsHttpException) {
             $errorMessage = 'Hai superato il numero massimo di invii consentiti. Riprova tra 60 minuti';
             $form->addError(new FormError($errorMessage));
+            $this->logger->debug(
+                \sprintf('Hit Rate Limiter Adozioni Reservation for ip: %s', $request->getClientIp())
+            );
             return $this->render('@booking/reservation-adozioni-page.html.twig', [
                 'form' => $form->createView(),
             ]);

@@ -107,6 +107,9 @@
     </MissingPropertyType>
   </file>
   <file src="core/booking/src/Adapter/Web/Free/AdozioniReservationController.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$request->getClientIp()]]></code>
+    </PossiblyNullArgument>
     <RedundantConditionGivenDocblockType>
       <code><![CDATA[$adozioniFile !== null]]></code>
       <code><![CDATA[$secondAdozioniFile !== null]]></code>
@@ -142,6 +145,11 @@
     <MissingTemplateParam>
       <code><![CDATA[ReservationType]]></code>
     </MissingTemplateParam>
+  </file>
+  <file src="core/booking/src/Adapter/Web/Free/ReservationController.php">
+    <PossiblyNullArgument>
+      <code><![CDATA[$request->getClientIp()]]></code>
+    </PossiblyNullArgument>
   </file>
   <file src="core/booking/src/Application/Domain/Model/Book.php">
     <MissingConstructor>

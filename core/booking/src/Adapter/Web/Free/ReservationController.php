@@ -13,6 +13,7 @@ use Booking\Application\Domain\Model\ReservationSaleDetail;
 use Booking\Application\Domain\Model\ReservationStatus;
 use DateTimeImmutable;
 use DateTimeZone;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,7 @@ class ReservationController extends AbstractController
 {
     public function __construct(
         private readonly RateLimiterFactory $reservationFormsLimiter,
+        private readonly LoggerInterface $logger
     ) {
     }
 
@@ -42,6 +44,9 @@ class ReservationController extends AbstractController
         } catch (TooManyRequestsHttpException) {
             $errorMessage = 'Hai superato il numero massimo di invii consentiti. Riprova tra 60 minuti';
             $form->addError(new FormError($errorMessage));
+            $this->logger->debug(
+                \sprintf('Hit Rate Limiter Regular Reservation for ip: %s', $request->getClientIp())
+            );
             return $this->render('@booking/reservation-page.html.twig', [
                 'form' => $form->createView(),
             ]);
