@@ -30,7 +30,8 @@ class AdozioniReservationFormModel
 
     #[Assert\Regex(
         #pattern: '/[A-Za-z ]/',
-        pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        #pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        pattern: '/[#$%^&*()+=\-\[\];,.\/{}|":<>?~\\\\]/',
         message: 'Il campo altre informazioni non può contenere simboli',
         match: false,
     )]

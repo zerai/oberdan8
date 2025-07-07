@@ -6,9 +6,9 @@ class ReservationStaticFixture
 {
     public const BACKOFFICE_EMAIL_ADDRESS = 'Gestione prenotazioni <info@oberdan8.it>';
 
-    public const FIRST_NAME = 'Carlo';
+    public const FIRST_NAME = 'Car\'lo';
 
-    public const LAST_NAME = 'Rossi';
+    public const LAST_NAME = 'D\'amato Rossi';
 
     public const EMAIL = 'carlorossi@example.it';
 

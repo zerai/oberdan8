@@ -114,7 +114,8 @@ class ClientDto
     )]
     #[Assert\Regex(
         #pattern: '/[a-z]/',
-        pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        #pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        pattern: '/[#$%^&*()+=\-\[\];,.\/{}|":<>?~\\\\]/',
         message: 'Il nome non può contenere simboli',
         match: false,
     )]
@@ -129,7 +130,8 @@ class ClientDto
     )]
     #[Assert\Regex(
         #pattern: '/[A-Za-z]/',
-        pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        #pattern: '/[#$%^&*()+=\-\[\]\';,.\/{}|":<>?~\\\\]/',
+        pattern: '/[#$%^&*()+=\-\[\];,.\/{}|":<>?~\\\\]/',
         message: 'Il cognome non può contenere simboli',
         match: false,
     )]
