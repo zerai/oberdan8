@@ -965,6 +965,31 @@ parameters:
 			path: tests/Functional/AdozioniReservation/MailSendingInAdozioniReservationControllerTest.php
 
 		-
+			message: "#^Method App\\\\Tests\\\\Functional\\\\AdozioniReservation\\\\SpamDetectionOnAdozioniReservationControllerTest\\:\\:invalidFirstNameDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Functional/AdozioniReservation/SpamDetectionOnAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Functional\\\\AdozioniReservation\\\\SpamDetectionOnAdozioniReservationControllerTest\\:\\:invalidLastNameDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Functional/AdozioniReservation/SpamDetectionOnAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Functional\\\\AdozioniReservation\\\\SpamDetectionOnAdozioniReservationControllerTest\\:\\:invalidNotesDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Functional/AdozioniReservation/SpamDetectionOnAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, string\\|false given\\.$#"
+			count: 3
+			path: tests/Functional/AdozioniReservation/SpamDetectionOnAdozioniReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringNotContainsString\\(\\) expects string, string\\|false given\\.$#"
+			count: 3
+			path: tests/Functional/AdozioniReservation/SpamDetectionOnAdozioniReservationControllerTest.php
+
+		-
 			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: tests/Functional/Backoffice/InfoBoxCrudTest.php
@@ -1048,6 +1073,31 @@ parameters:
 			message: "#^Parameter \\#1 \\$email of static method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Test\\\\KernelTestCase\\:\\:assertEmailTextBodyContains\\(\\) expects Symfony\\\\Component\\\\Mime\\\\RawMessage, Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null given\\.$#"
 			count: 10
 			path: tests/Functional/RegularReservation/MailSendingInReservationControllerTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Functional\\\\RegularReservation\\\\SpamDetectionReservationControllerTest\\:\\:invalidFirstNameDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Functional/RegularReservation/SpamDetectionReservationControllerTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Functional\\\\RegularReservation\\\\SpamDetectionReservationControllerTest\\:\\:invalidLastNameDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Functional/RegularReservation/SpamDetectionReservationControllerTest.php
+
+		-
+			message: "#^Method App\\\\Tests\\\\Functional\\\\RegularReservation\\\\SpamDetectionReservationControllerTest\\:\\:invalidNotesDataProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Functional/RegularReservation/SpamDetectionReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringContainsString\\(\\) expects string, string\\|false given\\.$#"
+			count: 3
+			path: tests/Functional/RegularReservation/SpamDetectionReservationControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertStringNotContainsString\\(\\) expects string, string\\|false given\\.$#"
+			count: 2
+			path: tests/Functional/RegularReservation/SpamDetectionReservationControllerTest.php
 
 		-
 			message: "#^Call to deprecated function Zenstruck\\\\Foundry\\\\factory\\(\\)\\.$#"

@@ -7,9 +7,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 
-class MailSendingInAdozioniReservationControllerTest extends WebTestCase
+class SpamDetectionOnAdozioniReservationControllerTest extends WebTestCase
 {
-    private const BACKOFFICE_EMAIL_ADDRESS = 'Gestione prenotazioni <info@oberdan8.it>';
+    private const TARGET_PAGE_WITH_FORM = '/reservation/adozioni';
 
     private const FIRST_NAME = 'Carlo';
 
@@ -25,12 +25,13 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
 
     private const COUPOND_CODE = 'ABCDEF';
 
-    private const NOTES = 'Avrei una certa urgenza di ricevere una vostra risposta';
-
     private const PDF_FILE_1 = 'RMPC00500D_3A-NT-LI01-UNDEF.pdf';
 
-    /** @test */
-    public function afterFormSubmit_shouldSendTwoEmail(): void
+    /**
+     * @test
+     * @dataProvider invalidLastNameDataProvider
+     */
+    public function detect_spam_in_last_name(string $lastNameValue = '', string $formErrorMessage = ''): void
     {
         $client = static::createClient();
 
@@ -50,11 +51,11 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
 
         $client->request(
             Request::METHOD_POST,
-            '/reservation/adozioni',
+            self::TARGET_PAGE_WITH_FORM,
             [
                 'adozioni_reservation' => [
                     'person' => [
-                        "last_name" => self::LAST_NAME,
+                        "last_name" => $lastNameValue,
                         "first_name" => self::FIRST_NAME,
                         "email" => self::EMAIL,
                         "phone" => self::PHONE,
@@ -62,7 +63,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                     ],
                     'classe' => self::CLASSE,
                     'coupondCode' => self::COUPOND_CODE,
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione",
+                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
                     //"_token" => $csrfToken->getValue(),
@@ -76,13 +77,17 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
             ],
         );
 
-        self::assertResponseRedirects('/esito');
-
-        self::assertEmailCount(2);
+        self::assertResponseIsSuccessful();
+        self::assertPageTitleContains('Oberdan - banco 8 - prenotazioni');
+        self::assertStringNotContainsString('Invia un\'altra prenotazione', $client->getResponse()->getContent());
+        self::assertStringContainsString($formErrorMessage, $client->getResponse()->getContent());
     }
 
-    /** @test */
-    public function afterFormSubmit_shouldSendAReservationConfirmationEmailToClient(): void
+    /**
+     * @test
+     * @dataProvider invalidFirstNameDataProvider
+     */
+    public function detect_spam_in_first_name(string $firstNameValue = '', string $formErrorMessage = ''): void
     {
         $client = static::createClient();
 
@@ -102,19 +107,19 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
 
         $client->request(
             Request::METHOD_POST,
-            '/reservation/adozioni',
+            self::TARGET_PAGE_WITH_FORM,
             [
                 'adozioni_reservation' => [
                     'person' => [
                         "last_name" => self::LAST_NAME,
-                        "first_name" => self::FIRST_NAME,
+                        "first_name" => $firstNameValue,
                         "email" => self::EMAIL,
                         "phone" => self::PHONE,
                         "city" => self::CITY,
                     ],
                     'classe' => self::CLASSE,
                     'coupondCode' => self::COUPOND_CODE,
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione",
+                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione.",
                     "privacyConfirmed" => "1",
                     "submit" => "",
                     //"_token" => $csrfToken->getValue(),
@@ -128,23 +133,17 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
             ],
         );
 
-        self::assertResponseRedirects('/esito');
-
-        self::assertEmailCount(2);
-
-        $email = self::getMailerMessage(0);
-        self::assertEmailHeaderSame($email, 'To', self::EMAIL);
-        self::assertEmailTextBodyContains($email, self::LAST_NAME);
-        self::assertEmailTextBodyContains($email, self::FIRST_NAME);
-        self::assertEmailTextBodyContains($email, self::EMAIL);
-        self::assertEmailTextBodyContains($email, self::PHONE);
-        self::assertEmailTextBodyContains($email, self::COUPOND_CODE);
-        // TODO image attach
-        //self::assertEmailAttachmentCount($email, 0);
+        self::assertResponseIsSuccessful();
+        self::assertPageTitleContains('Oberdan - banco 8 - prenotazioni');
+        self::assertStringNotContainsString('Invia un\'altra prenotazione', $client->getResponse()->getContent());
+        self::assertStringContainsString($formErrorMessage, $client->getResponse()->getContent());
     }
 
-    /** @test */
-    public function afterFormSubmit_shouldSendANewReservationEmailToBackoffice(): void
+    /**
+     * @test
+     * @dataProvider invalidNotesDataProvider
+     */
+    public function detect_spam_in_notes(string $notesValue = '', string $formErrorMessage = ''): void
     {
         $client = static::createClient();
 
@@ -164,7 +163,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
 
         $client->request(
             Request::METHOD_POST,
-            '/reservation/adozioni',
+            self::TARGET_PAGE_WITH_FORM,
             [
                 'adozioni_reservation' => [
                     'person' => [
@@ -176,7 +175,7 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
                     ],
                     'classe' => self::CLASSE,
                     'coupondCode' => self::COUPOND_CODE,
-                    "otherInfo" => "Vorrei sapere di che anno è la vostra edizione",
+                    "otherInfo" => $notesValue,
                     "privacyConfirmed" => "1",
                     "submit" => "",
                     //"_token" => $csrfToken->getValue(),
@@ -190,18 +189,10 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
             ],
         );
 
-        self::assertResponseRedirects('/esito');
-
-        self::assertEmailCount(2);
-
-        $email = self::getMailerMessage(1);
-        self::assertEmailHeaderSame($email, 'To', self::BACKOFFICE_EMAIL_ADDRESS);
-        self::assertEmailTextBodyContains($email, self::LAST_NAME);
-        self::assertEmailTextBodyContains($email, self::FIRST_NAME);
-        self::assertEmailTextBodyContains($email, self::EMAIL);
-        self::assertEmailTextBodyContains($email, self::PHONE);
-        self::assertEmailTextBodyContains($email, self::COUPOND_CODE);
-        self::assertEmailAttachmentCount($email, 1);
+        self::assertResponseIsSuccessful();
+        self::assertPageTitleContains('Oberdan - banco 8 - prenotazioni');
+        self::assertStringNotContainsString('Invia un\'altra prenotazione', $client->getResponse()->getContent());
+        self::assertStringContainsString($formErrorMessage, $client->getResponse()->getContent());
     }
 
     private function prepareFileFixture(string $fileName): void
@@ -210,5 +201,83 @@ class MailSendingInAdozioniReservationControllerTest extends WebTestCase
         $newPath = __DIR__ . '/' . $fileName;
 
         copy($imagePath, $newPath);
+    }
+
+    public function invalidFirstNameDataProvider(): array
+    {
+        return [
+            [
+                'testo irrilevante 34',
+                'Il nome non può contenere numeri',
+            ],
+            [
+                'testo irrilevante *',
+                'Il nome non può contenere simboli',
+            ],
+            [
+                'testo irrilevante *** altro testo',
+                'Il nome non può contenere simboli',
+            ],
+            [
+                'testo irrilevante http:// con link',
+                'Il nome non può contenere simboli',
+            ],
+            [
+                'testo irrilevante http://droneservisleri.com/index.php?k248e8',
+                'Il nome non può contenere simboli',
+            ],
+        ];
+    }
+
+    public function invalidLastNameDataProvider(): array
+    {
+        return [
+            [
+                'testo irrilevante 34',
+                'Il cognome non può contenere numeri',
+            ],
+            [
+                'testo irrilevante *',
+                'Il cognome non può contenere simboli',
+            ],
+            [
+                'testo irrilevante *** altro testo',
+                'Il cognome non può contenere simboli',
+            ],
+            [
+                'testo irrilevante http:// con link',
+                'Il cognome non può contenere simboli',
+            ],
+            [
+                'testo irrilevante http://droneservisleri.com/index.php?k248e8',
+                'Il cognome non può contenere simboli',
+            ],
+        ];
+    }
+
+    public function invalidNotesDataProvider(): array
+    {
+        return [
+            //            [
+            //                'testo irrilevante 34',
+            //                'Il cognome non può contenere numeri',
+            //            ],
+            [
+                'testo irrilevante *',
+                'Il campo altre informazioni non può contenere simboli',
+            ],
+            [
+                'testo irrilevante *** altro testo',
+                'Il campo altre informazioni non può contenere simboli',
+            ],
+            [
+                'testo irrilevante http:// con link',
+                'Il campo altre informazioni non può contenere simboli',
+            ],
+            [
+                'testo irrilevante http://droneservisleri.com/index.php?k248e8',
+                'Il campo altre informazioni non può contenere simboli',
+            ],
+        ];
     }
 }
