@@ -37,6 +37,14 @@ class AdozioniReservationRateLimiterTest extends WebTestCase
         $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
         $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
         $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_GET, '/reservation/adozioni');
 
         self::assertEquals(200, (int) $this->client->getResponse()->getStatusCode());
         self::assertStringNotContainsString(
@@ -48,6 +56,14 @@ class AdozioniReservationRateLimiterTest extends WebTestCase
 
     public function test_throttlingIsActiveOnAdozioniReservationFormOnPostRequest(): void
     {
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
+        $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
         $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
         $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
         $this->client->request(Request::METHOD_POST, '/reservation/adozioni');
