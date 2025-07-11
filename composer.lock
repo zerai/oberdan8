@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff2bb49a461216e39e088201412fea80",
+    "content-hash": "0fade66dcfb3d3a22289b2543ccf1a60",
     "packages": [
         {
             "name": "beelab/recaptcha2-bundle",
@@ -10556,23 +10556,23 @@
         },
         {
             "name": "dbrekelmans/bdi",
-            "version": "0.3",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dbrekelmans/bdi.git",
-                "reference": "d94d818ebe20b419a7d9f17dc21e9c66a10b171f"
+                "reference": "fa2ff9b5ed0508ddf5cd574f9dfa6fea954a9acd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dbrekelmans/bdi/zipball/d94d818ebe20b419a7d9f17dc21e9c66a10b171f",
-                "reference": "d94d818ebe20b419a7d9f17dc21e9c66a10b171f",
+                "url": "https://api.github.com/repos/dbrekelmans/bdi/zipball/fa2ff9b5ed0508ddf5cd574f9dfa6fea954a9acd",
+                "reference": "fa2ff9b5ed0508ddf5cd574f9dfa6fea954a9acd",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-zip": "*",
                 "ext-zlib": "*",
-                "php": "^7.2|^8.0"
+                "php": "^8.1"
             },
             "bin": [
                 "bdi",
@@ -10599,9 +10599,9 @@
                 "browser-driver-installer"
             ],
             "support": {
-                "source": "https://github.com/dbrekelmans/bdi/tree/0.3"
+                "source": "https://github.com/dbrekelmans/bdi/tree/1.4.0"
             },
-            "time": "2020-12-13T21:43:40+00:00"
+            "time": "2024-12-12T18:36:47+00:00"
         },
         {
             "name": "doctrine/data-fixtures",
