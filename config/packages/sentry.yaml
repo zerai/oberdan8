@@ -71,7 +71,7 @@ when@prod:
     sentry:
         dsn: '%env(SENTRY_DSN)%'
         options:
-            release: "0.6.6"
+            release: "0.6.7"
         # this hooks into critical paths of the framework (and vendors) to perform
         # automatic instrumentation (there might be some performance penalty)
         # https://docs.sentry.io/platforms/php/guides/symfony/performance/instrumentation/automatic-instrumentation/
