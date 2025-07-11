@@ -28,7 +28,7 @@ class ReservationController extends AbstractController
 {
     public function __construct(
         private readonly RateLimiterFactory $reservationFormsLimiter,
-        private readonly LoggerInterface $logger
+        private readonly LoggerInterface $auditFormRateLimiter
     ) {
     }
 
@@ -44,8 +44,8 @@ class ReservationController extends AbstractController
         } catch (TooManyRequestsHttpException) {
             $errorMessage = 'Hai superato il numero massimo di invii consentiti. Riprova tra 60 minuti';
             $form->addError(new FormError($errorMessage));
-            $this->logger->debug(
-                \sprintf('Hit Rate Limiter Regular Reservation for ip: %s', $request->getClientIp())
+            $this->auditFormRateLimiter->info(
+                \sprintf('Hit Rate Limiter on Regular Reservation for ip: %s', $request->getClientIp())
             );
             return $this->render('@booking/reservation-page.html.twig', [
                 'form' => $form->createView(),

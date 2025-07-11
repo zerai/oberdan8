@@ -1,6 +1,7 @@
 monolog:
     channels:
         - deprecation # Deprecations are logged in the dedicated "deprecation" channel when it exists
+        - audit_form_rate_limiter
 
 when@dev:
     monolog:
@@ -61,3 +62,9 @@ when@prod:
                 channels: [deprecation]
                 path: "%kernel.logs_dir%/deprecations.log"
                 formatter: monolog.formatter.line
+            audit_form_rate_limiter:
+                type: rotating_file
+                level: info
+                path: '%kernel.logs_dir%/audit/audit_form_rate_limiter.log'
+                max_files: 30
+                channels: audit_form_rate_limiter
