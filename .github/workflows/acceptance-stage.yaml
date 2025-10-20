@@ -287,7 +287,7 @@ jobs:
         run: bin/phpunit install
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: "${{ matrix.node }}"
 
@@ -421,7 +421,7 @@ jobs:
 #        run: bin/phpunit install
 #
 #      - name: Setup Node
-#        uses: actions/setup-node@v5
+#        uses: actions/setup-node@v6
 #        with:
 #          node-version: "${{ matrix.node }}"
 #
@@ -554,7 +554,7 @@ jobs:
         run: bin/phpunit install
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: "${{ matrix.node }}"
 
@@ -690,7 +690,7 @@ jobs:
         run: bin/phpunit install
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: "${{ matrix.node }}"
 
